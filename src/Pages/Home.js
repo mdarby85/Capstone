@@ -204,6 +204,7 @@ class Home extends React.Component {
                                     </Grid>
                                 </Grid>
                                 <Typography variant="body1" style={{marginTop: '1%'}}>
+                                    <b>Mario was here, testing how easy it is to change the front-end and re-deploy to our container.</b>
                                     Cappy is a Capstone Management System designed for students and sponsors alike. We
                                     provide students a platform to <b>store, edit, and present</b> their capstone
                                     projects.
