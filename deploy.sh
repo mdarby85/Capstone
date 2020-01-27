@@ -1,3 +1,5 @@
+# I'm guessing they ran this every time they wanted to redeploy onto the server?
+
 docker build -t cappy:latest .
 
 docker pull gitlab.ecs.baylor.edu:5555/012019-capstone/section02-group01/mongo:production
