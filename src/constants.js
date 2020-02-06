@@ -12,10 +12,10 @@ Contributors:
 import Strapi from "strapi-sdk-javascript/build/main";
 
 // Uncomment this for testing with ECS server
-// export const strapiURL = "http://192.168.3.202:1337";
+export const strapiURL = "http://192.168.3.202:1337";
 
 // Uncomment this for local testing
-export const strapiURL = "http://localhost:1337";
+// export const strapiURL = "http://localhost:1337";
 
 export var strapi = new Strapi(strapiURL);
 

@@ -68,3 +68,4 @@ fabric.properties
 
 # NPM Stuff
 node_modules/
+yarn.lock
