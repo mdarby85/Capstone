@@ -18,6 +18,7 @@ import SearchRedirect from "./Components/SearchRedirect";
 import FAQ from "./Pages/FAQ";
 import Home from "./Pages/Home";
 import Login from "./Pages/login";
+import Admin from "./Pages/Admin";
 import Secret from "./Pages/Secret";
 import ViewPost from "./Pages/ViewPost";
 import ViewUser from "./Pages/ViewUser";
@@ -51,6 +52,7 @@ export default class extends Component {
                   path="/callback"
                   render={() => <Callback {...this.props} />}
                 />
+                <Route path="/admin" component={Admin} />
                 <Route
                   path="/SearchRedirect/:path/:searchTerm?"
                   component={SearchRedirect}
