@@ -18,7 +18,6 @@ import SearchRedirect from "./Components/SearchRedirect";
 import FAQ from "./Pages/FAQ";
 import Home from "./Pages/Home";
 import Login from "./Pages/login";
-import Admin from "./Pages/Admin";
 import Secret from "./Pages/Secret";
 import ViewPost from "./Pages/ViewPost";
 import ViewUser from "./Pages/ViewUser";
@@ -34,6 +33,7 @@ import CreateCapstone from "./Pages/CreateCapstone";
 import ViewADepartment from "./Pages/ViewADepartment";
 import ViewYourCapstones from "./Pages/ViewYourCapstones";
 import ViewAllDepartments from "./Pages/ViewAllDepartments";
+import Admin from "./Pages/Admin";
 
 export default class extends Component {
   render() {

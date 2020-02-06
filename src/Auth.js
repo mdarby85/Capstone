@@ -14,10 +14,10 @@ const LOGIN_FAILURE_PAGE = "/";
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
-    domain: "cappy.auth0.com",
-    clientID: "9bKo0ksvr1TrqcASqTgzmEXZyxZf42Dm",
-    redirectUri: "http://localhost:3000/callback",
-    audience: "https://cappy.auth0.com/userinfo",
+    domain: "cappy-old.auth0.com",
+    clientID: "ocWG37d7d4WqRf8FAvoqx93XBRTaCvVC",
+    redirectUri: window.location.origin,
+    audience: "https://cappy-old.auth0.com/userinfo",
     responseType: "token id_token",
     scope: "openid profile"
   });

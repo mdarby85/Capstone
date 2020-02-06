@@ -47,6 +47,7 @@ class HeaderDrawer extends React.Component {
 
   render() {
     const { classes } = this.props;
+
     const sideList = (
       <div className={classes.list}>
         <List>
