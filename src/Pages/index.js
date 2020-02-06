@@ -3,8 +3,6 @@ Filename: index.js
 Contributors:   Ryan Cave
  */
 
-import {APITest} from './';
+import { APITest } from "./";
 
-export {
-    APITest
-}
+export { APITest };
