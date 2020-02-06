@@ -16,8 +16,8 @@ const styles = theme => ({
     flexWrap: "wrap"
   },
   textField: {
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(),
     width: 250,
     placeholder: "Search..."
   },
