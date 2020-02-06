@@ -10,8 +10,7 @@ module.exports = {
     phone: '12345',
     web: 'https://baylor.edu',
     address: '123 fake street',
-    email: 'contact@test.com'
-
+    email: 'contact@test.com',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -39,7 +38,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: './src/assets/images/gatsby-icon.png'
+        logo: './src/assets/images/meridian-logo.png'
       }
     },
     `gatsby-transformer-sharp`,
