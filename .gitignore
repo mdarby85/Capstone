@@ -140,3 +140,4 @@ fabric.properties
 # NPM Stuff
 node_modules/
 yarn.lock
+package-lock.json
