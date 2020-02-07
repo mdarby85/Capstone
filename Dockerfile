@@ -1,16 +1,6 @@
-FROM node:alpine
+FROM node:13
 
-EXPOSE 8000
-
-RUN \
-  apk add --no-cache git python make g++ && \
-  apk add vips-dev fftw-dev --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community --repository http://dl-3.alpinelinux.org/alpine/edge/main && \
-  rm -fR /var/cache/apk/*
-
-RUN npm install -g gatsby-cli
-
-WORKDIR /app
-COPY ./package.json .
-RUN yarn install && yarn cache clean
-COPY . .
-CMD ["yarn", "develop", "-H", "0.0.0.0" ]
+WORKDIR /home/node/app
+ADD ./package.json .
+ADD ./yarn.lock .
+RUN yarn

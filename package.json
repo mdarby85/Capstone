@@ -1,9 +1,9 @@
 {
-  "name": "meridian",
+  "name": "Meridian",
   "private": true,
   "description": "A Capstone showcase platform.",
-  "version": "0.1.0",
-  "author": "Chris Holle",
+  "version": "0.2.1",
+  "author": "Isaiah Bullard, Matthew Darby, Chris Holle, Elisa Gonzales, Mario Lopez, Brandon Wilcoxs",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.4.1",
@@ -41,16 +41,13 @@
   "devDependencies": {
     "prettier": "^1.19.1"
   },
-  "resolutions": {
-    "sharp": "0.24.0"
-  },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

@@ -1,19 +1,23 @@
 # docker compose file
 version: '3'
+volumes:
+    node_modules:
 services:
-    cappy:
-        container_name: cappy
+    gatsby:
+        container_name: gatsby
         build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-        - "8000:8000"
-        volumes:
-        - /app/node_modules
-        - .:/app
+          context: .
+        user: 'node'
+        working_dir: /home/node/app
         environment:
-        - NODE_ENV=development gatsby develop
-        - GATSBY_WEBPACK_PUBLICPATH=/
+          - NODE_ENV=development
+        volumes:
+          - ./:/home/node/app
+          # mount empty node_modules exclude the node_modules on host system from mounting into the container
+          - node_modules:/home/node/app/node_modules
+        ports:
+          - '8000:8000'
+        command: 'yarn start'
     mongodb:
         image: mongo:latest
         container_name: strapi-mongo
