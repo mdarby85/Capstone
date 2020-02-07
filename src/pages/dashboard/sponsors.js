@@ -17,7 +17,7 @@ import DashboardLayout from "../../components/dashboardLayout"
 export default () => (
   <DashboardLayout>
     <Sidebar />
-    <PageTitle title="Admin" />
+    <PageTitle title="Sponsors" />
     <p>Mario was here! Wooooo</p>
   </DashboardLayout>
 )

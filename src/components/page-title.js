@@ -20,7 +20,8 @@ const Line = styled.hr`
     border-top: 2px solid #feb81c;
     width: 80px;
     float: left;
-    `
+`
+
 export default ({title}) => (
   <Background>
     <h1>{title}</h1>

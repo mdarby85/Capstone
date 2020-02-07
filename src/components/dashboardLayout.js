@@ -13,35 +13,20 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
 import "../assets/stylesheets/layout.scss"
 import {ThemeProvider} from 'styled-components'
 import theme from '../assets/stylesheets/theme'
-import TopHeader from "./topHeader";
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+const DashboardLayout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-        <TopHeader/>
-      <Header siteTitle={data.site.siteMetadata.title}/>
-      <main style={{'margin': '7em 18em',}}>{children}</main>
+      <main style={{'margin': '0em 18em',}}>{children}</main>
     </ThemeProvider>
   )
 }
 
-Layout.propTypes = {
+DashboardLayout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default DashboardLayout

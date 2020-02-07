@@ -1,13 +1,17 @@
+// author(s): Mario Arturo Lopez Martinez
+// file: gatsby-config.js
+// last modified: February 7th, 2020
+
 let facebook_pixel = ''
 let gtm = ''
 
 module.exports = {
   siteMetadata: {
     title: `Meridian`,
-    description: `Gatsby + Strapi = <3`,
+    description: `A Capstone showcase platform.`,
     author: `Isaiah Bullard, Matthew Darby, Chris Holle, Elisa Gonzales, Mario Lopez, Brandon Wilcox`,
     siteUrl: `https://www.meridian.com/`,
-    phone: '(254) 555-1234',
+    phone: '(254) 710-5555',
     web: 'https://baylor.edu',
     address: '1311 S 5th St, Waco, TX 76706',
     email: 'team@meridian.com',

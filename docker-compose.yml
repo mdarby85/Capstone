@@ -1,4 +1,7 @@
-# docker compose file
+# author(s): Matthew Darby, Mario Arturo Lopez Martinez
+# file: docker-compose.yml
+# last modified: February 7th, 2020
+
 version: '3'
 volumes:
     node_modules:
