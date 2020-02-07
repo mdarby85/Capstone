@@ -1,6 +1,5 @@
 # docker compose file
 version: '3'
-
 services:
     cappy:
         container_name: cappy
@@ -9,13 +8,11 @@ services:
             dockerfile: Dockerfile
         ports:
         - "8000:8000"
-        - "9929:9929"
-        - "9230:9230"
         volumes:
         - /app/node_modules
         - .:/app
         environment:
-        - NODE_ENV=development
+        - NODE_ENV=development gatsby develop
         - GATSBY_WEBPACK_PUBLICPATH=/
     mongodb:
         image: mongo:latest

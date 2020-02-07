@@ -54,6 +54,9 @@ const Header = () => {
                     <NavItem>
                         <Link to={'/about'}  className={'nav-main'}><NavLink>About</NavLink></Link>
                     </NavItem>
+                    <NavItem>
+                        <Link to={'/dashboard/admin'}  className={'nav-main'}><NavLink>Admin</NavLink></Link>
+                    </NavItem>
                 </Nav>
                 <Nav style={style} navbar>
                     <NavItem style={{'float': 'right'}}>
