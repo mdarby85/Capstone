@@ -1,19 +1,17 @@
-# base image
-FROM node:8.4.0
+FROM node:alpine
 
-# set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+# Also exposing VSCode debug ports
+EXPOSE 8000 9929 9230
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+RUN \
+  apk add --no-cache git python make g++ && \
+  apk add vips-dev fftw-dev --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community --repository http://dl-3.alpinelinux.org/alpine/edge/main && \
+  rm -fR /var/cache/apk/*
 
-# install and cache app dependencies
+RUN npm install -g gatsby-cli
+
+WORKDIR /app
+COPY ./package.json .
+RUN yarn install && yarn cache clean
 COPY . .
-RUN npm install --silent
-RUN npm install react-scripts@1.1.1 -g --silent
-
-EXPOSE 3000
-
-# start application
-CMD ["npm", "start"]
+CMD ["yarn", "develop", "-H", "0.0.0.0" ]

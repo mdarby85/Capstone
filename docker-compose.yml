@@ -1,0 +1,39 @@
+# docker compose file
+version: '3'
+
+services:
+    cappy:
+        container_name: cappy
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+        - "8000:8000"
+        - "9929:9929"
+        - "9230:9230"
+        volumes:
+        - /app/node_modules
+        - .:/app
+        environment:
+        - NODE_ENV=development
+        - GATSBY_WEBPACK_PUBLICPATH=/
+    mongodb:
+        image: mongo:latest
+        container_name: strapi-mongo
+        ports:
+            - "27017:27017"
+        environment:
+            MONGO_INITDB_DATABASE: strapi
+    strapi:
+        image: strapi/strapi
+        container_name: strapi
+        depends_on:
+            - mongodb
+        ports:
+            - "1337:1337"
+        environment:
+            APP_NAME: strapi-app
+            DATABASE_CLIENT: mongo
+            DATABASE_HOST: strapi-mongo
+            DATABASE_PORT: 27017
+            DATABASE_NAME: strapi

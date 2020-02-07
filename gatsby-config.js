@@ -3,14 +3,14 @@ let gtm = ''
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Bootstrap Strapi Starter`,
+    title: `Meridian`,
     description: `Gatsby + Strapi = <3`,
-    author: `Jeremy Lynch`,
-    siteUrl: `https://gatsby-strapi-starter.netlify.com/`,
-    phone: '12345',
+    author: `Isaiah Bullard, Matthew Darby, Chris Holle, Elisa Gonzales, Mario Lopez, Brandon Wilcox`,
+    siteUrl: `https://www.meridian.com/`,
+    phone: '(254) 555-1234',
     web: 'https://baylor.edu',
-    address: '123 fake street',
-    email: 'contact@test.com',
+    address: '1311 S 5th St, Waco, TX 76706',
+    email: 'team@meridian.com',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
