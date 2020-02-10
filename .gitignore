@@ -140,3 +140,7 @@ fabric.properties
 # NPM Stuff
 node_modules/
 yarn.lock
+
+# Docker generated folders/files
+db/
+meridian-api/
