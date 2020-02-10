@@ -1,5 +1,5 @@
 import React from "react"
-import { Nav, NavLink } from "reactstrap"
+import { Nav } from "reactstrap"
 import { StaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"

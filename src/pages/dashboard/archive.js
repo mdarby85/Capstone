@@ -14,10 +14,13 @@ import Sidebar from "../../components/sidebar"
 import PageTitle from "../../components/page-title"
 import DashboardLayout from "../../components/dashboardLayout"
 
+
+
 export default () => (
   <DashboardLayout>
     <Sidebar />
     <PageTitle title="Archive" />
     <p>Mario was here! Wooooo</p>
+
   </DashboardLayout>
 )

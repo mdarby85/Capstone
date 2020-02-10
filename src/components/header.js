@@ -32,7 +32,7 @@ const Header = () => {
     const navBarStyle = {
         'backgroundColor': navBackColor,
         'margin-top': '4em',
-        'border-top': '1px solid ' + borderTopColor
+        'borderTop': '1px solid ' + borderTopColor
     };
 
   return (

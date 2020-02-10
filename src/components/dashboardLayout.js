@@ -13,14 +13,15 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import "../assets/stylesheets/layout.scss"
-import {ThemeProvider} from 'styled-components'
-import theme from '../assets/stylesheets/theme'
+import { ThemeProvider } from "styled-components"
 
-const DashboardLayout = ({ children }) => {
+import theme from "../assets/stylesheets/theme"
+import "../assets/stylesheets/layout.scss"
+
+let DashboardLayout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <main style={{'margin': '0em 18em',}}>{children}</main>
+      <main style={{ marginLeft: "125px" }}>{children}</main>
     </ThemeProvider>
   )
 }

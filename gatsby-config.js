@@ -1,6 +1,6 @@
-// author(s): Mario Arturo Lopez Martinez
-// file: gatsby-config.js
-// last modified: February 7th, 2020
+// Author(s): Mario Arturo Lopez Martinez
+// File: gatsby-config.js
+// Last Modified: February 7th, 2020
 
 let facebook_pixel = ''
 let gtm = ''
@@ -47,22 +47,14 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-source-strapi`,
-    //   options: {
-    //     apiURL: `http://localhost:1337`,
-    //     queryLimit: 1000, // Default to 100
-    //     contentTypes: ['article'],
-    //     // Possibility to login with a strapi user, when content types are not publically available (optional).
-    //     loginData: {
-    //       identifier: "",
-    //       password: "",
-    //     },
-    //   },
-    // },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://localhost:1337`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [],
+      },
+    },
     `gatsby-plugin-sitemap`,
     'gatsby-plugin-robots-txt',
     `gatsby-plugin-netlify`,

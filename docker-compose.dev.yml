@@ -1,0 +1,20 @@
+# Author(s): Mario Arturo Lopez Martinez
+# File: docker-compose.dev.yml
+# Last Modified: February 10th, 2020
+
+version: "3"
+services:
+  gatsby:
+    command: ["./wait-for-strapi.sh", "gatsby", "develop", "--host", "0.0.0.0"]
+    volumes:
+      - ./src:/home/gatsby-app/src
+    environment:
+      NODE_ENV: development
+    stdin_open: true
+    tty: true
+  strapi:
+    stdin_open: true
+    tty: true
+  db:
+    stdin_open: true
+    tty: true

@@ -1,9 +1,9 @@
 /**
  * author: Mario Arturo Lopez Martinez
- * file: admin.js
+ * file: sponsors.js
  *
  * Description:
- * Simple admin home for Dashboard
+ * Simple sponsor page in dash
  *
  * TODO: Finish design
  */

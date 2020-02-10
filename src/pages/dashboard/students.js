@@ -1,9 +1,9 @@
 /**
  * author: Mario Arturo Lopez Martinez
- * file: admin.js
+ * file: students.js
  *
  * Description:
- * Simple admin home for Dashboard
+ * Simple admin home for student management page
  *
  * TODO: Finish design
  */

@@ -1,0 +1,9 @@
+# Author(s): Mario Arturo Lopez Martinez, Matthew Darby
+# File: docker-compose.prod.yml
+# Last Modified: February 10th, 2020
+
+version: "3"
+services:
+  gatsby:
+    environment:
+      NODE_ENV: production
