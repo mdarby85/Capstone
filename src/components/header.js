@@ -32,7 +32,7 @@ const Header = () => {
     const navBarStyle = {
         'backgroundColor': navBackColor,
         'margin-top': '4em',
-        'border-top': '1px solid ' + borderTopColor
+        'borderTop': '1px solid ' + borderTopColor
     };
 
   return (
@@ -53,6 +53,9 @@ const Header = () => {
                     </NavItem>
                     <NavItem>
                         <Link to={'/about'}  className={'nav-main'}><NavLink>About</NavLink></Link>
+                    </NavItem>
+                    <NavItem>
+                        <Link to={'/dashboard/admin'}  className={'nav-main'}><NavLink>Admin</NavLink></Link>
                     </NavItem>
                 </Nav>
                 <Nav style={style} navbar>

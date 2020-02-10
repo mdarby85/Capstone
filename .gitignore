@@ -141,3 +141,7 @@ fabric.properties
 node_modules/
 yarn.lock
 package-lock.json
+
+# Docker generated folders/files
+db/
+meridian-api/

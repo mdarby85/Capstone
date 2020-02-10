@@ -1,0 +1,63 @@
+# Author(s): Mario Arturo Lopez Martinez, Matthew Darby
+# File: docker-compose.yml
+# Last Modified: February 10th, 2020
+
+# Average time to build and initialize the entire container is about 10-15 minutes depending on how fast your machine is
+# Once you have the containers build up once, the deployments should be near-instant
+
+# Command for startup: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+version: '3'
+services:
+  gatsby:
+    container_name: "front-end"
+    working_dir: /home/gatsby-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - strapi
+      - db
+    ports:
+      - "8000:8000"
+      - "9929:9929"
+      - "9230:9230"
+    environment:
+      GATSBY_WEBPACK_PUBLICPATH: /
+      STRAPI_URL: strapi:1337
+    command: ["./wait-for-strapi.sh"]
+
+  strapi:
+    container_name: "api"
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    environment:
+      - APP_NAME=meridian-api
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=db
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=
+      - DATABASE_PASSWORD=
+      - DATABASE_SSL=false
+      - DATABASE_AUTHENTICATION_DATABASE=strapi
+      - HOST=localhost
+    ports:
+      - 1337:1337
+    volumes:
+      - ./meridian-api:/usr/src/api/meridian-api
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    container_name: "db"
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=strapi
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
+    restart: always

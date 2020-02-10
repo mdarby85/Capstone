@@ -16,7 +16,7 @@
  *              Role={"Full-Stack Development"}/>
  */
 
-import React from 'react'
+import React from "react"
 import styled from "styled-components"
 
 const TeamCard = styled.div`
@@ -26,38 +26,38 @@ const TeamCard = styled.div`
   height: 220px;
   text-align: center;
   border-top: 2px solid ${props => props.theme.secondaryGreen};
-    transition-duration: 0.3s;
-    &:hover {
-        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
-        transform: translateY(-5px);
-    }
+  transition-duration: 0.3s;
+  &:hover {
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
 `
 
 const TeamMemberImage = styled.img`
-    border-radius: 50px;
-    width: 100px;
-    margin-top: -4em;
-    border: 1px solid #3a3a3a
+  border-radius: 50px;
+  width: 100px;
+  margin-top: -4em;
+  border: 1px solid #3a3a3a;
 `
 
 const MemberName = styled.h4`
-    font-family: 'BioSans', sans-serif;
-    color: ${props => props.theme.primaryGreen};
-    margin: .8em 0;
+  font-family: "BioSans", sans-serif;
+  color: ${props => props.theme.primaryGreen};
+  margin: 0.8em 0;
 `
 
 const MemberDescription = styled.i`
-    font-family: Georgia, serif;
-    font-size: 20px;
-    color: ${props => props.theme.primaryGreen}
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: ${props => props.theme.primaryGreen};
 `
 
-export default ({ImgSrc, Name, Department, Role}) => (
-    <TeamCard>
-        <TeamMemberImage src={ImgSrc} rounded/>
-        <MemberName>{Name}</MemberName>
-        <MemberDescription>{Department}</MemberDescription>
-        <br/>
-        <MemberDescription>{Role}</MemberDescription>
-    </TeamCard>
+export default ({ ImgSrc, Name, Department, Role }) => (
+  <TeamCard>
+    <TeamMemberImage src={ImgSrc} rounded />
+    <MemberName>{Name}</MemberName>
+    <MemberDescription>{Department}</MemberDescription>
+    <br />
+    <MemberDescription>{Role}</MemberDescription>
+  </TeamCard>
 )
