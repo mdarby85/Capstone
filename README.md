@@ -6,7 +6,9 @@
 
 - [⛰️ Meridian: Capstone Management System](#%e2%9b%b0%ef%b8%8f-meridian-capstone-management-system)
   - [Project Description](#project-description)
-  - [Authors](#authors)
+  - [Contributors](#contributors)
+    - [CSI 43C9 Section 02 Group 01 Spring 2019](#csi-43c9-section-02-group-01-spring-2019)
+    - [CSI 43C9 Section 01 Group 02 Spring 2020](#csi-43c9-section-01-group-02-spring-2020)
   - [Project Structure](#project-structure)
     - [Front-End](#front-end)
     - [Back-End](#back-end)
@@ -25,16 +27,32 @@ Many times, universities and other organizations have limited marketing material
 
 Meridian aims to solve these issues.
 
-## Authors
+## Contributors
 
-|  Spring 2020 Contributors   |   Role    |
-| :-------------------------: | :-------: |
-|      Christopher Holle      |  Liaison  |
-|        Matthew Darby        |  Deputy   |
-|       Elisa Gonzales        | Developer |
-| Mario Arturo Lopez Martinez | Developer |
-|       Brandon Wilcox        | Developer |
+### CSI 43C9 Section 02 Group 01 Spring 2019
 
+|        Name        |     Role      |
+| :----------------: | :-----------: |
+| Prof. Michael Aars |    Advisor    |
+| Prof. David Engfer | Product Owner |
+|    Stephen Tate    |   Developer   |
+|   Parker Wagner    |   Developer   |
+|     Ryan Cave      |   Developer   |
+|   Brenden Detels   |   Developer   |
+
+Most (95%) of the original code was purged. We decided it would take more time to re-factor code than to start from scratch with much more robust/cleaner code. Their version can be found on the [legacy branch](#to-do).
+
+### CSI 43C9 Section 01 Group 02 Spring 2020
+
+|            Name             |       Role        |
+| :-------------------------: | :---------------: |
+|     Prof. Michael Aars      |      Advisor      |
+|     Prof. David Engfer      |   Product Owner   |
+|      Christopher Holle      | Liaison/Developer |
+|        Matthew Darby        | Deputy/Developer  |
+|       Elisa Gonzales        |     Developer     |
+| Mario Arturo Lopez Martinez |     Developer     |
+|       Brandon Wilcox        |     Developer     |
 
 ## Project Structure
 
@@ -61,7 +79,7 @@ Strapi provides an API to mediate this access, and even provides the API calls f
 
 ## Installation Guide
 
-This configuration has been tested on Windows 10 (Pro/Enterprise), MacOS 10.15 Catalina, and Ubuntu Server (18.04 LTS), it should work on all of these platforms without issue.
+This configuration has been tested on Windows 10 (Pro Build 1909), MacOS 10.15 Catalina, and Ubuntu Server (18.04 LTS). It should work on all of these platforms without issue, if it doesn't, you probably broke something.
 
 ### Prerequisites
 
@@ -101,7 +119,7 @@ This configuration has been tested on Windows 10 (Pro/Enterprise), MacOS 10.15 C
   - All `Dockerfile` and `docker-compose` files are heavily documented, you can feel free to modify/update your containers as needed
 - To shut down the containers simply run `docker-compose down`
 
-Note: Strapi and MongoDB containers will be 'empty' upon building for the first time, you have to import the schema yourself [Docs on that found here.](#coming-soon)
+Note: Strapi and MongoDB containers will be 'empty' upon building for the first time, you have to import the schema yourself [Docs on that found here.](#to-do)
 
 ### Default Hosts/Ports:
 
