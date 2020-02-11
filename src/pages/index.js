@@ -3,20 +3,19 @@
  * Main Page
  */
 import React from "react"
-
+import styled from "styled-components"
 import { Container, Row, Col } from "reactstrap"
+import { FaGithub, FaHome } from "react-icons/fa"
+
+import Hr from "../components/hr"
+import Box from "../components/box"
+import SEO from "../components/seo"
+import Form from "../components/form"
 import Link from "../components/link"
 import Button from "../components/btn"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { FaGithub } from "react-icons/fa"
-import Form from "../components/form"
 import Slider from "../components/slider"
-import Box from "../components/box"
-import Hr from "../components/hr"
-import { FaHome } from "react-icons/fa"
 import Benefits from "../components/benefits"
-import styled from "styled-components"
 
 let StyledBackground = styled.div`
   background: linear-gradient(to bottom, #f9fbfd 0, #fff 100%);

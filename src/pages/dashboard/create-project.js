@@ -15,10 +15,10 @@
 import React from "react"
 
 import FormLayout from "../../components/layouts/formLayout"
-import LoginForm from "../../components/forms/loginForm"
+import CreateProjectForm from "../../components/forms/createProjectForm"
 
 export default () => (
   <FormLayout>
-    <LoginForm />
+    <CreateProjectForm />
   </FormLayout>
 )
