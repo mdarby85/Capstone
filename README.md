@@ -1,7 +1,7 @@
 # ⛰️ Meridian: Capstone Management System
 
 <p align="center">
-    <img src="./src/asssets/../assets/images/meridian-logo-text.png" width="500" alt="Meridian Logo">
+    <img src="https://i.imgur.com/gSbd0DD.png" width="500" alt="Meridian Logo">
 </p>
 
 - [⛰️ Meridian: Capstone Management System](#%e2%9b%b0%ef%b8%8f-meridian-capstone-management-system)
