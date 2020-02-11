@@ -13,6 +13,7 @@ import Layout from "../components/layout";
 import PageTitle from "../components/page-title";
 import {Col, Row} from "reactstrap";
 import TeamCard from "../components/teamCard"
+import Search from "../components/search"
 import ContactCard from "../components/contactCard"
 import CourseCard from "../components/courseCard"
 import DisplayCard from "../components/displayCard"
@@ -79,5 +80,7 @@ export default () => (
             </Col>
 
         </Row>
+        <PageTitle title="UI - Other"/>
+        <Search/>
     </Layout>
 )
