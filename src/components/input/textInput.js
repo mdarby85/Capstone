@@ -2,17 +2,11 @@
  * author: Mario Arturo Lopez Martinez
  * file: textInput.js
  *
- * Description:
- * Text input field to be used as for any sort of form submission.
+ * Description: @TODO
  *
- * Prop Usage:
- * label -
- * placeholder -
- * type -
+ * Prop Usage: @TODO
  *
- * Example usage:
- * <TeamCard ImgSrc={image} Name={"Chris Holle"} Department={"Baylor Computer Science"}
- *              Role={"Full-Stack Development"}/>
+ * Example usage: @TODO
  */
 
 import React from "react"

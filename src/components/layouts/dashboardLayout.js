@@ -1,14 +1,8 @@
 /**
- * author: Chris Holle
- * file: layout.js
+ * author: Mario Arturo Lopez Martinez
+ * file: dashboardLayout.js
  *
- * Description:
- * Layout for Non-Dashboard Front-end. Wrap Non-Dashboard pages in this component.
- *
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
+ * Description: @TODO
  */
 
 import React from "react"

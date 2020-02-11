@@ -1,6 +1,6 @@
 /**
  * author: Chris Holle
- * file: layout.js
+ * file: formLayout.js
  *
  * Description:
  * Layout for Functional forms
