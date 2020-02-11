@@ -8,6 +8,7 @@
 # Command for startup: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 
 version: '3'
+
 services:
   gatsby:
     container_name: "front-end"
@@ -53,11 +54,15 @@ services:
 
   db:
     container_name: "db"
-    image: mongo
+    image: mongo:latest
     environment:
       - MONGO_INITDB_DATABASE=strapi
     ports:
       - 27017:27017
     volumes:
-      - ./db:/data/db
+      - mongodata:/data/db
     restart: always
+
+# Fix for Mongo not being able to mount on NTFS file-systems (Windows 10)
+volumes:
+  mongodata:
