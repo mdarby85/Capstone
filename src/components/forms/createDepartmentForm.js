@@ -1,6 +1,6 @@
 /**
  * author: Mario Arturo Lopez Martinez
- * file: loginForm.js
+ * file: createProjectForm.js
  *
  * Description: @TODO
  */
@@ -9,9 +9,10 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-import InputField from "../input/textInput"
-import Button from "../../components/btn"
-import FormTitle from "../../components/formTitle"
+import Button from "../btn"
+import TextInput from "../input/textInput"
+import SelectInput from "../input/selectInput"
+import FormTitle from "../formTitle"
 import logo from "../../assets/images/BU_BrandMark_Stacked_Gold.png"
 
 const Logo = styled.img`
@@ -22,15 +23,11 @@ const Logo = styled.img`
 export default () => (
   <>
     <Logo src={logo} />
-    <FormTitle title={"Login"} />
+    <FormTitle title={"Create A Department"} />
     <form name="Contact Form" method="POST" netlify>
-      <input type="hidden" name="form-name" value="Contact Form" />
-
-      <InputField size="lg" label="Email" type="email" placeholder="test@test.com" />
-      <InputField size="lg" label="Password" type="password" />
-
+      <input type="hidden" name="form-name" value="Create Department Form" />
+      <TextInput size="lg" label="Name" type="text" />
       <br />
-
       <Button
         type="submit"
         tag={Link}

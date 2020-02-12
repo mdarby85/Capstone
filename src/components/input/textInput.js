@@ -25,7 +25,7 @@ const InputGroupTextStyle = {
 
 const LabelStyle = {
   textAlign: "center",
-  minWidth: "150px",
+  minWidth: "7vw",
 }
 
 const InputGroupStyle = {

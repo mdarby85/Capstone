@@ -30,7 +30,6 @@ export default () => (
       <SelectInput size="lg" label="Select Sponsor" type="select" />
       <SelectInput size="lg" label="Select TA" type="select" />
       <SelectInput size="lg" label="Select Course" type="select" />
-      <SelectInput size="lg" label="Select Team" type="select" />
       <br />
       <Button
         type="submit"
