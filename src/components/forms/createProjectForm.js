@@ -1,15 +1,8 @@
 /**
- * author: Chris Holle
- * file: login.js
+ * author: Mario Arturo Lopez Martinez
+ * file: createProjectForm.js
  *
- * Description:
- * Simple login for dashboard
- *
- *
- * TODO: Finish design and remove layout
- * TODO: Link to auth0
- * TODO: Connect to DUO
- * TODO: route to correct dashboard view
+ * Description: @TODO
  */
 
 import React from "react"
@@ -33,15 +26,12 @@ export default () => (
     <FormTitle title={"Create A Project"} />
     <form name="Contact Form" method="POST" netlify>
       <input type="hidden" name="form-name" value="Create Project Form" />
-
       <TextInput size="lg" label="Project Name" type="text" />
       <SelectInput size="lg" label="Select Sponsor" type="select" />
       <SelectInput size="lg" label="Select TA" type="select" />
       <SelectInput size="lg" label="Select Course" type="select" />
       <SelectInput size="lg" label="Select Team" type="select" />
-
       <br />
-
       <Button
         type="submit"
         tag={Link}

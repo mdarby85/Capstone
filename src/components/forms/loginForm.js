@@ -1,15 +1,8 @@
 /**
- * author: Chris Holle
- * file: login.js
+ * author: Mario Arturo Lopez Martinez
+ * file: loginForm.js
  *
- * Description:
- * Simple login for dashboard
- *
- *
- * TODO: Finish design and remove layout
- * TODO: Link to auth0
- * TODO: Connect to DUO
- * TODO: route to correct dashboard view
+ * Description: @TODO
  */
 
 import React from "react"
@@ -33,8 +26,8 @@ export default () => (
     <form name="Contact Form" method="POST" netlify>
       <input type="hidden" name="form-name" value="Contact Form" />
 
-      <InputField label="Email" type="email" placeholder="test@test.com" />
-      <InputField label="Password" type="password" />
+      <InputField size="md" label="Email" type="email" placeholder="test@test.com" />
+      <InputField size="md" label="Password" type="password" />
 
       <br />
 
