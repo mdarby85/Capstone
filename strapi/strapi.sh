@@ -44,11 +44,15 @@ fi
 # Change working directory
 cd $APP_NAME
 
-# Generate build folder to access our Strapi dashbaord
-strapi build &
+# I am aware of `yarn create strapi-app my-project --quickstart
+# This method of starting up a new project doesn't (currentyl)
+# allow for passing of all desired parameters 
+
+# Generate build folder if it doesn't exist to access our Strapi dashbaord
+[ ! -f "$APP_NAME/build/public/index.html" ] && yarn build
 
 # Start the strapi project
-strapi start
+yarn start
 
 # Set a variable to track Strapi's process ID
 strapiPID=$!
