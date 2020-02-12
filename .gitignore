@@ -145,3 +145,7 @@ package-lock.json
 # Docker generated folders/files
 db/
 meridian-api/
+
+# VSCode
+
+.vscode/
