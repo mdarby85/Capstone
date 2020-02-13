@@ -49,10 +49,10 @@ cd $APP_NAME
 # allow for passing of all desired parameters 
 
 # Generate build folder if it doesn't exist to access our Strapi dashbaord
-[ ! -f "$APP_NAME/build/public/index.html" ] && yarn build
+# [ ! -f "$APP_NAME/build/public/index.html" ] && yarn build
 
 # Start the strapi project
-yarn start
+strapi develop
 
 # Set a variable to track Strapi's process ID
 strapiPID=$!
