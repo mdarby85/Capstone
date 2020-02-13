@@ -21,7 +21,10 @@ RUN \
   rm -fR /var/cache/apk/*
 
 # Install gatsby-cli on image
-RUN npm install -g gatsby-cli
+RUN yarn global add gatsby-cli
+
+# Opting to install via yarn for performance reasons
+# RUN npm install -g gatsby-cli
 
 # Copy package.json to image
 COPY package*.json ./

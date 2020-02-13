@@ -20,30 +20,45 @@ const formLayout = ({ children }) => {
   const PageLayout = styled.div`
     height: 100vh;
     width: 100vw;
-    padding: 10em 30em;
     background: #f1f1f1;
+    position: relative;
   `
 
   const FormBox = styled.div`
     min-height: 25em;
+    max-width: 50vw;
+
     padding: 3em 5em;
     background: white;
     border: 1pt solid #909090;
   `
 
   const Logo = styled.img`
+    position: relative;
+    height: 4em;
+    margin-bottom: 1em;
+
+    /* Center Horizontally */
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1em;
-    height: 4em;
+  `
+
+  const Centered = styled.div`
+    /* Centered */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   `
 
   return (
     <ThemeProvider theme={meridianTheme}>
       <PageLayout>
-        <Logo src={logo} />
-        <FormBox>{children}</FormBox>
+        <Centered>
+          <Logo src={logo} />
+          <FormBox>{children}</FormBox>
+        </Centered>
       </PageLayout>
     </ThemeProvider>
   )

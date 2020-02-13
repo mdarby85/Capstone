@@ -25,7 +25,10 @@ WORKDIR /usr/src/api
 RUN echo "unsafe-perm = true" >> ~/.npmrc
 
 # Installing Strapi source on image
-RUN npm install strapi@beta -g
+RUN yarn global add strapi@beta
+
+# Opting to use yarn for performance reasons
+# RUN npm install strapi@beta -g
 
 # Copy over Strapi script to set up configuration and make it executable
 COPY strapi.sh ./
