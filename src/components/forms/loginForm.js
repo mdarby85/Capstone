@@ -26,7 +26,7 @@ export default () => (
     <form name="Contact Form" method="POST" netlify>
       <input type="hidden" name="form-name" value="Contact Form" />
 
-      <InputField size="lg" label="Email" type="email" placeholder="test@test.com" />
+      <InputField size="lg" label="Email" type="email" />
       <InputField size="lg" label="Password" type="password" />
 
       <br />

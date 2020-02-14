@@ -11,7 +11,6 @@ import { Link } from "gatsby"
 
 import Button from "../btn"
 import TextInput from "../input/textInput"
-import SelectInput from "../input/selectInput"
 import FormTitle from "../formTitle"
 import logo from "../../assets/images/BU_BrandMark_Stacked_Gold.png"
 

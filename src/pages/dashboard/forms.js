@@ -1,15 +1,8 @@
 /**
- * author: Chris Holle
- * file: login.js
+ * author: Mario Arturo Lopez Martinez
+ * file: forms.js
  *
- * Description:
- * Simple login for dashboard
- *
- *
- * TODO: Finish design and remove layout
- * TODO: Link to auth0
- * TODO: Connect to DUO
- * TODO: route to correct dashboard view
+ * Description: Page to showcase the various forms we'll be using in our app. Will be removed.
  */
 
 import React from "react"
