@@ -1,9 +1,10 @@
 import React from "react"
 import { Container, Navbar } from "reactstrap"
+
 import Link from "./link"
 import logo from "../assets/images/BU_BrandMark_Horz_2Color.png"
-import "../assets/stylesheets/main.css"
 import theme from "../assets/stylesheets/theme"
+import "../assets/stylesheets/main.css"
 
 const navBackColor = theme.primaryGreen
 
