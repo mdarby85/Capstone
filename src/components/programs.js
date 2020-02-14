@@ -11,6 +11,7 @@ const Picture = styled.img`
     height: 175px;
     width: 175px;
     border: solid 1px #383838;
+    background-color: black;
 `
 
 const ProgramTitle = styled.h4`
