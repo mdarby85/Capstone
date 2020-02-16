@@ -12,15 +12,12 @@ import React from "react"
 import Layout from "../components/layout";
 import PageTitle from "../components/page-title";
 import {Col, Row} from "reactstrap";
-import TeamCard from "../components/teamCard"
+import TeamCard from "../components/cards/teamCard"
 import Search from "../components/search"
-import ContactCard from "../components/contactCard"
-import CourseCard from "../components/courseCard"
-import DisplayCard from "../components/displayCard"
-import image from "../assets/images/gatsby-icon.png"
-import CourseCard from "../components/cards/courseCard"
 import ContactCard from "../components/cards/contactCard"
+import CourseCard from "../components/cards/courseCard"
 import DisplayCard from "../components/cards/displayCard"
+import image from "../assets/images/gatsby-icon.png"
 import tempImg from "../assets/images/green_science.jpg"
 
 export default () => (
@@ -144,28 +141,6 @@ export default () => (
         />
       </Col>
     </Row>
+      <Search/>
   </Layout>
-)
-
-        <Row style={{margin: '5em 0'}}>
-            <Col>
-                <DisplayCard Name={"Cappy"} Semester={"Spring 2020"} ImgSrc={tempImg}
-                             Description={'This is a story of the great big wolf who blew all of the little piggies houses down!'}
-                             to={'/about'}/>
-            </Col>
-            <Col>
-                <DisplayCard Name={"Cappy"} Semester={"Spring 2020"} ImgSrc={tempImg}
-                             Description={'This is a story of the great big wolf who blew all of the little piggies houses down!'}
-                             to={'/about'}/>
-            </Col>
-            <Col>
-                <DisplayCard Name={"Cappy"} Semester={"Spring 2020"} ImgSrc={tempImg}
-                             Description={'This is a story of the great big wolf who blew all of the little piggies houses down!'}
-                             to={'/about'}/>
-            </Col>
-
-        </Row>
-        <PageTitle title="UI - Other"/>
-        <Search/>
-    </Layout>
 )
