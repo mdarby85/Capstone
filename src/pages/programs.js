@@ -12,15 +12,15 @@ export default () => (
                  Description={"The field of Computer Science continues to drive the innovation and progress that shapes " +
                  "every aspect of the digital age. There are few areas of modern life that are not touched by our ability " +
                  "to rapidly create, consume, analyze or harness information."}/>
-        <Program ImgSrc={testImg} Title={"Baylor Computer Science"} Link={"/about"}
+        <Program ImgSrc={testImg} Title={"Baylor Computer Science"} Link={"/sponsors"}
                  Description={"The field of Computer Science continues to drive the innovation and progress that shapes " +
                  "every aspect of the digital age. There are few areas of modern life that are not touched by our ability " +
                  "to rapidly create, consume, analyze or harness information."}/>
-        <Program ImgSrc={testImg} Title={"Baylor Game Development"} Link={"/about"}
+        <Program ImgSrc={testImg} Title={"Baylor Game Development"} Link={"/home"}
                  Description={"The field of Computer Science continues to drive the innovation and progress that shapes " +
                  "every aspect of the digital age. There are few areas of modern life that are not touched by our ability " +
                  "to rapidly create, consume, analyze or harness information."}/>
-        <Program ImgSrc={testImg} Title={"Baylor Engineering"} Link={"/about"}
+        <Program ImgSrc={testImg} Title={"Baylor Engineering"} Link={"/contact"}
                  Description={"The field of Computer Science continues to drive the innovation and progress that shapes " +
                  "every aspect of the digital age. There are few areas of modern life that are not touched by our ability " +
                  "to rapidly create, consume, analyze or harness information."}/>
