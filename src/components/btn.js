@@ -1,5 +1,9 @@
 /**
- * Pre-generated
+ * Stylized Button component. Uses styled-components to allow for dynamic
+ * buttons depending on the css values passed to it.
+ *
+ * Ex: <Button rounded={true} medium={true} type="submit" >Submit</Button>
+ * This creates a rounded medium submit button.
  */
 
 import React from 'react'
