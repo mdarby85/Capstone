@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Col, Row} from "reactstrap";
+import Button from "../components/btn"
+import arrow from "../assets/images/Arrow.png"
 
 
 const Program = styled.div`
@@ -51,6 +53,7 @@ export default ({ImgSrc, Title, Description, Link}) => (
                 <ProgramTitle><b>{Title}</b></ProgramTitle>
                 <Line />
                 <ProgramDescription>{Description}</ProgramDescription>
+                <Button rounded={true} medium={true} arrow={true} type="submit" to={Link}>Learn More</Button>
             </Col>
         </Row>
     </Program>
