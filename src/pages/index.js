@@ -32,50 +32,47 @@ let Service = ({ title, Icon = FaHome }) => (
   </Col>
 )
 
-export default () => (
-  <Layout>
-    <SEO title="Home" />
-    <Slider />
+export default () => <Layout>
+    <SEO title="Home"/>
+    <Slider/>
     <Container className="pt-4">
-      <div className="text-center">
-        <h4>A slightly opinionated Gatsby starter template Mario was here.</h4>
-        <p className="text-muted">
-          Built with love on the Gold Coast, QLD Australia
-        </p>
-      </div>
+        <div className="text-center">
+            <h4>A slightly opinionated Gatsby starter template Mario was here.</h4>
+            <p className="text-muted">
+                Built with love on the Gold Coast, QLD Australia
+            </p>
+        </div>
     </Container>
     <Container className="py-5">
-      <h2 className="text-center mb-4">Services</h2>
-      <Row>
-        <Service title="Websites" />
-        <Service title="SEO" />
-        <Service title="API" />
-      </Row>
+        <h2 className="text-center mb-4">Services</h2>
+        <Row>
+            <Service title="Websites"/>
+            <Service title="SEO"/>
+            <Service title="API"/>
+        </Row>
     </Container>
     <div className="text-center py-5">
-      <Button
-        to="https://github.com/jeremylynch/gatsby-strapi-starter"
-        className="btn btn-primary btn-lg"
-      >
-        <FaGithub className="mr-1" />
-        View on Github
-      </Button>
+        <Button
+            to="https://github.com/jeremylynch/gatsby-strapi-starter"
+            className="btn btn-primary btn-lg">
+            <FaGithub className="mr-1"/>
+            View on Github
+        </Button>
     </div>
     <StyledBackground>
-      <Benefits />
-      <div className="py-5">
-        <Container>
-          <Row className="d-flex justify-content-center">
-            <Col md={8}>
-              <Box style={{ textAlign: "left" }}>
-                <h3 className="text-center">Reactstrap Form Fields</h3>
-                <Hr />
-                <Form />
-              </Box>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+        <Benefits/>
+        <div className="py-5">
+            <Container>
+                <Row className="d-flex justify-content-center">
+                    <Col md={8}>
+                        <Box style={{textAlign: "left"}}>
+                            <h3 className="text-center">Reactstrap Form Fields</h3>
+                            <Hr/>
+                            <Form/>
+                        </Box>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     </StyledBackground>
-  </Layout>
-)
+</Layout>
