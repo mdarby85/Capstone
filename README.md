@@ -7,8 +7,8 @@
 - [⛰️ Meridian: Capstone Management System](#%e2%9b%b0%ef%b8%8f-meridian-capstone-management-system)
   - [Project Description](#project-description)
   - [Contributors](#contributors)
-    - [CSI 43C9 Section 02 Group 01 Spring 2019](#csi-43c9-section-02-group-01-spring-2019)
     - [CSI 43C9 Section 01 Group 02 Spring 2020](#csi-43c9-section-01-group-02-spring-2020)
+    - [CSI 43C9 Section 02 Group 01 Spring 2019](#csi-43c9-section-02-group-01-spring-2019)
   - [Project Structure](#project-structure)
     - [Front-End](#front-end)
     - [Back-End](#back-end)
@@ -29,6 +29,18 @@ Meridian aims to solve these issues.
 
 ## Contributors
 
+### CSI 43C9 Section 01 Group 02 Spring 2020
+
+|            Name             |       Role        |
+| :-------------------------: | :---------------: |
+|     Prof. Michael Aars      |      Advisor      |
+|     Prof. David Engfer      |   Product Owner   |
+|      Christopher Holle      | Liaison/Developer |
+|        Matthew Darby        | Deputy/Developer  |
+|       Elisa Gonzales        |     Developer     |
+| Mario Arturo Lopez Martinez |     Developer     |
+|       Brandon Wilcox        |     Developer     |
+
 ### CSI 43C9 Section 02 Group 01 Spring 2019
 
 |        Name        |     Role      |
@@ -41,18 +53,6 @@ Meridian aims to solve these issues.
 |   Brenden Detels   |   Developer   |
 
 Most (95%) of the original code was purged. We decided it would take more time to re-factor code than to start from scratch with much more robust/cleaner code. Their version can be found on the [legacy branch](#to-do).
-
-### CSI 43C9 Section 01 Group 02 Spring 2020
-
-|            Name             |       Role        |
-| :-------------------------: | :---------------: |
-|     Prof. Michael Aars      |      Advisor      |
-|     Prof. David Engfer      |   Product Owner   |
-|      Christopher Holle      | Liaison/Developer |
-|        Matthew Darby        | Deputy/Developer  |
-|       Elisa Gonzales        |     Developer     |
-| Mario Arturo Lopez Martinez |     Developer     |
-|       Brandon Wilcox        |     Developer     |
 
 ## Project Structure
 
@@ -91,6 +91,7 @@ This configuration has been tested on Windows 10 (Pro Build 1909), MacOS 10.15 C
 
   - We deploy our services (Front-end, APIs, DBs) using Docker containers to easily package, ship, and run our applications as portable light-weight containers.
 
+
 - Ensure `wait-for-strapi.sh` and `strapi/strapi.sh` have `LF` (\*NIX-style) line endings and not `CRLF` (Windows-style) line endings
 
   - Without the correct line endings, you won't be able to run these scripts in your docker container.
@@ -117,12 +118,14 @@ This configuration has been tested on Windows 10 (Pro Build 1909), MacOS 10.15 C
     - You only have to build once, after that, the same script will simply start up the containers
   - If images have already been built, it usually takes about 1-3 minutes for containers to spin up, be patient
   - All `Dockerfile` and `docker-compose` files are heavily documented, you can feel free to modify/update your containers as needed
+  
+
 - To shut down the containers simply run `docker-compose down`
 
 Note: Strapi and MongoDB containers will be 'empty' upon building for the first time, you have to import the schema yourself [Docs on that found here.](#to-do)
 
 ### Default Hosts/Ports:
 
-- Meridian front-end defaults to [`localhost:8000`](http://localhost:8000)
+- Meridian front-end defaults to [localhost:8000](http://localhost:8000)
 - GraphiQL panel defaults to [localhost:8000/\_\_graphql](http://locahost:8000/__graphql)
 - Strapi Admin Panel defaults to [localhost:1337/admin](http://localhost:1337/admin)

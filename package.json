@@ -3,7 +3,7 @@
   "private": true,
   "description": "A Capstone showcase platform.",
   "version": "0.2.1",
-  "author": "Isaiah Bullard, Matthew Darby, Chris Holle, Elisa Gonzales, Mario Lopez, Brandon Wilcoxs",
+  "author": "Isaiah Bullard, Matthew Darby, Chris Holle, Elisa Gonzales, Mario Lopez, Brandon Wilcox",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "bootstrap": "^4.4.1",
@@ -42,7 +42,7 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "~1.19.1"
   },
   "keywords": [
     "gatsby"

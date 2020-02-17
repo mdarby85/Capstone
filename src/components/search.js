@@ -42,7 +42,7 @@ const SearchBtn = styled.div`
 const SearchInput = styled.input`
     width: 100%;
     border-bottom: 2px solid #dcdcdc;
-    font-family: Georgia;
+    font-family: Geogia;
     border-top: none;
     border-right: none;
     border-left: none;
