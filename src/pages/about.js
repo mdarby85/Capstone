@@ -19,10 +19,12 @@ import CourseCard from "../components/cards/courseCard"
 import DisplayCard from "../components/cards/displayCard"
 import image from "../assets/images/gatsby-icon.png"
 import tempImg from "../assets/images/green_science.jpg"
+import Button from "../components/btn"
 
 export default () => (
   <Layout>
     <PageTitle title="About" />
+    <Button border={false} rounded={false} solid={true} medium={true} type="submit" >Submit</Button>
     <PageTitle title="UI - Cards" />
     <Row>
       <Col>
