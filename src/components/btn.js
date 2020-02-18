@@ -4,25 +4,30 @@
  *
  * Ex: <Button rounded={true} medium={true} type="submit" >Submit</Button>
  * This creates a rounded medium submit button.
+ *
+ *
  */
 
 import React from 'react'
 import Link from './link'
 import styled from 'styled-components'
+import meridianTheme from "../assets/stylesheets/meridianTheme";
 
 let Button = styled.button`
   -webkit-appearance: unset !important;
   border-radius: ${props => props.rounded ? '15px' : '2px'};
-  border: ${props => props.border ? props.rounded ? '4px solid #ffb71c' : '1px solid' : '0'};
+  border: ${props => props.border ? props.rounded ? '4px solid #ffb71c' : '4px solid #3a9483' : '0'};
   min-height: ${props => props.big ? '50px' : props.medium ? '25px' : props.small ? '15px' : 'initial'};
   min-width: ${props => props.big ? '200px' : props.medium ? '125px' : props.small ? '75px' : 'initial'};
   display: inline-block;
   padding: 10px 40px;
   text-align: center;
   transition-duration: 0.25s;
-  background: ${props => props.solid ? props.theme.primaryGreen : props.theme.primary};
+  background: ${props => props.solid ? props.theme.primaryGreen : props.lightSolid ? meridianTheme.secondary : props.theme.primary};
   box-shadow: 0 .5rem 1.5rem rgba(22,28,45,.1);
-  color: ${props => (props.textColor == 'primary-green') ? props.theme.primaryGreen : (props.textColor == 'primary-gold') ? props.theme.primaryGold : '#FFFFFF'};
+  color: ${props => (props.textColor == 'primary-green') ? props.theme.primaryGreen : 
+    (props.textColor == 'primary-gold') ? props.theme.primaryGold : 
+        (props.textColor === 'meridian-secondary') ? meridianTheme.secondary : '#FFFFFF'};
   font-family: 'BioSans', sans-serif;
   font-weight: bold;
   &:hover {
