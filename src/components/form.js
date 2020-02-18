@@ -12,6 +12,6 @@ export default () => (
     <NormalField name="Email" />
     <NormalField name="Phone Number" />
     <NormalField name="Comments" type="textarea" />
-    <Button type="submit">Submit</Button>
+    <Button rounded={true} medium={true} type="submit">Submit</Button>
   </form>
 )
