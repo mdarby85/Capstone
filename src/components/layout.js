@@ -35,7 +35,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={theme}>
         <TopHeader/>
       <Header siteTitle={data.site.siteMetadata.title}/>
-      <main style={{'margin': '7em 18em',}}>{children}</main>
+      <main style={{'margin': '7em 0',}}>{children}</main>
     </ThemeProvider>
   )
 }
