@@ -37,3 +37,7 @@ h1 {
     font-family: 'BioSans', sans-serif;
     color: #ffb81c;
 }
+
+.page-container {
+    margin: 7em 18em;
+}
