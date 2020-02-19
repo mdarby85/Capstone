@@ -79,7 +79,7 @@ let Sidebar = ({ data }) => (
     <Line />
     {/* @TODO Make it so we query users and generate links based on permissions */}
     <Nav vertical>
-    <Link to="/dashboard/home">
+    <Link to="/dashboard/home" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{
@@ -95,7 +95,7 @@ let Sidebar = ({ data }) => (
           Dashboard
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/account">
+      <Link to="/dashboard/account" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{
@@ -111,7 +111,7 @@ let Sidebar = ({ data }) => (
           Account
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/professors">
+      <Link to="/dashboard/professors" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{
@@ -127,7 +127,7 @@ let Sidebar = ({ data }) => (
           Professors
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/students">
+      <Link to="/dashboard/students" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{
@@ -143,7 +143,7 @@ let Sidebar = ({ data }) => (
           Students
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/projects">
+      <Link to="/dashboard/projects" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{
@@ -159,7 +159,7 @@ let Sidebar = ({ data }) => (
           Projects
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/sponsors">
+      <Link to="/dashboard/sponsors" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{
@@ -175,7 +175,7 @@ let Sidebar = ({ data }) => (
           Sponsors
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/archive">
+      <Link to="/dashboard/archive" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{

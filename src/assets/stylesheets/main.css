@@ -33,7 +33,20 @@ h1 {
     color: white;
 }
 
+#Navbar .activeHeader {
+    color: white !important;
+}
+
+.activeSidebar {
+    transform: scale(1.05);
+    background-color: #006a52;
+}
+
 #Navbar .nav-extra {
     font-family: 'BioSans', sans-serif;
     color: #ffb81c;
+}
+
+.page-container {
+    margin: 7em 18em;
 }

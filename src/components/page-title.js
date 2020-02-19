@@ -12,23 +12,24 @@ const Background = styled.div`
   font-family: 'BioSans', sans-serif;
   color: ${props => props.theme.primaryGreen};
   padding: 4rem 0 3rem 0;
-  text-align: left;
+  text-align: ${props => props.center ? 'center' : 'left'};
   &h1 {
     font-family: 'BioSans', sans-serif;
   }
 `
 const Line = styled.hr`
-    margin-top: -.5em;
+    margin-top: -.3em;
     margin-bottom: 2rem;
     border: 0;
+    float: ${props => props.center ? 'none' : 'left'};
     border-top: 2px solid #feb81c;
-    width: 80px;
-    float: left;
+    width: ${props => props.center ? '180px' : '120px'};
+    
 `
 
-export default ({title}) => (
-  <Background>
-    <h1>{title}</h1>
-      <Line/>
+export default ({title, ...props}) => (
+  <Background {...props}>
+      <h1>{title}</h1>
+      <Line {...props}/>
   </Background>
 )
