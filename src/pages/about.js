@@ -19,6 +19,7 @@ import CourseCard from "../components/cards/courseCard"
 import DisplayCard from "../components/cards/displayCard"
 import image from "../assets/images/gatsby-icon.png"
 import tempImg from "../assets/images/green_science.jpg"
+import Button from "../components/btn"
 
 export default () => (
   <Layout>
