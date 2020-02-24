@@ -25,7 +25,7 @@ const Account = () => {
   return (
     <DashboardLayout>
       <PageTitle title="Account" />
-      <p>Mario was here! Wooooo</p>
+      <p>Mario wasn't here! Wooooo</p>
     </DashboardLayout>
   )
 }

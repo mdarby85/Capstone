@@ -7,6 +7,10 @@ If you get an error about auth0-js:
   5. manually install auth0-js (npm install --save auth0-js)
   6. manually run `gatsby build`
 
+Test Account:
+U: john@fakeemail.com
+P: baylorbear1234!
+
 TODO: Don't forget to replace domain and clientID with environment variables
 */
 
