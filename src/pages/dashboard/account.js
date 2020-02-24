@@ -9,13 +9,25 @@
  */
 
 import React from "react"
-
+import { login, isAuthenticated, getProfile } from "../../utils/auth"
+import { Link } from "gatsby"
 import PageTitle from "../../components/page-title"
 import DashboardLayout from "../../components/layouts/dashboardLayout"
 
-export default () => (
-  <DashboardLayout>
-    <PageTitle title="Account" />
-    <p>Mario was here! Wooooo</p>
-  </DashboardLayout>
-)
+const Account = () => {
+  if (!isAuthenticated()) {
+    login()
+    return <p>Redirecting to login...</p>
+  }
+
+  const user = getProfile()
+
+  return (
+    <DashboardLayout>
+      <PageTitle title="Account" />
+      <p>Mario was here! Wooooo</p>
+    </DashboardLayout>
+  )
+}
+
+export default Account

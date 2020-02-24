@@ -5,6 +5,8 @@
   "version": "0.2.1",
   "author": "Isaiah Bullard, Matthew Darby, Chris Holle, Elisa Gonzales, Mario Lopez, Brandon Wilcox",
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.6.4",
+    "auth0-js": "^9.12.2",
     "babel-plugin-styled-components": "^1.10.7",
     "bootstrap": "^4.4.1",
     "create-strapi-app": "^3.0.0-beta.18.7",
