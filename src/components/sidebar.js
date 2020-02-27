@@ -64,7 +64,7 @@ const Line = styled.hr`
   width: 100px;
 `
 
-const iconStyle = { color: "white", size: "1.5em" };
+const iconStyle = { color: "white", size: "1.5em" }
 
 let Sidebar = ({ data }) => (
   <StyledSidebar>
@@ -79,7 +79,7 @@ let Sidebar = ({ data }) => (
     <Line />
     {/* @TODO Make it so we query users and generate links based on permissions */}
     <Nav vertical>
-    <Link to="/dashboard/home" activeClassName={"activeSidebar"}>
+      <Link to="/dashboard/home" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
             style={{
@@ -189,6 +189,22 @@ let Sidebar = ({ data }) => (
             </IconContext.Provider>
           </div>
           Archive
+        </StyledNavBlock>
+      </Link>
+      <Link to="/dashboard/forms" activeClassName={"activeSidebar"}>
+        <StyledNavBlock>
+          <div
+            style={{
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <IconContext.Provider value={iconStyle}>
+              <MdDashboard />
+            </IconContext.Provider>
+          </div>
+          Forms
         </StyledNavBlock>
       </Link>
     </Nav>

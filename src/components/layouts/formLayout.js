@@ -25,12 +25,16 @@ const formLayout = ({ children }) => {
   `
 
   const FormBox = styled.div`
-    min-height: 25em;
+    min-width: 475px;
     max-width: 50vw;
+    width: 50vw;
 
-    padding: 3em 5em;
+    padding: 3em 2.5em;
     background: white;
     border: 1pt solid #909090;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
   `
 
   const Logo = styled.img`

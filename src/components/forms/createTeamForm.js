@@ -12,18 +12,24 @@ import Button from "components/btn"
 import FormTitle from "components/formTitle"
 import TextInput from "components/input/textInput"
 import SelectInput from "components/input/selectInput"
-import { GenerateOptions } from "src/utils"
+import { GenerateCheckboxes, GenerateOptions } from "src/utils"
 
 export default () => {
   const data = useStaticQuery(graphql`
     {
-      allStrapiSponsors {
+      allStrapiCourse {
         nodes {
           id
           Name
         }
       }
-      allStrapiCourse {
+      allStrapiProject {
+        nodes {
+          id
+          Name
+        }
+      }
+      allStrapiUser {
         nodes {
           id
           Name
@@ -34,22 +40,18 @@ export default () => {
 
   return (
     <>
-      <FormTitle title={"Create A Project"} />
-      <form name="Contact Form" method="POST">
+      <FormTitle title={"Create A Team"} />
+      <form name="Create A Form" method="POST">
         <input type="hidden" name="form-name" value="Create Project Form" />
-        <TextInput label="Project Name" type="text" />
-        <SelectInput label="Select Course">
+        <TextInput label="Team Name" />
+        <SelectInput label="Course">
           {GenerateOptions(data.allStrapiCourse.nodes)}
         </SelectInput>
-        <SelectInput label="Select Sponsor">
-          {GenerateOptions(data.allStrapiSponsors.nodes)}
+        <SelectInput label="Project">
+          {GenerateOptions(data.allStrapiProject.nodes)}
         </SelectInput>
-        <Button
-          type="submit"
-          tag={Link}
-          to={"/dashboard/account"}
-          style={{ margin: "auto" }}
-        >
+        {GenerateCheckboxes(data.allStrapiUser.nodes)}
+        <Button type="submit" tag={Link}>
           Submit
         </Button>
       </form>

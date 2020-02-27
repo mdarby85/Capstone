@@ -18,8 +18,11 @@ import "../../assets/stylesheets/layout.scss"
 
 const formLayout = ({ children }) => {
   const FormBox = styled.div`
+    min-width: 475px;
+    max-width: 50vw;
     width: 50vw;
-    padding: 3em 5em;
+
+    padding: 3em 2.5em;
     background: white;
     border: 1pt solid #909090;
     margin-left: auto;
