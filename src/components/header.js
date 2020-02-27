@@ -25,10 +25,6 @@ const Header = () => {
 
   const toggle = () => setIsOpen(!isOpen)
 
-  const style = {
-    "margin-left": "35em",
-    left: "auto",
-  }
   const navBackColor = "#383838"
   const borderTopColor = theme.secondaryGold
 
@@ -46,22 +42,38 @@ const Header = () => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <Link to={"/"} className={"nav-main"}>
+                <Link
+                  to={"/"}
+                  className={"nav-main"}
+                  activeClassName={"activeHeader"}
+                >
                   <NavLink>Overview</NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to={"/sponsors"} className={"nav-main"}>
+                <Link
+                  to={"/sponsors"}
+                  className={"nav-main"}
+                  activeClassName={"activeHeader"}
+                >
                   <NavLink>Sponsors</NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to={"/programs"} className={"nav-main"}>
+                <Link
+                  to={"/programs"}
+                  className={"nav-main"}
+                  activeClassName={"activeHeader"}
+                >
                   <NavLink>Programs</NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to={"/about"} className={"nav-main"}>
+                <Link
+                  to={"/about"}
+                  className={"nav-main"}
+                  activeClassName={"activeHeader"}
+                >
                   <NavLink>About</NavLink>
                 </Link>
               </NavItem>
@@ -71,15 +83,19 @@ const Header = () => {
                 </Link>
               </NavItem>
             </Nav>
-            <Nav style={style} navbar>
+            <Nav style={{ "margin-left": "35em" }} navbar>
               <NavItem style={{ float: "right" }}>
-                <Link to={"/contact"}>
-                  <NavLink className={"nav-extra"}>Contact Us</NavLink>
+                <Link
+                  to={"/contact"}
+                  className={"nav-extra"}
+                  activeClassName={"activeHeader"}
+                >
+                  <NavLink>Contact Us</NavLink>
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to={"/dashboard/login"}>
-                  <NavLink className={"nav-extra"}>Sign In</NavLink>
+                <Link to={"/dashboard/login"} className={"nav-extra"}>
+                  <NavLink>Sign In</NavLink>
                 </Link>
               </NavItem>
             </Nav>

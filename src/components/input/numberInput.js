@@ -1,32 +1,35 @@
 /**
  * author: Mario Arturo Lopez Martinez
- * file: textInput.js
+ * file: numberInput.js
  *
  * Description:
- * Text input field to be used in input/form group.
+ * Number input field to be used in input/form group.
  *
  * Prop Usage:
- * size: String(sm/md/lg)             - Size of input label/input field
- * label: String                      - Label attached to input field
- * type: String(email/password/text)  - Associates input validation and styles with given type
- * placeholder: String                - Placeholder visibile when input field is empty
+ * label      - Label for checkbox input field
+ * size       - Size of input group (including Label and Input)
+ * onChange   - onChange handler function
  *
  * Example usage:
- * <TextInput size="lg" label="Name" type="email" placeholder="Test@Email.com" />
+ * <NumberInput style={InputStyle} label="Number of Students" onChange={setCount} />
  */
 
 import React from "react"
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap"
 
-export default ({ label, placeholder, type, ...props }) => {
+export default ({ label, ...props }) => {
   const InputStyle = {
+    WebkitAppearance: "none",
+    MozAppearance: "none",
+    borderRadius: props.rounded ? "10px 0 0 10px" : "0",
     borderColor: "rgb(85,199,177)",
-    borderRadius: props.rounded ? "0 10px 10px 0" : "0",
+    padding: ".5em",
   }
 
   const InputGroupTextStyle = {
     color: "white",
     background: "rgb(85,199,177)",
+
     borderRadius: props.rounded ? "10px 0 0 10px" : "0",
   }
 
@@ -36,13 +39,19 @@ export default ({ label, placeholder, type, ...props }) => {
   }
 
   return (
-    <InputGroup size={props.size} {...props}>
+    <InputGroup size={props.size}>
       <InputGroupAddon addonType="prepend">
         <InputGroupText style={InputGroupTextStyle}>
           <div style={LabelStyle}>{label}</div>
         </InputGroupText>
       </InputGroupAddon>
-      <Input style={InputStyle} type={type} placeholder={placeholder}></Input>
+      <Input
+        style={InputStyle}
+        type="number"
+        name="number"
+        {...props}
+        onChange={e => props.onChange(e.target.value)}
+      />
     </InputGroup>
   )
 }

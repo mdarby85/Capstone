@@ -6,31 +6,20 @@
  */
 
 import React from "react"
-import styled from "styled-components"
 import { Link } from "gatsby"
 
-import InputField from "../input/textInput"
 import Button from "../../components/btn"
+import InputField from "../input/textInput"
 import FormTitle from "../../components/formTitle"
-import logo from "../../assets/images/BU_BrandMark_Stacked_Gold.png"
-
-const Logo = styled.img`
-  display: inline-block;
-  height: 4em;
-`
 
 export default () => (
   <>
-    <Logo src={logo} />
     <FormTitle title={"Login"} />
-    <form name="Contact Form" method="POST" netlify>
+    <form name="Contact Form" method="POST">
       <input type="hidden" name="form-name" value="Contact Form" />
-
-      <InputField size="lg" label="Email" type="email" />
-      <InputField size="lg" label="Password" type="password" />
-
+      <InputField size="md" label="Email" type="email" />
+      <InputField size="md" label="Password" type="password" />
       <br />
-
       <Button
         type="submit"
         tag={Link}

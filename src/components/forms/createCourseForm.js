@@ -6,36 +6,47 @@
  */
 
 import React from "react"
-import styled from "styled-components"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Button from "../btn"
-import TextInput from "../input/textInput"
-import SelectInput from "../input/selectInput"
-import FormTitle from "../formTitle"
-import logo from "../../assets/images/BU_BrandMark_Stacked_Gold.png"
+import Button from "components/btn"
+import FormTitle from "components/formTitle"
+import TextInput from "components/input/textInput"
+import SelectInput from "components/input/selectInput"
+import { GenerateOptions } from "src/utils"
 
-const Logo = styled.img`
-  display: inline-block;
-  height: 4em;
-`
+const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }
 
-export default () => (
-  <>
-    <Logo src={logo} />
-    <FormTitle title={"Create A Course"} />
-    <form name="Contact Form" method="POST" netlify>
-      <input type="hidden" name="form-name" value="Create Project Form" />
-      <SelectInput size="lg" label="Department" type="select" />
-      <br />
-      <Button
-        type="submit"
-        tag={Link}
-        to={"/dashboard/account"}
-        style={{ margin: "auto" }}
-      >
-        Submit
-      </Button>
-    </form>
-  </>
-)
+export default () => {
+  const data = useStaticQuery(graphql`
+    {
+      allStrapiProgram {
+        nodes {
+          id
+          Name
+        }
+      }
+    }
+  `)
+
+  return (
+    <>
+      <FormTitle title={"Create A Course"} />
+      <form name="Create A Course Form" method="POST">
+        <input type="hidden" name="form-name" value="Create A Course Form" />
+        <TextInput style={InputStyle} label="Name" />
+        <SelectInput style={InputStyle} label="Program" type="select">
+          {GenerateOptions(data.allStrapiProgram.nodes)}
+        </SelectInput>
+        <br />
+        <Button
+          type="submit"
+          tag={Link}
+          to={"/dashboard/account"}
+          style={{ margin: "auto" }}
+        >
+          Submit
+        </Button>
+      </form>
+    </>
+  )
+}

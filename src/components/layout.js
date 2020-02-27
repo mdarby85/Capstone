@@ -16,9 +16,9 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "../assets/stylesheets/layout.scss"
-import {ThemeProvider} from 'styled-components'
-import theme from '../assets/stylesheets/theme'
-import TopHeader from "./topHeader";
+import { ThemeProvider } from "styled-components"
+import theme from "../assets/stylesheets/theme"
+import TopHeader from "./topHeader"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -33,9 +33,9 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-        <TopHeader/>
-      <Header siteTitle={data.site.siteMetadata.title}/>
-      <main style={{'margin': '7em 18em',}}>{children}</main>
+      <TopHeader />
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <main style={{ margin: "7em 0" }}>{children}</main>
     </ThemeProvider>
   )
 }
