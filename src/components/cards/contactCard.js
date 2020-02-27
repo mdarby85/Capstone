@@ -18,7 +18,7 @@
  *              Role={"Full-Stack Development"} Email={"john_doe@baylor.edu"} Phone={"(823) 418-2083"}/>
  */
 
-import React from 'react'
+import React from "react"
 import styled from "styled-components"
 
 const ContactCard = styled.div`
@@ -28,42 +28,42 @@ const ContactCard = styled.div`
   height: 275px;
   text-align: center;
   border-top: 2px solid ${props => props.theme.secondaryGreen};
-    transition-duration: 0.3s;
-    &:hover {
-        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
-        transform: translateY(-5px);
-    }
+  transition-duration: 0.3s;
+  &:hover {
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
 `
 
 const ContactImage = styled.img`
-    border-radius: 50px;
-    width: 100px;
-    margin-top: -4em;
-    border: 1px solid #3a3a3a
+  border-radius: 50px;
+  width: 100px;
+  margin-top: -4em;
+  border: 1px solid #3a3a3a;
 `
 
 const ContactName = styled.h4`
-    font-family: 'BioSans', sans-serif;
-    color: ${props => props.theme.primaryGreen};
-    margin: .8em 0;
+  font-family: "BioSans", sans-serif;
+  color: ${props => props.theme.primaryGreen};
+  margin: 0.8em 0;
 `
 
 const ContactDescription = styled.i`
-    font-family: Georgia, serif;
-    font-size: 20px;
-    color: ${props => props.theme.primaryGreen}
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: ${props => props.theme.primaryGreen};
 `
 
-export default ({ImgSrc, Name, Department, Role, Email, Phone}) => (
-    <ContactCard>
-        <ContactImage src={ImgSrc} rounded/>
-        <ContactName>{Name}</ContactName>
-        <ContactDescription>{Department}</ContactDescription>
-        <br/>
-        <ContactDescription>{Role}</ContactDescription>
-        <br/>
-        <ContactDescription>{Email}</ContactDescription>
-        <br/>
-        <ContactDescription>{Phone}</ContactDescription>
-    </ContactCard>
+export default ({ ImgSrc, Name, Department, Role, Email, Phone }) => (
+  <ContactCard>
+    <ContactImage src={ImgSrc} rounded />
+    <ContactName>{Name}</ContactName>
+    <ContactDescription>{Department}</ContactDescription>
+    <br />
+    <ContactDescription>{Role}</ContactDescription>
+    <br />
+    <ContactDescription>{Email}</ContactDescription>
+    <br />
+    <ContactDescription>{Phone}</ContactDescription>
+  </ContactCard>
 )

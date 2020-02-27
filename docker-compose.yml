@@ -10,23 +10,26 @@
 version: "3"
 
 services:
-  gatsby:
-    container_name: "front-end"
-    working_dir: /home/gatsby-app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      - strapi
-      - db
-    ports:
-      - "8000:8000"
-      - "9929:9929"
-      - "9230:9230"
-    environment:
-      GATSBY_WEBPACK_PUBLICPATH: /
-      STRAPI_URL: strapi:1337
-    command: ["./wait-for-strapi.sh"]
+  # For now we'll just go on without gatsby running in a container.
+  # There are issues with it connecting to our databases for some reason.
+
+  # gatsby:
+  #   container_name: "front-end"
+  #   working_dir: /home/gatsby-app
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - strapi
+  #     - db
+  #   ports:
+  #     - "8000:8000"
+  #     - "9929:9929"
+  #     - "9230:9230"
+  #   environment:
+  #     GATSBY_WEBPACK_PUBLICPATH: /
+  #     STRAPI_URL: strapi:1337
+  #   command: ["./wait-for-strapi.sh"]
 
   strapi:
     container_name: "api"
