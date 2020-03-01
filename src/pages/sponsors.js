@@ -1,3 +1,11 @@
+/**
+ * author: Chris Holle
+ * file: sponsors.js
+ *
+ * Description:
+ * Page to attract sponsors.
+ */
+
 import React from "react"
 import Layout from "../components/layout"
 import PageTitle from "../components/page-title"

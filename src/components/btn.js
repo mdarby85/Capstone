@@ -2,8 +2,14 @@
  * Stylized Button component. Uses styled-components to allow for dynamic
  * buttons depending on the css values passed to it.
  *
+ * Options:
+ *  arrow={boolean}
+ *   - includes arrow in button
+ *
  * Ex: <Button rounded={true} medium={true} type="submit" >Submit</Button>
  * This creates a rounded medium submit button.
+ *
+ * TODO: Reduce number of tertiary conditions and make use of global css classes
  */
 
 import React from "react"
@@ -17,10 +23,8 @@ let Button = styled.button`
   border-radius: ${props => (props.rounded ? "10px" : "0")};
   border: ${props =>
     props.border
-      ? props.rounded
-        ? "2px solid #ffb71c"
-        : "4px solid #3a9483"
-      : "0"};
+      ?  "2px solid #ffb81c"
+        : "none"};
   min-height: ${props =>
     props.big
       ? "50px"
@@ -67,10 +71,9 @@ let Button = styled.button`
 `
 
 let Arrow = styled.i`
-  display: ${props => (props.arrow ? "inherit" : "none")};
+  display: ${props => (props.arrow ? "inline-block" : "none")};
   border: solid ${props => props.theme.primaryGreen};
   border-width: 0 2px 2px 0;
-  display: inline-block;
   padding: 3px;
   margin-left: 8px;
   transform: rotate(-45deg);
