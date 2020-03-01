@@ -25,24 +25,23 @@ let Button = styled.button`
     props.border
       ?  "2px solid #ffb81c"
         : "none"};
-  min-height: ${props =>
+  height: ${props =>
     props.big
       ? "50px"
       : props.medium
       ? "25px"
       : props.small
-      ? "15px"
-      : "initial"};
-  min-width: ${props =>
-    props.big
-      ? "200px"
-      : props.medium
-      ? "125px"
-      : props.small
-      ? "75px"
+      ? "25spx"
       : "initial"};
   display: inline-block;
-  padding: 7px 30px;
+  padding: ${props =>
+  props.big
+    ? "7px 30px"
+    : props.medium
+    ? "7px 20px"
+    : props.small
+      ? "5px 15px"
+      : "initial"};
   text-align: center;
   &:focus {
     outline: 0;

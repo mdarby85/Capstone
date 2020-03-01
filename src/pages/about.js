@@ -16,6 +16,7 @@ import Search from "../components/search"
 import PageTitle from "../components/page-title"
 
 import TeamCard from "../components/cards/teamCard"
+import ProjectCard from "../components/cards/projectCard"
 import ContactCard from "../components/cards/contactCard"
 import CourseCard from "../components/cards/courseCard"
 import DisplayCard from "../components/cards/displayCard"
@@ -145,6 +146,14 @@ export default () => (
           />
         </Col>
       </Row>
+
+      <ProjectCard
+        projectName={"Cappy"}
+        teamName={"Section 01 - Pariveda02"}
+        semester={"Spring 2020"}
+        imgSrc={tempImg}
+        to={"/about"}
+      />
       <Search />
     </div>
   </Layout>
