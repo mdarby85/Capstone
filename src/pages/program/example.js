@@ -8,12 +8,11 @@
 import React from "react"
 import { Col, Row } from "reactstrap"
 
-import Layout from "../../components/layout"
-import Search from "../../components/search"
-import PageTitle from "../../components/page-title"
-import DisplayCard from "../../components/cards/displayCard"
-import tempImg from "../../assets/images/green_science.jpg"
-
+import Layout from "components/layout"
+import Search from "components/search"
+import PageTitle from "components/titles/pageTitle"
+import DisplayCard from "components/cards/displayCard"
+import tempImg from "assets/images/green_science.jpg"
 
 export default () => (
   <Layout>
@@ -22,12 +21,12 @@ export default () => (
         <Col>
           <PageTitle title="Computer Science Capstone" />
         </Col>
-        <Col md={4} style={{padding: '5em 10em 0 0'}}>
-          <Search/>
+        <Col md={4} style={{ padding: "5em 10em 0 0" }}>
+          <Search />
         </Col>
       </Row>
 
-      <PageTitle title={"Spring 2020"} center={true} subtitle={true}/>
+      <PageTitle title={"Spring 2020"} center={true} subtitle={true} />
 
       <Row style={{ margin: "0" }}>
         <Col>
@@ -65,7 +64,7 @@ export default () => (
         </Col>
       </Row>
 
-      <PageTitle title={"Fall 2019"} center={true} subtitle={true}/>
+      <PageTitle title={"Fall 2019"} center={true} subtitle={true} />
 
       <Row style={{ margin: "0" }}>
         <Col>
@@ -102,7 +101,6 @@ export default () => (
           />
         </Col>
       </Row>
-
     </div>
   </Layout>
 )
