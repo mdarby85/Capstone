@@ -13,7 +13,7 @@ import Hr from "components/hr"
 import SEO from "components/seo"
 import Button from "components/btn"
 import Layout from "components/layout"
-import PageTitle from "components/page-title"
+import PageTitle from "components/titles/pageTitle"
 import DisplayCard from "components/cards/displayCard"
 
 import ecs from "assets/images/ecs_img.png"

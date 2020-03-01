@@ -16,10 +16,12 @@ import CreateProjectForm from "components/forms/createProjectForm"
 import CreateProgramForm from "components/forms/createDepartmentForm"
 import CreateProffessorForm from "components/forms/createProfessorForm"
 import CreateSponsorAccountForm from "components/forms/createSponsorForm"
+import PageTitle from "components/titles/pageTitle"
 
 export default () => (
   <>
     <DashboardLayout>
+      <PageTitle title="Forms" />
       <TestFormLayout>
         <CreateCourseForm />
       </TestFormLayout>

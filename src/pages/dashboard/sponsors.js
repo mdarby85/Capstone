@@ -1,21 +1,27 @@
 /**
  * author: Mario Arturo Lopez Martinez
- * file: sponsors.js
+ * file: admin.js
  *
  * Description:
- * Simple sponsor page in dash
+ * Simple admin home for Dashboard
  *
  * TODO: Finish design
  */
 
 import React from "react"
 
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/layouts/dashboardLayout"
+import SEO from "components/seo"
+import DashboardLayout from "components/layouts/dashboardLayout"
+import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
+import SponsorList from "components/lists/sponsorList"
 
 export default () => (
   <DashboardLayout>
-    <PageTitle title="Sponsors" />
-    <p>Mario was here! Wooooo</p>
+    <SEO title="Professors" />
+    <DashboardSectionTitle
+      style={{ display: "inline-block", marginBottom: "-1vh" }}
+      title="Manage Sponsors"
+    />
+    <SponsorList />
   </DashboardLayout>
 )
