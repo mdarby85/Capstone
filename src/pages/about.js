@@ -19,6 +19,7 @@ import TeamCard from "components/cards/teamCard"
 import ContactCard from "components/cards/contactCard"
 import CourseCard from "components/cards/courseCard"
 import DisplayCard from "components/cards/displayCard"
+import ProjectCard from "components/cards/projectCard"
 
 import image from "assets/images/gatsby-icon.png"
 import tempImg from "assets/images/green_science.jpg"

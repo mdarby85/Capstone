@@ -4,7 +4,7 @@ import CheckboxInput from "components/input/checkboxInput"
 import { MdEdit, MdDeleteForever } from "react-icons/md"
 
 import CourseCard from "components/cards/courseCard"
-import TeamCard from "components/cards/teamCard"
+import ProjectCard from "components/cards/projectCard"
 import DisplayCard from "components/cards/displayCard"
 
 export const GenerateOptions = nodes => {
@@ -39,6 +39,7 @@ export const GenerateCourseCards = nodes => {
 }
 
 export const GenerateTeamCards = nodes => {
+  console.log(nodes)
   return nodes.map(node => (
     <div
       key={node.id}
@@ -46,7 +47,11 @@ export const GenerateTeamCards = nodes => {
         margin: "10px",
       }}
     >
-      <CourseCard Name={node.Name} />
+      <ProjectCard
+        projectName={node.Name}
+        semester="Spring 2020"
+        teamName={node.project.Name}
+      />
     </div>
   ))
 }

@@ -23,7 +23,7 @@ export default () => (
       <Button
         type="submit"
         tag={Link}
-        to={"/dashboard/account"}
+        to={"/dashboard/home"}
         style={{ margin: "auto" }}
       >
         Submit

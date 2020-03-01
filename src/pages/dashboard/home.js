@@ -30,7 +30,7 @@ export default () => (
     <CourseList />
     <DashboardSectionTitle title="Manage Teams" />
     <TeamList />
-    <DashboardSectionTitle title="Manage Teams" />
+    <DashboardSectionTitle title="Manage Projects" />
     <ProjectList />
   </DashboardLayout>
 )
