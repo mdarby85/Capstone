@@ -7,7 +7,6 @@
  *
  * TODO: Finish design
  */
-
 import React from "react"
 
 import SEO from "components/seo"
