@@ -1,13 +1,14 @@
 import React from "react"
 
-import Layout from "../components/layout"
-import PageTitle from "../components/page-title"
-import Program from "../components/programs"
-import testImg from "../assets/images/gatsby-icon.png"
-import { graphql } from "gatsby"
+import Layout from "components/layout"
+import SEO from "components/seo"
+import PageTitle from "components/titles/pageTitle"
+import Program from "components/programs"
+import testImg from "assets/images/gatsby-icon.png"
 
 export default ({data}) => (
   <Layout>
+    <SEO title="Programs" />
     <div className="page-container">
       <PageTitle title="Programs" />
 

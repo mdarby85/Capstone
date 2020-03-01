@@ -5,35 +5,32 @@
  * Description: @TODO
  */
 
-import React, { useState } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import { MdInfoOutline } from "react-icons/md"
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import { Link } from "gatsby"
 import { Tooltip } from "reactstrap"
+import { MdInfoOutline } from "react-icons/md"
 
 import Button from "components/btn"
-import FormTitle from "components/formTitle"
+import FormTitle from "components/titles/formTitle"
 import TextInput from "components/input/textInput"
 import SelectInput from "components/input/selectInput"
 import NumberInput from "components/input/numberInput"
+import { COURSES_API } from "src/constants"
 import { GenerateOptions } from "src/utils"
+
+const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }
 
 export default () => {
   const [tooltipOpen, setTooltipOpen] = useState(false)
+  const [courseOptions, setCourseOptions] = useState([])
   const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    axios.get(COURSES_API).then(response => setCourseOptions(response.data))
+  }, [])
+
   const toggle = () => setTooltipOpen(!tooltipOpen)
-
-  const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }
-
-  const data = useStaticQuery(graphql`
-    {
-      allStrapiCourse {
-        nodes {
-          id
-          Name
-        }
-      }
-    }
-  `)
 
   const studentInputFields = count => {
     let fields = []
@@ -45,7 +42,6 @@ export default () => {
         </span>
       )
     }
-
     return <>{fields}</>
   }
 
@@ -55,7 +51,7 @@ export default () => {
       <form name="Contact Form" method="POST">
         <input type="hidden" name="form-name" value="Add Account Form" />
         <SelectInput style={InputStyle} label="Course">
-          {GenerateOptions(data.allStrapiCourse.nodes)}
+          {GenerateOptions(courseOptions)}
         </SelectInput>
         <Button>Upload Accounts</Button>
         <MdInfoOutline id="TooltipExample" />
@@ -86,14 +82,17 @@ export default () => {
           <br />
           <b>Students will be given a temporary password to sign in with.</b>
         </Tooltip>
-        Or
-        <Button style={{ margin: "auto" }}>Manual Entry</Button>
+        &nbsp;Or&nbsp;
+        <Button>Manual Entry</Button>
+        <br />
+        <br />
         <NumberInput
           style={InputStyle}
           label="Number of Students"
           onChange={setCount}
         />
         {studentInputFields(count)}
+        <br />
         <Button
           onClick={e => {
             e.preventDefault()
@@ -102,6 +101,7 @@ export default () => {
         >
           Add Student
         </Button>
+        <br />
         <br />
         <Button
           type="submit"

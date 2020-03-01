@@ -7,7 +7,7 @@
  */
 import React from "react"
 import styled from "styled-components"
-import meridianTheme from "../assets/stylesheets/meridianTheme"
+import meridianTheme from "assets/stylesheets/meridianTheme"
 
 const Background = styled.div`
   display: contents;

@@ -81,9 +81,6 @@ let Arrow = styled.i`
 
 export default ({ to, children, ...props }) => (
   <Link to={to}>
-    <Button {...props}>
-      {children}
-      <Arrow />
-    </Button>
+    <Button {...props}>{children}</Button>
   </Link>
 )

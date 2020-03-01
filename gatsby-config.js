@@ -22,10 +22,10 @@ module.exports = {
       resolve: "gatsby-plugin-root-import",
       options: {
         src: path.join(__dirname, "src"),
-        components: path.join(__dirname, "src/components"),
-        assets: path.join(__dirname, "src/assets"),
         data: path.join(__dirname, "src/data"),
         pages: path.join(__dirname, "src/pages"),
+        assets: path.join(__dirname, "src/assets"),
+        components: path.join(__dirname, "src/components"),
       },
     },
     `gatsby-plugin-react-helmet`,

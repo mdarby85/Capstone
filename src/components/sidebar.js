@@ -47,6 +47,8 @@ let StyledNavBlock = styled(props => <div {...props} />)`
 `
 
 const StyledSidebar = styled.div`
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1);
+
   height: 100%;
   width: 100px;
   position: fixed;
@@ -92,25 +94,10 @@ let Sidebar = ({ data }) => (
               <MdDashboard />
             </IconContext.Provider>
           </div>
-          Dashboard
+          Home
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/account" activeClassName={"activeSidebar"}>
-        <StyledNavBlock>
-          <div
-            style={{
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            <IconContext.Provider value={iconStyle}>
-              <MdAccountCircle />
-            </IconContext.Provider>
-          </div>
-          Account
-        </StyledNavBlock>
-      </Link>
+
       <Link to="/dashboard/professors" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
@@ -143,22 +130,6 @@ let Sidebar = ({ data }) => (
           Students
         </StyledNavBlock>
       </Link>
-      <Link to="/dashboard/projects" activeClassName={"activeSidebar"}>
-        <StyledNavBlock>
-          <div
-            style={{
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            <IconContext.Provider value={iconStyle}>
-              <FaProjectDiagram />
-            </IconContext.Provider>
-          </div>
-          Projects
-        </StyledNavBlock>
-      </Link>
       <Link to="/dashboard/sponsors" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
@@ -173,38 +144,6 @@ let Sidebar = ({ data }) => (
             </IconContext.Provider>
           </div>
           Sponsors
-        </StyledNavBlock>
-      </Link>
-      <Link to="/dashboard/archive" activeClassName={"activeSidebar"}>
-        <StyledNavBlock>
-          <div
-            style={{
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            <IconContext.Provider value={iconStyle}>
-              <FaArchive />
-            </IconContext.Provider>
-          </div>
-          Archive
-        </StyledNavBlock>
-      </Link>
-      <Link to="/dashboard/forms" activeClassName={"activeSidebar"}>
-        <StyledNavBlock>
-          <div
-            style={{
-              display: "block",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            <IconContext.Provider value={iconStyle}>
-              <MdDashboard />
-            </IconContext.Provider>
-          </div>
-          Forms
         </StyledNavBlock>
       </Link>
     </Nav>

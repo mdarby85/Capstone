@@ -8,9 +8,9 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Button from "../../components/btn"
-import InputField from "../input/textInput"
-import FormTitle from "../../components/formTitle"
+import Button from "components/btn"
+import FormTitle from "components/titles/formTitle"
+import InputField from "components/input/textInput"
 
 export default () => (
   <>

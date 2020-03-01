@@ -10,12 +10,14 @@
 
 import React from "react"
 
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/layouts/dashboardLayout"
+import SEO from "components/seo"
+import PageTitle from "components/titles/pageTitle"
+import DashboardLayout from "components/layouts/dashboardLayout"
 
 export default () => (
   <DashboardLayout>
+    <SEO title="Archive" />
     <PageTitle title="Archive" />
-    <p>Mario was here! Wooooo</p>
+    <p>@TODO</p>
   </DashboardLayout>
 )
