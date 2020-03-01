@@ -3,7 +3,7 @@
  * file: search.js
  *
  * Description:
- * Card to be used to search for items
+ * Component to be used to search for items
  *
  *
  * Example usage:
@@ -15,6 +15,7 @@ import searchIcon from "../assets/images/search.png"
 
 const Search = styled.div`
   width: 20%;
+  float: right;
   transform: translate(-50%, -50%);
 `
 
@@ -40,7 +41,6 @@ const SearchBtn = styled.div`
 `
 
 const SearchInput = styled.input`
-  width: 100%;
   border-bottom: 2px solid #dcdcdc;
   font-family: Geogia;
   border-top: none;

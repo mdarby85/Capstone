@@ -21,6 +21,7 @@ import styled from "styled-components"
 
 const TeamCard = styled.div`
   padding: 1rem;
+  margin: auto;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
   width: 325px;
   height: 220px;

@@ -56,7 +56,9 @@ export default ({ ImgSrc, Title, Description, Link }) => (
         <Button
           rounded={true}
           medium={true}
+          border={true}
           arrow={true}
+          textColor={"primary-green"}
           type="submit"
           to={Link}
         >
