@@ -12,9 +12,9 @@ import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
 
 import styled from "styled-components"
-import logo from "../../assets/images/meridian-logo-text.png"
-import meridianTheme from "../../assets/stylesheets/meridianTheme"
-import "../../assets/stylesheets/layout.scss"
+import logo from "assets/images/meridian-logo-text.png"
+import meridianTheme from "assets/stylesheets/meridianTheme"
+import "assets/stylesheets/layout.scss"
 
 const formLayout = ({ children }) => {
   const PageLayout = styled.div`

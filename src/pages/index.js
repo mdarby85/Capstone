@@ -1,6 +1,9 @@
 /**
- * Pre-generated
- * Main Page
+ * author: Chris Holle
+ * file: index.js
+ *
+ * Description:
+ * Main landing page.
  */
 import React from "react"
 import styled from "styled-components"
@@ -10,7 +13,7 @@ import Hr from "components/hr"
 import SEO from "components/seo"
 import Button from "components/btn"
 import Layout from "components/layout"
-import PageTitle from "components/page-title"
+import PageTitle from "components/titles/pageTitle"
 import DisplayCard from "components/cards/displayCard"
 
 import ecs from "assets/images/ecs_img.png"
@@ -67,7 +70,7 @@ let Section2img = styled.img`
 
 let Section3Container = styled.div`
   padding: 4em 6em;
-  margin-top: 3em;
+  margin: 3em 0;
   min-height: 550px;
 `
 
@@ -110,7 +113,9 @@ export default () => (
               <Button
                 to="/programs"
                 className="btn btn-primary btn-lg"
-                textColor="primary-green"
+                textColor="white"
+                solid={true}
+                arrow={false}
               >
                 Try
               </Button>
@@ -122,6 +127,8 @@ export default () => (
                 to="/programs"
                 className="btn btn-primary btn-lg"
                 textColor="primary-green"
+                border={true}
+                arrow={false}
               >
                 Learn More
               </Button>
@@ -141,6 +148,7 @@ export default () => (
               to="/programs"
               className="btn btn-primary btn-md"
               textColor="primary-green"
+              border={true}
             >
               View all
             </Button>
@@ -217,6 +225,7 @@ export default () => (
               to="/programs"
               className="btn btn-primary btn-lg"
               textColor="primary-green"
+              border={true}
             >
               View Programs
             </Button>

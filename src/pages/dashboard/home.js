@@ -10,12 +10,27 @@
 
 import React from "react"
 
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/layouts/dashboardLayout"
+import SEO from "components/seo"
+import DashboardLayout from "components/layouts/dashboardLayout"
+import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
+import ProgramList from "components/lists/programList"
+import CourseList from "components/lists/courseList"
+import TeamList from "components/lists/teamList"
+import ProjectList from "components/lists/projectList"
 
 export default () => (
   <DashboardLayout>
-    <PageTitle title="Home" />
-    <p>Mario was here! Wooooo</p>
+    <SEO title="Dashboard Home" />
+    <DashboardSectionTitle
+      style={{ display: "inline-block", marginBottom: "-1vh" }}
+      title="Manage Programs"
+    />
+    <ProgramList />
+    <DashboardSectionTitle title="Manage Courses" />
+    <CourseList />
+    <DashboardSectionTitle title="Manage Teams" />
+    <TeamList />
+    <DashboardSectionTitle title="Manage Teams" />
+    <ProjectList />
   </DashboardLayout>
 )

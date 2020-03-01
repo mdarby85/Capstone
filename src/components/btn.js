@@ -2,8 +2,14 @@
  * Stylized Button component. Uses styled-components to allow for dynamic
  * buttons depending on the css values passed to it.
  *
+ * Options:
+ *  arrow={boolean}
+ *   - includes arrow in button
+ *
  * Ex: <Button rounded={true} medium={true} type="submit" >Submit</Button>
  * This creates a rounded medium submit button.
+ *
+ * TODO: Reduce number of tertiary conditions and make use of global css classes
  */
 
 import React from "react"
@@ -17,28 +23,25 @@ let Button = styled.button`
   border-radius: ${props => (props.rounded ? "10px" : "0")};
   border: ${props =>
     props.border
-      ? props.rounded
-        ? "2px solid #ffb71c"
-        : "4px solid #3a9483"
-      : "0"};
-  min-height: ${props =>
+      ?  "2px solid #ffb81c"
+        : "none"};
+  height: ${props =>
     props.big
       ? "50px"
       : props.medium
       ? "25px"
       : props.small
-      ? "15px"
-      : "initial"};
-  min-width: ${props =>
-    props.big
-      ? "200px"
-      : props.medium
-      ? "125px"
-      : props.small
-      ? "75px"
+      ? "25spx"
       : "initial"};
   display: inline-block;
-  padding: 7px 30px;
+  padding: ${props =>
+  props.big
+    ? "7px 30px"
+    : props.medium
+    ? "7px 20px"
+    : props.small
+      ? "5px 15px"
+      : "initial"};
   text-align: center;
   &:focus {
     outline: 0;
@@ -67,10 +70,9 @@ let Button = styled.button`
 `
 
 let Arrow = styled.i`
-  display: ${props => (props.arrow ? "inherit" : "none")};
+  display: ${props => (props.arrow ? "inline-block" : "none")};
   border: solid ${props => props.theme.primaryGreen};
   border-width: 0 2px 2px 0;
-  display: inline-block;
   padding: 3px;
   margin-left: 8px;
   transform: rotate(-45deg);
@@ -79,9 +81,6 @@ let Arrow = styled.i`
 
 export default ({ to, children, ...props }) => (
   <Link to={to}>
-    <Button {...props}>
-      {children}
-      <Arrow />
-    </Button>
+    <Button {...props}>{children}</Button>
   </Link>
 )

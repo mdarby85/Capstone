@@ -5,37 +5,39 @@
  * Description: @TODO
  */
 
-import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import { Link } from "gatsby"
 
 import Button from "components/btn"
-import FormTitle from "components/formTitle"
+import FormTitle from "components/titles/formTitle"
 import TextInput from "components/input/textInput"
 import SelectInput from "components/input/selectInput"
 import { GenerateOptions } from "src/utils"
+import { DEPARTMENTS_API } from "src/constants"
+
+const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }
 
 export default () => {
-  const data = useStaticQuery(graphql`
-    {
-      allStrapiDepartment {
-        nodes {
-          id
-          Name
-        }
-      }
-    }
-  `)
+  const [departmentOptions, setDepartmentOptions] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(DEPARTMENTS_API)
+      .then(response => setDepartmentOptions(response.data))
+  }, [])
 
   return (
     <>
       <FormTitle title={"Create A Professor Account"} />
       <form name="Contact Form" method="POST">
         <input type="hidden" name="form-name" value="Create Project Form" />
-        <TextInput label="Name" type="text" />
-        <TextInput label="Email" type="email" />
-        <SelectInput label="Department" type="select">
-          {GenerateOptions(data.allStrapiDepartment.nodes)}
+        <TextInput style={InputStyle} label="Name" type="text" />
+        <TextInput style={InputStyle} label="Email" type="email" />
+        <SelectInput style={InputStyle} label="Department" type="select">
+          {GenerateOptions(departmentOptions)}
         </SelectInput>
+        <br />
         <Button
           type="submit"
           tag={Link}

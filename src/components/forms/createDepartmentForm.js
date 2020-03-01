@@ -8,9 +8,9 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Button from "../btn"
-import FormTitle from "../formTitle"
-import TextInput from "../input/textInput"
+import Button from "components/btn"
+import FormTitle from "components/titles/formTitle"
+import TextInput from "components/input/textInput"
 
 export default () => (
   <>
@@ -18,6 +18,7 @@ export default () => (
     <form name="Contact Form" method="POST">
       <input type="hidden" name="form-name" value="Create Department Form" />
       <TextInput label="Name" type="text" />
+      <br />
       <Button
         type="submit"
         tag={Link}

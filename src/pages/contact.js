@@ -10,15 +10,17 @@ import React from "react"
 import { Row, Col, Container } from "reactstrap"
 import { graphql } from "gatsby"
 
-import Hr from "../components/hr"
-import Layout from "../components/layout"
-import ContactForm from "../components/form"
-import PageTitle from "../components/page-title"
-import ContactCard from "../components/cards/contactCard"
-import image from "../assets/images/gatsby-icon.png"
+import Hr from "components/hr"
+import SEO from "components/seo"
+import Layout from "components/layout"
+import ContactForm from "components/form"
+import PageTitle from "components/titles/pageTitle"
+import image from "assets/images/gatsby-icon.png"
+import ContactCard from "components/cards/contactCard"
 
 export default () => (
   <Layout>
+    <SEO title="Contact Us" />
     <Container>
       <PageTitle title="Contact Us" />
       <Row className="py-5">
