@@ -21,8 +21,8 @@
 
 import React from "react"
 import styled from "styled-components"
-import Button from "../btn"
 import { Row, Col } from "reactstrap"
+import Button from "components/btn"
 
 const DisplayCard = styled.div`
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
@@ -66,15 +66,12 @@ const DisplaySemester = styled.p`
   color: #a1a1a1;
 `
 
-
 export default ({ projectName, teamName, semester, viewLink, editLink }) => (
   <DisplayCard>
     <DisplayBody>
       <DisplayName>{projectName}</DisplayName>
       <DisplayName>{teamName}</DisplayName>
-      <DisplaySemester>
-        {semester}
-      </DisplaySemester>
+      <DisplaySemester>{semester}</DisplaySemester>
       <Row>
         <Col>
           <Button
@@ -86,16 +83,10 @@ export default ({ projectName, teamName, semester, viewLink, editLink }) => (
             small={true}
           >
             View Page
-      </Button>
+          </Button>
         </Col>
         <Col>
-          <Button
-            to={editLink}
-            textColor="white"
-            solid
-            rounded
-            small
-          >
+          <Button to={editLink} textColor="white" solid rounded small>
             Edit
           </Button>
         </Col>
