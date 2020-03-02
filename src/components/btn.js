@@ -29,7 +29,7 @@ let Button = styled.button`
     props.big
       ? "50px"
       : props.medium
-      ? "25px"
+      ? "40px"
       : props.small
       ? "25spx"
       : "initial"};
@@ -38,7 +38,7 @@ let Button = styled.button`
   props.big
     ? "7px 30px"
     : props.medium
-    ? "7px 20px"
+    ? "7px 30px"
     : props.small
       ? "5px 15px"
       : "initial"};
