@@ -54,10 +54,9 @@ export default ({ ImgSrc, Title, Description, Link }) => (
         <Line />
         <ProgramDescription>{Description}</ProgramDescription>
         <Button
-          rounded={true}
-          medium={true}
-          border={true}
-          arrow={true}
+          rounded
+          medium
+          border
           textColor={"primary-green"}
           type="submit"
           to={Link}
