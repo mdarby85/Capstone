@@ -38,6 +38,7 @@ let Section1Title = styled.h1`
 let Section1p = styled.p`
   margin: 0 30em;
   line-height: 1.5;
+  font-size: 18px;
   color: white;
 `
 
@@ -114,8 +115,8 @@ export default () => (
                 to="/programs"
                 className="btn btn-primary btn-lg"
                 textColor="white"
-                solid={true}
-                arrow={false}
+                solid
+                medium
               >
                 Try
               </Button>
@@ -127,8 +128,8 @@ export default () => (
                 to="/programs"
                 className="btn btn-primary btn-lg"
                 textColor="primary-green"
-                border={true}
-                arrow={false}
+                border
+                medium
               >
                 Learn More
               </Button>
@@ -225,7 +226,8 @@ export default () => (
               to="/programs"
               className="btn btn-primary btn-lg"
               textColor="primary-green"
-              border={true}
+              border
+              medium
             >
               View Programs
             </Button>
