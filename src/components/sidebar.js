@@ -3,8 +3,9 @@ import { Nav } from "reactstrap"
 import { StaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
+import { logout } from "../utils/auth.js"
 
-import { MdAccountCircle, MdDashboard, MdSchool } from "react-icons/md"
+import { MdAccountCircle, MdDashboard, MdSchool, MdExitToApp } from "react-icons/md"
 import {
   FaSchool,
   FaProjectDiagram,
@@ -189,6 +190,22 @@ let Sidebar = ({ data }) => (
             </IconContext.Provider>
           </div>
           Archive
+        </StyledNavBlock>
+      </Link>
+      <Link to="/" onClick={logout} activeClassName={"activeSidebar"}>
+        <StyledNavBlock>
+          <div
+            style={{
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <IconContext.Provider value={iconStyle}>
+              <MdExitToApp />
+            </IconContext.Provider>
+          </div>
+          Log Out
         </StyledNavBlock>
       </Link>
     </Nav>
