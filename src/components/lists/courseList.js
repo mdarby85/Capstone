@@ -1,25 +1,24 @@
 /**
- * @TODO Make this
+ * Author: Mario Arturo Lopez Martinez
  */
 
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React from "react"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 
-import { COURSES_API } from "src/constants"
 import { GenerateCourseCards } from "src/utils"
 
-export default () => {
-  const [courses, setCourses] = useState([])
-
-  async function fetchCourses() {
-    axios.get(COURSES_API).then(response => {
-      setCourses(response.data)
-    })
+const COURSE_QUERY = gql`
+  {
+    courses {
+      id
+      Name
+    }
   }
+`
 
-  useEffect(() => {
-    fetchCourses()
-  }, [])
+export default () => {
+  const { loading, error, data } = useQuery(COURSE_QUERY)
 
   return (
     <div
@@ -31,7 +30,9 @@ export default () => {
         paddingBottom: "3vh",
       }}
     >
-      {GenerateCourseCards(courses)}
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: ${error.message}</p>}
+      {data && data.courses && GenerateCourseCards(data.courses)}
     </div>
   )
 }

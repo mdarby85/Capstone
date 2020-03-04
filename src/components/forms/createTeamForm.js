@@ -43,7 +43,7 @@ export default () => {
         </SelectInput>
         {GenerateCheckboxes(users)}
         <br />
-        <Button type="submit" tag={Link}>
+        <Button medium type="submit" tag={Link}>
           Submit
         </Button>
       </form>

@@ -142,10 +142,6 @@ node_modules/
 yarn.lock
 package-lock.json
 
-# Docker generated folders/files
-db/
-meridian-api/
-
 # VSCode
 .vscode/*
 !.vscode/settings.json
@@ -153,3 +149,13 @@ meridian-api/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+# Strapi Stuff
+
+meridian-api/exports/
+meridian-api/.cache/
+meridian-api/build/
+meridian-api/node_modules/
+
+meridian-api/yarn.lock
+meridian-api/package-lock.json

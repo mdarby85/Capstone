@@ -53,7 +53,7 @@ export default () => {
         <SelectInput style={InputStyle} label="Course">
           {GenerateOptions(courseOptions)}
         </SelectInput>
-        <Button>Upload Accounts</Button>
+        <Button medium>Upload Accounts</Button>
         <MdInfoOutline id="TooltipExample" />
         <Tooltip
           style={{
@@ -83,7 +83,7 @@ export default () => {
           <b>Students will be given a temporary password to sign in with.</b>
         </Tooltip>
         &nbsp;Or&nbsp;
-        <Button>Manual Entry</Button>
+        <Button medium>Manual Entry</Button>
         <br />
         <br />
         <NumberInput
@@ -98,6 +98,7 @@ export default () => {
             e.preventDefault()
             setCount(count + 1)
           }}
+          medium
         >
           Add Student
         </Button>
@@ -108,6 +109,7 @@ export default () => {
           tag={Link}
           to={"/dashboard/account"}
           style={{ margin: "auto" }}
+          medium
         >
           Submit
         </Button>

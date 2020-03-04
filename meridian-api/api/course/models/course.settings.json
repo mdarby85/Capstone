@@ -1,0 +1,55 @@
+{
+  "connection": "default",
+  "collectionName": "courses",
+  "info": {
+    "name": "Course"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "active": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "semester": {
+      "type": "string"
+    },
+    "media": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "users": {
+      "via": "courses",
+      "plugin": "users-permissions",
+      "collection": "user",
+      "dominant": true
+    },
+    "projects": {
+      "collection": "project"
+    },
+    "teams": {
+      "collection": "team"
+    },
+    "number": {
+      "type": "string"
+    },
+    "prefix": {
+      "type": "string"
+    }
+  }
+}

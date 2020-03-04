@@ -4,12 +4,17 @@ import { StaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 
-import { MdAccountCircle, MdDashboard, MdSchool } from "react-icons/md"
+import {
+  // MdAccountCircle,
+  MdDashboard,
+  MdSchool,
+} from "react-icons/md"
+
 import {
   FaSchool,
-  FaProjectDiagram,
   FaHandsHelping,
-  FaArchive,
+  // FaProjectDiagram,
+  // FaArchive,
 } from "react-icons/fa"
 import { IconContext } from "react-icons"
 

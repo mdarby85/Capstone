@@ -24,6 +24,7 @@ export default () => (
         tag={Link}
         to={"/dashboard/account"}
         style={{ margin: "auto" }}
+        medium
       >
         Submit
       </Button>

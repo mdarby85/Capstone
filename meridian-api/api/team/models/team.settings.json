@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "teams",
+  "info": {
+    "name": "Team"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "collection": "user"
+    },
+    "project": {
+      "model": "project"
+    }
+  }
+}

@@ -1,60 +1,33 @@
 /**
- * @TODO
+ * Author: Mario Arturo Lopez Martinez
  */
 
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import styled from "styled-components"
+import React from "react"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 
-import { PROGRAMS_API } from "src/constants"
-import { GenerateTableHeaders, GenerateTableRows } from "src/utils"
+import { GenerateTableHeaders, GenerateTableRows } from "components/lists/utils"
+import { StyledTable } from "./styles"
 
-const StyledTable = styled.table`
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-
-  width: 50vw;
-  font-family: Georgia, serif;
-  font-size: 18px;
-
-  & tbody > tr:hover {
-    color: white;
-    background-color: #006a52;
+const PROGRAM_QUERY = gql`
+  {
+    programs {
+      id
+      name
+    }
   }
-
-  & tbody > tr:first-child > td {
-    padding: 10px;
-    padding-left: 10px;
-    border-width: 0;
-  }
-`
-
-const StyledHeaderTable = styled.table`
-  margin-bottom: 5px;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-
-  width: 50vw;
-  font-family: Georgia, serif;
-  font-size: 18px;
 `
 
 export default () => {
-  const [programs, setPrograms] = useState([])
-
-  async function fetchPrograms() {
-    axios.get(PROGRAMS_API).then(response => setPrograms(response.data))
-  }
-
-  useEffect(() => {
-    fetchPrograms()
-  }, [])
+  const { loading, error, data } = useQuery(PROGRAM_QUERY)
 
   return (
-    <div style={{ paddingBottom: "3vh" }}>
-      <StyledHeaderTable>
-        <thead>{GenerateTableHeaders(["Program Name"])}</thead>
-      </StyledHeaderTable>
+    <div>
       <StyledTable>
-        <tbody>{GenerateTableRows(programs, ["Name"])}</tbody>
+        <thead>{GenerateTableHeaders(["Program Name"])}</thead>
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: ${error.message}</p>}
+        {data && <tbody>{GenerateTableRows(programs, ["name"])}</tbody>}
       </StyledTable>
     </div>
   )
