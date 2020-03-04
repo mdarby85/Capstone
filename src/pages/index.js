@@ -150,6 +150,7 @@ export default () => (
               className="btn btn-primary btn-md"
               textColor="primary-green"
               border={true}
+              medium
             >
               View all
             </Button>

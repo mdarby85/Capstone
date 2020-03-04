@@ -2,12 +2,12 @@
  * @TODO
  */
 
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React from "react"
+import gql from "graphql-tag"
 import styled from "styled-components"
+import { useQuery } from "@apollo/react-hooks"
 
-import { USERS_API } from "src/constants"
-import { GenerateTableHeaders, GenerateTableRows } from "src/utils"
+import { GenerateTableHeaders, GenerateTableRows } from "components/lists/utils"
 
 const StyledTable = styled.table`
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
@@ -28,40 +28,28 @@ const StyledTable = styled.table`
   }
 `
 
-const StyledHeaderTable = styled.table`
-  margin-bottom: 5px;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-
-  width: 88%;
-  font-family: Georgia, serif;
-  font-size: 18px;
+const SPONSOR_QUERY = gql`
+  {
+    users(where: { roleLabel: "sponsor" }) {
+      id
+      name
+      email
+      departmentLabel
+    }
+  }
 `
 
 export default () => {
-  const [professors, setProfessors] = useState([])
-
-  async function fetchProfessors() {
-    axios.get(USERS_API).then(response => {
-      setProfessors(response.data)
-      console.log(response.data)
-    })
-  }
-
-  useEffect(() => {
-    fetchProfessors()
-  }, [])
-
+  const { loading, error, data } = useQuery(SPONSOR_QUERY)
   return (
     <div style={{ paddingBottom: "3vh" }}>
-      <StyledHeaderTable flex>
-        <thead>
-          {GenerateTableHeaders(["Name", "Department", "Email", "Actions"])}
-        </thead>
-      </StyledHeaderTable>
       <StyledTable>
-        <tbody>
-          {GenerateTableRows(professors, ["Name", "department", "email"])}
-        </tbody>
+        <thead>{GenerateTableHeaders(["Name", "Email", "Actions"])}</thead>
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: ${error.message}</p>}
+        {data && (
+          <tbody>{GenerateTableRows(data.users, ["name", "email"])}</tbody>
+        )}
       </StyledTable>
     </div>
   )

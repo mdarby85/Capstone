@@ -1,3 +1,7 @@
+/**
+ * Author: Mario Arturo Lopez Martinez
+ */
+
 // Use this for local testing
 export const API_URL = "http://localhost:1337"
 // export const API_URL = "[INSERT PRODUCTION API URL HERE]"

@@ -30,7 +30,7 @@ const Header = () => {
 
   const navBarStyle = {
     backgroundColor: navBackColor,
-    "margin-top": "4em",
+    marginTop: "4em",
     borderTop: "1px solid " + borderTopColor,
   }
 

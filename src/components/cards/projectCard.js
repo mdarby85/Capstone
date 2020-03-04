@@ -41,13 +41,6 @@ const DisplayBody = styled.div`
   padding: 1.5rem;
 `
 
-// Option to add Image to top of Card
-const DisplayImage = styled.img`
-  border-radius: 7px 7px 0 0;
-  width: 325px;
-  height: 200px;
-`
-
 const DisplayName = styled.h4`
   font-family: "BioSans", sans-serif;
   text-align: left;
