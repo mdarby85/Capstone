@@ -21,10 +21,7 @@ import meridianTheme from "assets/stylesheets/meridianTheme"
 let Button = styled.button`
   -webkit-appearance: unset !important;
   border-radius: ${props => (props.rounded ? "10px" : "0")};
-  border: ${props =>
-    props.border
-      ?  "2px solid #ffb81c"
-        : "none"};
+  border: ${props => (props.border ? "2px solid #ffb81c" : "none")};
   height: ${props =>
     props.big
       ? "50px"
@@ -35,11 +32,11 @@ let Button = styled.button`
       : "initial"};
   display: inline-block;
   padding: ${props =>
-  props.big
-    ? "7px 30px"
-    : props.medium
-    ? "7px 30px"
-    : props.small
+    props.big
+      ? "7px 30px"
+      : props.medium
+      ? "7px 30px"
+      : props.small
       ? "5px 15px"
       : "initial"};
   text-align: center;
@@ -82,5 +79,6 @@ let Arrow = styled.i`
 export default ({ to, children, ...props }) => (
   <Link to={to}>
     <Button {...props}>{children}</Button>
+    <Arrow />
   </Link>
 )

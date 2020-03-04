@@ -25,7 +25,7 @@ export default () => {
   return (
     <div>
       <StyledTable>
-        <thead>{GenerateTableHeaders(["Name", "Email", "Actions"])}</thead>
+        <thead>{GenerateTableHeaders(["Name", "Email"])}</thead>
         {loading && <p>Loading...</p>}
         {error && <p>Error: ${error.message}</p>}
         {data && (

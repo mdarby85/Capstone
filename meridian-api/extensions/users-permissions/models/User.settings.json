@@ -93,7 +93,8 @@
         "student",
         "professor",
         "teachingAssistant",
-        "systemAdmin"
+        "systemAdmin",
+        "sponsorContact"
       ]
     },
     "departmentLabel": {

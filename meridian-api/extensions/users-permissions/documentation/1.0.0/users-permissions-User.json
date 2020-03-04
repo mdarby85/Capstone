@@ -1404,7 +1404,8 @@
               "student",
               "professor",
               "teachingAssistant",
-              "systemAdmin"
+              "systemAdmin",
+              "sponsorContact"
             ]
           },
           "departmentLabel": {
@@ -1483,7 +1484,8 @@
               "student",
               "professor",
               "teachingAssistant",
-              "systemAdmin"
+              "systemAdmin",
+              "sponsorContact"
             ]
           },
           "departmentLabel": {

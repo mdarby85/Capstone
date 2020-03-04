@@ -28,9 +28,9 @@ export const GenerateCourseCards = nodes => {
       }}
     >
       <CourseCard
-        Name={node.Name}
-        Semester={node.Semester}
-        active={node.Active}
+        Name={node.name}
+        Semester={node.semester}
+        active={node.active}
       />
     </div>
   ))

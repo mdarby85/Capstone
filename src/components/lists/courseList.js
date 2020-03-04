@@ -12,24 +12,24 @@ const COURSE_QUERY = gql`
   {
     courses {
       id
-      Name
+      name
     }
   }
 `
+
+const SectionStyle = {
+  display: "flex",
+  flexWrap: "wrap",
+  width: "100%",
+  height: "auto",
+  paddingBottom: "3vh",
+}
 
 export default () => {
   const { loading, error, data } = useQuery(COURSE_QUERY)
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        width: "100%",
-        height: "auto",
-        paddingBottom: "3vh",
-      }}
-    >
+    <div style={SectionStyle}>
       {loading && <p>Loading...</p>}
       {error && <p>Error: ${error.message}</p>}
       {data && data.courses && GenerateCourseCards(data.courses)}

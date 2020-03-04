@@ -18,6 +18,6 @@ export default () => (
   <DashboardLayout>
     <SEO title="Account" />
     <PageTitle title="Account" />
-    <p>Mario was here! Wooooo</p>
+    <p>Manage Account Here</p>
   </DashboardLayout>
 )

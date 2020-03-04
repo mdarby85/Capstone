@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "03/04/2020 3:24:08 PM"
+    "x-generation-date": "03/04/2020 6:21:35 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6847,7 +6847,8 @@
               "student",
               "professor",
               "teachingAssistant",
-              "systemAdmin"
+              "systemAdmin",
+              "sponsorContact"
             ]
           },
           "departmentLabel": {
@@ -6926,7 +6927,8 @@
               "student",
               "professor",
               "teachingAssistant",
-              "systemAdmin"
+              "systemAdmin",
+              "sponsorContact"
             ]
           },
           "departmentLabel": {

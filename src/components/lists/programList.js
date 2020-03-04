@@ -18,16 +18,18 @@ const PROGRAM_QUERY = gql`
   }
 `
 
+const SectionStyle = { paddingBottom: "3em" }
+
 export default () => {
   const { loading, error, data } = useQuery(PROGRAM_QUERY)
 
   return (
-    <div>
+    <div style={SectionStyle}>
       <StyledTable>
         <thead>{GenerateTableHeaders(["Program Name"])}</thead>
         {loading && <p>Loading...</p>}
         {error && <p>Error: ${error.message}</p>}
-        {data && <tbody>{GenerateTableRows(programs, ["name"])}</tbody>}
+        {data && <tbody>{GenerateTableRows(data.programs, ["name"])}</tbody>}
       </StyledTable>
     </div>
   )

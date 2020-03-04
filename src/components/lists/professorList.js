@@ -26,9 +26,7 @@ export default () => {
   return (
     <div style={{ paddingBottom: "3vh" }}>
       <StyledTable>
-        <thead>
-          {GenerateTableHeaders(["Name", "Department", "Email", "Actions"])}
-        </thead>
+        <thead>{GenerateTableHeaders(["Name", "Department", "Email"])}</thead>
         {loading && <p>Loading...</p>}
         {error && <p>Error: ${error.message}</p>}
         {data && (
