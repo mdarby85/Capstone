@@ -1,5 +1,9 @@
 import styled from "styled-components"
 
+export const Section = styled.div`
+  paddingbottom: "3vh";
+`
+
 export const Edit = styled.button`
   background-color: orange;
   transition: transform 0.2s;

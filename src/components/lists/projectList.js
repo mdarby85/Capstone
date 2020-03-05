@@ -1,26 +1,29 @@
 /**
- * Author: Mario Arturo Lopez Martinez
+ * @author Mario Arturo Lopez Martinez
  */
 
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React from "react"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 
-import { PROJECTS_API } from "src/constants"
 import { GenerateProjectCards } from "src/utils"
 
-export default () => {
-  const [projects, setProjects] = useState([])
-
-  async function fetchProjects() {
-    axios.get(PROJECTS_API).then(response => {
-      setProjects(response.data)
-      console.log(response.data)
-    })
+const PROJECT_QUERY = gql`
+  {
+    projects {
+      id
+      name
+      description
+      course {
+        semester
+        year
+      }
+    }
   }
+`
 
-  useEffect(() => {
-    fetchProjects()
-  }, [])
+export default () => {
+  const { data, loading, error } = useQuery(PROJECT_QUERY)
 
   return (
     <div
@@ -32,7 +35,9 @@ export default () => {
         paddingBottom: "3vh",
       }}
     >
-      {GenerateProjectCards(projects)}
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: ${error.message}</p>}
+      {data && GenerateProjectCards(data.projects)}
     </div>
   )
 }

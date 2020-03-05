@@ -69,9 +69,9 @@ const CourseSemester = styled.p`
   color: #c3c3c3;
 `
 
-export default ({ Name, Semester, active }) => (
+export default ({ name, semester, active }) => (
   <CourseCard className={`${active ? "active" : ""}`}>
-    <CourseName>{Name}</CourseName>
-    <CourseSemester>{Semester}</CourseSemester>
+    <CourseName>{name}</CourseName>
+    <CourseSemester>{semester}</CourseSemester>
   </CourseCard>
 )

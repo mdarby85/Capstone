@@ -537,9 +537,6 @@
           "published": {
             "type": "boolean"
           },
-          "descriptions": {
-            "type": "object"
-          },
           "media": {
             "type": "array",
             "items": {
@@ -733,6 +730,9 @@
                 "type": "string"
               }
             }
+          },
+          "description": {
+            "type": "string"
           }
         }
       },
@@ -753,9 +753,6 @@
           "published": {
             "type": "boolean"
           },
-          "descriptions": {
-            "type": "object"
-          },
           "team": {
             "type": "string"
           },
@@ -763,6 +760,9 @@
             "type": "string"
           },
           "course": {
+            "type": "string"
+          },
+          "description": {
             "type": "string"
           }
         }

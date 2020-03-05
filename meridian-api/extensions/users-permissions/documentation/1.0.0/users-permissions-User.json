@@ -1408,8 +1408,30 @@
               "sponsorContact"
             ]
           },
-          "departmentLabel": {
-            "type": "string"
+          "department": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "thumbnail": {
+                "type": "string"
+              },
+              "links": {
+                "type": "object"
+              },
+              "users": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1488,7 +1510,7 @@
               "sponsorContact"
             ]
           },
-          "departmentLabel": {
+          "department": {
             "type": "string"
           }
         }

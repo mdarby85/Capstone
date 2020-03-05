@@ -647,7 +647,7 @@
               "roleLabel": {
                 "type": "string"
               },
-              "departmentLabel": {
+              "department": {
                 "type": "string"
               }
             }

@@ -6,8 +6,8 @@ import React from "react"
 import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
 
-import { GenerateTableHeaders, GenerateTableRows } from "components/lists/utils"
-import { StyledTable } from "./styles"
+import { GenerateTableHeaders, GenerateTableRows } from "src/utils"
+import { StyledTable } from "components/styledComponents"
 
 const STUDENT_QUERY = gql`
   {
@@ -26,8 +26,8 @@ export default () => {
     <div>
       <StyledTable>
         <thead>{GenerateTableHeaders(["Name", "Email"])}</thead>
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: ${error.message}</p>}
+        {loading && <tr>Loading...</tr>}
+        {error && <tr>Error: ${error.message}</tr>}
         {data && (
           <tbody>{GenerateTableRows(data.users, ["name", "email"])}</tbody>
         )}

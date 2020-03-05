@@ -1,25 +1,31 @@
 /**
- * @TODO Make this
+ * @author Mario Arturo Lopez Martinez
  */
 
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React from "react"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 
-import { TEAMS_API } from "src/constants"
 import { GenerateTeamCards } from "src/utils"
 
-export default () => {
-  const [teams, setTeams] = useState([])
-
-  async function fetchCourses() {
-    axios.get(TEAMS_API).then(response => {
-      setTeams(response.data)
-    })
+const TEAM_QUERY = gql`
+  {
+    teams {
+      id
+      name
+      project {
+        name
+        course {
+          semester
+          year
+        }
+      }
+    }
   }
+`
 
-  useEffect(() => {
-    fetchCourses()
-  }, [])
+export default () => {
+  const { loading, error, data } = useQuery(TEAM_QUERY)
 
   return (
     <div
@@ -31,7 +37,9 @@ export default () => {
         paddingBottom: "3vh",
       }}
     >
-      {GenerateTeamCards(teams)}
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: ${error.message}</p>}
+      {data && GenerateTeamCards(data.teams)}
     </div>
   )
 }

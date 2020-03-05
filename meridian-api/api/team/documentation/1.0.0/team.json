@@ -641,7 +641,7 @@
               "roleLabel": {
                 "type": "string"
               },
-              "departmentLabel": {
+              "department": {
                 "type": "string"
               }
             }
@@ -669,9 +669,6 @@
               "published": {
                 "type": "boolean"
               },
-              "descriptions": {
-                "type": "object"
-              },
               "media": {
                 "type": "array",
                 "items": {
@@ -688,6 +685,9 @@
                 "type": "string"
               },
               "course": {
+                "type": "string"
+              },
+              "description": {
                 "type": "string"
               }
             }

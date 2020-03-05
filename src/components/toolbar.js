@@ -25,6 +25,10 @@ const Wrapper = styled.div`
   &:hover > table {
     right: 2em;
   }
+
+  @media (max-width: 825px) {
+    display: none;
+  }
 `
 
 const Tools = styled.table`
@@ -40,7 +44,7 @@ const Tools = styled.table`
   }
 
   @media (max-width: 825px) {
-    position: static;
+    position: relative;
     margin-top: 2rem;
     margin-bottom: 2rem;
     margin-left: 9rem;

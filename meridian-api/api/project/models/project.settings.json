@@ -24,9 +24,6 @@
     "published": {
       "type": "boolean"
     },
-    "descriptions": {
-      "type": "json"
-    },
     "media": {
       "collection": "file",
       "via": "related",
@@ -47,6 +44,9 @@
     },
     "course": {
       "model": "course"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

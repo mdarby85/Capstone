@@ -649,9 +649,6 @@
               "published": {
                 "type": "boolean"
               },
-              "descriptions": {
-                "type": "object"
-              },
               "media": {
                 "type": "array",
                 "items": {
@@ -668,6 +665,9 @@
                 "type": "string"
               },
               "course": {
+                "type": "string"
+              },
+              "description": {
                 "type": "string"
               }
             }

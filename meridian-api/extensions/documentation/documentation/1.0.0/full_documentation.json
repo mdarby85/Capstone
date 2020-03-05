@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "03/04/2020 6:21:35 PM"
+    "x-generation-date": "03/04/2020 11:36:23 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5415,7 +5415,7 @@
                 "roleLabel": {
                   "type": "string"
                 },
-                "departmentLabel": {
+                "department": {
                   "type": "string"
                 }
               }
@@ -5444,9 +5444,6 @@
               "published": {
                 "type": "boolean"
               },
-              "descriptions": {
-                "type": "object"
-              },
               "media": {
                 "type": "array",
                 "items": {
@@ -5463,6 +5460,9 @@
                 "type": "string"
               },
               "course": {
+                "type": "string"
+              },
+              "description": {
                 "type": "string"
               }
             }
@@ -5670,7 +5670,7 @@
               "roleLabel": {
                 "type": "string"
               },
-              "departmentLabel": {
+              "department": {
                 "type": "string"
               }
             }
@@ -5776,9 +5776,6 @@
               "published": {
                 "type": "boolean"
               },
-              "descriptions": {
-                "type": "object"
-              },
               "media": {
                 "type": "array",
                 "items": {
@@ -5795,6 +5792,9 @@
                 "type": "string"
               },
               "course": {
+                "type": "string"
+              },
+              "description": {
                 "type": "string"
               }
             }
@@ -5864,9 +5864,6 @@
           },
           "published": {
             "type": "boolean"
-          },
-          "descriptions": {
-            "type": "object"
           },
           "media": {
             "type": "array",
@@ -6061,6 +6058,9 @@
                 "type": "string"
               }
             }
+          },
+          "description": {
+            "type": "string"
           }
         }
       },
@@ -6081,9 +6081,6 @@
           "published": {
             "type": "boolean"
           },
-          "descriptions": {
-            "type": "object"
-          },
           "team": {
             "type": "string"
           },
@@ -6091,6 +6088,9 @@
             "type": "string"
           },
           "course": {
+            "type": "string"
+          },
+          "description": {
             "type": "string"
           }
         }
@@ -6230,9 +6230,6 @@
               "published": {
                 "type": "boolean"
               },
-              "descriptions": {
-                "type": "object"
-              },
               "media": {
                 "type": "array",
                 "items": {
@@ -6249,6 +6246,9 @@
                 "type": "string"
               },
               "course": {
+                "type": "string"
+              },
+              "description": {
                 "type": "string"
               }
             }
@@ -6398,7 +6398,7 @@
               "roleLabel": {
                 "type": "string"
               },
-              "departmentLabel": {
+              "department": {
                 "type": "string"
               }
             }
@@ -6426,9 +6426,6 @@
               "published": {
                 "type": "boolean"
               },
-              "descriptions": {
-                "type": "object"
-              },
               "media": {
                 "type": "array",
                 "items": {
@@ -6445,6 +6442,9 @@
                 "type": "string"
               },
               "course": {
+                "type": "string"
+              },
+              "description": {
                 "type": "string"
               }
             }
@@ -6590,7 +6590,7 @@
                 "roleLabel": {
                   "type": "string"
                 },
-                "departmentLabel": {
+                "department": {
                   "type": "string"
                 }
               }
@@ -6851,8 +6851,30 @@
               "sponsorContact"
             ]
           },
-          "departmentLabel": {
-            "type": "string"
+          "department": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "thumbnail": {
+                "type": "string"
+              },
+              "links": {
+                "type": "object"
+              },
+              "users": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -6931,7 +6953,7 @@
               "sponsorContact"
             ]
           },
-          "departmentLabel": {
+          "department": {
             "type": "string"
           }
         }

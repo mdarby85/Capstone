@@ -97,8 +97,8 @@
         "sponsorContact"
       ]
     },
-    "departmentLabel": {
-      "type": "string"
+    "department": {
+      "model": "department"
     }
   }
 }
