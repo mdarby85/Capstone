@@ -1,10 +1,9 @@
 /**
- * author: Chris Holle
- * file: formLayout.js
+ * @name formLayout
  *
- * Description:
- * Layout for Functional forms
+ * @author Mario Arturo Lopez Martinez
  *
+ * @overview Layout for Functional forms
  */
 
 import React from "react"

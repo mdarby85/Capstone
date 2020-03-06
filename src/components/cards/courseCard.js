@@ -1,5 +1,5 @@
 /**
- * @name contactCard.js
+ * @name CourseCard
  *
  * @author Chris Holle
  * @author Mario Arturo Lopez Martinez
@@ -32,7 +32,7 @@ import styled from "styled-components"
 
 const CourseCard = styled.div`
   padding: 1.6rem;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   width: 325px;
   height: 120px;
   text-align: left;
@@ -40,7 +40,7 @@ const CourseCard = styled.div`
   transition-duration: 0.3s;
 
   &:hover {
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     background: ${props => props.theme.secondaryGreen};
     border-top: 2px solid ${props => props.theme.secondaryGold};
     transform: translateY(-5px);

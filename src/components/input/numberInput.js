@@ -1,17 +1,22 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: numberInput.js
+ * @name NumberInput
  *
- * Description:
- * Number input field to be used in input/form group.
+ * @author Mario Arturo Lopez Martinez
  *
- * Prop Usage:
- * label      - Label for checkbox input field
- * size       - Size of input group (including Label and Input)
- * onChange   - onChange handler function
+ * @overview Number input field to be used in input/form group.
  *
- * Example usage:
- * <NumberInput style={InputStyle} label="Number of Students" onChange={setCount} />
+ * @param {string} label label for checkbox input field
+ * @param {string} size size of input group (including Label and Input)
+ * @param {Function} onChange onChange handler function
+ *
+ * @example
+ *
+ * <NumberInput
+ *    style={InputStyle}
+ *    label="Number of Students"
+ *    onChange={setCount}
+ * />
+ *
  */
 
 import React from "react"

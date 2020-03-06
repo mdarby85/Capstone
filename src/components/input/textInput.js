@@ -1,18 +1,24 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: textInput.js
+ * @name TextInput
  *
- * Description:
- * Text input field to be used in input/form group.
+ * @author Mario Arturo Lopez Martinez
  *
- * Prop Usage:
- * size: String(sm/md/lg)             - Size of input label/input field
- * label: String                      - Label attached to input field
- * type: String(email/password/text)  - Associates input validation and styles with given type
- * placeholder: String                - Placeholder visibile when input field is empty
+ * @overview Text input field to be used in input/form group.
  *
- * Example usage:
- * <TextInput size="lg" label="Name" type="email" placeholder="Test@Email.com" />
+ * @param {string} size size of input label/input field
+ * @param {string} label label attached to input field
+ * @param {string} type associates input validation and styles with given type
+ * @param {string} placeholder placeholder visibile when input field is empty
+ *
+ * @example
+ *
+ * <TextInput
+ *    size="lg"
+ *    label="Name"
+ *    type="email"
+ *    placeholder="Test@Email.com"
+ * />
+ *
  */
 
 import React from "react"

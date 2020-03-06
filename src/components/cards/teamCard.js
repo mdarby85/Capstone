@@ -1,5 +1,5 @@
 /**
- * @name teamCard.js
+ * @name TeamCard
  *
  * @author Chris Holle
  * @author Mario Arturo Lopez Martinez
@@ -33,14 +33,14 @@ import { Row, Col } from "reactstrap"
 import Button from "components/btn"
 
 const DisplayCard = styled.div`
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   width: 325px;
   border-radius: 8px 8px 0 0;
   text-align: center;
   transition-duration: 0.3s;
 
   &:hover {
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     transform: translateY(-5px);
   }
 `

@@ -1,5 +1,9 @@
 /**
- * Author: Mario Arturo Lopez Martinez
+ * @name toolbar.js
+ *
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview Access common actiions depending on your user role
  */
 
 import React from "react"
@@ -25,30 +29,16 @@ const Wrapper = styled.div`
   &:hover > table {
     right: 2em;
   }
-
-  @media (max-width: 825px) {
-    display: none;
-  }
 `
 
 const Tools = styled.table`
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
 
-  @media (min-width: 825px) {
-    position: fixed;
-    top: 1em;
-    right: -250px;
-    z-index: 1;
-    transition: right 0.5s ease;
-  }
-
-  @media (max-width: 825px) {
-    position: relative;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    margin-left: 9rem;
-    width: 70%;
-  }
+  position: fixed;
+  top: 1em;
+  right: -250px;
+  z-index: 1;
+  transition: right 0.5s ease;
 `
 
 const NavHeader = styled.th`

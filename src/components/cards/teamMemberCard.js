@@ -1,19 +1,24 @@
 /**
- * author: Chris Holle
- * file: teamCard.js
+ * @name TeamMemberCard
  *
- * Description:
- * Card to be used to display information about team members.
+ * @author Chris Holle
  *
- * Prop Usage:
- * ImgSrc       - Image to be used at top of card
- * Name         - Name of contact
- * Department   - Department contact is in
- * Role         - Contact's Role in the program
+ * @overview Card to be used to display information about team members.
  *
- * Example usage:
- * <TeamCard ImgSrc={image} Name={"Chris Holle"} Department={"Baylor Computer Science"}
- *              Role={"Full-Stack Development"}/>
+ * @param {string} imgSrc image to be used at top of card
+ * @param {string} name name of contact
+ * @param {string} department department contact is in
+ * @param {string} role contact's Role in the program
+ *
+ * @example
+ *
+ * <TeamCard
+ *    imgSrc={image}
+ *    name="Chris Holle"
+ *    department="Baylor Computer Science"
+ *    role="Full-Stack Development"
+ * />
+ *
  */
 
 import React from "react"
@@ -22,14 +27,14 @@ import styled from "styled-components"
 const TeamCard = styled.div`
   padding: 1rem;
   margin: auto;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   width: 325px;
   height: 220px;
   text-align: center;
   border-top: 2px solid ${props => props.theme.secondaryGreen};
   transition-duration: 0.3s;
   &:hover {
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     transform: translateY(-5px);
   }
 `

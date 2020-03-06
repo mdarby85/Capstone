@@ -1,8 +1,9 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: createProjectForm.js
+ * @name CreateDepartmentForm
  *
- * Description: @TODO
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
 import React from "react"

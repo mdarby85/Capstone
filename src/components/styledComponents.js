@@ -8,8 +8,12 @@ export const Edit = styled.button`
   background-color: orange;
   border: 0;
 
-  border-radius: 5px;
+  border-radius: 10px;
   margin-right: 5px;
+
+  @media (max-width: 500px) {
+    margin-bottom: 5px;
+  }
 
   &:hover {
     transition: transform 0.2s;
@@ -21,7 +25,9 @@ export const Delete = styled.button`
   background-color: red;
   transition: transform 0.2s;
   border: 0;
-  border-radius: 5px;
+  border-radius: 10px;
+
+  margin-right: 5px;
 
   &:hover {
     transform: scale(1.1);
@@ -53,11 +59,18 @@ export const TableHeader = styled.th`
 `
 
 export const StyledTable = styled.table`
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   font-family: Georgia, serif;
 
-  padding-bottom: 3rem;
+  @media (max-width: 700px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  min-width: 50%;
+
+  margin-bottom: 3rem;
 
   & tbody > tr:hover {
     color: white;

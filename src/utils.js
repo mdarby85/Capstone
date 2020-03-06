@@ -1,3 +1,11 @@
+/**
+ * @name utils.js
+ *
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview Utility functions for generating (everything)
+ */
+
 import React from "react"
 import { MdEdit, MdDeleteForever } from "react-icons/md"
 import { API_URL } from "src/constants"
@@ -97,7 +105,6 @@ export const GenerateCourseCards = nodes => {
 export const GenerateTeamCards = nodes => {
   const CardMargin = { margin: "10px" }
   return nodes.map(node => {
-    console.log(node)
     return (
       <div key={node.id} style={CardMargin}>
         <TeamCard

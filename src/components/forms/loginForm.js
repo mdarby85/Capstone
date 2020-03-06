@@ -1,8 +1,9 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: loginForm.js
+ * @name LoginForm
  *
- * Description: @TODO
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
 import React from "react"

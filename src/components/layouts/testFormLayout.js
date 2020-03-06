@@ -1,10 +1,11 @@
 /**
- * author: Chris Holle
- * file: formLayout.js
+ * @name TestFormLayout
  *
- * Description:
- * Layout for Functional forms
+ * @author Mario Arturo Lopez Martinez
  *
+ * @overview TESTING layout for Functional forms
+ *
+ * @TODO Delete this!
  */
 
 import React from "react"
