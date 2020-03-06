@@ -9,13 +9,20 @@
  */
 
 import React from "react"
+import { login, isAuthenticated, getProfile } from "../../utils/auth"
 
 import SEO from "components/seo"
 import DashboardLayout from "components/layouts/dashboardLayout"
 import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
 import ProfessorList from "components/lists/professorList"
 
-export default () => (
+const Professors = () => {
+  if (!isAuthenticated()) {
+    console.log("Protected")
+    login()
+    return <p>Redirecting to login...</p>
+  }
+  return (
   <DashboardLayout>
     <SEO title="Professors" />
     <DashboardSectionTitle
@@ -25,3 +32,6 @@ export default () => (
     <ProfessorList />
   </DashboardLayout>
 )
+}
+
+export default Professors

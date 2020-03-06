@@ -14,20 +14,20 @@ import { Link } from "gatsby"
 import PageTitle from "../../components/page-title"
 import DashboardLayout from "../../components/layouts/dashboardLayout"
 
-const Account = () => {
+const Admin = () => {
   if (!isAuthenticated()) {
     login()
     return <p>Redirecting to login...</p>
   }
-
+  console.log("Logged In!")
   const user = getProfile()
 
   return (
     <DashboardLayout>
-      <PageTitle title="Account" />
+      <PageTitle title="Admin" />
       <p>Mario wasn't here! Wooooo</p>
     </DashboardLayout>
   )
 }
 
-export default Account
+export default Admin

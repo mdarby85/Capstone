@@ -5,6 +5,15 @@ import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
 import { MdDashboard, MdSchool } from "react-icons/md"
 import { FaSchool, FaHandsHelping } from "react-icons/fa"
+import { logout } from "../utils/auth.js"
+
+import { MdAccountCircle, MdDashboard, MdSchool, MdExitToApp } from "react-icons/md"
+import {
+  FaSchool,
+  FaProjectDiagram,
+  FaHandsHelping,
+  FaArchive,
+} from "react-icons/fa"
 import { IconContext } from "react-icons"
 
 let StyledImg = styled(props => <Img {...props} />)`
@@ -136,6 +145,38 @@ let Sidebar = ({ data }) => (
             </IconContext.Provider>
           </div>
           Sponsors
+        </StyledNavBlock>
+      </Link>
+      <Link to="/dashboard/archive" activeClassName={"activeSidebar"}>
+        <StyledNavBlock>
+          <div
+            style={{
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <IconContext.Provider value={iconStyle}>
+              <FaArchive />
+            </IconContext.Provider>
+          </div>
+          Archive
+        </StyledNavBlock>
+      </Link>
+      <Link to="/" onClick={logout} activeClassName={"activeSidebar"}>
+        <StyledNavBlock>
+          <div
+            style={{
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <IconContext.Provider value={iconStyle}>
+              <MdExitToApp />
+            </IconContext.Provider>
+          </div>
+          Log Out
         </StyledNavBlock>
       </Link>
     </Nav>

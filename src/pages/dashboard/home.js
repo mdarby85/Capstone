@@ -17,10 +17,18 @@ import ProjectList from "components/lists/projectList"
 import ProgramList from "components/lists/programList"
 import DashboardLayout from "components/layouts/dashboardLayout"
 import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
+import { login, isAuthenticated, getProfile } from "../../utils/auth"
 
 const TopStyle = { display: "inline-block", marginBottom: "-1vh" }
 
 export default () => (
+const Home = () => {
+  return (
+  }
+    return <p>Redirecting to login...</p>
+    console.log("Protected")
+    login()
+  if (!isAuthenticated()) {
   <DashboardLayout>
     <SEO title="Dashboard Home" />
     <DashboardSectionTitle style={TopStyle} title="Manage Programs" />
@@ -33,3 +41,6 @@ export default () => (
     <ProjectList />
   </DashboardLayout>
 )
+}
+
+export default Home
