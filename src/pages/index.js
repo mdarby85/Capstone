@@ -14,7 +14,7 @@ import SEO from "components/seo"
 import Button from "components/btn"
 import Layout from "components/layout"
 import PageTitle from "components/titles/pageTitle"
-import DisplayCard from "components/cards/displayCard"
+import ProjectCard from "components/cards/projectCard"
 
 import ecs from "assets/images/ecs_img.png"
 import bin from "assets/images/binary_img.png"
@@ -159,7 +159,7 @@ export default () => (
       </Row>
       <Row style={{ margin: "1em 0" }}>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Spring 2020"}
             ImgSrc={tempImg}
@@ -170,7 +170,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Spring 2020"}
             ImgSrc={tempImg}
@@ -181,7 +181,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Spring 2020"}
             ImgSrc={tempImg}

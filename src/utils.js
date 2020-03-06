@@ -1,11 +1,12 @@
 import React from "react"
 import { MdEdit, MdDeleteForever } from "react-icons/md"
+import { API_URL } from "src/constants"
 
 import CheckboxInput from "components/input/checkboxInput"
 import CourseCard from "components/cards/courseCard"
-import ProjectCard from "components/cards/projectCard"
 import TeamCard from "components/cards/teamCard"
-import DisplayCard from "components/cards/displayCard"
+import ProjectCard from "components/cards/projectCard"
+
 import {
   Edit,
   IconTd,
@@ -78,8 +79,11 @@ export const GenerateCourseCards = nodes => {
     <div key={node.id} style={CardMargin}>
       <CourseCard
         name={node.name}
+        number={node.number}
         semester={node.semester}
         active={node.active}
+        prefix={node.prefix}
+        year={node.year}
       />
     </div>
   ))
@@ -120,10 +124,11 @@ export const GenerateProjectCards = nodes => {
         margin: "10px",
       }}
     >
-      <DisplayCard
-        Name={node.name}
-        Semester={`${node.course.semester} ${node.course.year}`}
-        Description={node.description}
+      <ProjectCard
+        imgSrc={`${API_URL}${node.thumbnail.url}`}
+        name={node.name}
+        semester={`${node.course.semester} ${node.course.year}`}
+        description={node.description}
       />
     </div>
   ))

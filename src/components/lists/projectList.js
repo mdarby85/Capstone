@@ -14,6 +14,9 @@ const PROJECT_QUERY = gql`
       id
       name
       description
+      thumbnail {
+        url
+      }
       course {
         semester
         year

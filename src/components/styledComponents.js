@@ -6,13 +6,13 @@ export const Section = styled.div`
 
 export const Edit = styled.button`
   background-color: orange;
-  transition: transform 0.2s;
   border: 0;
 
   border-radius: 5px;
   margin-right: 5px;
 
   &:hover {
+    transition: transform 0.2s;
     transform: scale(1.1);
   }
 `

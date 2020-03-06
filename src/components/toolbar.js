@@ -40,7 +40,6 @@ const Tools = styled.table`
     right: -250px;
     z-index: 1;
     transition: right 0.5s ease;
-    width: 10vw;
   }
 
   @media (max-width: 825px) {

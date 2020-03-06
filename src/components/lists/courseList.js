@@ -12,6 +12,10 @@ const COURSE_QUERY = gql`
     courses {
       id
       name
+      semester
+      year
+      prefix
+      number
     }
   }
 `

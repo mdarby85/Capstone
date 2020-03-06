@@ -1,36 +1,42 @@
 /**
- * author: Chris Holle
- * file: projectCard.js
+ * @name projectCard.js
  *
- * Description:
- * Card to be used to display project information.
+ * @author Chris Holle
+ * @author Mario Arturo Lopez Martinez
  *
- * Prop Usage:
- * projectName  - Name of project
- * teamName     - Name of team
- * description  - Simple description of project
- * semester     - Semester of the project
- * viewLink     - path to view project page
- * editLink     - path to edit project page
+ * @overview Card to be used to display project information.
  *
- * Example usage:
- * <ProjectCard projectName={"Cappy"} teamName={"Section 01 - Pariveda02"}
- * semester={"Spring 2020"} imgSrc={tempImg} viewLink={"/about"}
- * editLink={"/about"} />
+ * @param {string} imgSrc image to be used at top of card
+ * @param {string} name name of project
+ * @param {string} description simple description of project
+ * @param {string} semester semester of the project
+ * @param {string} to path to linkable item
+ *
+ * @example
+ *
+ * <DisplayCard
+ *    name="Cappy"
+ *    semester="Spring 2020"
+ *    imgSrc={tempImg}
+ *    description="This is a story of the great big wolf who blew all of the little piggies houses down!""
+ *    to="/about"
+ * />
+ *
  */
 
 import React from "react"
 import styled from "styled-components"
-import { Row, Col } from "reactstrap"
-import Button from "components/btn"
+
+import Link from "components/link"
 
 const DisplayCard = styled.div`
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
   width: 325px;
-  height: 200px;
   border-radius: 8px 8px 0 0;
   text-align: center;
+  border-top: 2px solid ${props => props.theme.secondaryGreen};
   transition-duration: 0.3s;
+
   &:hover {
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
@@ -38,7 +44,13 @@ const DisplayCard = styled.div`
 `
 
 const DisplayBody = styled.div`
-  padding: 1.5rem;
+  padding: 1rem;
+`
+
+const DisplayImage = styled.img`
+  border-radius: 7px 7px 0 0;
+  width: 325px;
+  height: 200px;
 `
 
 const DisplayName = styled.h4`
@@ -50,40 +62,51 @@ const DisplayName = styled.h4`
   margin: 0.5em 0;
 `
 
+const DisplayDescription = styled.p`
+  font-family: Georgia, serif;
+  font-size: 14px;
+  text-align: left;
+  color: ${props => props.theme.primaryGreen};
+`
+
 const DisplaySemester = styled.p`
   font-family: Georgia, serif;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 600;
   text-align: left;
-  padding: 0;
-  color: #a1a1a1;
+  color: ${props => props.theme.primaryGreen};
 `
 
-export default ({ projectName, teamName, semester, viewLink, editLink }) => (
+const DisplayLearnMore = styled.span`
+  font-family: Georgia, serif;
+  font-size: 16px;
+  margin-top: 3px;
+  font-weight: 400;
+  float: right;
+  color: ${props => props.theme.primaryGreen};
+
+  &:hover {
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+
+    text-shadow: 0 0 0.5px #333, 0 0 0.5px #333;
+  }
+`
+
+export default ({ imgSrc, name, description, semester, to }) => (
   <DisplayCard>
+    <DisplayImage src={imgSrc} />
     <DisplayBody>
-      <DisplayName>{projectName}</DisplayName>
-      <DisplayName>{teamName}</DisplayName>
-      <DisplaySemester>{semester}</DisplaySemester>
-      <Row>
-        <Col>
-          <Button
-            to={viewLink}
-            textColor="primary-green"
-            border={true}
-            arrow={false}
-            rounded={true}
-            small={true}
-          >
-            View Page
-          </Button>
-        </Col>
-        <Col>
-          <Button to={editLink} textColor="white" solid rounded small>
-            Edit
-          </Button>
-        </Col>
-      </Row>
+      <DisplayName>{name}</DisplayName>
+      <DisplayDescription>{description}</DisplayDescription>
+      <DisplaySemester>
+        {semester}
+        <Link to={to}>
+          <DisplayLearnMore>Learn More</DisplayLearnMore>
+        </Link>
+      </DisplaySemester>
     </DisplayBody>
   </DisplayCard>
 )

@@ -3,19 +3,8 @@ import { Nav } from "reactstrap"
 import { StaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
-
-import {
-  // MdAccountCircle,
-  MdDashboard,
-  MdSchool,
-} from "react-icons/md"
-
-import {
-  FaSchool,
-  FaHandsHelping,
-  // FaProjectDiagram,
-  // FaArchive,
-} from "react-icons/fa"
+import { MdDashboard, MdSchool } from "react-icons/md"
+import { FaSchool, FaHandsHelping } from "react-icons/fa"
 import { IconContext } from "react-icons"
 
 let StyledImg = styled(props => <Img {...props} />)`
@@ -71,11 +60,11 @@ const Line = styled.hr`
   width: 100px;
 `
 
-const iconStyle = { color: "white", size: "1.5em" }
+const IconStyle = { color: "white", size: "1.5em" }
 
 let Sidebar = ({ data }) => (
   <StyledSidebar>
-    <Link to="/">
+    <Link to="/dashboard/home">
       <StyledImg
         fluid={data.file.childImageSharp.fluid}
         objectFit="contain"
@@ -84,7 +73,6 @@ let Sidebar = ({ data }) => (
       />
     </Link>
     <Line />
-    {/* @TODO Make it so we query users and generate links based on permissions */}
     <Nav vertical>
       <Link to="/dashboard/home" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
@@ -95,14 +83,13 @@ let Sidebar = ({ data }) => (
               marginRight: "auto",
             }}
           >
-            <IconContext.Provider value={iconStyle}>
+            <IconContext.Provider value={IconStyle}>
               <MdDashboard />
             </IconContext.Provider>
           </div>
           Home
         </StyledNavBlock>
       </Link>
-
       <Link to="/dashboard/professors" activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div
@@ -112,7 +99,7 @@ let Sidebar = ({ data }) => (
               marginRight: "auto",
             }}
           >
-            <IconContext.Provider value={iconStyle}>
+            <IconContext.Provider value={IconStyle}>
               <FaSchool />
             </IconContext.Provider>
           </div>
@@ -128,7 +115,7 @@ let Sidebar = ({ data }) => (
               marginRight: "auto",
             }}
           >
-            <IconContext.Provider value={iconStyle}>
+            <IconContext.Provider value={IconStyle}>
               <MdSchool />
             </IconContext.Provider>
           </div>
@@ -144,7 +131,7 @@ let Sidebar = ({ data }) => (
               marginRight: "auto",
             }}
           >
-            <IconContext.Provider value={iconStyle}>
+            <IconContext.Provider value={IconStyle}>
               <FaHandsHelping />
             </IconContext.Provider>
           </div>
