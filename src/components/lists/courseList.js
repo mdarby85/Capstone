@@ -1,5 +1,9 @@
 /**
- * Author: Mario Arturo Lopez Martinez
+ * @name CourseList
+ *
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
 import React from "react"

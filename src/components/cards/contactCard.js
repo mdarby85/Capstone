@@ -18,9 +18,9 @@
  *    imgSrc={image}
  *    name="Chris Holle"
  *    department="Baylor Computer Science"
- *    role={"Full-Stack Development"}
- *    email={"john_doe@baylor.edu"}
- *    phone={"(823) 418-2083"}
+ *    role="Full-Stack Development"
+ *    email="john_doe@baylor.edu"
+ *    phone="(823) 418-2083"
  * />
  *
  */

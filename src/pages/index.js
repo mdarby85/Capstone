@@ -25,6 +25,7 @@ import LabBg from "assets/images/greenLabPeople.jpg"
 
 let Section1Container = styled.div`
   background: url(${LabBg});
+  background-size: cover;
   height: 100vh;
 `
 
@@ -36,10 +37,16 @@ let Section1Title = styled.h1`
 `
 
 let Section1p = styled.p`
-  margin: 0 30em;
   line-height: 1.5;
   font-size: 18px;
   color: white;
+  @media (min-width: 1400px) {
+    margin: 0 30em;
+  }
+
+  @media (max-width: 1400px) {
+    margin: 0 5em;
+  }
 `
 
 let Section2Container = styled.div`
@@ -160,10 +167,10 @@ export default () => (
       <Row style={{ margin: "1em 0" }}>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Spring 2020"}
-            ImgSrc={tempImg}
-            Description={
+            name={"Cappy"}
+            semester={"Spring 2020"}
+            imgSrc={tempImg}
+            description={
               "This is a story of the great big wolf who blew all of the little piggies houses down!"
             }
             to={"/about"}
@@ -171,10 +178,10 @@ export default () => (
         </Col>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Spring 2020"}
-            ImgSrc={tempImg}
-            Description={
+            name={"Cappy"}
+            semester={"Spring 2020"}
+            imgSrc={tempImg}
+            description={
               "This is a story of the great big wolf who blew all of the little piggies houses down!"
             }
             to={"/about"}
@@ -182,10 +189,10 @@ export default () => (
         </Col>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Spring 2020"}
-            ImgSrc={tempImg}
-            Description={
+            name={"Cappy"}
+            semester={"Spring 2020"}
+            imgSrc={tempImg}
+            description={
               "This is a story of the great big wolf who blew all of the little piggies houses down!"
             }
             to={"/about"}
