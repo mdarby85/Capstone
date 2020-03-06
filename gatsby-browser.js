@@ -4,4 +4,4 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-export { wrapRootElement } from "apollo/wrap-root-element"
+export { wrapRootElement } from "apollo/wrapRootElement"

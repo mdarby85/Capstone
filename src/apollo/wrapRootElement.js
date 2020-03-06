@@ -1,5 +1,9 @@
 /**
- * Author: Mario Arturo Lopez Martinez
+ * @name wrapRootElement.js
+ *
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview Client used to gather data from sources provided
  */
 
 import React from "react"

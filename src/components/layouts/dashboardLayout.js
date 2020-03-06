@@ -14,10 +14,12 @@ import theme from "assets/stylesheets/theme"
 import "assets/stylesheets/layout.scss"
 import DashboardPageTitle from "components/titles/DashboardPageTitle"
 import Toolbar from "components/toolbar"
+// import TestSidebar from "components/testSidebar/index"
 
 let DashboardLayout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
+      {/* <TestSidebar /> */}
       <Sidebar />
       <main style={{ marginLeft: "125px", marginRight: "10vw" }}>
         <DashboardPageTitle title="Admin Dashboard" />
