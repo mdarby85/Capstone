@@ -13,21 +13,23 @@ import SEO from "components/seo"
 import DashboardLayout from "components/layouts/dashboardLayout"
 import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
 import StudentList from "components/lists/studentList"
-import { login, isAuthenticated, getProfile } from "../../utils/auth"
+import { login, isAuthenticated, getProfile } from "src/utils/auth"
 
-const Students = () => {
+export default () => {
   if (!isAuthenticated()) {
     console.log("Protected")
     login()
     return <p>Redirecting to login...</p>
   }
+
   return (
-  <DashboardLayout>
-    <SEO title="Professors" />
-    <DashboardSectionTitle
-      style={{ display: "inline-block", marginBottom: "-1vh" }}
-      title="Manage Students"
-    />
-    <StudentList />
-  </DashboardLayout>
-)
+    <DashboardLayout>
+      <SEO title="Professors" />
+      <DashboardSectionTitle
+        style={{ display: "inline-block", marginBottom: "-1vh" }}
+        title="Manage Students"
+      />
+      <StudentList />
+    </DashboardLayout>
+  )
+}

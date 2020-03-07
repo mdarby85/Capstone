@@ -14,22 +14,20 @@ P: baylorbear1234!
 TODO: Don't forget to replace domain and clientID with environment variables
 */
 
-import auth0 from 'auth0-js';
-import {
-  navigate
-} from 'gatsby';
+import auth0 from "auth0-js"
+import { navigate } from "gatsby"
 
 const isBrowser = typeof window !== "undefined"
 
-const auth = isBrowser ?
-  new auth0.WebAuth({
-    domain: "bkwilcox.auth0.com",
-    clientID: "M6em8UGXUK5zgSV4CwxWTgiGPe97wc5j",
-    redirectUri: "http://localhost:8000/callback",
-    responseType: "token id_token",
-    scope: "openid profile email",
-  }) :
-  {}
+const auth = isBrowser
+  ? new auth0.WebAuth({
+      domain: "bkwilcox.auth0.com",
+      clientID: "M6em8UGXUK5zgSV4CwxWTgiGPe97wc5j",
+      redirectUri: "http://localhost:8000/callback",
+      responseType: "token id_token",
+      scope: "openid profile email",
+    })
+  : {}
 
 const tokens = {
   accessToken: false,
@@ -41,7 +39,7 @@ let user = {}
 
 export const isAuthenticated = () => {
   if (!isBrowser) {
-    return;
+    return
   }
 
   return localStorage.getItem("isLoggedIn") === "true"
@@ -76,7 +74,7 @@ const setSession = (cb = () => {}) => (err, authResult) => {
 
 export const handleAuthentication = () => {
   if (!isBrowser) {
-    return;
+    return
   }
 
   auth.parseHash(setSession())

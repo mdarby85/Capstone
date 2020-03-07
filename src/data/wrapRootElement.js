@@ -8,11 +8,15 @@
 
 import React from "react"
 import { ApolloProvider } from "@apollo/react-hooks"
-import { client } from "apollo/client"
-import SessionCheck from "./sessionCheck"
+import { Provider } from "mobx-react"
+import UserStore from "data/userModel"
+import { client } from "data/client"
+import SessionCheck from "data/sessionCheck"
 
 export const wrapRootElement = ({ element }) => (
   <SessionCheck>
-    <ApolloProvider client={client}>{element}</ApolloProvider>
+    <Provider store={UserStore}>
+      <ApolloProvider client={client}>{element}</ApolloProvider>
+    </Provider>
   </SessionCheck>
 )

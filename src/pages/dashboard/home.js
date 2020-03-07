@@ -21,26 +21,24 @@ import { login, isAuthenticated, getProfile } from "../../utils/auth"
 
 const TopStyle = { display: "inline-block", marginBottom: "-1vh" }
 
-export default () => (
-const Home = () => {
-  return (
-  }
-    return <p>Redirecting to login...</p>
+export default () => {
+  if (!isAuthenticated()) {
     console.log("Protected")
     login()
-  if (!isAuthenticated()) {
-  <DashboardLayout>
-    <SEO title="Dashboard Home" />
-    <DashboardSectionTitle style={TopStyle} title="Manage Programs" />
-    <ProgramList />
-    <DashboardSectionTitle title="Manage Courses" />
-    <CourseList />
-    <DashboardSectionTitle title="Manage Teams" />
-    <TeamList />
-    <DashboardSectionTitle title="Manage Projects" />
-    <ProjectList />
-  </DashboardLayout>
-)
-}
+    return <p>Redirecting to login...</p>
+  }
 
-export default Home
+  return (
+    <DashboardLayout>
+      <SEO title="Dashboard Home" />
+      <DashboardSectionTitle style={TopStyle} title="Manage Programs" />
+      <ProgramList />
+      <DashboardSectionTitle title="Manage Courses" />
+      <CourseList />
+      <DashboardSectionTitle title="Manage Teams" />
+      <TeamList />
+      <DashboardSectionTitle title="Manage Projects" />
+      <ProjectList />
+    </DashboardLayout>
+  )
+}

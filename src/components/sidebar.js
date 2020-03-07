@@ -3,11 +3,14 @@ import { Nav } from "reactstrap"
 import { StaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image/withIEPolyfill"
 import styled from "styled-components"
-import { MdDashboard, MdSchool } from "react-icons/md"
-import { FaSchool, FaHandsHelping } from "react-icons/fa"
-import { logout } from "../utils/auth.js"
+import { logout } from "src/utils/auth.js"
 
-import { MdAccountCircle, MdDashboard, MdSchool, MdExitToApp } from "react-icons/md"
+import {
+  MdAccountCircle,
+  MdDashboard,
+  MdSchool,
+  MdExitToApp,
+} from "react-icons/md"
 import {
   FaSchool,
   FaProjectDiagram,
@@ -156,7 +159,7 @@ let Sidebar = ({ data }) => (
               marginRight: "auto",
             }}
           >
-            <IconContext.Provider value={iconStyle}>
+            <IconContext.Provider value={IconStyle}>
               <FaArchive />
             </IconContext.Provider>
           </div>
@@ -172,7 +175,7 @@ let Sidebar = ({ data }) => (
               marginRight: "auto",
             }}
           >
-            <IconContext.Provider value={iconStyle}>
+            <IconContext.Provider value={IconStyle}>
               <MdExitToApp />
             </IconContext.Provider>
           </div>

@@ -15,19 +15,17 @@ import SEO from "components/seo"
 import PageTitle from "components/titles/pageTitle"
 import DashboardLayout from "components/layouts/dashboardLayout"
 
-const Projects = () => {
+export default () => {
   if (!isAuthenticated()) {
     console.log("Protected")
     login()
     return <p>Redirecting to login...</p>
   }
   return (
-  <DashboardLayout>
-    <SEO title="Projects" />
-    <PageTitle title="Projects" />
-    <p>Mario was here! Wooooo</p>
-  </DashboardLayout>
-)
+    <DashboardLayout>
+      <SEO title="Projects" />
+      <PageTitle title="Projects" />
+      <p>Mario was here! Wooooo</p>
+    </DashboardLayout>
+  )
 }
-
-export default Projects

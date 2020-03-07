@@ -9,22 +9,20 @@
  */
 
 import React from "react"
-import { login, isAuthenticated, getProfile } from "../../utils/auth"
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/layouts/dashboardLayout"
+import { login, isAuthenticated, getProfile } from "src/utils/auth"
+import PageTitle from "components/titles/pageTitle"
+import DashboardLayout from "components/layouts/dashboardLayout"
 
-const Archive = () => {
+export default () => {
   if (!isAuthenticated()) {
     console.log("Protected")
     login()
     return <p>Redirecting to login...</p>
   }
   return (
-  <DashboardLayout>
-    <PageTitle title="Archive" />
-    <p>Mario was here! Wooooo</p>
-  </DashboardLayout>
-)
+    <DashboardLayout>
+      <PageTitle title="Archive" />
+      <p>You're on the archive page.</p>
+    </DashboardLayout>
+  )
 }
-
-export default Archive

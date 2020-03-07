@@ -4,4 +4,4 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-export { wrapRootElement } from "apollo/wrapRootElement"
+export { wrapRootElement } from "data/wrapRootElement"

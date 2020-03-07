@@ -16,22 +16,20 @@ import DashboardLayout from "components/layouts/dashboardLayout"
 import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
 import SponsorList from "components/lists/sponsorList"
 
-const Sponsors = () => {
+export default () => {
   if (!isAuthenticated()) {
     console.log("Protected")
     login()
     return <p>Redirecting to login...</p>
   }
   return (
-  <DashboardLayout>
-    <SEO title="Professors" />
-    <DashboardSectionTitle
-      style={{ display: "inline-block", marginBottom: "-1vh" }}
-      title="Manage Sponsors"
-    />
-    <SponsorList />
-  </DashboardLayout>
-)
+    <DashboardLayout>
+      <SEO title="Professors" />
+      <DashboardSectionTitle
+        style={{ display: "inline-block", marginBottom: "-1vh" }}
+        title="Manage Sponsors"
+      />
+      <SponsorList />
+    </DashboardLayout>
+  )
 }
-
-export default Sponsors

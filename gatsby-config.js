@@ -24,7 +24,6 @@ module.exports = {
         src: path.join(__dirname, "src"),
         data: path.join(__dirname, "src/data"),
         pages: path.join(__dirname, "src/pages"),
-        apollo: path.join(__dirname, "src/apollo"),
         assets: path.join(__dirname, "src/assets"),
         components: path.join(__dirname, "src/components"),
       },

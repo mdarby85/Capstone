@@ -9,13 +9,13 @@
  */
 
 import React from "react"
-import { login, isAuthenticated, getProfile } from "../../utils/auth"
-import { Link } from "gatsby"
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/layouts/dashboardLayout"
+import { login, isAuthenticated, getProfile } from "src/utils/auth"
+import PageTitle from "components/titles/pageTitle"
+import DashboardLayout from "components/layouts/dashboardLayout"
 
-const Account = () => {
+export default () => {
   if (!isAuthenticated()) {
+    console.log("Protected")
     login()
     return <p>Redirecting to login...</p>
   }
@@ -25,9 +25,7 @@ const Account = () => {
   return (
     <DashboardLayout>
       <PageTitle title="Account" />
-      <p>Mario wasn't here! Wooooo</p>
+      <p>You're on the account page.</p>
     </DashboardLayout>
   )
 }
-
-export default Account
