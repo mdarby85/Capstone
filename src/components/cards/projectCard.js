@@ -91,7 +91,7 @@ const DisplayLearnMore = styled.span`
     -o-transition: all 0.25s;
     transition: all 0.25s;
 
-    text-shadow: 0 0 0.5px #333, 0 0 0.5px #333;
+    text-shadow: 0 0 0.1px #333;
   }
 `
 

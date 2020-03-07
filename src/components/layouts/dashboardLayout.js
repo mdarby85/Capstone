@@ -9,15 +9,21 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
-
 import Sidebar from "components/sidebar"
 import theme from "assets/stylesheets/theme"
 import "assets/stylesheets/layout.scss"
 import DashboardPageTitle from "components/titles/DashboardPageTitle"
 import Toolbar from "components/toolbar"
+import { login, isAuthenticated } from "src/utils/auth"
 // import TestSidebar from "components/testSidebar/index"
 
 let DashboardLayout = ({ children }) => {
+  if (!isAuthenticated()) {
+    console.log("Protected Route: Redirecting to login portal...")
+    login()
+    return <p>Redirecting to login...</p>
+  }
+
   return (
     <ThemeProvider theme={theme}>
       {/* <TestSidebar /> */}

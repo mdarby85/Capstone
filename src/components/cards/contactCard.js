@@ -61,16 +61,16 @@ const ContactDescription = styled.i`
   color: ${props => props.theme.primaryGreen};
 `
 
-export default ({ ImgSrc, Name, Department, Role, Email, Phone }) => (
+export default ({ imgSrc, name, department, role, email, phone }) => (
   <ContactCard>
-    <ContactImage src={ImgSrc} rounded />
-    <ContactName>{Name}</ContactName>
-    <ContactDescription>{Department}</ContactDescription>
+    <ContactImage src={imgSrc} rounded />
+    <ContactName>{name}</ContactName>
+    <ContactDescription>{department}</ContactDescription>
     <br />
-    <ContactDescription>{Role}</ContactDescription>
+    <ContactDescription>{role}</ContactDescription>
     <br />
-    <ContactDescription>{Email}</ContactDescription>
+    <ContactDescription>{email}</ContactDescription>
     <br />
-    <ContactDescription>{Phone}</ContactDescription>
+    <ContactDescription>{phone}</ContactDescription>
   </ContactCard>
 )

@@ -58,12 +58,12 @@ const MemberDescription = styled.i`
   color: ${props => props.theme.primaryGreen};
 `
 
-export default ({ ImgSrc, Name, Department, Role }) => (
+export default ({ imgSrc, name, department, role }) => (
   <TeamCard>
-    <TeamMemberImage src={ImgSrc} rounded />
-    <MemberName>{Name}</MemberName>
-    <MemberDescription>{Department}</MemberDescription>
+    <TeamMemberImage src={imgSrc} rounded />
+    <MemberName>{name}</MemberName>
+    <MemberDescription>{department}</MemberDescription>
     <br />
-    <MemberDescription>{Role}</MemberDescription>
+    <MemberDescription>{role}</MemberDescription>
   </TeamCard>
 )

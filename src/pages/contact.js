@@ -28,66 +28,66 @@ export default () => (
           <Row style={{ margin: "0 0 7em 0" }}>
             <Col>
               <ContactCard
-                ImgSrc={image}
-                Name={"Chris Holle"}
-                Department={"Baylor Computer Science"}
-                Role={"Full-Stack Development"}
-                Email={"john_doe@baylor.edu"}
-                Phone={"(823) 418-2083"}
+                imgSrc={image}
+                name={"Chris Holle"}
+                department={"Baylor Computer Science"}
+                role={"Full-Stack Development"}
+                email={"john_doe@baylor.edu"}
+                phone={"(823) 418-2083"}
               />
             </Col>
             <Col>
               <ContactCard
-                ImgSrc={image}
-                Name={"Chris Holle"}
-                Department={"Baylor Computer Science"}
-                Role={"Full-Stack Development"}
-                Email={"john_doe@baylor.edu"}
-                Phone={"(823) 418-2083"}
-              />
-            </Col>
-          </Row>
-          <Row style={{ margin: "0 0 7em 0" }}>
-            <Col>
-              <ContactCard
-                ImgSrc={image}
-                Name={"Chris Holle"}
-                Department={"Baylor Computer Science"}
-                Role={"Full-Stack Development"}
-                Email={"john_doe@baylor.edu"}
-                Phone={"(823) 418-2083"}
-              />
-            </Col>
-            <Col>
-              <ContactCard
-                ImgSrc={image}
-                Name={"Chris Holle"}
-                Department={"Baylor Computer Science"}
-                Role={"Full-Stack Development"}
-                Email={"john_doe@baylor.edu"}
-                Phone={"(823) 418-2083"}
+                imgSrc={image}
+                name={"Chris Holle"}
+                department={"Baylor Computer Science"}
+                role={"Full-Stack Development"}
+                email={"john_doe@baylor.edu"}
+                phone={"(823) 418-2083"}
               />
             </Col>
           </Row>
           <Row style={{ margin: "0 0 7em 0" }}>
             <Col>
               <ContactCard
-                ImgSrc={image}
-                Name={"Chris Holle"}
-                Department={"Baylor Computer Science"}
-                Role={"Full-Stack Development"}
-                Email={"john_doe@baylor.edu"}
-                Phone={"(823) 418-2083"}
+                imgSrc={image}
+                name={"Chris Holle"}
+                department={"Baylor Computer Science"}
+                role={"Full-Stack Development"}
+                email={"john_doe@baylor.edu"}
+                phone={"(823) 418-2083"}
               />
             </Col>
             <Col>
               <ContactCard
-                ImgSrc={image}
-                Name={"Chris Holle"}
-                Department={"Baylor Computer Science"}
-                Role={"Full-Stack Development"}
-                Email={"john_doe@baylor.edu"}
-                Phone={"(823) 418-2083"}
+                imgSrc={image}
+                name={"Chris Holle"}
+                department={"Baylor Computer Science"}
+                role={"Full-Stack Development"}
+                email={"john_doe@baylor.edu"}
+                phone={"(823) 418-2083"}
+              />
+            </Col>
+          </Row>
+          <Row style={{ margin: "0 0 7em 0" }}>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name={"Chris Holle"}
+                department={"Baylor Computer Science"}
+                role={"Full-Stack Development"}
+                email={"john_doe@baylor.edu"}
+                phone={"(823) 418-2083"}
+              />
+            </Col>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name={"Chris Holle"}
+                department={"Baylor Computer Science"}
+                role={"Full-Stack Development"}
+                email={"john_doe@baylor.edu"}
+                phone={"(823) 418-2083"}
               />
             </Col>
           </Row>

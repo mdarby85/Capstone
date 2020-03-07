@@ -72,6 +72,14 @@ export const StyledTable = styled.table`
 
   margin-bottom: 3rem;
 
+  & tbody > tr {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+
   & tbody > tr:hover {
     color: white;
     background-color: #006a52;

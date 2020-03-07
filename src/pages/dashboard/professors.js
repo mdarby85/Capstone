@@ -9,7 +9,6 @@
  */
 
 import React from "react"
-import { login, isAuthenticated, getProfile } from "src/utils/auth"
 
 import SEO from "components/seo"
 import DashboardLayout from "components/layouts/dashboardLayout"
@@ -17,11 +16,6 @@ import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
 import ProfessorList from "components/lists/professorList"
 
 export default () => {
-  if (!isAuthenticated()) {
-    console.log("Protected")
-    login()
-    return <p>Redirecting to login...</p>
-  }
   return (
     <DashboardLayout>
       <SEO title="Professors" />
