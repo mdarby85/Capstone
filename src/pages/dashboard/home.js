@@ -28,6 +28,7 @@ export default () => {
     return <p>Redirecting to login...</p>
   }
 
+  console.log(getProfile())
   return (
     <DashboardLayout>
       <SEO title="Dashboard Home" />

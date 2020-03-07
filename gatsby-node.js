@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+// Mario Commented this stuff out because it was breaking the dashbaord routes :^)
+
 //  exports.onCreatePage = async ({ page, actions }) => {
 //   const { createPage } = actions
 
