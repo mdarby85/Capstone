@@ -3,7 +3,6 @@ import { handleAuthentication } from "src/utils/auth"
 
 const Callback = () => {
   handleAuthentication()
-
   return <p>Loading...</p>
 }
 

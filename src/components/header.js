@@ -90,7 +90,7 @@ const Header = () => {
               </NavItem>
               <NavItem>
                 <Link to={"/dashboard/login"} className={"nav-extra"}>
-                  <NavLink>Sign In</NavLink>
+                  <NavLink>Dashboard</NavLink>
                 </Link>
               </NavItem>
             </Nav>
