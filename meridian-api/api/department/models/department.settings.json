@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "departments",
   "info": {
-    "name": "Department"
+    "name": "department"
   },
   "options": {
     "increments": true,

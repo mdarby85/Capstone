@@ -1,21 +1,17 @@
 /**
- * author: Chris Holle
- * file: pageTitle.js
+ * @name PageTitle
  *
- * Description:
- * Title for page sections/titles
+ * @author Chris Holle
  *
- * Options:
- *  title={String}
- *   - Text to be displayed
+ * @overview Title for page sections/titles
  *
- *  subtitle={boolean}
- *   - Set when a subtitle is necessary(smaller font/less padding)
+ * @param {string} title text to be displayed
+ * @param {boolean} subtitle set when a subtitle is necessary(smaller font/less padding)
+ * @param {boolean} center centers Text
  *
- *  center={boolean}
- *   - Centers Text
- *
+ * @example @TODO
  */
+
 import React from "react"
 import styled from "styled-components"
 

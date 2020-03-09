@@ -5,6 +5,7 @@
  * Description:
  * Title for page sections/titles
  */
+
 import React from "react"
 import styled from "styled-components"
 import meridianTheme from "assets/stylesheets/meridianTheme"

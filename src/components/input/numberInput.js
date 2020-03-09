@@ -21,42 +21,40 @@
 
 import React from "react"
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap"
+import styled from "styled-components"
 
-export default ({ label, ...props }) => {
-  const InputStyle = {
-    WebkitAppearance: "none",
-    MozAppearance: "none",
-    borderRadius: props.rounded ? "10px 0 0 10px" : "0",
-    borderColor: "rgb(85,199,177)",
-    padding: ".5em",
-  }
+const StyledInput = styled(Input)`
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: ${props => (props.rounded ? "10px" : "0")}
+  border-color: rgb(85,199,177);
+  padding: .5em;
+`
 
-  const InputGroupTextStyle = {
-    color: "white",
-    background: "rgb(85,199,177)",
+const Label = styled.div`
+  text-align: center;
+  min-width: ${props =>
+    props.size === "sm" ? "4em" : props.size === "lg" ? "8em" : "6em"};
+`
 
-    borderRadius: props.rounded ? "10px 0 0 10px" : "0",
-  }
+const StyledInputGroupText = styled(InputGroupText)`
+  color: white;
+  background: rgb(85, 199, 177);
+  border-radius: ${props => (props.rounded ? "10px 0 0 10px" : "0")};
+`
 
-  const LabelStyle = {
-    textAlign: "center",
-    minWidth: props.size === "sm" ? "4em" : props.size === "md" ? "6em" : "8em",
-  }
-
-  return (
-    <InputGroup size={props.size}>
-      <InputGroupAddon addonType="prepend">
-        <InputGroupText style={InputGroupTextStyle}>
-          <div style={LabelStyle}>{label}</div>
-        </InputGroupText>
-      </InputGroupAddon>
-      <Input
-        style={InputStyle}
-        type="number"
-        name="number"
-        {...props}
-        onChange={e => props.onChange(e.target.value)}
-      />
-    </InputGroup>
-  )
-}
+export default ({ label, ...props }) => (
+  <InputGroup size={props.size}>
+    <InputGroupAddon addonType="prepend">
+      <StyledInputGroupText {...props}>
+        <Label {...props}>{label}</Label>
+      </StyledInputGroupText>
+    </InputGroupAddon>
+    <StyledInput
+      type="number"
+      name="number"
+      {...props}
+      onChange={e => props.onChange(e.target.value)}
+    />
+  </InputGroup>
+)

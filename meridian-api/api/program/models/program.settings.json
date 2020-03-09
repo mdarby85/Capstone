@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "programs",
   "info": {
-    "name": "Program"
+    "name": "program"
   },
   "options": {
     "increments": true,

@@ -5,7 +5,7 @@
  *
  * @overview Text input field to be used in input/form group.
  *
- * @param {string} size size of input label/input field
+ * @param {string(sm/md/lg)} size size of input label/input field
  * @param {string} label label attached to input field
  * @param {string} type associates input validation and styles with given type
  * @param {string} placeholder placeholder visibile when input field is empty
@@ -38,7 +38,7 @@ export default ({ label, placeholder, type, ...props }) => {
 
   const LabelStyle = {
     textAlign: "center",
-    minWidth: props.size === "sm" ? "4em" : props.size === "md" ? "6em" : "8em",
+    minWidth: props.size === "sm" ? "4em" : props.size === "lg" ? "8em" : "6em",
   }
 
   return (

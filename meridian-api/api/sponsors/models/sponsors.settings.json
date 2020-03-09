@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "sponsors",
   "info": {
-    "name": "Sponsors"
+    "name": "sponsors"
   },
   "options": {
     "increments": true,

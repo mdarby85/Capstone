@@ -16,6 +16,7 @@
  *    {GenerateOptions(data.allStrapiSponsors.nodes)}
  * </SelectInput>
  *
+ * @todo move from in-line CSS to styled-components
  */
 
 import React from "react"

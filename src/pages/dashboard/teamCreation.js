@@ -8,57 +8,58 @@
  * TODO: Finish design
  */
 import React from "react"
-import { graphql } from "gatsby"
+// import { graphql } from "gatsby"
 
 import PageTitle from "components/titles/pageTitle"
 import DashboardLayout from "components/layouts/dashboardLayout"
 
-let numbers = []
+// let numbers = []
 
-function CreateTeam() {
-  // randomize array
-  // for (let i = numbers.length - 1; i > 0; i--) {
-  //   const index = (Math.floor(Math.random() * (i + 1))[
-  //     (numbers[i], numbers[index])
-  //   ] = [numbers[index], numbers[i]])
-  // }
+// function CreateTeam() {
+//   // randomize array
+//   // for (let i = numbers.length - 1; i > 0; i--) {
+//   //   const index = (Math.floor(Math.random() * (i + 1))[
+//   //     (numbers[i], numbers[index])
+//   //   ] = [numbers[index], numbers[i]])
+//   // }
 
-  //split array into groups
-  // replace 4 with the number of people that should be in a group
-  let arr = []
-  let j = 0
-  for (let i = numbers.length - 1; i > 0; i--) {
-    if (numbers.length >= 4) {
-      arr[j] = numbers.splice(0, 4)
-      j++
-    }
-  }
+//   //split array into groups
+//   // replace 4 with the number of people that should be in a group
+//   let arr = []
+//   let j = 0
+//   for (let i = numbers.length - 1; i > 0; i--) {
+//     if (numbers.length >= 4) {
+//       arr[j] = numbers.splice(0, 4)
+//       j++
+//     }
+//   }
 
-  if (numbers.length > 0) {
-    arr[j] = numbers
-  }
+//   if (numbers.length > 0) {
+//     arr[j] = numbers
+//   }
 
-  // return array into a list
-  return arr.map(ar => <li key={ar}>{ar.toString()}</li>)
-}
+//   // return array into a list
+//   return arr.map(ar => <li key={ar}>{ar.toString()}</li>)
+// }
 
 export default ({ data }) => (
   <DashboardLayout>
     <PageTitle title="Students" />
-    {data.allStrapiUser.nodes.map(document => (
+    <p>Team Creation Coming Soon!</p>
+    {/* {data.allStrapiUser.nodes.map(document => (
       <script key={document.node.id}>{numbers.push(document.node.Name)}</script>
     ))}
-    <CreateTeam />
+    <CreateTeam /> */}
   </DashboardLayout>
 )
 
-export const query = graphql`
-  query HeadingQuery {
-    allStrapiUser(filter: { role: { type: { eq: "student" } } }) {
-      nodes {
-        Name
-        id
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query HeadingQuery {
+//     allStrapiUser(filter: { role: { type: { eq: "student" } } }) {
+//       nodes {
+//         Name
+//         id
+//       }
+//     }
+//   }
+// `

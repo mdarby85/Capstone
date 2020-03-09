@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "teams",
   "info": {
-    "name": "Team"
+    "name": "team"
   },
   "options": {
     "increments": true,

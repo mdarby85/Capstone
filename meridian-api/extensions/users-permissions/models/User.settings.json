@@ -81,8 +81,8 @@
       "type": "string"
     },
     "courses": {
-      "collection": "course",
-      "via": "users"
+      "via": "users",
+      "collection": "course"
     },
     "sponsor": {
       "model": "sponsors"

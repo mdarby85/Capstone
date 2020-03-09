@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "courses",
   "info": {
-    "name": "Course"
+    "name": "course"
   },
   "options": {
     "increments": true,
@@ -34,9 +34,9 @@
       "required": false
     },
     "users": {
-      "via": "courses",
       "plugin": "users-permissions",
       "collection": "user",
+      "via": "courses",
       "dominant": true
     },
     "projects": {

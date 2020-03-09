@@ -28,8 +28,8 @@ export const pageQuery = graphql`
     allStrapiProgram {
       nodes {
         id
-        Name
-        Description
+        name
+        description
       }
     }
   }

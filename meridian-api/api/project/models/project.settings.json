@@ -2,7 +2,7 @@
   "connection": "default",
   "collectionName": "projects",
   "info": {
-    "name": "Project"
+    "name": "project"
   },
   "options": {
     "increments": true,
