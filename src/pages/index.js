@@ -11,7 +11,7 @@ import { Container, Row, Col } from "reactstrap"
 import Hr from "components/hr"
 import SEO from "components/seo"
 import Button from "components/btn"
-import Layout from "components/layout"
+import MainLayout from "components/layouts/mainLayout"
 import PageTitle from "components/titles/pageTitle"
 import ProjectCard from "components/cards/projectCard"
 
@@ -101,7 +101,7 @@ let ImageTitle = styled.h3`
 `
 
 export default () => (
-  <Layout>
+  <MainLayout>
     <SEO title="Home" />
     <Section1Container className="pt-4">
       <div className="text-center">
@@ -118,26 +118,14 @@ export default () => (
         <Row>
           <Col>
             <div className="text-right py-5">
-              <Button
-                to="/programs"
-                className="btn btn-primary btn-lg"
-                textColor="white"
-                solid
-                medium
-              >
+              <Button to="/programs" textColor="white" solid medium>
                 Try
               </Button>
             </div>
           </Col>
           <Col>
             <div className="text-left py-5">
-              <Button
-                to="/programs"
-                className="btn btn-primary btn-lg"
-                textColor="primary-green"
-                border
-                medium
-              >
+              <Button to="/programs" textColor="primary-green" border medium>
                 Learn More
               </Button>
             </div>
@@ -152,13 +140,7 @@ export default () => (
         </Col>
         <Col>
           <div className="text-right py-5">
-            <Button
-              to="/programs"
-              className="btn btn-primary btn-md"
-              textColor="primary-green"
-              border
-              medium
-            >
+            <Button to="/programs" textColor="primary-green" border medium>
               View all
             </Button>
           </div>
@@ -226,13 +208,7 @@ export default () => (
             reprehenderit in voluptate velit esse cillum dolore.
           </Section3p>
           <div className="py-5">
-            <Button
-              to="/programs"
-              className="btn btn-primary btn-lg"
-              textColor="primary-green"
-              border
-              medium
-            >
+            <Button to="/programs" textColor="primary-green" border medium>
               View Programs
             </Button>
           </div>
@@ -261,5 +237,5 @@ export default () => (
         </Col>
       </Row>
     </Section3Container>
-  </Layout>
+  </MainLayout>
 )

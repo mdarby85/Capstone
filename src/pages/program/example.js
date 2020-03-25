@@ -1,21 +1,21 @@
 /**
- * author: Chris Holle
- * file: program/example.js
+ * @author Chris Holle
  *
- * Description:
- * Program example page to show projects from within a particular program.
+ * @overview Program example page to show projects from within a particular program.
  */
+
 import React from "react"
 import { Col, Row } from "reactstrap"
 
-import Layout from "components/layout"
 import Search from "components/search"
 import PageTitle from "components/titles/pageTitle"
+import MainLayout from "components/layouts/mainLayout"
 import ProjectCard from "components/cards/projectCard"
+
 import tempImg from "assets/images/green_science.jpg"
 
 export default () => (
-  <Layout>
+  <MainLayout>
     <div className="page-container">
       <Row>
         <Col>
@@ -26,81 +26,69 @@ export default () => (
         </Col>
       </Row>
 
-      <PageTitle title={"Spring 2020"} center={true} subtitle={true} />
+      <PageTitle title="Spring 2020" center subtitle />
 
       <Row style={{ margin: "0" }}>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Spring 2020"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/project/example"}
+            name="Cappy"
+            semester="Spring 2020"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/project/example"
           />
         </Col>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Spring 2020"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/about"}
+            name="Cappy"
+            semester="Spring 2020"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/about"
           />
         </Col>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Spring 2020"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/about"}
+            name="Cappy"
+            semester="Spring 2020"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/about"
           />
         </Col>
       </Row>
 
-      <PageTitle title={"Fall 2019"} center={true} subtitle={true} />
+      <PageTitle title="Fall 2019" center subtitle />
 
       <Row style={{ margin: "0" }}>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Fall 2019"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/project/example"}
+            name="Cappy"
+            semester="Fall 2019"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/project/example"
           />
         </Col>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Fall 2019"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/about"}
+            name="Cappy"
+            semester="Fall 2019"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/about"
           />
         </Col>
         <Col>
           <ProjectCard
-            Name={"Cappy"}
-            Semester={"Fall 2019"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/about"}
+            name="Cappy"
+            semester="Fall 2019"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/about"
           />
         </Col>
       </Row>
     </div>
-  </Layout>
+  </MainLayout>
 )
