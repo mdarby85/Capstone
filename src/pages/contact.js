@@ -12,7 +12,7 @@ import { graphql } from "gatsby"
 
 import Hr from "components/hr"
 import SEO from "components/seo"
-import Layout from "components/layout"
+import MainLayout from "components/layouts/mainLayout"
 import ContactForm from "components/form"
 import PageTitle from "components/titles/pageTitle"
 import image from "assets/images/gatsby-icon.png"
@@ -21,7 +21,7 @@ import ContactCard from "components/cards/contactCard"
 const RowStyle = { margin: "0 0 7em 0" }
 
 export default () => (
-  <Layout>
+  <MainLayout>
     <SEO title="Contact Us" />
     <Container>
       <PageTitle title="Contact Us" />
@@ -101,7 +101,7 @@ export default () => (
         </Col>
       </Row>
     </Container>
-  </Layout>
+  </MainLayout>
 )
 
 export const query = graphql`

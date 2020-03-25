@@ -1,12 +1,9 @@
 /**
- * author: Chris Holle
- * file: search.js
+ * @author Chris Holle
  *
- * Description:
- * Component to be used to search for items
+ * @overview Component to be used to search for items
  *
- *
- * Example usage:
+ * @example @TODO
  */
 
 import React from "react"

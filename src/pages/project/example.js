@@ -7,7 +7,7 @@
  */
 import React from "react"
 
-import Layout from "components/layout"
+import MainLayout from "components/layouts/mainLayout"
 import PageTitle from "components/titles/pageTitle"
 import styled from "styled-components"
 import { Col, Row } from "reactstrap"
@@ -200,7 +200,7 @@ let Section4p = styled.p`
 `
 
 export default () => (
-  <Layout>
+  <MainLayout>
     <Row>
       <Col>
         <Section1Image src={ecsImg} />
@@ -247,106 +247,100 @@ export default () => (
     </Section2ContainerPrimary>
 
     <Section3Container>
-      <PageTitle title={"Take a Look"} center={true} />
+      <PageTitle title="Take a Look" center />
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
           <ProjectCard
-            Name={"Team Creation"}
-            Semester={"03/01/2020"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/about"}
+            name="Team Creation"
+            semester="03/01/2020"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/about"
           />
         </Col>
         <Col>
           <ProjectCard
-            Name={"Project Templates"}
-            Semester={"02/25/2020"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/about"}
+            name="Project Templates"
+            semester="02/25/2020"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/about"
           />
         </Col>
         <Col>
           <ProjectCard
-            Name={"Team Calendar"}
-            Semester={"02/20/2020"}
-            ImgSrc={tempImg}
-            Description={
-              "This is a story of the great big wolf who blew all of the little piggies houses down!"
-            }
-            to={"/about"}
+            name="Team Calendar"
+            semester="02/20/2020"
+            imgSrc={tempImg}
+            description="This is a story of the great big wolf who blew all of the little piggies houses down!"
+            to="/about"
           />
         </Col>
       </Row>
       <Section3Divider />
-      <PageTitle title={"Team Members"} center={true} />
+      <PageTitle title="Team Members" center />
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
           <TeamMemberCard
-            ImgSrc={image}
-            Name={"Chris Holle"}
-            Department={"Baylor Computer Science"}
-            Role={"Full-Stack Development"}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
           />
         </Col>
         <Col>
           <TeamMemberCard
-            ImgSrc={image}
-            Name={"Chris Holle"}
-            Department={"Baylor Computer Science"}
-            Role={"Full-Stack Development"}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
           />
         </Col>
         <Col>
           <TeamMemberCard
-            ImgSrc={image}
-            Name={"Chris Holle"}
-            Department={"Baylor Computer Science"}
-            Role={"Full-Stack Development"}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
           />
         </Col>
       </Row>
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
           <TeamMemberCard
-            ImgSrc={image}
-            Name={"Chris Holle"}
-            Department={"Baylor Computer Science"}
-            Role={"Full-Stack Development"}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
           />
         </Col>
         <Col>
           <TeamMemberCard
-            ImgSrc={image}
-            Name={"Chris Holle"}
-            Department={"Baylor Computer Science"}
-            Role={"Full-Stack Development"}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
           />
         </Col>
         <Col>
           <TeamMemberCard
-            ImgSrc={image}
-            Name={"Chris Holle"}
-            Department={"Baylor Computer Science"}
-            Role={"Full-Stack Development"}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
           />
         </Col>
       </Row>
 
       <Section3Divider />
-      <PageTitle title={"Faculty"} center={true} />
+      <PageTitle title="Faculty" center />
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
           <TeamMemberCard
-            ImgSrc={image}
-            Name={"Chris Holle"}
-            Department={"Baylor Computer Science"}
-            Role={"Full-Stack Development"}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
           />
         </Col>
       </Row>
@@ -369,5 +363,5 @@ export default () => (
         </Col>
       </Row>
     </Section4Container>
-  </Layout>
+  </MainLayout>
 )
