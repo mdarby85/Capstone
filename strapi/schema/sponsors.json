@@ -1,1 +1,0 @@
-{"_id":{"$oid":"5e49c9e908a2d909c42d63ec"},"projects":[{"$oid":"5e49c97308a2d909c42d63eb"},{"$oid":"5e49cbae08a2d909c42d63f1"},{"$oid":"5e49cdbc08a2d909c42d63f7"}],"Links":null,"Name":"Pariveda","Description":"This is Pariveda.","createdAt":{"$date":{"$numberLong":"1581894121769"}},"updatedAt":{"$date":{"$numberLong":"1581895356755"}},"__v":{"$numberInt":"0"}}

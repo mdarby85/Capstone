@@ -1,3 +1,9 @@
+/**
+ * @name sessionCheck.js
+ * @author Brandon Wilcox (CSI 43C9 Spring 2020)
+ * @overview @TODO
+ * @TODO Document what's going on here pls
+ */
 import React from "react"
 import { silentAuth } from "src/utils/auth"
 

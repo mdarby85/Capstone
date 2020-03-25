@@ -30,7 +30,6 @@ services:
   #     GATSBY_WEBPACK_PUBLICPATH: /
   #     STRAPI_URL: strapi:1337
   #   command: ["./wait-for-strapi.sh"]
-
   strapi:
     container_name: "api"
     build:
