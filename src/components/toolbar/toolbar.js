@@ -4,6 +4,8 @@
  * @author Mario Arturo Lopez Martinez
  *
  * @overview Access common actiions depending on your user role
+ *
+ * @TODO Finish implementing add users and teams
  */
 
 import React from "react"
@@ -11,6 +13,10 @@ import styled from "styled-components"
 import { GoTools } from "react-icons/go"
 
 import Button from "components/btn"
+import OpenFormButton from "components/toolbar/openFormButton"
+import CreateCourseForm from "components/forms/createCourseForm"
+import CreateProjectForm from "components/forms/createProjectForm"
+import CreateDepartmentForm from "components/forms/createDepartmentForm"
 
 const Wrapper = styled.div`
   position: fixed;
@@ -70,41 +76,23 @@ export default () => {
         <tbody>
           <tr>
             <ButtonCell>
-              <Button
-                border
-                rounded
-                small
-                textColor="primary-green"
-                type="submit"
-              >
-                Create Project
-              </Button>
+              <OpenFormButton label="Create A Project">
+                <CreateProjectForm />
+              </OpenFormButton>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <Button
-                border
-                rounded
-                small
-                textColor="primary-green"
-                type="submit"
-              >
-                Create Team
-              </Button>
+              <OpenFormButton label="Create A Department">
+                <CreateDepartmentForm />
+              </OpenFormButton>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <Button
-                border
-                rounded
-                small
-                textColor="primary-green"
-                type="submit"
-              >
-                Add Students
-              </Button>
+              <OpenFormButton label="Create A Course">
+                <CreateCourseForm />
+              </OpenFormButton>
             </ButtonCell>
           </tr>
           <tr>
@@ -129,7 +117,7 @@ export default () => {
                 textColor="primary-green"
                 type="submit"
               >
-                Add Course
+                Add Student
               </Button>
             </ButtonCell>
           </tr>
@@ -139,23 +127,23 @@ export default () => {
                 border
                 rounded
                 small
-                textColor="primary-green"
-                type="submit"
-              >
-                Add Program
-              </Button>
-            </ButtonCell>
-          </tr>
-          <tr>
-            <ButtonCell>
-              <Button
-                border
-                small
-                rounded
                 textColor="primary-green"
                 type="submit"
               >
                 Add Sponsor
+              </Button>
+            </ButtonCell>
+          </tr>
+          <tr>
+            <ButtonCell>
+              <Button
+                border
+                small
+                rounded
+                textColor="primary-green"
+                type="submit"
+              >
+                Add Team
               </Button>
             </ButtonCell>
           </tr>

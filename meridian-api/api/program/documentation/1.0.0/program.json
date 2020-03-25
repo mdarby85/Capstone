@@ -642,6 +642,9 @@
               },
               "users": {
                 "type": "string"
+              },
+              "prefix": {
+                "type": "string"
               }
             }
           }

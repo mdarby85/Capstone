@@ -13,7 +13,7 @@ import Sidebar from "components/sidebar"
 import theme from "assets/stylesheets/theme"
 import "assets/stylesheets/layout.scss"
 import DashboardPageTitle from "components/titles/DashboardPageTitle"
-import Toolbar from "components/toolbar"
+import Toolbar from "components/toolbar/toolbar"
 import { login, isAuthenticated } from "src/utils/auth"
 // import TestSidebar from "components/testSidebar/index"
 

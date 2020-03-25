@@ -57,10 +57,10 @@ const objectByString = (o, s) => {
  * @param {object[]} nodes Collection of objects containing data we'd like to display
  * @description @TODO
  */
-export const GenerateOptions = nodes => {
+export const GenerateOptions = (nodes, value, label) => {
   return nodes.map(node => (
-    <option key={node.id} value={node.Name}>
-      {node.Name}
+    <option key={node.id} value={node[value]}>
+      {node[label]}
     </option>
   ))
 }
@@ -132,9 +132,11 @@ export const GenerateProjectCards = nodes => {
       }}
     >
       <ProjectCard
-        imgSrc={`${API_URL}${node.thumbnail.url}`}
+        imgSrc={node.thumbnail ? `${API_URL}${node.thumbnail.url}` : ""}
         name={node.name}
-        semester={`${node.course.semester} ${node.course.year}`}
+        semester={
+          node.course ? `${node.course.semester} ${node.course.year}` : "Null"
+        }
         description={node.description}
       />
     </div>

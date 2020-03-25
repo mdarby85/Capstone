@@ -651,6 +651,9 @@
                 "type": "string"
               }
             }
+          },
+          "prefix": {
+            "type": "string"
           }
         }
       },
@@ -666,6 +669,9 @@
             "type": "object"
           },
           "users": {
+            "type": "string"
+          },
+          "prefix": {
             "type": "string"
           }
         }

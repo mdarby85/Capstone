@@ -27,6 +27,9 @@
     "users": {
       "plugin": "users-permissions",
       "collection": "user"
+    },
+    "prefix": {
+      "type": "string"
     }
   }
 }
