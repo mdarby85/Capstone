@@ -22,7 +22,7 @@ export default ({ data }) => (
         <Program
           imgSrc={testImg}
           title={node.name}
-          link={"/program/example"}
+          link="/program/example"
           description={node.description}
         />
       ))}
