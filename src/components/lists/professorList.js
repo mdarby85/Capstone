@@ -1,68 +1,46 @@
 /**
- * @TODO
+ * Author: Mario Arturo Lopez
  */
 
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import styled from "styled-components"
+import React from "react"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 
-import { USERS_API } from "src/constants"
 import { GenerateTableHeaders, GenerateTableRows } from "src/utils"
+import { StyledTable, Section } from "components/styledComponents"
 
-const StyledTable = styled.table`
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-
-  width: 88%;
-  font-family: Georgia, serif;
-  font-size: 18px;
-
-  & tbody > tr:hover {
-    color: white;
-    background-color: #006a52;
+const PROFESSOR_QUERY = gql`
+  {
+    users(where: { roleLabel: "professor" }) {
+      id
+      name
+      email
+      department {
+        name
+      }
+    }
   }
-
-  & tbody > tr:first-child > td {
-    padding: 10px;
-    padding-left: 10px;
-    border-width: 0;
-  }
-`
-
-const StyledHeaderTable = styled.table`
-  margin-bottom: 5px;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-
-  width: 88%;
-  font-family: Georgia, serif;
-  font-size: 18px;
 `
 
 export default () => {
-  const [professors, setProfessors] = useState([])
-
-  async function fetchProfessors() {
-    axios.get(USERS_API).then(response => {
-      setProfessors(response.data)
-      console.log(response.data)
-    })
-  }
-
-  useEffect(() => {
-    fetchProfessors()
-  }, [])
+  const { loading, error, data } = useQuery(PROFESSOR_QUERY)
 
   return (
-    <div style={{ paddingBottom: "3vh" }}>
-      <StyledHeaderTable flex>
-        <thead>
-          {GenerateTableHeaders(["Name", "Department", "Email", "Actions"])}
-        </thead>
-      </StyledHeaderTable>
-      <StyledTable>
-        <tbody>
-          {GenerateTableRows(professors, ["Name", "department", "email"])}
-        </tbody>
-      </StyledTable>
-    </div>
+    <Section>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: ${error.message}</p>}
+      {data && (
+        <StyledTable>
+          <thead>{GenerateTableHeaders(["Name", "Department", "Email"])}</thead>
+          <tbody>
+            {GenerateTableRows(data.users, [
+              "name",
+              "department.name",
+              "email",
+            ])}
+          </tbody>
+        </StyledTable>
+      )}
+    </Section>
   )
 }

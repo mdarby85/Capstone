@@ -17,8 +17,8 @@ import {
   NavLink,
   Nav,
 } from "reactstrap"
-import Link from "./link"
-import theme from "../assets/stylesheets/theme"
+import Link from "components/link"
+import theme from "assets/stylesheets/theme"
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,7 +30,7 @@ const Header = () => {
 
   const navBarStyle = {
     backgroundColor: navBackColor,
-    "margin-top": "4em",
+    marginTop: "4em",
     borderTop: "1px solid " + borderTopColor,
   }
 
@@ -90,7 +90,7 @@ const Header = () => {
               </NavItem>
               <NavItem>
                 <Link to={"/dashboard/login"} className={"nav-extra"}>
-                  <NavLink>Sign In</NavLink>
+                  <NavLink>Dashboard</NavLink>
                 </Link>
               </NavItem>
             </Nav>

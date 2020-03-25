@@ -14,13 +14,15 @@ import DashboardLayout from "components/layouts/dashboardLayout"
 import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
 import StudentList from "components/lists/studentList"
 
-export default () => (
-  <DashboardLayout>
-    <SEO title="Professors" />
-    <DashboardSectionTitle
-      style={{ display: "inline-block", marginBottom: "-1vh" }}
-      title="Manage Students"
-    />
-    <StudentList />
-  </DashboardLayout>
-)
+export default () => {
+  return (
+    <DashboardLayout>
+      <SEO title="Students" />
+      <DashboardSectionTitle
+        style={{ display: "inline-block", marginBottom: "-1vh" }}
+        title="Manage Students"
+      />
+      <StudentList />
+    </DashboardLayout>
+  )
+}

@@ -11,7 +11,7 @@ import { Col, Row } from "reactstrap"
 import Layout from "components/layout"
 import Search from "components/search"
 import PageTitle from "components/titles/pageTitle"
-import DisplayCard from "components/cards/displayCard"
+import ProjectCard from "components/cards/projectCard"
 import tempImg from "assets/images/green_science.jpg"
 
 export default () => (
@@ -30,7 +30,7 @@ export default () => (
 
       <Row style={{ margin: "0" }}>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Spring 2020"}
             ImgSrc={tempImg}
@@ -41,7 +41,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Spring 2020"}
             ImgSrc={tempImg}
@@ -52,7 +52,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Spring 2020"}
             ImgSrc={tempImg}
@@ -68,7 +68,7 @@ export default () => (
 
       <Row style={{ margin: "0" }}>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Fall 2019"}
             ImgSrc={tempImg}
@@ -79,7 +79,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Fall 2019"}
             ImgSrc={tempImg}
@@ -90,7 +90,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Cappy"}
             Semester={"Fall 2019"}
             ImgSrc={tempImg}

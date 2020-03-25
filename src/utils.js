@@ -1,61 +1,128 @@
+/**
+ * @name utils.js
+ *
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview Utility functions for generating (everything)
+ */
+
 import React from "react"
-import styled from "styled-components"
-import CheckboxInput from "components/input/checkboxInput"
 import { MdEdit, MdDeleteForever } from "react-icons/md"
+import { API_URL } from "src/constants"
 
+import CheckboxInput from "components/input/checkboxInput"
 import CourseCard from "components/cards/courseCard"
+import TeamCard from "components/cards/teamCard"
 import ProjectCard from "components/cards/projectCard"
-import DisplayCard from "components/cards/displayCard"
 
-export const GenerateOptions = nodes => {
+import {
+  Edit,
+  IconTd,
+  TableData,
+  Delete,
+  TableHeader,
+} from "components/styledComponents"
+
+/** Utitlity Functions */
+
+/**
+ * @author Alnitak on StackOverflow
+ * @see https://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key
+ * @param {object} o multi-level object you want to access
+ * @param {string} s dot notation string used to access object
+ * @description Most other libraries for accessing deeply nested properties
+ * of an object don't work with bracket syntax. This one does work with bracket
+ * syntax.
+ * @example Object.byString(node, "sponsor.name") => node[sponsor][name]
+ */
+const objectByString = (o, s) => {
+  s = s.replace(/\[(\w+)\]/g, ".$1") // convert indexes to properties
+  s = s.replace(/^\./, "") // strip a leading dot
+  var a = s.split(".")
+  for (var i = 0, n = a.length; i < n; ++i) {
+    var k = a[i]
+    if (k in o) {
+      o = o[k]
+    } else {
+      return
+    }
+  }
+  return o
+}
+
+/** Programmatically Generate Component */
+
+/**
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @param {object[]} nodes Collection of objects containing data we'd like to display
+ * @description @TODO
+ */
+export const GenerateOptions = (nodes, value, label) => {
   return nodes.map(node => (
-    <option key={node.id} value={node.Name}>
-      {node.Name}
+    <option key={node.id} value={node[value]}>
+      {node[label]}
     </option>
   ))
 }
 
+/**
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @param {object[]} nodes Collection of objects containing data we'd like to display
+ * @description @TODO
+ */
 export const GenerateCheckboxes = nodes => {
   return nodes.map(node => (
     <CheckboxInput key={node.id} id={node.id} label={node.Name} />
   ))
 }
 
+/**
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @param {object[]} nodes Collection of objects containing data we'd like to display
+ * @description @TODO
+ */
 export const GenerateCourseCards = nodes => {
+  const CardMargin = { margin: "10px" }
   return nodes.map(node => (
-    <div
-      key={node.id}
-      style={{
-        margin: "10px",
-      }}
-    >
+    <div key={node.id} style={CardMargin}>
       <CourseCard
-        Name={node.Name}
-        Semester={node.Semester}
-        active={node.Active}
+        name={node.name}
+        number={node.number}
+        semester={node.semester}
+        active={node.active}
+        prefix={node.prefix}
+        year={node.year}
       />
     </div>
   ))
 }
 
+/**
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @param {object[]} nodes Collection of objects containing data we'd like to display
+ * @description @TODO
+ */
 export const GenerateTeamCards = nodes => {
-  console.log(nodes)
-  return nodes.map(node => (
-    <div
-      key={node.id}
-      style={{
-        margin: "10px",
-      }}
-    >
-      <ProjectCard
-        projectName={node.Name}
-        semester="Spring 2020"
-        teamName={node.project.Name}
-      />
-    </div>
-  ))
+  const CardMargin = { margin: "10px" }
+  return nodes.map(node => {
+    return (
+      <div key={node.id} style={CardMargin}>
+        <TeamCard
+          projectName={node.project.name}
+          semester={node.project.course.semester}
+          year={node.project.course.year}
+          teamName={node.name}
+        />
+      </div>
+    )
+  })
 }
 
+/**
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @param {object[]} nodes Collection of objects containing data we'd like to display
+ * @description @TODO
+ */
 export const GenerateProjectCards = nodes => {
   return nodes.map(node => (
     <div
@@ -64,103 +131,62 @@ export const GenerateProjectCards = nodes => {
         margin: "10px",
       }}
     >
-      <DisplayCard
-        Name={node.Name}
-        Semester={`${node.course.Semester} ${node.course.Year}`}
-        Description={node.Name}
+      <ProjectCard
+        imgSrc={node.thumbnail ? `${API_URL}${node.thumbnail.url}` : ""}
+        name={node.name}
+        semester={
+          node.course ? `${node.course.semester} ${node.course.year}` : "Null"
+        }
+        description={node.description}
       />
     </div>
   ))
 }
 
-const Edit = styled.div`
-  background-color: orange;
-
-  float: right;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-
-  line-height: 30px;
-  width: 3vh;
-  height: 3vh;
-  margin-right: 5px;
-
-  border-radius: 3px;
-  transition: transform 0.2s;
-  &:hover {
-    transform: scale(1.1);
-  }
-`
-
-const Delete = styled.div`
-  background-color: red;
-
-  float: right;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-
-  line-height: 30px;
-  width: 3vh;
-  height: 3vh;
-  margin-right: 5px;
-
-  border-radius: 3px;
-  transition: transform 0.1s;
-  &:hover {
-    transform: scale(1.1);
-  }
-`
-
-const IconTd = styled.td`
-  padding: 10px;
-  border: solid rgb(225, 225, 225);
-  border-width: 1px 0 0 0;
-  border-collapse: collapse;
-`
-
-const TableData = styled.td`
-  padding: 10px;
-  border: solid rgb(225, 225, 225);
-  border-width: 1px 0 0 0;
-  border-collapse: collapse;
-`
-
-export const GenerateTableRows = (nodes, fields) => {
-  return nodes.map(node => (
-    <tr key={node.id}>
-      {fields.map((field, index) => (
-        <TableData key={index}>{node[field]}</TableData>
-      ))}
-      <IconTd align="right">
-        <Delete>
-          <MdDeleteForever color="white" />
-        </Delete>
-        <Edit>
-          <MdEdit color="white" />
-        </Edit>
-      </IconTd>
-    </tr>
-  ))
-}
-
-const TableHeader = styled.td`
-  padding: 10px;
-
-  &:last-child {
-    width: 10px;
-  }
-`
-
+/**
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @param {string[]} fields Collection of labels we'd like to display as our th's
+ * @description Pass in a set of strings that will be used to generate a set of
+ * HTML th's.
+ */
 export const GenerateTableHeaders = fields => {
   return (
     <tr>
       {fields.map((field, index) => (
-        <TableHeader align="right" key={index}>
-          <strong key={index}>{field}</strong>
-        </TableHeader>
+        <TableHeader key={index}>{field}</TableHeader>
       ))}
+      <TableHeader style={{ textAlign: "right" }}>Actions</TableHeader>
     </tr>
   )
+}
+
+/**
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @param {object[]} nodes Collection of objects containing data we'd like to display
+ * @param {string[]} fields Collection of fields we'd like to get from our nodes
+ * @description Pass in a set of objects you'd like to map to a set HTML tr's.
+ * We will destructure the object using the fields you provided.
+ */
+export const GenerateTableRows = (nodes, fields) => {
+  return nodes.map(node => (
+    <tr key={node.id}>
+      {fields.map((field, index) => {
+        if (field.includes("."))
+          return (
+            <TableData key={index}>{objectByString(node, field)}</TableData>
+          )
+        else return <TableData key={index}>{node[field]}</TableData>
+      })}
+      <IconTd>
+        <div align="right">
+          <Edit>
+            <MdEdit color="white" />
+          </Edit>
+          <Delete>
+            <MdDeleteForever color="white" />
+          </Delete>
+        </div>
+      </IconTd>
+    </tr>
+  ))
 }

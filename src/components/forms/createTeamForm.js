@@ -1,8 +1,9 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: createProjectForm.js
+ * @name CreateTeamForm
  *
- * Description: @TODO
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
 import React, { useState, useEffect } from "react"
@@ -43,7 +44,7 @@ export default () => {
         </SelectInput>
         {GenerateCheckboxes(users)}
         <br />
-        <Button type="submit" tag={Link}>
+        <Button medium type="submit" tag={Link}>
           Submit
         </Button>
       </form>

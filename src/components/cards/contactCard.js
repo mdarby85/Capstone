@@ -1,21 +1,28 @@
 /**
- * author: Chris Holle
- * file: contactCard.js
+ * @name ContactCard
  *
- * Description:
- * Card to be used to display contact information for individuals on the contact page.
+ * @author Chris Holle
  *
- * Prop Usage:
- * ImgSrc       - Image to be used at top of card
- * Name         - Name of contact
- * Department   - Department contact is in
- * Role         - Contact's Role in the program
- * Email        - Contact's Email
- * Phone        - Contact's Phone Number
+ * @overview Card to be used to display contact information for individuals on the contact page.
  *
- * Example usage:
- * <ContactCard ImgSrc={image} Name={"Chris Holle"} Department={"Baylor Computer Science"}
- *              Role={"Full-Stack Development"} Email={"john_doe@baylor.edu"} Phone={"(823) 418-2083"}/>
+ * @param {string} imgSrc image to be used at top of card
+ * @param {string} name name of contact
+ * @param {string} department department contact is in
+ * @param {string} role contact's Role in the program
+ * @param {string} email contact's Email
+ * @param {string} phone contact's Phone Number
+ *
+ * @example
+ *
+ * <ContactCard
+ *    imgSrc={image}
+ *    name="Chris Holle"
+ *    department="Baylor Computer Science"
+ *    role="Full-Stack Development"
+ *    email="john_doe@baylor.edu"
+ *    phone="(823) 418-2083"
+ * />
+ *
  */
 
 import React from "react"
@@ -54,16 +61,16 @@ const ContactDescription = styled.i`
   color: ${props => props.theme.primaryGreen};
 `
 
-export default ({ ImgSrc, Name, Department, Role, Email, Phone }) => (
+export default ({ imgSrc, name, department, role, email, phone }) => (
   <ContactCard>
-    <ContactImage src={ImgSrc} rounded />
-    <ContactName>{Name}</ContactName>
-    <ContactDescription>{Department}</ContactDescription>
+    <ContactImage src={imgSrc} rounded />
+    <ContactName>{name}</ContactName>
+    <ContactDescription>{department}</ContactDescription>
     <br />
-    <ContactDescription>{Role}</ContactDescription>
+    <ContactDescription>{role}</ContactDescription>
     <br />
-    <ContactDescription>{Email}</ContactDescription>
+    <ContactDescription>{email}</ContactDescription>
     <br />
-    <ContactDescription>{Phone}</ContactDescription>
+    <ContactDescription>{phone}</ContactDescription>
   </ContactCard>
 )

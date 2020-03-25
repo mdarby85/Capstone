@@ -1,37 +1,45 @@
 /**
- * @TODO Make this
+ * @name CourseList
+ *
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-
-import { COURSES_API } from "src/constants"
+import React from "react"
+import gql from "graphql-tag"
+import { useQuery } from "@apollo/react-hooks"
 import { GenerateCourseCards } from "src/utils"
 
-export default () => {
-  const [courses, setCourses] = useState([])
-
-  async function fetchCourses() {
-    axios.get(COURSES_API).then(response => {
-      setCourses(response.data)
-    })
+const COURSE_QUERY = gql`
+  {
+    courses {
+      id
+      name
+      semester
+      year
+      prefix
+      number
+    }
   }
+`
 
-  useEffect(() => {
-    fetchCourses()
-  }, [])
+const SectionStyle = {
+  display: "flex",
+  flexWrap: "wrap",
+  width: "100%",
+  height: "auto",
+  paddingBottom: "3vh",
+}
+
+export default () => {
+  const { loading, error, data } = useQuery(COURSE_QUERY)
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        width: "100%",
-        height: "auto",
-        paddingBottom: "3vh",
-      }}
-    >
-      {GenerateCourseCards(courses)}
+    <div style={SectionStyle}>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: ${error.message}</p>}
+      {data && data.courses && GenerateCourseCards(data.courses)}
     </div>
   )
 }

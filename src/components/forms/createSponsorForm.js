@@ -1,8 +1,9 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: createProjectForm.js
+ * @name CreateSponsorForm
  *
- * Description: @TODO
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
 import React, { useState, useEffect } from "react"
@@ -40,6 +41,7 @@ export default () => {
           tag={Link}
           to={"/dashboard/account"}
           style={{ margin: "auto" }}
+          medium
         >
           Submit
         </Button>

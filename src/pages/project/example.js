@@ -11,8 +11,8 @@ import Layout from "components/layout"
 import PageTitle from "components/titles/pageTitle"
 import styled from "styled-components"
 import { Col, Row } from "reactstrap"
-import DisplayCard from "components/cards/displayCard"
-import TeamCard from "components/cards/teamCard"
+import ProjectCard from "components/cards/projectCard"
+import TeamMemberCard from "components/cards/teamMemberCard"
 
 import image from "assets/images/gatsby-icon.png"
 import ecsImg from "assets/images/ecs_img.png"
@@ -250,7 +250,7 @@ export default () => (
       <PageTitle title={"Take a Look"} center={true} />
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Team Creation"}
             Semester={"03/01/2020"}
             ImgSrc={tempImg}
@@ -261,7 +261,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Project Templates"}
             Semester={"02/25/2020"}
             ImgSrc={tempImg}
@@ -272,7 +272,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <DisplayCard
+          <ProjectCard
             Name={"Team Calendar"}
             Semester={"02/20/2020"}
             ImgSrc={tempImg}
@@ -287,7 +287,7 @@ export default () => (
       <PageTitle title={"Team Members"} center={true} />
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
-          <TeamCard
+          <TeamMemberCard
             ImgSrc={image}
             Name={"Chris Holle"}
             Department={"Baylor Computer Science"}
@@ -295,7 +295,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <TeamCard
+          <TeamMemberCard
             ImgSrc={image}
             Name={"Chris Holle"}
             Department={"Baylor Computer Science"}
@@ -303,7 +303,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <TeamCard
+          <TeamMemberCard
             ImgSrc={image}
             Name={"Chris Holle"}
             Department={"Baylor Computer Science"}
@@ -313,7 +313,7 @@ export default () => (
       </Row>
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
-          <TeamCard
+          <TeamMemberCard
             ImgSrc={image}
             Name={"Chris Holle"}
             Department={"Baylor Computer Science"}
@@ -321,7 +321,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <TeamCard
+          <TeamMemberCard
             ImgSrc={image}
             Name={"Chris Holle"}
             Department={"Baylor Computer Science"}
@@ -329,7 +329,7 @@ export default () => (
           />
         </Col>
         <Col>
-          <TeamCard
+          <TeamMemberCard
             ImgSrc={image}
             Name={"Chris Holle"}
             Department={"Baylor Computer Science"}
@@ -342,7 +342,7 @@ export default () => (
       <PageTitle title={"Faculty"} center={true} />
       <Row style={{ margin: "0 auto 5rem auto" }}>
         <Col>
-          <TeamCard
+          <TeamMemberCard
             ImgSrc={image}
             Name={"Chris Holle"}
             Department={"Baylor Computer Science"}

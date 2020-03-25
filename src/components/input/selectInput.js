@@ -1,18 +1,22 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: selectInput.js
+ * @name SelectInput
  *
- * Description:
- * Select input field to be used in input/form group.
+ * @author Mario Arturo Lopez Martinez
  *
- * Prop Usage:
- * size: String (sm/md/lg)    - Size of input label/input field
- * label: String              - Label attached to input field
- * multiple: Boolean          - Allows multiple selected options (only sequential)
- * children                   - Options supplied to selector
+ * @overview Select input field to be used in input/form group.
  *
- * Example usage:
- * <SelectInput label="Sponsor"> {GenerateOptions(data.allStrapiSponsors.nodes)} </SelectInput>
+ * @param {string} size size of input label/input field
+ * @param {string} label label attached to input field
+ * @param {boolean} multiple allows multiple selected options (only sequential)
+ * @param {React.Component} children options supplied to selector
+ *
+ * @example
+ *
+ * <SelectInput label="Sponsor">
+ *    {GenerateOptions(data.allStrapiSponsors.nodes)}
+ * </SelectInput>
+ *
+ * @todo move from in-line CSS to styled-components
  */
 
 import React from "react"

@@ -11,7 +11,7 @@
 
 import React from "react"
 import styled from "styled-components"
-import searchIcon from "../assets/images/search.png"
+import searchIcon from "assets/images/search.png"
 
 const Search = styled.div`
   width: 20%;

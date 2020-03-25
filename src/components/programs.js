@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Col, Row } from "reactstrap"
-import Button from "../components/btn"
+import Button from "components/btn"
 
 const Program = styled.div`
   margin-top: 10px;

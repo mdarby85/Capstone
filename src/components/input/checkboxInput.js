@@ -1,16 +1,14 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: checkboxInput.js
+ * @name CheckboxInput
  *
- * Description:
- * Checkbox input field to be used in input/form group.
+ * @author Mario Arturo Lopez Martinez
  *
- * Prop Usage:
- * label  - Label for checkbox input field
- * id     - Identification code associated with input field
+ * @overview Checkbox input field to be used in input/form group.
  *
- * Example usage:
- * <CheckboxInput id="123" label="Bob" />
+ * @param {string} label label for checkbox input field
+ * @param {string} id identification code associated with input field
+ *
+ * @example <CheckboxInput id="123" label="Bob" />
  */
 
 import React from "react"

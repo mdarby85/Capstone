@@ -1,33 +1,38 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: loginForm.js
+ * @name LoginForm
  *
- * Description: @TODO
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
 import React from "react"
 import { Link } from "gatsby"
-
+import { observer, inject } from "mobx-react"
+import { login, isAuthenticated, logout } from "src/utils/auth"
 import Button from "components/btn"
-import FormTitle from "components/titles/formTitle"
-import InputField from "components/input/textInput"
 
-export default () => (
-  <>
-    <FormTitle title={"Login"} />
-    <form name="Contact Form" method="POST">
-      <input type="hidden" name="form-name" value="Contact Form" />
-      <InputField size="md" label="Email" type="email" />
-      <InputField size="md" label="Password" type="password" />
-      <br />
-      <Button
-        type="submit"
-        tag={Link}
-        to={"/dashboard/home"}
-        style={{ margin: "auto" }}
-      >
-        Submit
-      </Button>
-    </form>
-  </>
+export default inject(`store`)(
+  observer(({ store }) => {
+    if (!isAuthenticated()) {
+      console.log("Protected")
+      login()
+      return <p>Redirecting to login...</p>
+    } else {
+      return (
+        <div>
+          <p>You're already logged in.</p>
+          <Button
+            tag={Link}
+            to={"/dashboard/home"}
+            style={{ margin: "auto" }}
+            medium
+          >
+            Continue to Dashbaord
+          </Button>
+          <Button onClick={() => logout()}>Logout</Button>
+        </div>
+      )
+    }
+  })
 )

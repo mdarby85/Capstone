@@ -68,7 +68,7 @@ module.exports = {
           "department",
           "program",
           "project",
-          "sponsors",
+          "sponsor",
           "team",
           "user",
         ],

@@ -1,6 +1,7 @@
 /**
  * Pre-generated
  */
+
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
 // Since DOM elements <a> cannot receive activeClassName
