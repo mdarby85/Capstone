@@ -1,9 +1,8 @@
 /**
- * author: Chris Holle
- * file: sponsors.js
- *
- * Description:
- * Page to attract sponsors.
+ * @name sponsors.js
+ * @author Chris Holle
+ * @author Mario Arturo Lopez Martinez
+ * @overview Page to attract sponsors.
  */
 
 import React from "react"
@@ -120,78 +119,54 @@ export default () => (
       </Section1p>
     </Section1Container>
     <div>
-      <PageTitle title="Sponsoring Baylor Capstone Means:" center={true} />
+      <PageTitle title="Sponsoring Baylor Capstone Means:" center />
     </div>
     <Section2Container>
       <Row style={BorderBottom}>
         <Col style={BorderRight}>
           <SponsorItem
-            title={"Bringing Great Ideas to Life"}
+            title="Bringing Great Ideas to Life"
             img={gIcon}
-            description={
-              "Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia " +
-              "deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui " +
-              "fficia deserunt mollit anim."
-            }
+            description="Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui fficia deserunt mollit anim."
           />
         </Col>
         <Col>
           <SponsorItem
-            title={"Bringing Great Ideas to Life"}
+            title="Bringing Great Ideas to Life"
             img={gIcon}
-            description={
-              "Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia " +
-              "deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui " +
-              "fficia deserunt mollit anim."
-            }
+            description="Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui fficia deserunt mollit anim."
           />
         </Col>
       </Row>
       <Row style={BorderBottom}>
         <Col style={BorderRight}>
           <SponsorItem
-            title={"Bringing Great Ideas to Life"}
+            title="Bringing Great Ideas to Life"
             img={gIcon}
-            description={
-              "Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia " +
-              "deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui " +
-              "fficia deserunt mollit anim."
-            }
+            description="Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa quifficia deserunt mollit anim."
           />
         </Col>
         <Col>
           <SponsorItem
-            title={"Bringing Great Ideas to Life"}
+            title="Bringing Great Ideas to Life"
             img={gIcon}
-            description={
-              "Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia " +
-              "deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui " +
-              "fficia deserunt mollit anim."
-            }
+            description="Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui fficia deserunt mollit anim."
           />
         </Col>
       </Row>
       <Row>
         <Col style={BorderRight}>
           <SponsorItem
-            title={"Bringing Great Ideas to Life"}
+            title="Bringing Great Ideas to Life"
             img={gIcon}
-            description={
-              "Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia " +
-              "deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui " +
-              "fficia deserunt mollit anim."
-            }
+            description="Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui fficia deserunt mollit anim."
           />
         </Col>
         <Col>
           <SponsorItem
-            title={"Bringing Great Ideas to Life"}
+            title="Bringing Great Ideas to Life"
             img={gIcon}
-            description={
-              "Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia " +
-              "deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui " +
-              "fficia deserunt mollit anim."
-            }
+            description="Excepteur sint occaecat cupidatat non proident, sunt in culpa  qui officia deserunt mollit anim. Excepteur sint occaecat cupidatat on proident, sunt in culpa qui fficia deserunt mollit anim."
           />
         </Col>
       </Row>
@@ -202,7 +177,7 @@ export default () => (
       <QuoteText>
         "Join our community of motivated and accomplished professionals and gain
         access to the same level of support, and networking opportunities, that
-        our on-campus students have."{" "}
+        our on-campus students have."
       </QuoteText>
       <QuoteTitle>John Doe, ECS Capstone Sponsor</QuoteTitle>
     </QuoteContainer>
