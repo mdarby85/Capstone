@@ -1,5 +1,23 @@
 /**
+ * @name Program
  * @author Isaiah Bullard (CSI 43C9 Spring 2020)
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ *
+ * @overview Display a program and its details in a styled list item
+ *
+ * @param {URI} imgSrc thumbnail for program
+ * @param {string} title to be displayed
+ * @param {string} description to be displayed
+ * @param {URI} link program page to link to
+ *
+ * @example
+ *
+ *  <Program
+ *    imgSrc={testImg}
+ *    title={node.name}
+ *    link={"/program/example"}
+ *    description={node.description}
+ *  />
  */
 
 import React from "react"
@@ -45,25 +63,25 @@ const ProgramDescription = styled.p`
   color: #1a1a1a;
 `
 
-export default ({ ImgSrc, Title, Description, Link }) => (
+export default ({ imgSrc, title, description, link }) => (
   <Program>
     <Row>
       <Col xs="auto">
-        <Picture src={ImgSrc} />
+        <Picture src={imgSrc} />
       </Col>
       <Col xs="9">
         <ProgramTitle>
-          <b>{Title}</b>
+          <b>{title}</b>
         </ProgramTitle>
         <Line />
-        <ProgramDescription>{Description}</ProgramDescription>
+        <ProgramDescription>{description}</ProgramDescription>
         <Button
           rounded
           medium
           border
-          textColor={"primary-green"}
+          textColor="primary-green"
           type="submit"
-          to={Link}
+          to={link}
         >
           Learn More
         </Button>
