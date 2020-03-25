@@ -7,6 +7,7 @@
  *
  * used in layout.js
  */
+
 import React, { useState } from "react"
 import {
   Container,
@@ -78,7 +79,7 @@ const Header = () => {
                 </Link>
               </NavItem>
             </Nav>
-            <Nav style={{ "margin-left": "35em" }} navbar>
+            <Nav style={{ marginLeft: "35em" }} navbar>
               <NavItem style={{ float: "right" }}>
                 <Link
                   to={"/contact"}

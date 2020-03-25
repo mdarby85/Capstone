@@ -1,5 +1,5 @@
 /**
- * Pre-generated
+ * @author Chris Holle (CSI 43C9 Spring 2020)
  */
 import React from "react"
 import Styled from "styled-components"

@@ -9,13 +9,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
+
 import Sidebar from "components/sidebar"
+import Toolbar from "components/toolbar/toolbar"
+import DashboardPageTitle from "components/titles/DashboardPageTitle"
+import { login, isAuthenticated } from "src/utils/auth"
+
 import theme from "assets/stylesheets/theme"
 import "assets/stylesheets/layout.scss"
-import DashboardPageTitle from "components/titles/DashboardPageTitle"
-import Toolbar from "components/toolbar/toolbar"
-import { login, isAuthenticated } from "src/utils/auth"
-// import TestSidebar from "components/testSidebar/index"
+const BodyStyle = { marginLeft: "125px", marginRight: "10vw" }
 
 let DashboardLayout = ({ children }) => {
   if (!isAuthenticated()) {
@@ -26,9 +28,8 @@ let DashboardLayout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <TestSidebar /> */}
       <Sidebar />
-      <main style={{ marginLeft: "125px", marginRight: "10vw" }}>
+      <main style={BodyStyle}>
         <DashboardPageTitle title="Admin Dashboard" />
         {children}
       </main>

@@ -7,7 +7,7 @@
  */
 
 import React from "react"
-import Layout from "components/layout"
+import MainLayout from "components/layouts/mainLayout"
 import PageTitle from "components/titles/pageTitle"
 import styled from "styled-components"
 import topSectionImg from "assets/images/baylor-hero-online-experience.jpg"
@@ -108,7 +108,7 @@ let SponsorItem = ({ img, title, description }) => (
 )
 
 export default () => (
-  <Layout>
+  <MainLayout>
     <SEO title="Sponsors" />
     <Section1Container>
       <Section1Title>Become A Sponsor</Section1Title>
@@ -209,5 +209,5 @@ export default () => (
     <Container>
       <ContactForm />
     </Container>
-  </Layout>
+  </MainLayout>
 )

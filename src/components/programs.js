@@ -1,3 +1,7 @@
+/**
+ * @author Isaiah Bullard (CSI 43C9 Spring 2020)
+ */
+
 import React from "react"
 import styled from "styled-components"
 import { Col, Row } from "reactstrap"

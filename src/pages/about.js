@@ -8,11 +8,12 @@
  * Currently being used to showcase components.
  *
  */
+
 import React from "react"
 import { Col, Row } from "reactstrap"
 
 import SEO from "components/seo"
-import Layout from "components/layout"
+import MainLayout from "components/layouts/mainLayout"
 import Search from "components/search"
 import PageTitle from "components/titles/pageTitle"
 import TeamMemberCard from "components/cards/teamMemberCard"
@@ -25,7 +26,7 @@ import image from "assets/images/gatsby-icon.png"
 import tempImg from "assets/images/green_science.jpg"
 
 export default () => (
-  <Layout>
+  <MainLayout>
     <SEO title="About" />
     <div className="page-container">
       <PageTitle title="About" />
@@ -157,5 +158,5 @@ export default () => (
       />
       <Search />
     </div>
-  </Layout>
+  </MainLayout>
 )
