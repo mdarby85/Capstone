@@ -1,9 +1,8 @@
 /**
- * author: Chris Holle
- * file: contact.js
- *
- * Description:
- * Contact page for front-end
+ * @name contact.js
+ * @author Chris Holle
+ * @overview Contact page for front-end
+ * @TODO Do we want static queries? Probably want to convert to Apollo
  */
 
 import React from "react"

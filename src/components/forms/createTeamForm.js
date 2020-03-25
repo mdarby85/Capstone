@@ -13,7 +13,7 @@ import Button from "components/btn"
 import FormTitle from "components/titles/formTitle"
 import TextInput from "components/input/textInput"
 import SelectInput from "components/input/selectInput"
-import { GenerateCheckboxes, GenerateOptions } from "src/utils"
+import { GenerateCheckboxes, GenerateOptions } from "utils/componentGeneration"
 import { COURSES_API, PROJECTS_API, USERS_API } from "src/constants"
 import axios from "axios"
 

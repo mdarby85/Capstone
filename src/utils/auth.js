@@ -1,18 +1,24 @@
 /**
-If you get an error about auth0-js:
-  1. Go into Gatsby CLI
-  2. Run `gatsby clean`
-  3. delete package-lock and node_modules
-  4. re-run npm install
-  5. manually install auth0-js (npm install --save auth0-js)
-  6. manually run `gatsby build`
-
-Test Account:
-U: john@fakeemail.com
-P: baylorbear1234!
-
-TODO: Don't forget to replace domain and clientID with environment variables
-*/
+ * @name auth.js
+ * @author Brandon Wilcox (CSI 43C9 Spring 2020)
+ * @overview Auth0 configuration file
+ *
+ * If you get an error about auth0-js:
+ *  1. Go into Gatsby CLI
+ *  2. Run `gatsby clean`
+ *  3. delete package-lock and node_modules
+ *  4. re-run npm install
+ *  5. manually install auth0-js (npm install --save auth0-js)
+ *  6. manually run `gatsby build`
+ *
+ * Test Account:
+ * U: john@fakeemail.com
+ * P: baylorbear1234!
+ *
+ * @TODO Move this to .env or something, no credentials in code pls
+ * @TODO Don't forget to replace domain and clientID with environment variables
+ * @TODO Document what's going on in this file pls
+ */
 
 import auth0 from "auth0-js"
 import { navigate } from "gatsby"

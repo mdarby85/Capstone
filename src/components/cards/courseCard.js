@@ -81,6 +81,7 @@ const CourseName = styled.h4`
 const CourseSemester = styled.p`
   font-family: Georgia, serif;
   font-size: 18px;
+  text-transform: capitalize;
   line-height: 10px;
   text-align: left;
   color: #c3c3c3;

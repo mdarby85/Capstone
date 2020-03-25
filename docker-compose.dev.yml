@@ -4,18 +4,6 @@
 
 version: "3"
 services:
-  # For now we'll just go on without gatsby running in a container.
-  # There are issues with it connecting to our databases for some reason.
-
-  # gatsby:
-  #   command: ["./wait-for-strapi.sh", "gatsby", "develop", "--host", "0.0.0.0"]
-  #   volumes:
-  #     - ./src:/home/gatsby-app/src
-  #   environment:
-  #     NODE_ENV: development
-  #   stdin_open: true
-  #   tty: true
-
   strapi:
     stdin_open: true
     tty: true

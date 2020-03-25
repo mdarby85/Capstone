@@ -1,7 +1,7 @@
 /**
  * @name AddAccountForm
  *
- * @author Mario Arturo Lopez Martinez
+ * @author Mario Arturo Lopez Martinez  (CSI 43C0 Spring 2020)
  *
  * @overview @TODO
  */
@@ -18,7 +18,7 @@ import TextInput from "components/input/textInput"
 import SelectInput from "components/input/selectInput"
 import NumberInput from "components/input/numberInput"
 import { COURSES_API } from "src/constants"
-import { GenerateOptions } from "src/utils"
+import { GenerateOptions } from "utils/componentGeneration"
 
 const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }
 

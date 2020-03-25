@@ -1,19 +1,19 @@
 /**
  * @name CreateProjectForm
- *
- * @author Mario Arturo Lopez Martinez
- *
- * @overview @TODO
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @overview Form to create a new project
+ * @example <CreateProjectForm />
+ * @TODO Add styles to form.
  */
 
 import React from "react"
 import gql from "graphql-tag"
 import { useForm } from "react-hook-form"
 import { useQuery, useMutation } from "@apollo/react-hooks"
-
 import FormTitle from "components/titles/formTitle"
-import { GenerateOptions } from "src/utils"
+import { GenerateOptions } from "utils/componentGeneration"
 
+// GQL query to retreive all programs and courses
 const GET_DATA = gql`
   query {
     programs {
@@ -27,6 +27,7 @@ const GET_DATA = gql`
   }
 `
 
+// GQL mutation to create a new project
 const CREATE_PROJECT = gql`
   mutation CreateProject(
     $name: String!
@@ -65,13 +66,17 @@ const CREATE_PROJECT = gql`
 `
 
 export default () => {
+  // Various states for our query
   const { loading, error, data } = useQuery(GET_DATA)
+  // Various states for our mutation
   const [
     createProject,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(CREATE_PROJECT)
+  // Various states for our form
   const { handleSubmit, register, errors } = useForm()
 
+  // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
     createProject({
       variables: {
@@ -115,7 +120,9 @@ export default () => {
             <label htmlFor="courese">Course</label>
             <select
               name="course"
-              ref={register({ required: "This field is required." })}
+              ref={register({
+                required: "This field is required.",
+              })}
             >
               <option disabled selected value="">
                 Select A Course
@@ -128,7 +135,9 @@ export default () => {
             <label htmlFor="program">Program</label>
             <select
               name="program"
-              ref={register({ required: "This field is required." })}
+              ref={register({
+                required: "This field is required.",
+              })}
             >
               <option disabled selected value="">
                 Select A Program
@@ -144,7 +153,9 @@ export default () => {
         <input
           name="startDate"
           type="date"
-          ref={register({ required: "This field is required." })}
+          ref={register({
+            required: "This field is required.",
+          })}
         />
         {errors.startDate && <p>{errors.startDate.message}</p>}
         <br />
@@ -153,7 +164,9 @@ export default () => {
         <input
           name="endDate"
           type="date"
-          ref={register({ required: "This field is required." })}
+          ref={register({
+            required: "This field is required.",
+          })}
         />
         {errors.endDate && <p>{errors.endDate.message}</p>}
         <br />

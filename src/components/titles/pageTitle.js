@@ -9,7 +9,7 @@
  * @param {boolean} subtitle set when a subtitle is necessary(smaller font/less padding)
  * @param {boolean} center centers Text
  *
- * @example @TODO
+ * @example <PageTitle title="About Us" />
  */
 
 import React from "react"

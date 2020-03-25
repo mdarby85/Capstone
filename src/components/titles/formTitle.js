@@ -1,9 +1,9 @@
 /**
- * author: Chris Holle
- * file: page-title.js
- *
- * Description:
- * Title for page sections/titles
+ * @name FormTitle
+ * @author Chris Holle
+ * @overview Title for page sections/titles'
+ * @param {string} title to be displayed
+ * @example <FormTitle title="Create A Project" />
  */
 
 import React from "react"

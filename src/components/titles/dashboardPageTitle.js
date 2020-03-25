@@ -1,9 +1,9 @@
 /**
- * author: Chris Holle
- * file: pageTitle.js
- *
- * Description:
- * Title for page sections/titles
+ * @name DashboardPageTitle
+ * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ * @overview Title for page sections/titles
+ * @param {string} title to be displayed
+ * @example <DashboardPageTitle title="Students" />
  */
 
 import React from "react"

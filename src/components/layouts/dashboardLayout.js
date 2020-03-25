@@ -11,7 +11,7 @@ import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
 
 import Sidebar from "components/sidebar"
-import Toolbar from "components/toolbar/toolbar"
+import Toolbar from "components/toolbar"
 import DashboardPageTitle from "components/titles/DashboardPageTitle"
 import { login, isAuthenticated } from "src/utils/auth"
 

@@ -13,7 +13,7 @@ import styled from "styled-components"
 import { GoTools } from "react-icons/go"
 
 import Button from "components/btn"
-import OpenFormButton from "components/toolbar/openFormButton"
+import OpenModalButton from "components/openModalButton"
 import CreateCourseForm from "components/forms/createCourseForm"
 import CreateProjectForm from "components/forms/createProjectForm"
 import CreateDepartmentForm from "components/forms/createDepartmentForm"
@@ -76,23 +76,23 @@ export default () => {
         <tbody>
           <tr>
             <ButtonCell>
-              <OpenFormButton label="Create A Project">
+              <OpenModalButton label="Create A Project">
                 <CreateProjectForm />
-              </OpenFormButton>
+              </OpenModalButton>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenFormButton label="Create A Department">
+              <OpenModalButton label="Create A Department">
                 <CreateDepartmentForm />
-              </OpenFormButton>
+              </OpenModalButton>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenFormButton label="Create A Course">
+              <OpenModalButton label="Create A Course">
                 <CreateCourseForm />
-              </OpenFormButton>
+              </OpenModalButton>
             </ButtonCell>
           </tr>
           <tr>

@@ -1,2 +1,0 @@
-{"_id":{"$oid":"5e49c85c09b64f0832ffd29f"},"Links":null,"Name":"ECS","Description":"The ECS Department","createdAt":{"$date":{"$numberLong":"1581893724854"}},"updatedAt":{"$date":{"$numberLong":"1581898638761"}},"__v":{"$numberInt":"0"},"users":[{"$oid":"5e49cf1b08a2d909c42d63fd"}]}
-{"_id":{"$oid":"5e49c86f09b64f0832ffd2a0"},"Links":null,"Name":"Business","Description":"The Business Department","createdAt":{"$date":{"$numberLong":"1581893743972"}},"updatedAt":{"$date":{"$numberLong":"1581898653316"}},"__v":{"$numberInt":"0"},"users":[{"$oid":"5e49d14708a2d909c42d6557"}]}

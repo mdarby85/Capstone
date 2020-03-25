@@ -6,7 +6,10 @@ import React from "react"
 import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
 
-import { GenerateTableHeaders, GenerateTableRows } from "src/utils"
+import {
+  GenerateTableHeaders,
+  GenerateTableRows,
+} from "utils/componentGeneration"
 import { StyledTable } from "components/styledComponents"
 
 const PROGRAM_QUERY = gql`
