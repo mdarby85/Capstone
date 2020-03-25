@@ -1,9 +1,9 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: dashboardSectionTitle.js
- *
- * Description:
- * Title for dashboard sections
+ * @name DashboardSectionTitle
+ * @author Mario Arturo Lopez Martinez
+ * @overview Title for dashboard sections
+ * @param {string} title to be displayed
+ * @example <DashboardSectionTitle title="Projects" />
  */
 
 import React from "react"

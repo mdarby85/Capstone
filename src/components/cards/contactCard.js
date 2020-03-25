@@ -1,6 +1,5 @@
 /**
  * @name ContactCard
- *
  * @author Chris Holle
  *
  * @overview Card to be used to display contact information for individuals on the contact page.

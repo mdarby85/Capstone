@@ -1,6 +1,5 @@
 /**
  * @name TeamMemberCard
- *
  * @author Chris Holle
  *
  * @overview Card to be used to display information about team members.
@@ -18,7 +17,6 @@
  *    department="Baylor Computer Science"
  *    role="Full-Stack Development"
  * />
- *
  */
 
 import React from "react"

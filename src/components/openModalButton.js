@@ -1,5 +1,16 @@
 /**
+ * @name OpenModalButton
  * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
+ *
+ * @overview Button that opens its children in a modal window
+ *
+ * @param {string} label used for modal title and button
+ * @param {Component} children displayed inside the modal window
+ *
+ * @example
+ * <OpenModalButton label="Create A Project">
+ *  <CreateProjectForm />
+ * </OpenModalButton>
  */
 
 import React, { useState } from "react"

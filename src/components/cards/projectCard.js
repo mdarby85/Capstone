@@ -1,6 +1,5 @@
 /**
  * @name ProjectCard
- *
  * @author Chris Holle
  * @author Mario Arturo Lopez Martinez
  *

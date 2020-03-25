@@ -1,6 +1,5 @@
 /**
  * @name TeamCard
- *
  * @author Chris Holle
  * @author Mario Arturo Lopez Martinez
  *

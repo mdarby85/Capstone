@@ -6,7 +6,7 @@ import React from "react"
 import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
 
-import { GenerateTeamCards } from "src/utils"
+import { GenerateTeamCards } from "utils/componentGeneration"
 
 const TEAM_QUERY = gql`
   {

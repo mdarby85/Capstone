@@ -14,7 +14,7 @@ import Button from "components/btn"
 import FormTitle from "components/titles/formTitle"
 import TextInput from "components/input/textInput"
 import SelectInput from "components/input/selectInput"
-import { GenerateOptions } from "src/utils"
+import { GenerateOptions } from "utils/componentGeneration"
 import { DEPARTMENTS_API } from "src/constants"
 
 const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }

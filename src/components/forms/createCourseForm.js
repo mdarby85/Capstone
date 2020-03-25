@@ -1,18 +1,19 @@
 /**
  * @name CreateCourseForm
- *
- * @author Mario Arturo Lopez Martinez
- *
- * @overview @TODO
+ * @author Mario Arturo Lopez Martinez (CSI 43C0 Spring 2020)
+ * @overview Form to create a new course using GQL mutation
+ * @example <CreateCourseForm />
+ * @TODO Add styles to form
  */
 
 import React from "react"
 import gql from "graphql-tag"
-import { useForm } from "react-hook-form"
 import { useQuery, useMutation } from "@apollo/react-hooks"
+import { useForm } from "react-hook-form"
 import FormTitle from "components/titles/formTitle"
-import { GenerateOptions } from "src/utils"
+import { GenerateOptions } from "utils/componentGeneration"
 
+// GQL query that pulls all departments
 const GET_PROGRAMS = gql`
   query {
     departments {
@@ -22,6 +23,7 @@ const GET_PROGRAMS = gql`
   }
 `
 
+// GQL mutation that allows us to create a course
 const CREATE_COURSE = gql`
   mutation CreateCourse(
     $name: String!
@@ -59,13 +61,17 @@ const CREATE_COURSE = gql`
 `
 
 export default () => {
+  // Various states of our query fetch
   const { loading, error, data } = useQuery(GET_PROGRAMS)
+  // Various states of our mutation
   const [
     createCourse,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(CREATE_COURSE)
+  // Various states of our form
   const { handleSubmit, register, errors } = useForm()
 
+  // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
     createCourse({
       variables: {

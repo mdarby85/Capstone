@@ -1,19 +1,17 @@
 /**
- * @name utils.js
- *
+ * @name componentGeneration.js
  * @author Mario Arturo Lopez Martinez
- *
- * @overview Utility functions for generating (everything)
+ * @overview Utility functions for generating components programmatically
  */
 
 import React from "react"
 import { MdEdit, MdDeleteForever } from "react-icons/md"
 import { API_URL } from "src/constants"
 
-import CheckboxInput from "components/input/checkboxInput"
-import CourseCard from "components/cards/courseCard"
 import TeamCard from "components/cards/teamCard"
+import CourseCard from "components/cards/courseCard"
 import ProjectCard from "components/cards/projectCard"
+import CheckboxInput from "components/input/checkboxInput"
 
 import {
   Edit,
@@ -23,34 +21,7 @@ import {
   TableHeader,
 } from "components/styledComponents"
 
-/** Utitlity Functions */
-
-/**
- * @author Alnitak on StackOverflow
- * @see https://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key
- * @param {object} o multi-level object you want to access
- * @param {string} s dot notation string used to access object
- * @description Most other libraries for accessing deeply nested properties
- * of an object don't work with bracket syntax. This one does work with bracket
- * syntax.
- * @example Object.byString(node, "sponsor.name") => node[sponsor][name]
- */
-const objectByString = (o, s) => {
-  s = s.replace(/\[(\w+)\]/g, ".$1") // convert indexes to properties
-  s = s.replace(/^\./, "") // strip a leading dot
-  var a = s.split(".")
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i]
-    if (k in o) {
-      o = o[k]
-    } else {
-      return
-    }
-  }
-  return o
-}
-
-/** Programmatically Generate Component */
+import { objectByString } from "utils/functions"
 
 /**
  * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)

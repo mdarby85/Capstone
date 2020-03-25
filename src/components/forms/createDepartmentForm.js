@@ -1,9 +1,9 @@
 /**
  * @name CreateDepartmentForm
- *
- * @author Mario Arturo Lopez Martinez
- *
- * @overview @TODO
+ * @author Mario Arturo Lopez Martinez (CSI 43C0 Spring 2020)
+ * @overview Form for creating a new department.
+ * @example <CreateDepartmentForm />
+ * @TODO Add styles to form.
  */
 
 import React from "react"
@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form"
 import { useMutation } from "@apollo/react-hooks"
 import FormTitle from "components/titles/formTitle"
 
+// GQL mutation for creating a department
 const CREATE_DEPARTMENT = gql`
   mutation CreateDepartment($name: String!, $description: String) {
     createDepartment(
@@ -26,15 +27,21 @@ const CREATE_DEPARTMENT = gql`
 `
 
 export default () => {
+  // Various states for our mutation
   const [
     createDepartment,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(CREATE_DEPARTMENT)
+  // Various states for our form
   const { handleSubmit, register, errors } = useForm()
 
+  // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
     createDepartment({
-      variables: { name: values.name, description: values.description },
+      variables: {
+        name: values.name,
+        description: values.description,
+      },
     })
   }
 

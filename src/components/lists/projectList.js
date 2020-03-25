@@ -6,7 +6,7 @@ import React from "react"
 import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
 
-import { GenerateProjectCards } from "src/utils"
+import { GenerateProjectCards } from "utils/componentGeneration"
 
 const PROJECT_QUERY = gql`
   {
