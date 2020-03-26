@@ -31,7 +31,7 @@ DATABASE_NAME=${DATABASE_NAME:-strapi}
 DATABASE_SRV=${DATABASE_SRV:-false}
 EXTRA_ARGS=${EXTRA_ARGS:-}
 
-# If Strapi source hasn't been build, run `strapi new` command using variables declared earliers
+# If Strapi project hasn't been boostrapped, run `strapi new` command using variables declared earliers
 if [ ! -f "$APP_NAME/package.json" ]
 then
     strapi new ${APP_NAME} --dbclient=$DATABASE_CLIENT --dbhost=$DATABASE_HOST --dbport=$DATABASE_PORT --dbsrv=$DATABASE_SRV --dbname=$DATABASE_NAME --dbusername=$DATABASE_USERNAME --dbpassword=$DATABASE_PASSWORD --dbssl=$DATABASE_SSL --dbauth=$DATABASE_AUTHENTICATION_DATABASE $EXTRA_ARGS
@@ -44,11 +44,16 @@ fi
 # Change working directory
 cd $APP_NAME
 
-# Generate build folder to access our Strapi dashbaord
-strapi build &
+# I am aware of `yarn create strapi-app my-project --quickstart
+# This method of starting up a new project doesn't (currentyl)
+# allow for passing of all desired parameters 
+
+# Generate build folder if it doesn't exist to access our Strapi dashbaord
+# [ ! -f "$APP_NAME/build/public/index.html" ] && yarn build
 
 # Start the strapi project
-strapi start
+# You can install plugins but it just takes a hella long time for the to install, be patient
+strapi develop
 
 # Set a variable to track Strapi's process ID
 strapiPID=$!

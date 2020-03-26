@@ -1,23 +1,28 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: sponsors.js
+ * @name Sponsors
  *
- * Description:
- * Simple sponsor page in dash
+ * @author Mario Arturo Lopez Martinez
  *
- * TODO: Finish design
+ * @overview Simple admin home for Dashboard
+ *
+ * @TODO Finish design
  */
 
 import React from "react"
+import SEO from "components/seo"
+import DashboardLayout from "components/layouts/dashboardLayout"
+import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
+import SponsorList from "components/lists/sponsorList"
 
-import Sidebar from "../../components/sidebar"
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/dashboardLayout"
-
-export default () => (
-  <DashboardLayout>
-    <Sidebar />
-    <PageTitle title="Sponsors" />
-    <p>Mario was here! Wooooo</p>
-  </DashboardLayout>
-)
+export default () => {
+  return (
+    <DashboardLayout>
+      <SEO title="Sponsors" />
+      <DashboardSectionTitle
+        style={{ display: "inline-block", marginBottom: "-1vh" }}
+        title="Manage Sponsor Contacts"
+      />
+      <SponsorList />
+    </DashboardLayout>
+  )
+}

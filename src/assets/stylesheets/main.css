@@ -1,34 +1,66 @@
-
 .logo {
-    font-size: 12px;
-    font-weight: bold;
-    position: relative;
-    border-right: 1px solid #ffb81c;
+  font-size: 12px;
+  font-weight: bold;
+  position: relative;
+  border-right: 1px solid #ffb81c;
+}
+
+h1 {
+  font-family: "BioSans", sans-serif;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: "BioSans", sans-serif;
+  font-weight: 600;
 }
 
 h3 {
-    font-family: 'BioSans', sans-serif;
-    color: white;
-    font-size: 20px;
-    line-height: 30px;
-    height: 20px;
+  font-family: "BioSans", sans-serif;
+  color: white;
+  font-size: 20px;
+  line-height: 30px;
+  height: 20px;
 }
 
+h4 {
+  font-family: "BioSans", sans-serif;
+  font-weight: 600;
+}
+
+p {
+  font-family: "BioSans", sans-serif;
+  font-size: 12px;
+}
 
 #Navbar .nav-main {
-    font-family: 'BioSans', sans-serif;
-    color: #c3c3c3;
+  font-family: "BioSans", sans-serif;
+  color: #c3c3c3;
 }
+
 #Navbar .nav-main:hover {
-    color: white;
+  color: white;
 }
 
 #Navbar .nav-extra:hover {
-    font-family: 'BioSans', sans-serif;
-    color: white;
+  font-family: "BioSans", sans-serif;
+  color: white;
+}
+
+#Navbar .activeHeader {
+  color: white !important;
+}
+
+.activeSidebar {
+  transform: scale(1.05);
+  background-color: #006a52;
 }
 
 #Navbar .nav-extra {
-    font-family: 'BioSans', sans-serif;
-    color: #ffb81c;
+  font-family: "BioSans", sans-serif;
+  color: #ffb81c;
+}
+
+.page-container {
+  margin: 7em 18em;
 }

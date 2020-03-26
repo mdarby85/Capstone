@@ -10,14 +10,20 @@
 
 import React from "react"
 
-import Sidebar from "../../components/sidebar"
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/dashboardLayout"
+import SEO from "components/seo"
+import DashboardLayout from "components/layouts/dashboardLayout"
+import DashboardSectionTitle from "components/titles/dashboardSectionTitle"
+import ProfessorList from "components/lists/professorList"
 
-export default () => (
-  <DashboardLayout>
-    <Sidebar />
-    <PageTitle title="Professors" />
-    <p>Mario was here! Wooooo</p>
-  </DashboardLayout>
-)
+export default () => {
+  return (
+    <DashboardLayout>
+      <SEO title="Professors" />
+      <DashboardSectionTitle
+        style={{ display: "inline-block", marginBottom: "-1vh" }}
+        title="Manage Professors"
+      />
+      <ProfessorList />
+    </DashboardLayout>
+  )
+}

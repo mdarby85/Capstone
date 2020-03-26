@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "programs",
+  "info": {
+    "name": "program"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "thumbnail": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "projects": {
+      "collection": "project"
+    },
+    "departments": {
+      "collection": "department"
+    }
+  }
+}
