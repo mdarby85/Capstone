@@ -18,6 +18,8 @@
     - [Run Front-End Only:](#run-front-end-only)
     - [Build & Deploy Containers (Run Front-End, Middleware, and Back-End Locally):](#build--deploy-containers-run-front-end-middleware-and-back-end-locally)
     - [Default Hosts/Ports:](#default-hostsports)
+    - [Setting Up Schema](#setting-up-schema)
+      - [Temporary data for database](#temporary-data-for-database)
 
 ## Project Description
 
@@ -37,6 +39,7 @@ Meridian aims to solve these issues.
 |     Prof. David Engfer      |   Product Owner   |
 |      Christopher Holle      | Liaison/Developer |
 |        Matthew Darby        | Deputy/Developer  |
+|       Isaiah Bullard        |     Developer     |
 |       Elisa Gonzales        |     Developer     |
 | Mario Arturo Lopez Martinez |     Developer     |
 |       Brandon Wilcox        |     Developer     |
@@ -91,8 +94,7 @@ This configuration has been tested on Windows 10 (Pro Build 1909), MacOS 10.15 C
 
   - We deploy our services (Front-end, APIs, DBs) using Docker containers to easily package, ship, and run our applications as portable light-weight containers.
 
-
-- Ensure `wait-for-strapi.sh` and `strapi/strapi.sh` have `LF` (\*NIX-style) line endings and not `CRLF` (Windows-style) line endings
+* Ensure `wait-for-strapi.sh` and `strapi/strapi.sh` have `LF` (\*NIX-style) line endings and not `CRLF` (Windows-style) line endings
 
   - Without the correct line endings, you won't be able to run these scripts in your docker container.
   - Most modern text editors (VSCode, Sublime, Notepad++) allow you to change the line-endings on a file.
@@ -114,13 +116,13 @@ This configuration has been tested on Windows 10 (Pro Build 1909), MacOS 10.15 C
 - Ensure you're in the project root directory
 
 - Run the following command: `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up`
+
   - If images have not been built, this will build images using the various `docker-compose` and `Dockerfile` configurations (usually takes around 5-10 minutes)
     - You only have to build once, after that, the same script will simply start up the containers
   - If images have already been built, it usually takes about 1-3 minutes for containers to spin up, be patient
   - All `Dockerfile` and `docker-compose` files are heavily documented, you can feel free to modify/update your containers as needed
-  
 
-- To shut down the containers simply run `docker-compose down`
+* To shut down the containers simply run `docker-compose down`
 
 Note: Strapi and MongoDB containers will be 'empty' upon building for the first time, you have to import the schema yourself [Docs on that found here.](#to-do)
 
@@ -129,3 +131,34 @@ Note: Strapi and MongoDB containers will be 'empty' upon building for the first 
 - Meridian front-end defaults to [localhost:8000](http://localhost:8000)
 - GraphiQL panel defaults to [localhost:8000/\_\_graphql](http://locahost:8000/__graphql)
 - Strapi Admin Panel defaults to [localhost:1337/admin](http://localhost:1337/admin)
+
+### Setting Up Schema
+
+#### Temporary data for database
+
+How to import:
+
+1. Have mongodb and strapi running
+2. Sign in to Strapi
+3. Create the database schema based off "Meridian Entity Diagram v1.2"
+   (As of now no way to automatically upload the schema so we have to do it manually.)
+4. On terminal switch to 20200143c9-pariveda02/strapi/schema/ and run the
+   following commands:
+
+`mongoimport --db strapi --collection users-permissions_role --file ./roles.json`
+`mongoimport --db strapi --collection users-permissions_user --file ./users.json`
+`mongoimport --db strapi --collection users-permissions_permission --file ./perms.json`
+`mongoimport --db strapi --collection courses --file ./courses.json`
+`mongoimport --db strapi --collection departments --file ./departments.json`
+`mongoimport --db strapi --collection projects --file ./projects.json`
+`mongoimport --db strapi --collection sponsors --file ./sponsors.json`
+`mongoimport --db strapi --collection teams --file ./teams.json`
+`mongoimport --db strapi --collection programs--file ./programs.json`
+
+Note: You will get a warning saying "Failed to import 2.." when you run the first command, that is fine.
+
+The first command is importing all of the roles including "Public" and "Authenticated" which Strapi creates for you, so Strapi see's them as duplicates and does not reimport them for you.
+
+Note 2: Highly recommend downloading MongoDB Compass (https://www.mongodb.com/download-center/compass) so you can actually see what it stored in your database.
+
+If you do download MongoDB Compass use the following to connect to database: `mongodb://localhost:27017`

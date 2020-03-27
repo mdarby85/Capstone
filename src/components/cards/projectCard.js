@@ -1,43 +1,49 @@
 /**
- * author: Chris Holle
- * file: displayCard.js
+ * @name ProjectCard
+ * @author Chris Holle
+ * @author Mario Arturo Lopez Martinez
  *
- * Description:
- * Card to be used to display project information.
+ * @overview Card to be used to display project information.
  *
- * Prop Usage:
- * ImgSrc       - Image to be used at top of card
- * Name         - Name of project
- * Description  - Simple description of project
- * Semester     - Semester of the project
- * to           - path to linkable item
+ * @param {string} imgSrc image to be used at top of card
+ * @param {string} name name of project
+ * @param {string} description simple description of project
+ * @param {string} semester semester of the project
+ * @param {string} to path to linkable item
  *
- * Example usage:
- * <DisplayCard Name={"Cappy"} Semester={"Spring 2020"} ImgSrc={tempImg}
- *              Description={'This is a story of the great big wolf who blew all of the little piggies houses down!'}
- *              to={'/about'}/>
+ * @example
+ *
+ * <DisplayCard
+ *    name="Cappy"
+ *    semester="Spring 2020"
+ *    imgSrc={tempImg}
+ *    description="This is a story of the great big wolf who blew all of the little piggies houses down!""
+ *    to="/about"
+ * />
+ *
  */
 
 import React from "react"
 import styled from "styled-components"
-import Link from "../link"
+
+import Link from "components/link"
 
 const DisplayCard = styled.div`
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   width: 325px;
-  height: 380px;
   border-radius: 8px 8px 0 0;
   text-align: center;
   border-top: 2px solid ${props => props.theme.secondaryGreen};
   transition-duration: 0.3s;
+
   &:hover {
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     transform: translateY(-5px);
   }
 `
 
 const DisplayBody = styled.div`
-  padding: 1.5rem;
+  padding: 1rem;
 `
 
 const DisplayImage = styled.img`
@@ -77,19 +83,25 @@ const DisplayLearnMore = styled.span`
   font-weight: 400;
   float: right;
   color: ${props => props.theme.primaryGreen};
+
   &:hover {
-    font-weight: bold;
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+
+    text-shadow: 0 0 0.1px #333;
   }
 `
 
-export default ({ ImgSrc, Name, Description, Semester, to }) => (
+export default ({ imgSrc, name, description, semester, to }) => (
   <DisplayCard>
-    <DisplayImage src={ImgSrc} />
+    <DisplayImage src={imgSrc} />
     <DisplayBody>
-      <DisplayName>{Name}</DisplayName>
-      <DisplayDescription>{Description}</DisplayDescription>
+      <DisplayName>{name}</DisplayName>
+      <DisplayDescription>{description}</DisplayDescription>
       <DisplaySemester>
-        {Semester}{" "}
+        {semester}
         <Link to={to}>
           <DisplayLearnMore>Learn More</DisplayLearnMore>
         </Link>

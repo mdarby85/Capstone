@@ -1,44 +1,38 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: loginForm.js
+ * @name LoginForm
  *
- * Description: @TODO
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
 import React from "react"
-import styled from "styled-components"
 import { Link } from "gatsby"
+import { observer, inject } from "mobx-react"
+import { login, isAuthenticated, logout } from "src/utils/auth"
+import Button from "components/btn"
 
-import InputField from "../input/textInput"
-import Button from "../../components/btn"
-import FormTitle from "../../components/formTitle"
-import logo from "../../assets/images/BU_BrandMark_Stacked_Gold.png"
-
-const Logo = styled.img`
-  display: inline-block;
-  height: 4em;
-`
-
-export default () => (
-  <>
-    <Logo src={logo} />
-    <FormTitle title={"Login"} />
-    <form name="Contact Form" method="POST" netlify>
-      <input type="hidden" name="form-name" value="Contact Form" />
-
-      <InputField size="lg" label="Email" type="email" />
-      <InputField size="lg" label="Password" type="password" />
-
-      <br />
-
-      <Button
-        type="submit"
-        tag={Link}
-        to={"/dashboard/account"}
-        style={{ margin: "auto" }}
-      >
-        Submit
-      </Button>
-    </form>
-  </>
+export default inject(`store`)(
+  observer(({ store }) => {
+    if (!isAuthenticated()) {
+      console.log("Protected")
+      login()
+      return <p>Redirecting to login...</p>
+    } else {
+      return (
+        <div>
+          <p>You're already logged in.</p>
+          <Button
+            tag={Link}
+            to={"/dashboard/home"}
+            style={{ margin: "auto" }}
+            medium
+          >
+            Continue to Dashbaord
+          </Button>
+          <Button onClick={() => logout()}>Logout</Button>
+        </div>
+      )
+    }
+  })
 )

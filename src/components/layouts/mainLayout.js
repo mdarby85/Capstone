@@ -14,11 +14,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
-import "../assets/stylesheets/layout.scss"
-import {ThemeProvider} from 'styled-components'
-import theme from '../assets/stylesheets/theme'
-import TopHeader from "./topHeader";
+import { ThemeProvider } from "styled-components"
+
+import Header from "components/header"
+import TopHeader from "components/topHeader"
+import theme from "assets/stylesheets/theme"
+import "assets/stylesheets/layout.scss"
+
+const MainStyle = { margin: "7em 0 0 0" }
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -33,9 +36,9 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-        <TopHeader/>
-      <Header siteTitle={data.site.siteMetadata.title}/>
-      <main style={{'margin': '7em 0',}}>{children}</main>
+      <TopHeader />
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <main style={MainStyle}>{children}</main>
     </ThemeProvider>
   )
 }

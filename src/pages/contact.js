@@ -1,132 +1,98 @@
 /**
- * author: Chris Holle
- * file: contact.js
- *
- * Description:
- * Contact page for front-end
+ * @name contact.js
+ * @author Chris Holle
+ * @overview Contact page for front-end
+ * @TODO Do we want static queries? Probably want to convert to Apollo
  */
 
 import React from "react"
-import Styled from "styled-components"
 import { Row, Col, Container } from "reactstrap"
 import { graphql } from "gatsby"
 
-import Hr from "../components/hr"
-import Layout from "../components/layout"
-import ContactForm from "../components/form"
-import PageTitle from "../components/page-title"
-import ContactCard from "../components/cards/contactCard";
-import image from "../assets/images/gatsby-icon.png";
+import Hr from "components/hr"
+import SEO from "components/seo"
+import MainLayout from "components/layouts/mainLayout"
+import ContactForm from "components/form"
+import PageTitle from "components/titles/pageTitle"
+import image from "assets/images/gatsby-icon.png"
+import ContactCard from "components/cards/contactCard"
 
-// let Cirle = Styled.div`
-//   height: 4rem;
-//   width: 4rem;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `
+const RowStyle = { margin: "0 0 7em 0" }
 
-// let ContactItem = ({ text, type, Icon, href }) => (
-//     <div className="page-container">
-//         <Col
-//             xs={6}
-//             lg={3}
-//             className="d-flex flex-column align-items-center"
-//             style={{ wordBreak: "break-word" }}
-//         >
-//             <Cirle className="h-4-rem w-4-rem bg-primary-faded my-3 absolute-center rounded-circle">
-//                 <Icon size={30} />
-//             </Cirle>
-//             <div className="text-center">
-//                 <h6>{type}</h6>
-//                 <span className="text-secondary">
-//         {href ? (
-//             <Link to={href} className="reset">
-//                 {text}
-//             </Link>
-//         ) : (
-//             text
-//         )}
-//       </span>
-//             </div>
-//         </Col>
-//     </div>
-// )
-
-export default ({ data }) => (
-  <Layout>
-
+export default () => (
+  <MainLayout>
+    <SEO title="Contact Us" />
     <Container>
-        <PageTitle title="Contact Us" />
+      <PageTitle title="Contact Us" />
       <Row className="py-5">
-          <Col md={8}>
-              <Row style={{ margin: "0 0 7em 0" }}>
-                  <Col>
-                      <ContactCard
-                          ImgSrc={image}
-                          Name={"Chris Holle"}
-                          Department={"Baylor Computer Science"}
-                          Role={"Full-Stack Development"}
-                          Email={"john_doe@baylor.edu"}
-                          Phone={"(823) 418-2083"}
-                      />
-                  </Col>
-                  <Col>
-                      <ContactCard
-                          ImgSrc={image}
-                          Name={"Chris Holle"}
-                          Department={"Baylor Computer Science"}
-                          Role={"Full-Stack Development"}
-                          Email={"john_doe@baylor.edu"}
-                          Phone={"(823) 418-2083"}
-                      />
-                  </Col>
-              </Row>
-              <Row style={{ margin: "0 0 7em 0" }}>
-                  <Col>
-                      <ContactCard
-                          ImgSrc={image}
-                          Name={"Chris Holle"}
-                          Department={"Baylor Computer Science"}
-                          Role={"Full-Stack Development"}
-                          Email={"john_doe@baylor.edu"}
-                          Phone={"(823) 418-2083"}
-                      />
-                  </Col>
-                  <Col>
-                      <ContactCard
-                          ImgSrc={image}
-                          Name={"Chris Holle"}
-                          Department={"Baylor Computer Science"}
-                          Role={"Full-Stack Development"}
-                          Email={"john_doe@baylor.edu"}
-                          Phone={"(823) 418-2083"}
-                      />
-                  </Col>
-              </Row>
-              <Row style={{ margin: "0 0 7em 0" }}>
-                  <Col>
-                      <ContactCard
-                          ImgSrc={image}
-                          Name={"Chris Holle"}
-                          Department={"Baylor Computer Science"}
-                          Role={"Full-Stack Development"}
-                          Email={"john_doe@baylor.edu"}
-                          Phone={"(823) 418-2083"}
-                      />
-                  </Col>
-                  <Col>
-                      <ContactCard
-                          ImgSrc={image}
-                          Name={"Chris Holle"}
-                          Department={"Baylor Computer Science"}
-                          Role={"Full-Stack Development"}
-                          Email={"john_doe@baylor.edu"}
-                          Phone={"(823) 418-2083"}
-                      />
-                  </Col>
-              </Row>
-          </Col>
+        <Col md={8}>
+          <Row style={RowStyle}>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name="Chris Holle"
+                department="Baylor Computer Science"
+                role="Full-Stack Development"
+                email="john_doe@baylor.edu"
+                phone="(823) 418-2083"
+              />
+            </Col>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name="Chris Holle"
+                department="Baylor Computer Science"
+                role="Full-Stack Development"
+                email="john_doe@baylor.edu"
+                phone="(823) 418-2083"
+              />
+            </Col>
+          </Row>
+          <Row style={RowStyle}>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name="Chris Holle"
+                department="Baylor Computer Science"
+                role="Full-Stack Development"
+                email="john_doe@baylor.edu"
+                phone="(823) 418-2083"
+              />
+            </Col>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name="Chris Holle"
+                department="Baylor Computer Science"
+                role="Full-Stack Development"
+                email="john_doe@baylor.edu"
+                phone="(823) 418-2083"
+              />
+            </Col>
+          </Row>
+          <Row style={RowStyle}>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name="Chris Holle"
+                department="Baylor Computer Science"
+                role="Full-Stack Development"
+                email="john_doe@baylor.edu"
+                phone="(823) 418-2083"
+              />
+            </Col>
+            <Col>
+              <ContactCard
+                imgSrc={image}
+                name="Chris Holle"
+                department="Baylor Computer Science"
+                role="Full-Stack Development"
+                email="john_doe@baylor.edu"
+                phone="(823) 418-2083"
+              />
+            </Col>
+          </Row>
+        </Col>
         <Col md={4} className="ml-auto mr-auto">
           <h4 className="text-center text-secondary">Need More Info?</h4>
           <Hr />
@@ -134,7 +100,7 @@ export default ({ data }) => (
         </Col>
       </Row>
     </Container>
-  </Layout>
+  </MainLayout>
 )
 
 export const query = graphql`

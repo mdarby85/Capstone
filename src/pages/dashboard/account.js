@@ -9,13 +9,14 @@
  */
 
 import React from "react"
+import PageTitle from "components/titles/pageTitle"
+import DashboardLayout from "components/layouts/dashboardLayout"
 
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/layouts/dashboardLayout"
-
-export default () => (
-  <DashboardLayout>
-    <PageTitle title="Account" />
-    <p>Mario was here! Wooooo</p>
-  </DashboardLayout>
-)
+export default () => {
+  return (
+    <DashboardLayout>
+      <PageTitle title="Account" />
+      <p>You're on the account page.</p>
+    </DashboardLayout>
+  )
+}

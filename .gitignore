@@ -65,6 +65,7 @@ public
 yarn-error.log
 .pnp/
 .pnp.js
+
 # Yarn Integrity file
 .yarn-integrity
 
@@ -136,15 +137,10 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-
 # NPM Stuff
 node_modules/
 yarn.lock
 package-lock.json
-
-# Docker generated folders/files
-db/
-meridian-api/
 
 # VSCode
 .vscode/*
@@ -153,3 +149,12 @@ meridian-api/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+# Strapi Stuff
+
+meridian-api/exports/
+meridian-api/.cache/
+meridian-api/build/
+meridian-api/node_modules/
+meridian-api/yarn.lock
+meridian-api/package-lock.json

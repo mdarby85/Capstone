@@ -4,6 +4,8 @@
 
 version: "3"
 services:
-  gatsby:
-    environment:
-      NODE_ENV: production
+  # For now we'll just go on without gatsby running in a container.
+  # There are issues with it connecting to our databases for some reason.
+  # gatsby:
+  #   environment:
+  #     NODE_ENV: production

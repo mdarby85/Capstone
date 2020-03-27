@@ -1,8 +1,8 @@
 /**
- * Pre-generated
+ * @author Chris Holle (CSI 43C9 Spring 2020)
  */
-import React from 'react'
-import Styled from 'styled-components'
+import React from "react"
+import Styled from "styled-components"
 
 let Hr = Styled.hr`
   width: 12em;
@@ -12,6 +12,4 @@ let Hr = Styled.hr`
   background: ${props => props.theme.primaryGold};
 `
 
-export default () => (
-  <Hr/>
-)
+export default () => <Hr />

@@ -3,19 +3,20 @@
  * file: admin.js
  *
  * Description:
- * Simple admin home for Dashboard
+ * Simple admin Archive for Dashboard
  *
  * TODO: Finish design
  */
 
 import React from "react"
+import PageTitle from "components/titles/pageTitle"
+import DashboardLayout from "components/layouts/dashboardLayout"
 
-import PageTitle from "../../components/page-title"
-import DashboardLayout from "../../components/layouts/dashboardLayout"
-
-export default () => (
-  <DashboardLayout>
-    <PageTitle title="Archive" />
-    <p>Mario was here! Wooooo</p>
-  </DashboardLayout>
-)
+export default () => {
+  return (
+    <DashboardLayout>
+      <PageTitle title="Archive" />
+      <p>You're on the archive page.</p>
+    </DashboardLayout>
+  )
+}

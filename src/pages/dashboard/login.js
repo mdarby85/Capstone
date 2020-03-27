@@ -14,11 +14,13 @@
 
 import React from "react"
 
-import FormLayout from "../../components/layouts/formLayout"
-import LoginForm from "../../components/forms/loginForm"
+import SEO from "components/seo"
+import LoginForm from "components/forms/loginForm"
+import FormLayout from "components/layouts/formLayout"
 
 export default () => (
   <FormLayout>
+    <SEO title="Login" />
     <LoginForm />
   </FormLayout>
 )

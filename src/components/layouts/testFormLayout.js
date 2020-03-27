@@ -1,10 +1,11 @@
 /**
- * author: Chris Holle
- * file: formLayout.js
+ * @name TestFormLayout
  *
- * Description:
- * Layout for Functional forms
+ * @author Mario Arturo Lopez Martinez
  *
+ * @overview TESTING layout for Functional forms
+ *
+ * @TODO Delete this!
  */
 
 import React from "react"
@@ -12,14 +13,17 @@ import PropTypes from "prop-types"
 import { ThemeProvider } from "styled-components"
 
 import styled from "styled-components"
-import logo from "../../assets/images/meridian-logo-text.png"
-import meridianTheme from "../../assets/stylesheets/meridianTheme"
-import "../../assets/stylesheets/layout.scss"
+import logo from "assets/images/meridian-logo-text.png"
+import meridianTheme from "assets/stylesheets/meridianTheme"
+import "assets/stylesheets/layout.scss"
 
 const formLayout = ({ children }) => {
   const FormBox = styled.div`
+    min-width: 475px;
+    max-width: 50vw;
     width: 50vw;
-    padding: 3em 5em;
+
+    padding: 3em 2.5em;
     background: white;
     border: 1pt solid #909090;
     margin-left: auto;

@@ -1,43 +1,51 @@
 /**
- * author: Mario Arturo Lopez Martinez
- * file: createProjectForm.js
+ * @name CreateSponsorForm
  *
- * Description: @TODO
+ * @author Mario Arturo Lopez Martinez
+ *
+ * @overview @TODO
  */
 
-import React from "react"
-import styled from "styled-components"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
+import axios from "axios"
+import Button from "components/btn"
+import FormTitle from "components/titles/formTitle"
+import TextInput from "components/input/textInput"
+import SelectInput from "components/input/selectInput"
+import { GenerateOptions } from "utils/componentGeneration"
+import { SPONSORS_API } from "src/constants"
 
-import Button from "../btn"
-import TextInput from "../input/textInput"
-import SelectInput from "../input/selectInput"
-import FormTitle from "../formTitle"
-import logo from "../../assets/images/BU_BrandMark_Stacked_Gold.png"
+const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }
 
-const Logo = styled.img`
-  display: inline-block;
-  height: 4em;
-`
+export default () => {
+  const [sponsorOptions, setSponsorOptions] = useState([])
 
-export default () => (
-  <>
-    <Logo src={logo} />
-    <FormTitle title={"Create A Sponsor Account"} />
-    <form name="Contact Form" method="POST" netlify>
-      <input type="hidden" name="form-name" value="Create Project Form" />
-      <TextInput size="lg" label="Name" type="text" />
-      <TextInput size="lg" label="Email" type="email" />
-      <SelectInput size="lg" label="Company" type="select" />
-      <br />
-      <Button
-        type="submit"
-        tag={Link}
-        to={"/dashboard/account"}
-        style={{ margin: "auto" }}
-      >
-        Submit
-      </Button>
-    </form>
-  </>
-)
+  useEffect(() => {
+    axios.get(SPONSORS_API).then(response => setSponsorOptions(response.data))
+  }, [])
+
+  return (
+    <>
+      <FormTitle title={"Create A Sponsor Account"} />
+      <form name="Contact Form" method="POST">
+        <input type="hidden" name="form-name" value="Create Project Form" />
+        <TextInput style={InputStyle} label="Name" type="text" />
+        <TextInput style={InputStyle} label="Email" type="email" />
+        <SelectInput style={InputStyle} label="Sponsor">
+          {GenerateOptions(sponsorOptions)}
+        </SelectInput>
+        <br />
+        <Button
+          type="submit"
+          tag={Link}
+          to={"/dashboard/account"}
+          style={{ margin: "auto" }}
+          medium
+        >
+          Submit
+        </Button>
+      </form>
+    </>
+  )
+}
