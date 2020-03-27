@@ -129,7 +129,7 @@ export const GenerateTableHeaders = fields => {
       <TableHeader style={{ textAlign: "right" }}>Actions</TableHeader>
     </tr>
   )
-}
+};
 
 /**
  * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
@@ -145,7 +145,7 @@ export const GenerateTableRows = (nodes, fields) => {
         if (field.includes("."))
           return (
             <TableData key={index}>{objectByString(node, field)}</TableData>
-          )
+          );
         else return <TableData key={index}>{node[field]}</TableData>
       })}
       <IconTd>
@@ -160,4 +160,4 @@ export const GenerateTableRows = (nodes, fields) => {
       </IconTd>
     </tr>
   ))
-}
+};
