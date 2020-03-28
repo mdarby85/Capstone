@@ -1,56 +1,31 @@
 /**
- * Author: Mario Arturo Lopez Martinez
+ * @author: Mario Arturo Lopez Martinez
+ * @author: Chris Holle
+ *
+ * Latest update:
+ * - Enabled delete functionality
+ *
+ * TODO: Refactor Modal out of file
+ * TODO: Add sorting on table.
+ * TODO: Only show active users.
+ * TODO: Add column to show if User is confirmed
  */
 
-import React from "react"
+import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks"
 import {
   GenerateTableHeaders,
   GenerateTableRows,
 } from "utils/componentGeneration"
 import { StyledTable } from "components/styledComponents"
-// import { USER_DELETE_QUERY } from "../../utils/componentGeneration";
 import { Delete, Edit, IconTd, TableData } from "../styledComponents";
 import { objectByString } from "../../utils/functions";
 import { MdDeleteForever, MdEdit } from "react-icons/md";
-
-import { gql } from "apollo-boost"
 import { Mutation } from "react-apollo";
+import { STUDENT_QUERY, USER_DELETE_QUERY } from "../../data/queries";
+import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import Button from "components/btn"
 
-
-/**
- * GraphQL query
- * Pull all Students to populate table
- * TODO: add functionality to only pull students connected with a professor
- */
-const STUDENT_QUERY = gql`
-  {
-    users(where: { roleLabel: "student" }) {
-      id
-      name
-      email
-      roleLabel
-    }
-  }
-`
-
-/**
- * GraphQL Mutation
- * Delete user by ID
- */
-export const USER_DELETE_QUERY = gql`
-  mutation DELETE_USER ($id: ID!)
-  {
-    deleteUser(input: {where: {id: $id}}) {
-      user {
-        name
-        id
-        email
-        roleLabel
-      }
-    }
-  }
-`;
 
 /**
  * Main Driver
@@ -59,6 +34,11 @@ export const USER_DELETE_QUERY = gql`
 export default () => {
   const { loading, error, data } = useQuery(STUDENT_QUERY);
 
+  // delete modal items
+  const [del_modal, setDeleteModal] = useState(false);
+  const delete_modal_toggle = () => setDeleteModal(!del_modal);
+
+  // Column field names
   const fields = ["name", "email"];
   return (
     <div>
@@ -80,12 +60,13 @@ export default () => {
               })}
               <IconTd>
                 <div align="right">
+                  {/* TODO: Add Edit Functionality */}
                   <Edit>
                     <MdEdit color="white" />
                   </Edit>
                   {/* Apollo Mutation for delete. Updates cache for student removal on front-end. */}
                   <Mutation mutation={USER_DELETE_QUERY} update={
-                    (client, {data}) => {
+                    (client) => {
                       const { users } = client.readQuery({query: STUDENT_QUERY});
                       client.writeQuery({
                         query: STUDENT_QUERY,
@@ -93,16 +74,48 @@ export default () => {
                         data: {
                           users: users.filter(user => user.id !== node.id)
                         }
-                      })
+                      });
+                      // Closes modal after delete
+                      delete_modal_toggle();
                     }
                   } key={node.id}>
                     {mutation =>
-                      <Delete onClick={ () => {
-                        mutation({
-                          variables: {id: node.id}
-                        })} }>
-                        <MdDeleteForever color="white"/>
-                      </Delete>
+                      <span>
+                          {/* Delete Button in table to trigger Delete Modal */}
+                          <Delete onClick={delete_modal_toggle}>
+                            <MdDeleteForever color="white"/>
+                          </Delete>
+                          {/* TODO: Refactor Modal out of file */}
+                          {/* Actual Modal that deletes the student when Delete is pressed */}
+                          <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
+                            <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Student</ModalHeader>
+                            <ModalBody>
+                              <h4 style={{textAlign: "center"}}> Are you sure you want to delete {node.name}'s account?</h4>
+                              <hr />
+                              <Button
+                                onClick={delete_modal_toggle}
+                                border
+                                rounded
+                                small
+                                textColor="primary-green"
+                              >
+                                Cancel
+                              </Button>
+                              {/* Button to delete Student */}
+                              <Button
+                                onClick={() => mutation({
+                                  variables: {id: node.id}
+                                })}
+                                small
+                                border
+                                textColor="primary-green"
+                                style={{float: "right"}}
+                              >
+                                Delete
+                              </Button>
+                            </ModalBody>
+                          </Modal>
+                        </span>
                     }
                   </Mutation>
                 </div>

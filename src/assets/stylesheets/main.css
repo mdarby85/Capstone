@@ -64,3 +64,23 @@ p {
 .page-container {
   margin: 7em 18em;
 }
+
+.card-tools-icon {
+  color: gray;
+  size: 2em;
+  float: right;
+}
+.card-tools-icon:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.team-card-tools-icon {
+    color: gray;
+    size: 2em;
+    float: right;
+}
+.team-card-tools-icon:hover {
+    color: #006a52;
+    cursor: pointer;
+}
