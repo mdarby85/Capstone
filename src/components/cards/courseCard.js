@@ -24,15 +24,33 @@
  *    prefix="ENG"
  *    active
  *  />
- *
+ * @TODO: Add verification modal for delete
+ * @TODO: Refactor Delete Modal out of file
+ * @TODO: Only show options when on Dashboard
  */
 
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
+import { FaEllipsisV } from "react-icons/fa"
+import {
+  Col,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  Row
+} from "reactstrap";
+import Button from "components/btn"
+
+
 
 const CourseCard = styled.div`
   padding: 1.6rem;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  margin: 10px;
   width: 325px;
   height: 120px;
   text-align: left;
@@ -44,7 +62,6 @@ const CourseCard = styled.div`
     background: ${props => props.theme.secondaryGreen};
     border-top: 2px solid ${props => props.theme.secondaryGold};
     transform: translateY(-5px);
-    cursor: pointer;
   }
 
   &:hover h4 {
@@ -70,13 +87,13 @@ const CourseCard = styled.div`
   &.active p {
     color: ${props => props.theme.secondaryGold};
   }
-`
+`;
 
 const CourseName = styled.h4`
   font-family: "BioSans", sans-serif;
   color: ${props => props.theme.primaryGreen};
   text-align: left;
-`
+`;
 
 const CourseSemester = styled.p`
   font-family: Georgia, serif;
@@ -85,15 +102,88 @@ const CourseSemester = styled.p`
   line-height: 10px;
   text-align: left;
   color: #c3c3c3;
-`
+`;
 
-export default ({ prefix, number, semester, active, year, name }) => (
-  <CourseCard className={`${active ? "active" : ""}`}>
-    <CourseName>
-      {prefix} {number} {name}
-    </CourseName>
-    <CourseSemester>
-      {semester} {year}
-    </CourseSemester>
-  </CourseCard>
-)
+const IconStyle = {
+  color: "gray",
+  size: "1.5em",
+  float: "right",
+  '&:hover': {
+    color: 'white'
+  }
+};
+
+// TODO: Add dropdown menu with edit and delete
+// TODO: Create child callback to send information on delete
+// TODO: Create child callback to send information on edit
+export default ({ id, prefix, number, semester, active, year, name, onChildClick }) => {
+
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  // delete modal items
+  const [del_modal, setDeleteModal] = useState(false);
+  const delete_modal_toggle = () => setDeleteModal(!del_modal);
+
+  function handleClick(id) {
+    onChildClick(id); // pass any argument to the callback
+  }
+
+  return(
+    <CourseCard className={`${active ? "active" : ""}`}>
+      <Row>
+        <Col>
+          <CourseName>
+            {prefix} {number} {name}
+          </CourseName>
+          <CourseSemester>
+            {semester} {year}
+          </CourseSemester>
+        </Col>
+        <Col md={2}>
+          <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+            <DropdownToggle style={{background: "inherit", border: "none", outline: "none"}}
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded={dropdownOpen}>
+              <div className={"card-tools-icon"}>
+                <FaEllipsisV />
+              </div>
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Course Tools</DropdownItem>
+              <DropdownItem>Edit</DropdownItem>
+              <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </Col>
+      </Row>
+
+      <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
+        <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Course</ModalHeader>
+        <ModalBody>
+          <h4 style={{textAlign: "center"}}> Are you sure you want to delete course {name}?</h4>
+          <hr />
+          <Button
+            onClick={delete_modal_toggle}
+            border
+            rounded
+            small
+            textColor="primary-green"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={() => handleClick(id)}
+            small
+            border
+            textColor="primary-green"
+            style={{float: "right"}}
+          >
+            Delete
+          </Button>
+        </ModalBody>
+      </Modal>
+    </CourseCard>
+  )
+}

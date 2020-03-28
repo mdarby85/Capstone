@@ -79,9 +79,10 @@ export const GenerateTeamCards = nodes => {
     return (
       <div key={node.id} style={CardMargin}>
         <TeamCard
-          projectName={node.project.name}
-          semester={node.project.course.semester}
-          year={node.project.course.year}
+          id={node.id}
+          projectName={node.project && node.project.name !== null ? node.project.name : "Unassigned"}
+          semester={node.project && node.project.course.semester !== null ? node.project.semester : ""}
+          year={node.project && node.project.course.year !== null ? node.project.year : ""}
           teamName={node.name}
         />
       </div>
