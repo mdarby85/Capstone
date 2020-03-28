@@ -18,8 +18,8 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap"
 import Button from "components/btn"
 
 export default ({ label, children }) => {
-  const [modal, setModal] = useState(false)
-  const toggle = () => setModal(!modal)
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   return (
     <div>
