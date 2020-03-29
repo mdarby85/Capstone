@@ -168,14 +168,35 @@ export const STUDENT_QUERY = gql`
  * Delete user by ID
  */
 export const USER_DELETE_QUERY = gql`
-  mutation DELETE_USER ($id: ID!)
+mutation DELETE_USER ($id: ID!)
+{
+  deleteUser(input: {where: {id: $id}}) {
+    user {
+      name
+      id
+      email
+      roleLabel
+    }
+  }
+}
+`;
+
+/**
+ * GraphQL query
+ * Pull one Student by Email
+ */
+export const STUDENT_EMAIL_QUERY = gql`
+  query STUDENT_EMAIL_QUERY($email: Email!)
   {
-    deleteUser(input: {where: {id: $id}}) {
+    users(where: { email: $email, roleLabel: "student"}) {
       user {
         name
         id
         email
-        roleLabel
+        bio
+        thumbnail
+        courses
+        username
       }
     }
   }
