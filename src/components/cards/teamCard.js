@@ -55,7 +55,6 @@ const DisplayCard = styled.div`
 
   &:hover {
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
-    transform: translateY(-5px);
   }
 `;
 
@@ -157,7 +156,7 @@ export default ({
             </Button>
           </Col>
           <Col>
-            <Button to={editLink} textColor="white" solid rounded small onClick={delete_modal_toggle}>
+            <Button to={editLink} textColor="white" solid rounded small>
               Edit
             </Button>
           </Col>

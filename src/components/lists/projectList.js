@@ -44,7 +44,7 @@ export default () => {
             })
           }
         } key={node.id}>
-          {postMutation =>
+          {postMutation => (!node.archived ?
             <ProjectCard
               imgSrc={node.thumbnail ? `${API_URL}${node.thumbnail.url}` : ""}
               name={node.name}
@@ -54,7 +54,7 @@ export default () => {
               }
               description={node.description}
               onChildClick={(e) => {postMutation({variables: {id: e}})}}
-            />
+            /> : "")
           }
         </Mutation>
       </div>

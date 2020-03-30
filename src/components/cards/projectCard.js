@@ -56,7 +56,6 @@ const DisplayCard = styled.div`
 
   &:hover {
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
-    transform: translateY(-5px);
   }
 `;
 

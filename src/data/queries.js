@@ -16,6 +16,8 @@ export const COURSE_QUERY = gql`
       year
       prefix
       number
+      active
+      archived
     }
   }
 `;
@@ -35,11 +37,12 @@ export const COURSE_DELETE_QUERY = gql`
         year
         prefix
         number
+        active
+        archived
       }
     }
   }
 `;
-
 
 // Program Queries
 export const PROGRAM_QUERY = gql`
@@ -70,6 +73,8 @@ export const PROJECT_QUERY = gql`
       id
       name
       description
+      active
+      archived
       thumbnail {
         url
       }
@@ -93,6 +98,8 @@ export const PROJECT_DELETE_QUERY = gql`
         id
         name
         description
+        active
+        archived
         thumbnail {
           url
         }
@@ -111,6 +118,7 @@ export const TEAM_QUERY = gql`
     teams {
       id
       name
+      archived
       project {
         name
         course {
@@ -133,6 +141,7 @@ export const TEAM_DELETE_QUERY = gql`
       team {
         id
         name
+        archived
         project {
           name
           course {
@@ -147,6 +156,37 @@ export const TEAM_DELETE_QUERY = gql`
 
 
 // User Queries
+
+// Professor Queries
+export const PROFESSOR_QUERY = gql`
+  {
+    users(where: { roleLabel: "professor" }) {
+      id
+      name
+      email
+      archived
+      department {
+        name
+      }
+    }
+  }
+`;
+
+// Sponsor Queries
+export const SPONSOR_QUERY = gql`
+  {
+    users(where: { roleLabel: "sponsorContact" }) {
+      id
+      name
+      email
+      archived
+      sponsor {
+        name
+      }
+    }
+  }
+`;
+
 /**
  * GraphQL query
  * Pull all Students to populate table
@@ -158,6 +198,8 @@ export const STUDENT_QUERY = gql`
       id
       name
       email
+      archived
+      confirmed
       roleLabel
     }
   }
@@ -175,6 +217,7 @@ export const USER_DELETE_QUERY = gql`
         name
         id
         email
+        archived
         roleLabel
       }
     }
