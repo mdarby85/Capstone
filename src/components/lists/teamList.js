@@ -40,7 +40,7 @@ export default () => {
                 })
               }
             } key={node.id}>
-              {postMutation =>
+              {postMutation => (!node.archived ?
                 <TeamCard
                   id={node.id}
                   projectName={node.project && node.project.name !== null ? node.project.name : "Unassigned"}
@@ -48,7 +48,7 @@ export default () => {
                   year={node.project && node.project.course.year !== null ? node.project.year : ""}
                   teamName={node.name}
                   onChildClick={(e) => {postMutation({variables: {id: e}})}}
-                />
+                /> : "")
               }
 
             </Mutation>

@@ -1,9 +1,11 @@
 /**
  * Author: Mario Arturo Lopez
+ * @author: Chris Holle
+ *
+ * @TODO: Add edit/delete
  */
 
 import React from "react"
-import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
 
 import {
@@ -11,22 +13,10 @@ import {
   GenerateTableRows,
 } from "utils/componentGeneration"
 import { StyledTable, Section } from "components/styledComponents"
-
-const PROFESSOR_QUERY = gql`
-  {
-    users(where: { roleLabel: "professor" }) {
-      id
-      name
-      email
-      department {
-        name
-      }
-    }
-  }
-`
+import { PROFESSOR_QUERY } from "../../data/queries";
 
 export default () => {
-  const { loading, error, data } = useQuery(PROFESSOR_QUERY)
+  const { loading, error, data } = useQuery(PROFESSOR_QUERY);
 
   return (
     <Section>

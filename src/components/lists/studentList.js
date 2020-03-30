@@ -7,8 +7,6 @@
  *
  * TODO: Refactor Modal out of file
  * TODO: Add sorting on table.
- * TODO: Only show active users.
- * TODO: Add column to show if User is confirmed
  */
 
 import React, { useState } from "react";
@@ -39,11 +37,11 @@ export default () => {
   const delete_modal_toggle = () => setDeleteModal(!del_modal);
 
   // Column field names
-  const fields = ["name", "email"];
+  const fields = ["name", "confirmed", "email"];
   return (
     <div>
       <StyledTable>
-        <thead>{GenerateTableHeaders(["Name", "Email"])}</thead>
+        <thead>{GenerateTableHeaders(["Name", "Confirmed", "Email"])}</thead>
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
         {data && (
@@ -56,6 +54,8 @@ export default () => {
                   return (
                     <TableData key={index}>{objectByString(node, field)}</TableData>
                   );
+                else if (field === "confirmed")
+                  return (<TableData key={index}>{node.confirmed ? "Yes" : "No"}</TableData>);
                 else return <TableData key={index}>{node[field]}</TableData>
               })}
               <IconTd>
@@ -79,7 +79,7 @@ export default () => {
                       delete_modal_toggle();
                     }
                   } key={node.id}>
-                    {mutation =>
+                    {mutation => (!node.archived ?
                       <span>
                           {/* Delete Button in table to trigger Delete Modal */}
                           <Delete onClick={delete_modal_toggle}>
@@ -115,7 +115,7 @@ export default () => {
                               </Button>
                             </ModalBody>
                           </Modal>
-                        </span>
+                        </span> : "")
                     }
                   </Mutation>
                 </div>

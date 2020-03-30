@@ -47,17 +47,16 @@ export default () => {
               })
             }
           } key={node.id}>
-            { postMutation =>
+            { postMutation => (!node.archived ?
               <CourseCard
-              name={node.name}
-              number={node.number}
-              semester={node.semester}
-              active={node.active}
-              prefix={node.prefix}
-              year={node.year}
-              id={node.id}
-              onChildClick={(e) => {postMutation({variables: {id: e}})}}
-            />
+                name={node.name}
+                number={node.number}
+                semester={node.semester}
+                prefix={node.prefix}
+                year={node.year}
+                id={node.id}
+                onChildClick={(e) => {postMutation({variables: {id: e}})}}
+              /> : "")
             }
           </Mutation>
         </div>

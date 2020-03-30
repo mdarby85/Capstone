@@ -61,7 +61,6 @@ const CourseCard = styled.div`
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     background: ${props => props.theme.secondaryGreen};
     border-top: 2px solid ${props => props.theme.secondaryGold};
-    transform: translateY(-5px);
   }
 
   &:hover h4 {
