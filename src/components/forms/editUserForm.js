@@ -6,16 +6,16 @@
  */
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { STUDENT_EMAIL_QUERY } from '../../data/queries'
+import { STUDENT_QUERY } from '../../data/queries'
 
 export default () => {
-    const { loading, error, data } = useQuery(STUDENT_EMAIL_QUERY);
+    const { loading, error, data } = useQuery(STUDENT_QUERY);
 
     return (
         <div>
             {loading && <p>Loading...</p>}
-            {error && <p>Error ${error.message}</p>}
-            {data && console.log(data)}
+            {error && <p>Error: {error.message}</p>}
+            {data && <p>Data: {data.users.map(({id, name, email, roleLabel}) => console.log(name))}</p>}
         </div>
     );
 }
