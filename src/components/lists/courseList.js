@@ -55,6 +55,8 @@ export default () => {
                 prefix={node.prefix}
                 year={node.year}
                 id={node.id}
+                startDate={node.startDate}
+                endDate={node.endDate}
                 onChildClick={(e) => {postMutation({variables: {id: e}})}}
               /> : "")
             }
