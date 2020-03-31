@@ -180,24 +180,3 @@ mutation DELETE_USER ($id: ID!)
   }
 }
 `;
-
-/**
- * GraphQL query
- * Pull one Student by Email
- */
-export const STUDENT_EMAIL_QUERY = gql`
-  query STUDENT_EMAIL_QUERY($email: Email!)
-  {
-    users(where: { email: $email, roleLabel: "student"}) {
-      user {
-        name
-        id
-        email
-        bio
-        thumbnail
-        courses
-        username
-      }
-    }
-  }
-`;
