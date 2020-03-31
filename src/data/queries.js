@@ -13,6 +13,8 @@ export const COURSE_QUERY = gql`
       id
       name
       semester
+      startDate
+      endDate
       year
       prefix
       number
@@ -43,6 +45,57 @@ export const COURSE_DELETE_QUERY = gql`
     }
   }
 `;
+
+// GQL query that pulls all departments for use in Course Forms
+export const GET_PROGRAMS = gql`
+  query {
+    departments {
+      id
+      prefix
+    }
+  }
+`;
+
+// GQL mutation that allows us to create a course
+export const EDIT_COURSE = gql`
+  mutation EditCourse(
+    $id: ID!
+    $name: String
+    $year: Int
+    $semester: String
+    $startDate: Date
+    $endDate: Date
+    $prefix: String
+    $number: String
+  ) {
+    updateCourse(
+      input: {
+        where: { id: $id},
+        data: {
+          name: $name
+          year: $year
+          semester: $semester
+          startDate: $startDate
+          endDate: $endDate
+          prefix: $prefix
+          number: $number
+        }
+      }
+    ) {
+      course {
+        id
+        name
+        year
+        semester
+        startDate
+        endDate
+        prefix
+        number
+      }
+    }
+  }
+`;
+
 
 // Program Queries
 export const PROGRAM_QUERY = gql`
