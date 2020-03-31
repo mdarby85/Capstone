@@ -44,6 +44,7 @@ import {
   Row
 } from "reactstrap";
 import Button from "components/btn"
+import EditCourseForm from "components/forms/editCourseForm"
 
 
 
@@ -61,7 +62,6 @@ const CourseCard = styled.div`
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
     background: ${props => props.theme.secondaryGreen};
     border-top: 2px solid ${props => props.theme.secondaryGold};
-    transform: translateY(-5px);
   }
 
   &:hover h4 {
@@ -116,7 +116,7 @@ const IconStyle = {
 // TODO: Add dropdown menu with edit and delete
 // TODO: Create child callback to send information on delete
 // TODO: Create child callback to send information on edit
-export default ({ id, prefix, number, semester, active, year, name, onChildClick }) => {
+export default ({ id, prefix, number, semester, active, year, name, startDate, endDate, onChildClick }) => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -124,6 +124,10 @@ export default ({ id, prefix, number, semester, active, year, name, onChildClick
   // delete modal items
   const [del_modal, setDeleteModal] = useState(false);
   const delete_modal_toggle = () => setDeleteModal(!del_modal);
+
+  // edit modal items
+  const [edit_modal, setEditModal] = useState(false);
+  const edit_modal_toggle = () => setEditModal(!edit_modal);
 
   function handleClick(id) {
     onChildClick(id); // pass any argument to the callback
@@ -152,7 +156,7 @@ export default ({ id, prefix, number, semester, active, year, name, onChildClick
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Course Tools</DropdownItem>
-              <DropdownItem>Edit</DropdownItem>
+              <DropdownItem onClick={edit_modal_toggle}>Edit</DropdownItem>
               <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
             </DropdownMenu>
           </Dropdown>
@@ -182,6 +186,15 @@ export default ({ id, prefix, number, semester, active, year, name, onChildClick
           >
             Delete
           </Button>
+        </ModalBody>
+      </Modal>
+
+      <Modal isOpen={edit_modal} backdrop={"static"} toggle={edit_modal_toggle}>
+        <ModalHeader toggle={edit_modal_toggle}>Edit Course</ModalHeader>
+        <ModalBody>
+          <EditCourseForm id={id} prefix={prefix} number={number} active={active}
+                            name={name} year={year} semester={semester} startDate={startDate} endDate={endDate}
+                            onEditSuccess={edit_modal_toggle} />
         </ModalBody>
       </Modal>
     </CourseCard>
