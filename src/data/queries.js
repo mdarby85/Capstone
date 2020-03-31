@@ -75,6 +75,7 @@ export const PROJECT_QUERY = gql`
       description
       active
       archived
+      published
       thumbnail {
         url
       }
@@ -111,6 +112,30 @@ export const PROJECT_DELETE_QUERY = gql`
     }
   }
 `;
+/**
+ * GraphQL Mutation
+ * Publish/Unpublish Project
+ */
+export const PROJECT_PUBLISH_QUERY = gql`
+mutation EditProject(
+  $id: ID!
+  $published: Boolean!
+  ) {
+  updateProject(
+    input: {
+      where: { id: $id},
+      data: {
+        published: $published
+      }
+    }
+  ) {
+    project {
+      id
+      name
+      published
+    }
+  }
+}`;
 
 // Team Queries
 export const TEAM_QUERY = gql`

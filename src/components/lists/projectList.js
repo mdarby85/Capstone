@@ -48,7 +48,8 @@ export default () => {
             <ProjectCard
               imgSrc={node.thumbnail ? `${API_URL}${node.thumbnail.url}` : ""}
               name={node.name}
-              id={node.id}
+              projID={node.id}
+              publish={node.published}
               semester={
                 node.course ? `${node.course.semester} ${node.course.year}` : "Null"
               }
