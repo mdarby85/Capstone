@@ -13,9 +13,13 @@ export const COURSE_QUERY = gql`
       id
       name
       semester
+      startDate
+      endDate
       year
       prefix
       number
+      active
+      archived
     }
   }
 `;
@@ -35,6 +39,58 @@ export const COURSE_DELETE_QUERY = gql`
         year
         prefix
         number
+        active
+        archived
+      }
+    }
+  }
+`;
+
+// GQL query that pulls all departments for use in Course Forms
+export const GET_COURSE_DEPARTMENT = gql`
+  query {
+    departments {
+      id
+      prefix
+    }
+  }
+`;
+
+// GQL mutation that allows us to edit a course
+export const EDIT_COURSE = gql`
+  mutation EditCourse(
+    $id: ID!
+    $name: String
+    $year: Int
+    $semester: String
+    $startDate: Date
+    $endDate: Date
+    $prefix: String
+    $number: String
+  ) {
+    updateCourse(
+      input: {
+        where: { id: $id},
+        data: {
+          name: $name
+          year: $year
+          semester: $semester
+          startDate: $startDate
+          endDate: $endDate
+          prefix: $prefix
+          number: $number
+        }
+      }
+    ) {
+      course {
+        id
+        name
+        year
+        semester
+        startDate
+        endDate
+        prefix
+        number
       }
     }
   }
@@ -47,6 +103,11 @@ export const PROGRAM_QUERY = gql`
     programs {
       id
       name
+      description
+      thumbnail {
+        name
+        id
+      }
     }
   }
 `;
@@ -63,6 +124,31 @@ export const PROGRAM_DELETE = gql`
   }
 `;
 
+// GQL mutation that allows us to create a course
+export const EDIT_PROGRAM = gql`
+  mutation EditCourse(
+    $id: ID!
+    $name: String
+    $description: String
+  ) {
+    updateProgram(
+      input: {
+        where: { id: $id},
+        data: {
+          name: $name
+          description: $description
+        }
+      }
+    ) {
+      program {
+        id
+        name
+        description
+      }
+    }
+  }
+`;
+
 // Project Queries
 export const PROJECT_QUERY = gql`
   {
@@ -70,6 +156,9 @@ export const PROJECT_QUERY = gql`
       id
       name
       description
+      active
+      archived
+      published
       thumbnail {
         url
       }
@@ -93,6 +182,8 @@ export const PROJECT_DELETE_QUERY = gql`
         id
         name
         description
+        active
+        archived
         thumbnail {
           url
         }
@@ -104,6 +195,30 @@ export const PROJECT_DELETE_QUERY = gql`
     }
   }
 `;
+/**
+ * GraphQL Mutation
+ * Publish/Unpublish Project
+ */
+export const PROJECT_PUBLISH_QUERY = gql`
+mutation EditProject(
+  $id: ID!
+  $published: Boolean!
+  ) {
+  updateProject(
+    input: {
+      where: { id: $id},
+      data: {
+        published: $published
+      }
+    }
+  ) {
+    project {
+      id
+      name
+      published
+    }
+  }
+}`;
 
 // Team Queries
 export const TEAM_QUERY = gql`
@@ -111,6 +226,7 @@ export const TEAM_QUERY = gql`
     teams {
       id
       name
+      archived
       project {
         name
         course {
@@ -133,6 +249,7 @@ export const TEAM_DELETE_QUERY = gql`
       team {
         id
         name
+        archived
         project {
           name
           course {
@@ -147,6 +264,37 @@ export const TEAM_DELETE_QUERY = gql`
 
 
 // User Queries
+
+// Professor Queries
+export const PROFESSOR_QUERY = gql`
+  {
+    users(where: { roleLabel: "professor" }) {
+      id
+      name
+      email
+      archived
+      department {
+        name
+      }
+    }
+  }
+`;
+
+// Sponsor Queries
+export const SPONSOR_QUERY = gql`
+  {
+    users(where: { roleLabel: "sponsorContact" }) {
+      id
+      name
+      email
+      archived
+      sponsor {
+        name
+      }
+    }
+  }
+`;
+
 /**
  * GraphQL query
  * Pull all Students to populate table
@@ -158,6 +306,8 @@ export const STUDENT_QUERY = gql`
       id
       name
       email
+      archived
+      confirmed
       roleLabel
       archived
     }

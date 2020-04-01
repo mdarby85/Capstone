@@ -1,101 +1,57 @@
 /**
  * @name CreateCourseForm
- * @author Mario Arturo Lopez Martinez (CSI 43C0 Spring 2020)
- * @overview Form to create a new course using GQL mutation
- * @example <CreateCourseForm />
+ * @author Chris Holle (CSI 43C0 Spring 2020)
+ * @overview Form to edit a course using GQL mutation
+ * @example <EditCourseForm />
  * @TODO Add styles to form
  */
 
 import React from "react"
-import gql from "graphql-tag"
 import { useQuery, useMutation } from "@apollo/react-hooks"
 import { useForm } from "react-hook-form"
 import FormTitle from "components/titles/formTitle"
 import { GenerateOptions } from "utils/componentGeneration"
+import { GET_COURSE_DEPARTMENT, EDIT_COURSE  } from "../../data/queries";
 
-// GQL query that pulls all departments
-const GET_PROGRAMS = gql`
-  query {
-    departments {
-      id
-      prefix
-    }
-  }
-`;
-
-// GQL mutation that allows us to create a course
-const CREATE_COURSE = gql`
-  mutation CreateCourse(
-    $name: String!
-    $year: Int!
-    $semester: String!
-    $startDate: Date
-    $endDate: Date
-    $prefix: String
-    $number: String
-  ) {
-    createCourse(
-      input: {
-        data: {
-          name: $name
-          year: $year
-          semester: $semester
-          startDate: $startDate
-          endDate: $endDate
-          prefix: $prefix
-          number: $number
-        }
-      }
-    ) {
-      course {
-        name
-        year
-        semester
-        startDate
-        endDate
-        prefix
-        number
-      }
-    }
-  }
-`
-
-export default () => {
+export default ({ id, prefix, number, semester, active, year, name, startDate, endDate, onEditSuccess}) => {
   // Various states of our query fetch
-  const { loading, error, data } = useQuery(GET_PROGRAMS);
+  const { loading, error, data } = useQuery(GET_COURSE_DEPARTMENT);
   // Various states of our mutation
   const [
-    createCourse,
+    editCourse,
     { loading: mutationLoading, error: mutationError },
-  ] = useMutation(CREATE_COURSE)
+  ] = useMutation(EDIT_COURSE, {
+    onCompleted: () => {onEditSuccess()}
+  });
   // Various states of our form
-  const { handleSubmit, register, errors } = useForm()
-
+  const { handleSubmit, register, errors } = useForm();
+  const saved = false;
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
-    createCourse({
+    editCourse({
       variables: {
+        id: id,
         name: values.name,
         year: parseInt(values.year, 10),
         semester: values.semester,
-        startDate: values.startDate,
-        endDate: values.endDate,
+        startDate: startDate,
+        endDate: endDate,
         prefix: values.prefix,
         number: values.number,
       },
-    })
-  }
+    });
+  };
 
   return (
     <div>
-      <FormTitle title={"Create A Course"} />
-      <form onSubmit={handleSubmit(onSubmit)} name="Create A Course Form">
+      <FormTitle title={"Edit A Course"} />
+      <form onSubmit={handleSubmit(onSubmit)} name="Edit Course">
         <label htmlFor="name">Course Name</label>
         <input
           type="text"
           name="name"
+          defaultValue={name}
           ref={register({
-            required: "This field is required.",
             maxLength: {
               value: 50,
               message: "The maximum course name length is 50 characters.",
@@ -112,14 +68,14 @@ export default () => {
         <label htmlFor="semester">Semester</label>
         <select
           name="semester"
-          ref={register({ required: "This field is required." })}
+          ref={register()}
         >
           <option disabled selected value="">
             Select A Semester
           </option>
-          <option value="fall">Fall</option>
-          <option value="spring">Spring</option>
-          <option value="winter">Winter</option>
+          <option value="fall" selected={semester === "fall"}>Fall</option>
+          <option value="spring" selected={semester === "spring"}>Spring</option>
+          <option value="winter" selected={semester === "winter"}>Winter</option>
         </select>
         {errors.semester && <p>{errors.semester.message}</p>}
         <br />
@@ -128,7 +84,8 @@ export default () => {
         <input
           type="number"
           name="year"
-          ref={register({ required: "This field is required." })}
+          defaultValue={year}
+          ref={register()}
         />
         {errors.year && <p>{errors.year.message}</p>}
         <br />
@@ -137,7 +94,8 @@ export default () => {
         <input
           name="startDate"
           type="date"
-          ref={register({ required: "This field is required." })}
+          defaultValue={startDate}
+          ref={register()}
         />
         {errors.startDate && <p>{errors.startDate.message}</p>}
         <br />
@@ -146,7 +104,8 @@ export default () => {
         <input
           name="endDate"
           type="date"
-          ref={register({ required: "This field is required." })}
+          defaultValue={endDate}
+          ref={register()}
         />
         {errors.endDate && <p>{errors.endDate.message}</p>}
         <br />
@@ -158,14 +117,16 @@ export default () => {
             <label htmlFor="prefix">Course Prefix</label>
             <select
               name="prefix"
-              ref={register({
-                required: "This field is required.",
-              })}
+              ref={register()}
             >
               <option disabled selected value="">
                 Select A Course Prefix
               </option>
-              {GenerateOptions(data.departments, "id", "prefix")}
+              {data.departments.map(node => (
+              <option key={node.id} value={node["prefix"]} selected={node.prefix === prefix}>
+                {node["prefix"]}
+              </option>
+              ))}
             </select>
           </>
         )}
@@ -176,9 +137,8 @@ export default () => {
         <input
           name="number"
           type="text"
-          ref={register({
-            required: "This field is required.",
-          })}
+          defaultValue={number}
+          ref={register()}
         />
         {errors.number && <p>{errors.number.message}</p>}
         <br />

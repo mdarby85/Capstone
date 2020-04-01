@@ -25,6 +25,7 @@ import { MdDeleteForever, MdEdit } from "react-icons/md";
 import { PROGRAM_DELETE, PROGRAM_QUERY } from "../../data/queries";
 import Button from "components/btn"
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
+import EditProgramForm from "components/forms/editProgramForm"
 
 
 const SectionStyle = { paddingBottom: "3em" };
@@ -37,6 +38,10 @@ export default () => {
   // delete modal items
   const [del_modal, setDeleteModal] = useState(false);
   const delete_modal_toggle = () => setDeleteModal(!del_modal);
+
+  // edit modal items
+  const [edit_modal, setEditModal] = useState(false);
+  const edit_modal_toggle = () => setEditModal(!edit_modal);
 
   return (
     <div style={SectionStyle}>
@@ -60,7 +65,7 @@ export default () => {
                 })}
                 <IconTd>
                   <div align="right">
-                    <Edit>
+                    <Edit onClick={edit_modal_toggle}>
                       <MdEdit color="white" />
                     </Edit>
                     {/* Apollo Mutation for delete. Updates cache for student removal on front-end. */}
@@ -119,6 +124,13 @@ export default () => {
                   </div>
                 </IconTd>
 
+                <Modal isOpen={edit_modal} backdrop={"static"} toggle={edit_modal_toggle}>
+                <ModalHeader toggle={edit_modal_toggle}>Edit Course</ModalHeader>
+                <ModalBody>
+                  <EditProgramForm progID={node.id} progName={node.name} progDescription={node.description}
+                                   onEditSuccess={edit_modal_toggle} />
+                </ModalBody>
+              </Modal>
               </tr>
 
             ))}
@@ -126,6 +138,8 @@ export default () => {
           )}
         </StyledTable>
       )}
+
+
     </div>
   )
 }

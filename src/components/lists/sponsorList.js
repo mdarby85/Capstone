@@ -1,9 +1,11 @@
 /**
  * Author: Mario Arturo Lopez Martinez
+ * @author: Chris Holle
+ *
+ * @TODO: Add edit/delete
  */
 
 import React from "react"
-import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
 
 import {
@@ -11,22 +13,11 @@ import {
   GenerateTableRows,
 } from "utils/componentGeneration"
 import { StyledTable } from "components/styledComponents"
+import { SPONSOR_QUERY } from "../../data/queries";
 
-const SPONSOR_QUERY = gql`
-  {
-    users(where: { roleLabel: "sponsorContact" }) {
-      id
-      name
-      email
-      sponsor {
-        name
-      }
-    }
-  }
-`
 
 export default () => {
-  const { loading, error, data } = useQuery(SPONSOR_QUERY)
+  const { loading, error, data } = useQuery(SPONSOR_QUERY);
   return (
     <div style={{ paddingBottom: "3vh" }}>
       <StyledTable>

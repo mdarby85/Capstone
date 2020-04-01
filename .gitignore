@@ -151,10 +151,4 @@ package-lock.json
 *.code-workspace
 
 # Strapi Stuff
-
-meridian-api/exports/
-meridian-api/.cache/
-meridian-api/build/
-meridian-api/node_modules/
-meridian-api/yarn.lock
-meridian-api/package-lock.json
+meridian-api/

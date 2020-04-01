@@ -43,6 +43,8 @@ import {
   Row
 } from "reactstrap";
 import Button from "components/btn"
+import { useMutation } from "@apollo/react-hooks";
+import { PROJECT_PUBLISH_QUERY } from "../../data/queries";
 
 
 const DisplayCard = styled.div`
@@ -56,7 +58,6 @@ const DisplayCard = styled.div`
 
   &:hover {
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
-    transform: translateY(-5px);
   }
 `;
 
@@ -112,7 +113,7 @@ const DisplayLearnMore = styled.span`
   }
 `;
 
-export default ({ id, imgSrc, name, description, semester, to, onChildClick }) => {
+export default ({ projID, imgSrc, name, publish, description, semester, to, onChildClick }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -120,9 +121,31 @@ export default ({ id, imgSrc, name, description, semester, to, onChildClick }) =
   const [del_modal, setDeleteModal] = useState(false);
   const delete_modal_toggle = () => setDeleteModal(!del_modal);
 
-  function handleClick(id) {
+  // States for publish/un-publish
+  const [published, setPublished] = useState(publish != null);
+  const [id, setID] = useState(projID);
+  // Publish/un-publish mutation
+  const [updatePublished, {errorPub}] = useMutation(PROJECT_PUBLISH_QUERY, {
+    variables: { id, published }
+  });
+
+  // Function for callback listening
+  function handleClick(projID) {
     // Callback to parent component
-    onChildClick(id);
+    onChildClick(projID);
+  }
+
+  // Handle the flip of the publish flag & execute update query
+  function handlePublishClick(projID) {
+    setPublished(publish => !publish);
+    setID(projID);
+    publish = !publish;
+    updatePublished();
+  }
+
+  // Error handling
+  if (errorPub) {
+    console.log("error: ", errorPub)
   }
 
   return (
@@ -152,7 +175,7 @@ export default ({ id, imgSrc, name, description, semester, to, onChildClick }) =
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Project Tools</DropdownItem>
-                <DropdownItem>Publish</DropdownItem>
+                <DropdownItem onClick={() => handlePublishClick(projID)}>{!published ? "Un-publish" : "Publish"}</DropdownItem>
                 <DropdownItem>Assign Team</DropdownItem>
                 <DropdownItem>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
@@ -178,7 +201,7 @@ export default ({ id, imgSrc, name, description, semester, to, onChildClick }) =
             Cancel
           </Button>
           <Button
-            onClick={() => handleClick(id)}
+            onClick={() => {handleClick(projID); delete_modal_toggle()}}
             small
             border
             textColor="primary-green"
