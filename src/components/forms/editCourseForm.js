@@ -1,8 +1,8 @@
 /**
  * @name CreateCourseForm
- * @author Mario Arturo Lopez Martinez (CSI 43C0 Spring 2020)
- * @overview Form to create a new course using GQL mutation
- * @example <CreateCourseForm />
+ * @author Chris Holle (CSI 43C0 Spring 2020)
+ * @overview Form to edit a course using GQL mutation
+ * @example <EditCourseForm />
  * @TODO Add styles to form
  */
 
@@ -11,14 +11,14 @@ import { useQuery, useMutation } from "@apollo/react-hooks"
 import { useForm } from "react-hook-form"
 import FormTitle from "components/titles/formTitle"
 import { GenerateOptions } from "utils/componentGeneration"
-import { GET_PROGRAMS, EDIT_COURSE  } from "../../data/queries";
+import { GET_COURSE_DEPARTMENT, EDIT_COURSE  } from "../../data/queries";
 
 export default ({ id, prefix, number, semester, active, year, name, startDate, endDate, onEditSuccess}) => {
   // Various states of our query fetch
-  const { loading, error, data } = useQuery(GET_PROGRAMS);
+  const { loading, error, data } = useQuery(GET_COURSE_DEPARTMENT);
   // Various states of our mutation
   const [
-    createCourse,
+    editCourse,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(EDIT_COURSE, {
     onCompleted: () => {onEditSuccess()}
@@ -28,7 +28,7 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
   const saved = false;
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
-    createCourse({
+    editCourse({
       variables: {
         id: id,
         name: values.name,
@@ -44,7 +44,7 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
 
   return (
     <div>
-      <FormTitle title={"Create A Course"} />
+      <FormTitle title={"Edit A Course"} />
       <form onSubmit={handleSubmit(onSubmit)} name="Edit Course">
         <label htmlFor="name">Course Name</label>
         <input
