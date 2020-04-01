@@ -47,7 +47,7 @@ export const COURSE_DELETE_QUERY = gql`
 `;
 
 // GQL query that pulls all departments for use in Course Forms
-export const GET_PROGRAMS = gql`
+export const GET_COURSE_DEPARTMENT = gql`
   query {
     departments {
       id
@@ -56,7 +56,7 @@ export const GET_PROGRAMS = gql`
   }
 `;
 
-// GQL mutation that allows us to create a course
+// GQL mutation that allows us to edit a course
 export const EDIT_COURSE = gql`
   mutation EditCourse(
     $id: ID!
@@ -103,6 +103,11 @@ export const PROGRAM_QUERY = gql`
     programs {
       id
       name
+      description
+      thumbnail {
+        name
+        id
+      }
     }
   }
 `;
@@ -114,6 +119,31 @@ export const PROGRAM_DELETE = gql`
       program {
         name
         id
+      }
+    }
+  }
+`;
+
+// GQL mutation that allows us to create a course
+export const EDIT_PROGRAM = gql`
+  mutation EditCourse(
+    $id: ID!
+    $name: String
+    $description: String
+  ) {
+    updateProgram(
+      input: {
+        where: { id: $id},
+        data: {
+          name: $name
+          description: $description
+        }
+      }
+    ) {
+      program {
+        id
+        name
+        description
       }
     }
   }
