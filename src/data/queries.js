@@ -159,6 +159,7 @@ export const STUDENT_QUERY = gql`
       name
       email
       roleLabel
+      archived
     }
   }
 `;
@@ -176,6 +177,35 @@ mutation DELETE_USER ($id: ID!)
       id
       email
       roleLabel
+    }
+  }
+}
+`;
+
+/**
+ * GraphQL Mutation
+ * Edit user by ID
+ */
+export const USER_EDIT_QUERY = gql`
+mutation ($id: ID!, $name: String, $email: String, $roleLabel: String, $archived: Boolean)
+{
+  updateUser(input: {
+      where: {
+        id: $id
+      },
+      data: { 
+        name: $name,
+        email: $email,
+        roleLabel: $roleLabel
+        archived: $archived
+      }
+    }) {
+    user {
+      name
+      id
+      email
+      roleLabel
+      archived
     }
   }
 }

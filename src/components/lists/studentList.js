@@ -25,6 +25,7 @@ import { Mutation } from "react-apollo";
 import { STUDENT_QUERY, USER_DELETE_QUERY } from "../../data/queries";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import Button from "components/btn"
+import EditUserForm from 'components/forms/editUserForm';
 
 
 /**
@@ -33,6 +34,10 @@ import Button from "components/btn"
  */
 export default () => {
   const { loading, error, data } = useQuery(STUDENT_QUERY);
+
+  // edit modal items
+  const [edit_modal, setEditModal] = useState(false);
+  const edit_modal_toggle = () => setEditModal(!edit_modal);
 
   // delete modal items
   const [del_modal, setDeleteModal] = useState(false);
@@ -61,9 +66,15 @@ export default () => {
               <IconTd>
                 <div align="right">
                   {/* TODO: Add Edit Functionality */}
-                  <Edit>
+                  <Edit onClick={edit_modal_toggle} >
                     <MdEdit color="white" />
                   </Edit>
+                  <Modal isOpen={edit_modal} toggle={edit_modal_toggle} >
+                    <ModalHeader toggle={edit_modal_toggle}>Edit Student</ModalHeader>
+                    <ModalBody>
+                      <EditUserForm id={node.id} name={node.name} email={node.email} archived={node.archived} key={node.id}/>
+                    </ModalBody>
+                  </Modal>
                   {/* Apollo Mutation for delete. Updates cache for student removal on front-end. */}
                   <Mutation mutation={USER_DELETE_QUERY} update={
                     (client) => {

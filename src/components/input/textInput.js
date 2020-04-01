@@ -24,7 +24,7 @@
 import React from "react"
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap"
 
-export default ({ label, placeholder, type, value, onChange, ...props }) => {
+export default ({ label, placeholder, type, ...props }) => {
   const InputStyle = {
     borderColor: "rgb(85,199,177)",
     borderRadius: props.rounded ? "0 10px 10px 0" : "0",
@@ -48,7 +48,7 @@ export default ({ label, placeholder, type, value, onChange, ...props }) => {
           <div style={LabelStyle}>{label}</div>
         </InputGroupText>
       </InputGroupAddon>
-      <Input style={InputStyle} type={type} placeholder={placeholder} value={value} onChange={onChange}></Input>
+      <Input style={InputStyle} type={type} placeholder={placeholder}></Input>
     </InputGroup>
   )
 }

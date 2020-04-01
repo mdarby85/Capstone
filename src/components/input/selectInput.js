@@ -22,7 +22,7 @@
 import React from "react"
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap"
 
-export default ({ children, label, type, value, onChange, ...props }) => {
+export default ({ children, label, type, ...props }) => {
   const InputStyle = {
     WebkitAppearance: "none",
     MozAppearance: "none",
@@ -55,7 +55,7 @@ export default ({ children, label, type, value, onChange, ...props }) => {
           <div style={LabelStyle}>{label}</div>
         </InputGroupText>
       </InputGroupAddon>
-      <Input type="select" style={InputStyle} multiple={props.multiple} value={value} onChange={onChange}>
+      <Input type="select" style={InputStyle} multiple={props.multiple}>
         {children}
       </Input>
     </InputGroup>
