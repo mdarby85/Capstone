@@ -34,8 +34,16 @@ export default () => {
   const { loading, error, data } = useQuery(STUDENT_QUERY);
 
   // edit modal items
-  const [edit_modal, setEditModal] = useState(false);
-  const edit_modal_toggle = () => setEditModal(!edit_modal);
+  const [edit_modal, setEditModal] = useState([]);
+  const edit_modal_toggle = (id) => {
+    let temp = [...edit_modal];
+    temp[id] = !temp[id];
+    
+    setEditModal(temp);
+  }
+  const add_modal = () => {
+    edit_modal.push(false);
+  }
 
   // delete modal items
   const [del_modal, setDeleteModal] = useState(false);
@@ -52,7 +60,7 @@ export default () => {
         {data && (
           <tbody>
           {/*{GenerateTableRows(data.users, ["name", "email"])}*/}
-          {data.users.map(node => (
+          {data.users.map((node, id) => (
             <tr key={node.id}>
               {fields.map((field, index) => {
                 if (field.includes("."))
@@ -63,14 +71,14 @@ export default () => {
                   return (<TableData key={index}>{node.confirmed ? "Yes" : "No"}</TableData>);
                 else return <TableData key={index}>{node[field]}</TableData>
               })}
+              {add_modal}
               <IconTd>
                 <div align="right">
-                  {/* TODO: Add Edit Functionality */}
-                  <Edit onClick={edit_modal_toggle} >
+                  <Edit onClick={() => edit_modal_toggle(id)} >
                     <MdEdit color="white" />
                   </Edit>
-                  <Modal isOpen={edit_modal} toggle={edit_modal_toggle} >
-                    <ModalHeader toggle={edit_modal_toggle}>Edit Student</ModalHeader>
+                  <Modal isOpen={edit_modal[id]} toggle={() => edit_modal_toggle(id)} >
+                    <ModalHeader toggle={() => edit_modal_toggle(id)}>Edit Student</ModalHeader>
                     <ModalBody>
                       <EditUserForm id={node.id} name={node.name} email={node.email} archived={node.archived} key={node.id}/>
                     </ModalBody>
