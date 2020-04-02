@@ -7,21 +7,25 @@
  */
 
 import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks"
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useForm } from "react-hook-form"
 import FormTitle from "components/titles/formTitle"
 import { GenerateOptions } from "utils/componentGeneration"
-import { EDIT_PROGRAM } from "../../data/queries";
+import { EDIT_PROGRAM, IMAGE_QUERY } from "../../data/queries";
+import { TEST_USER_ID } from "../../constants";
 
 
-export default ({ progID, progName, progDescription, onEditSuccess}) => {
+export default ({ progID, progName, progDescription, progThumbnail, onEditSuccess}) => {
   // Various states of our mutation
   const [
     editProgram,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(EDIT_PROGRAM, {
-    onCompleted: () => {onEditSuccess(); console.log("finished")}
+    onCompleted: () => {onEditSuccess()}
   });
+
+  const { data, loading, error } = useQuery(IMAGE_QUERY, {variables: {id: TEST_USER_ID}});
+  const [description, setDescription] = useState(progDescription);
 
   // Various states of our form
   const { handleSubmit, register, errors } = useForm();
@@ -31,11 +35,11 @@ export default ({ progID, progName, progDescription, onEditSuccess}) => {
       variables: {
         id: progID,
         name: values.name,
-        description: description
+        description: description,
+        thumbnail: values.thumbnail
       },
     });
   };
-  const [description, setDescription] = useState(progDescription);
 
   function handleChange(event) {
     setDescription(event.target.value);
@@ -71,17 +75,17 @@ export default ({ progID, progName, progDescription, onEditSuccess}) => {
         </label>
         <br />
         {/*TODO: Add functionality to pull image from image Library */}
-        <label htmlFor="image">Image</label>
+        <label htmlFor="thumbnail">Image</label>
         <select
-          name="image"
+          name="thumbnail"
           ref={register()}
         >
           <option disabled selected value="">
             Select An Image
           </option>
-          <option value="fall">Image 1</option>
-          <option value="spring">Image 2</option>
-          <option value="winter">Image 3</option>
+          {data && data.user && data.user.mediaLibrary.map(img => (
+            <option key={img.id} value={img.id} selected={img.id === progThumbnail}>{img.name}</option>
+          ))}
         </select>
         {errors.semester && <p>{errors.semester.message}</p>}
         <br />

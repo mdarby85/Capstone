@@ -96,6 +96,41 @@ export const EDIT_COURSE = gql`
   }
 `;
 
+// Image Queries
+export const IMAGE_QUERY = gql`
+query IMAGE_QUERY($id: ID!) {
+  user (id: $id) {
+    mediaLibrary {
+      name
+      url
+      id
+    }
+  }
+}
+`;
+
+// Image Upload
+export const USER_IMAGE_UPLOAD_MUTATION = gql`
+mutation UploadUserImages($id: ID! $imgID: [ID]) {
+  updateUser(input: { 
+    where: {id: $id},
+    data: {
+      mediaLibrary: $imgID
+    }
+  })  {
+    user {
+      name
+    	id
+      mediaLibrary {
+        name
+        id
+        url
+      }
+    }
+  }
+}
+`;
+
 
 // Program Queries
 export const PROGRAM_QUERY = gql`
@@ -130,6 +165,7 @@ export const EDIT_PROGRAM = gql`
     $id: ID!
     $name: String
     $description: String
+    $thumbnail: ID
   ) {
     updateProgram(
       input: {
@@ -137,6 +173,7 @@ export const EDIT_PROGRAM = gql`
         data: {
           name: $name
           description: $description
+          thumbnail: $thumbnail
         }
       }
     ) {
@@ -299,6 +336,7 @@ export const SPONSOR_QUERY = gql`
  * GraphQL query
  * Pull all Students to populate table
  * TODO: add functionality to only pull students connected with a professor
+ * TODO: Get rid of the hardcoding
  */
 export const STUDENT_QUERY = gql`
   {
