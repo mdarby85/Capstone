@@ -131,9 +131,13 @@ export default () => {
                               </Button>
                               {/* Button to delete Student */}
                               <Button
-                                onClick={() => mutation({
-                                  variables: {id: node.id}
-                                })}
+                                onClick={() => {
+                                  mutation({
+                                    variables: {id: node.id}
+                                  });
+                                  edit_modal.splice(id, 1);
+                                  del_modal.splice(id, 1);
+                                }}
                                 small
                                 border
                                 textColor="primary-green"
