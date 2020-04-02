@@ -41,13 +41,21 @@ export default () => {
     
     setEditModal(temp);
   }
-  const add_modal = () => {
+  const add_edit_modal = () => {
     edit_modal.push(false);
   }
 
   // delete modal items
-  const [del_modal, setDeleteModal] = useState(false);
-  const delete_modal_toggle = () => setDeleteModal(!del_modal);
+  const [del_modal, setDeleteModal] = useState([]);
+  const delete_modal_toggle = (id) => {
+    let temp = [...del_modal];
+    temp[id] = !temp[id];
+
+    setDeleteModal(temp);
+  }
+  const add_del_modal = () => {
+    del_modal.push(false);
+  }
 
   // Column field names
   const fields = ["name", "confirmed", "email"];
@@ -71,7 +79,8 @@ export default () => {
                   return (<TableData key={index}>{node.confirmed ? "Yes" : "No"}</TableData>);
                 else return <TableData key={index}>{node[field]}</TableData>
               })}
-              {add_modal}
+              {add_edit_modal}
+              {add_del_modal}
               <IconTd>
                 <div align="right">
                   <Edit onClick={() => edit_modal_toggle(id)} >
@@ -101,18 +110,18 @@ export default () => {
                     {mutation => (!node.archived ?
                       <span>
                           {/* Delete Button in table to trigger Delete Modal */}
-                          <Delete onClick={delete_modal_toggle}>
+                          <Delete onClick={() => delete_modal_toggle(id)}>
                             <MdDeleteForever color="white"/>
                           </Delete>
                           {/* TODO: Refactor Modal out of file */}
                           {/* Actual Modal that deletes the student when Delete is pressed */}
-                          <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
-                            <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Student</ModalHeader>
+                          <Modal isOpen={del_modal[id]} toggle={() => delete_modal_toggle(id)}>
+                            <ModalHeader toggle={() => delete_modal_toggle(id)} style={{textAlign: "center"}}>Delete Student</ModalHeader>
                             <ModalBody>
                               <h4 style={{textAlign: "center"}}> Are you sure you want to delete {node.name}'s account?</h4>
                               <hr />
                               <Button
-                                onClick={delete_modal_toggle}
+                                onClick={() => delete_modal_toggle(id)}
                                 border
                                 rounded
                                 small
