@@ -32,6 +32,7 @@ const SectionStyle = { paddingBottom: "3em" };
 
 export default () => {
   const { loading, error, data } = useQuery(PROGRAM_QUERY);
+
   // Column field names
   const fields = ["name"];
 
@@ -127,7 +128,7 @@ export default () => {
                 <Modal isOpen={edit_modal} backdrop={"static"} toggle={edit_modal_toggle}>
                 <ModalHeader toggle={edit_modal_toggle}>Edit Course</ModalHeader>
                 <ModalBody>
-                  <EditProgramForm progID={node.id} progName={node.name} progDescription={node.description}
+                  <EditProgramForm progID={node.id} progName={node.name} progDescription={node.description} progThumbnail={node.id}
                                    onEditSuccess={edit_modal_toggle} />
                 </ModalBody>
               </Modal>
