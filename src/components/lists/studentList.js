@@ -1,9 +1,10 @@
 /**
- * @author: Mario Arturo Lopez Martinez
- * @author: Chris Holle
+ * @author Mario Arturo Lopez Martinez
+ * @author Chris Holle
+ * @author Isaiah Bullard
  *
  * Latest update:
- * - Enabled delete functionality
+ * - Enabled edit functionality
  *
  * TODO: Refactor Modal out of file
  * TODO: Add sorting on table.
@@ -89,7 +90,7 @@ export default () => {
                   <Modal isOpen={edit_modal[id]} toggle={() => edit_modal_toggle(id)} >
                     <ModalHeader toggle={() => edit_modal_toggle(id)}>Edit Student</ModalHeader>
                     <ModalBody>
-                      <EditUserForm id={node.id} name={node.name} email={node.email} archived={node.archived} key={node.id}/>
+                      <EditUserForm id={node.id} name={node.name} email={node.email} archived={node.archived} roleLabel={node.roleLabel} key={node.id}/>
                     </ModalBody>
                   </Modal>
                   {/* Apollo Mutation for delete. Updates cache for student removal on front-end. */}
@@ -104,7 +105,7 @@ export default () => {
                         }
                       });
                       // Closes modal after delete
-                      delete_modal_toggle();
+                      delete_modal_toggle(id);
                     }
                   } key={node.id}>
                     {mutation => (!node.archived ?

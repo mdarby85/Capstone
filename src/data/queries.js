@@ -273,7 +273,8 @@ export const PROFESSOR_QUERY = gql`
       name
       email
       archived
-      department {
+      roleLabel
+      departments {
         name
       }
     }
@@ -288,9 +289,7 @@ export const SPONSOR_QUERY = gql`
       name
       email
       archived
-      sponsor {
-        name
-      }
+      roleLabel
     }
   }
 `;
