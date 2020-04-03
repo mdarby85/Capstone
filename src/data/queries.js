@@ -1,5 +1,5 @@
 /**
- * @author: Chris Holle
+ * @author: Chris Holle, Elisa Gonzalez
  * @name: queries.js
  * @description: File that contains all GraphQL queries.
  *
@@ -322,6 +322,56 @@ export const TEAM_DELETE_QUERY = gql`
   }
 `;
 
+/**
+ * CREATE_TEAM
+ * Description:
+ *      creates a team from the given parameters
+ * Parameters:
+ *      projectID: id of project team will be assigned to
+ *      studentsID: list of student ID's on team
+ *      name: team name
+ *      courseID: id of course team will be in
+ *      logo: id? of picture (not required)
+ */
+export const CREATE_TEAM = gql`
+ mutation CreateTeam(
+   $projectID:ID!
+   $studentsID:[ID]
+   $name:String!
+   $courseID:ID!
+ ){
+   createTeam(
+     input:{
+       data:{
+         name:$name
+         project:$projectID
+         course:$courseID
+         users:$studentsID
+       }
+     }
+   ){
+     team{
+       name
+       project{
+         id
+         name
+       }
+       course{
+         id
+         name
+       }
+       users{
+         id
+         name
+       }
+       logo{
+         id
+         name
+       }
+     }
+   }
+ }
+`;
 
 // User Queries
 

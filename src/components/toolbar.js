@@ -20,7 +20,7 @@ import OpenModalButton from "components/openModalButton"
 import CreateCourseForm from "components/forms/createCourseForm"
 import CreateProjectForm from "components/forms/createProjectForm"
 import CreateDepartmentForm from "components/forms/createDepartmentForm"
-import CreateProgramForm from "components/forms/createProgramForm"
+import CreateTeamForm from "components/forms/createTeamForm"
 
 const Wrapper = styled.div`
   position: fixed;
