@@ -44,6 +44,7 @@ import {
   Row
 } from "reactstrap";
 import Button from "components/btn"
+import EditTeamForm from "components/forms/editTeamForm"
 
 const DisplayCard = styled.div`
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
@@ -102,6 +103,10 @@ export default ({
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
+  // edit modal items
+  const [edit_modal, setEditModal] = useState(false);
+  const edit_modal_toggle = () => setEditModal(!edit_modal);
+
   // delete modal items
   const [del_modal, setDeleteModal] = useState(false);
   const delete_modal_toggle = () => setDeleteModal(!del_modal);
@@ -136,7 +141,7 @@ export default ({
               <DropdownMenu>
                 <DropdownItem header>Team Tools</DropdownItem>
                 <DropdownItem>Assign to Project</DropdownItem>
-                <DropdownItem>Edit</DropdownItem>
+                <DropdownItem onClick={edit_modal_toggle}>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -162,6 +167,13 @@ export default ({
           </Col>
         </Row>
       </DisplayBody>
+
+      <Modal isOpen={edit_modal} toggle={edit_modal_toggle}>
+        <ModalHeader toggle={edit_modal_toggle} style={{textAlign: "center"}}>Edit Team</ModalHeader>
+        <ModalBody>
+          <EditTeamForm name={teamName} id={id} />
+        </ModalBody>
+      </Modal>
 
       <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
         <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Team</ModalHeader>

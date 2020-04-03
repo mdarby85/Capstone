@@ -234,6 +234,10 @@ export const TEAM_QUERY = gql`
           year
         }
       }
+      users {
+        name
+        roleLabel
+      }
     }
   }
 `;
@@ -273,7 +277,7 @@ export const PROFESSOR_QUERY = gql`
       name
       email
       archived
-      department {
+      departments {
         name
       }
     }
