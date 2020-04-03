@@ -21,6 +21,7 @@ import CreateCourseForm from "components/forms/createCourseForm"
 import CreateProjectForm from "components/forms/createProjectForm"
 import CreateDepartmentForm from "components/forms/createDepartmentForm"
 import CreateTeamForm from "components/forms/createTeamForm"
+import CreateProgramForm from "components/forms/createTeamForm"
 
 const Wrapper = styled.div`
   position: fixed;
@@ -108,6 +109,13 @@ export default () => {
           </tr>
           <tr>
             <ButtonCell>
+              <OpenModalButton label="Create Team">
+                <CreateTeamForm />
+              </OpenModalButton>
+            </ButtonCell>
+          </tr>
+          <tr>
+            <ButtonCell>
               <Button
                 border
                 rounded
@@ -129,19 +137,6 @@ export default () => {
                 type="submit"
               >
                 Create Sponsor
-              </Button>
-            </ButtonCell>
-          </tr>
-          <tr>
-            <ButtonCell>
-              <Button
-                border
-                small
-                rounded
-                textColor="primary-green"
-                type="submit"
-              >
-                Create Team
               </Button>
             </ButtonCell>
           </tr>

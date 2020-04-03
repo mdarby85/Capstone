@@ -373,6 +373,31 @@ export const CREATE_TEAM = gql`
  }
 `;
 
+export const CREATE_TEAM_INFO = gql`
+query GET_INFO{
+  courses{
+    id
+    name
+    projects{
+      id
+      name
+    }
+  }
+  projects{
+    id
+    name
+  }
+  users(where: { roleLabel: "student" }) {
+     id
+     name
+  }
+  teams{
+    id
+    name
+  }   
+}
+`;
+
 // User Queries
 
 // Professor Queries

@@ -8,49 +8,25 @@
 import React from "react"
 import { useForm } from "react-hook-form"
 import { useQuery, useMutation } from "@apollo/react-hooks"
-import gql from "graphql-tag"
 import FormTitle from "components/titles/formTitle"
-import { CREATE_TEAM } from "../../data/queries"
+import { CREATE_TEAM, CREATE_TEAM_INFO } from "../../data/queries"
 import { GenerateOptions } from "utils/componentGeneration"
-
-const GET_INFO = gql`
-query GET_INFO{
-  courses{
-    id
-    name
-    projects{
-      id
-      name
-    }
-  }
-  projects{
-    id
-    name
-  }
-  users(where: { roleLabel: "student" }) {
-     id
-     name
-  }
-  teams{
-    id
-    name
-  }   
-}
-`
 
 export default () => {
 
   // Various states of our query fetch
-  const { loading, error, data } = useQuery(GET_INFO)
+  const { loading, error, data } = useQuery(CREATE_TEAM_INFO);
 
   // various states for out mutations
   const [
       createTeam,
       { loading: mutationLoading, error: mutationError },
-  ] = useMutation(CREATE_TEAM)
+  ] = useMutation(CREATE_TEAM, {
+    onCompleted: () => {alert("Team Successfully created! Please close the Create Team popup window.")}
+  });
 
   // various states for our form
-  const { handleSubmit, register, errors } = useForm()
+  const { handleSubmit, register, errors } = useForm();
 
   // on form submit, push values from form to GQL mutation
   const onSubmit = values => {
@@ -62,7 +38,7 @@ export default () => {
         courseID: values.course,
       }
     })
-   }
+   };
 
   return (
     <>
@@ -72,7 +48,7 @@ export default () => {
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
         {data && (
-            <>
+            <div>
               <label htmlFor="course">Course</label>
               <br/>
               <select
@@ -88,13 +64,13 @@ export default () => {
               </select>
               {errors.name && <p>{errors.name.message}</p>}
               <br />
-            </>
+            </div>
         )}
         <br />
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
         {data && (
-            <>
+            <div>
               <label htmlFor="project">Project</label>
               <br/>
               <select
@@ -110,14 +86,14 @@ export default () => {
               </select>
               {errors.name && <p>{errors.name.message}</p>}
               <br />
-            </>
+            </div>
         )}
 
           <br />
           {loading && <tr>Loading...</tr>}
           {error && <tr>Error: ${error.message}</tr>}
           {data && (
-              <>
+              <div>
                   <label htmlFor="teamName">Team Name</label>
                   <br/>
                   <input
@@ -130,14 +106,14 @@ export default () => {
                   </input>
                   {errors.name && <p>{errors.name.message}</p>}
                   <br />
-              </>
+              </div>
           )}
 
           <br />
           {loading && <tr>Loading...</tr>}
           {error && <tr>Error: ${error.message}</tr>}
           {data && (
-              <>
+              <div>
                   <label htmlFor="users">Users</label>
                   <br/>
                   <select
@@ -151,19 +127,8 @@ export default () => {
                   </select>
                   {errors.name && <p>{errors.name.message}</p>}
                   <br />
-              </>
+              </div>
           )}
-        <br/>
-
-        <label htmlFor="logo">Logo</label>
-        <br/>
-        <select
-            name="logo"
-        >
-            <option disabled selected value="">
-                Select A Logo
-            </option>
-        </select>
         <br/>
 
         <br/>
