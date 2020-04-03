@@ -2,10 +2,13 @@
  * @name toolbar.js
  *
  * @author Mario Arturo Lopez Martinez
+ * @author: Chris Holle
  *
  * @overview Access common actiions depending on your user role
  *
  * @TODO Finish implementing add users and teams
+ * @TODO: Update to allow modals to close on successful mutation
+ * @TODO: Make all buttons same size
  */
 
 import React from "react"
@@ -17,6 +20,7 @@ import OpenModalButton from "components/openModalButton"
 import CreateCourseForm from "components/forms/createCourseForm"
 import CreateProjectForm from "components/forms/createProjectForm"
 import CreateDepartmentForm from "components/forms/createDepartmentForm"
+import CreateProgramForm from "components/forms/createProgramForm"
 
 const Wrapper = styled.div`
   position: fixed;
@@ -35,7 +39,7 @@ const Wrapper = styled.div`
   &:hover > table {
     right: 2em;
   }
-`
+`;
 
 const Tools = styled.table`
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
@@ -76,22 +80,29 @@ export default () => {
         <tbody>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create A Project">
+              <OpenModalButton label="Create Project">
                 <CreateProjectForm />
               </OpenModalButton>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create A Department">
+              <OpenModalButton label="Create Department">
                 <CreateDepartmentForm />
               </OpenModalButton>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create A Course">
+              <OpenModalButton label="Create Course">
                 <CreateCourseForm />
+              </OpenModalButton>
+            </ButtonCell>
+          </tr>
+          <tr>
+            <ButtonCell>
+              <OpenModalButton label="Create Program">
+                <CreateProgramForm />
               </OpenModalButton>
             </ButtonCell>
           </tr>
@@ -104,7 +115,7 @@ export default () => {
                 textColor="primary-green"
                 type="submit"
               >
-                Add Professor
+                Create User
               </Button>
             </ButtonCell>
           </tr>
@@ -117,20 +128,7 @@ export default () => {
                 textColor="primary-green"
                 type="submit"
               >
-                Add Student
-              </Button>
-            </ButtonCell>
-          </tr>
-          <tr>
-            <ButtonCell>
-              <Button
-                border
-                rounded
-                small
-                textColor="primary-green"
-                type="submit"
-              >
-                Add Sponsor
+                Create Sponsor
               </Button>
             </ButtonCell>
           </tr>
@@ -143,7 +141,7 @@ export default () => {
                 textColor="primary-green"
                 type="submit"
               >
-                Add Team
+                Create Team
               </Button>
             </ButtonCell>
           </tr>

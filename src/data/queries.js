@@ -134,7 +134,7 @@ mutation UploadUserImages($id: ID! $imgID: [ID]) {
 
 // Program Queries
 export const PROGRAM_QUERY = gql`
-  {
+  query {
     programs {
       id
       name
@@ -142,6 +142,29 @@ export const PROGRAM_QUERY = gql`
       thumbnail {
         name
         id
+      }
+    }
+  }
+`;
+
+export const CREATE_PROGRAM_MUTATION = gql`
+  mutation Create_Program(
+    $name: String
+    $description: String
+    $thumbnail: ID
+  ) {
+    createProgram(
+      input: {
+        data: {
+          name: $name
+          description: $description
+          thumbnail: $thumbnail
+        }
+      }
+    ) {
+      program {
+        name
+        description
       }
     }
   }
@@ -161,7 +184,7 @@ export const PROGRAM_DELETE = gql`
 
 // GQL mutation that allows us to create a course
 export const EDIT_PROGRAM = gql`
-  mutation EditCourse(
+  mutation EditProgram(
     $id: ID!
     $name: String
     $description: String

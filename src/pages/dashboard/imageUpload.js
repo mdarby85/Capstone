@@ -105,6 +105,32 @@ export default () => {
         />
         <button type="submit">Upload</button>
       </form>
+      <br/>
+      <h2>{images ? "Images to upload:" : ""} </h2>
+
+      <Row style={{padding: "2rem"}}>
+
+        {Array.of(images).map(image => {
+        // let preview = URL.createObjectURL(image);
+        console.log("testing");
+        console.log(image);
+        let value = [];
+        if (image) {
+          for(let i = 0; i < image.length; i++) {
+            console.log(image[i]);
+            let val = image[i];
+            value.push(val);
+          }
+        }
+          return (value.map(img => (
+            <Col md={3}>
+              <p>{img.name}</p>
+              <DisplayImage src={URL.createObjectURL(img)}/>
+            </Col>
+          )))
+
+      })}
+      </Row>
 
       <hr style={{marginTop: "2rem", marginBottom: "2rem"}}/>
       <div>
