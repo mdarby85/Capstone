@@ -1,9 +1,10 @@
 /**
- * @author: Mario Arturo Lopez Martinez
- * @author: Chris Holle
+ * @author Mario Arturo Lopez Martinez
+ * @author Chris Holle
+ * @author Isaiah Bullard
  *
  * Latest update:
- * - Enabled delete functionality
+ * - Enabled edit functionality
  *
  * TODO: Refactor Modal out of file
  * TODO: Add sorting on table.
@@ -23,6 +24,7 @@ import { Mutation } from "react-apollo";
 import { STUDENT_QUERY, USER_DELETE_QUERY } from "../../data/queries";
 import { Modal, ModalBody, ModalHeader } from "reactstrap";
 import Button from "components/btn"
+import EditUserForm from 'components/forms/editUserForm';
 
 
 /**
@@ -32,9 +34,29 @@ import Button from "components/btn"
 export default () => {
   const { loading, error, data } = useQuery(STUDENT_QUERY);
 
+  // edit modal items
+  const [edit_modal, setEditModal] = useState([]);
+  const edit_modal_toggle = (id) => {
+    let temp = [...edit_modal];
+    temp[id] = !temp[id];
+    
+    setEditModal(temp);
+  }
+  const add_edit_modal = () => {
+    edit_modal.push(false);
+  }
+
   // delete modal items
-  const [del_modal, setDeleteModal] = useState(false);
-  const delete_modal_toggle = () => setDeleteModal(!del_modal);
+  const [del_modal, setDeleteModal] = useState([]);
+  const delete_modal_toggle = (id) => {
+    let temp = [...del_modal];
+    temp[id] = !temp[id];
+
+    setDeleteModal(temp);
+  }
+  const add_del_modal = () => {
+    del_modal.push(false);
+  }
 
   // Column field names
   const fields = ["name", "confirmed", "email"];
@@ -47,7 +69,7 @@ export default () => {
         {data && (
           <tbody>
           {/*{GenerateTableRows(data.users, ["name", "email"])}*/}
-          {data.users.map(node => (
+          {data.users.map((node, id) => (
             <tr key={node.id}>
               {fields.map((field, index) => {
                 if (field.includes("."))
@@ -58,12 +80,19 @@ export default () => {
                   return (<TableData key={index}>{node.confirmed ? "Yes" : "No"}</TableData>);
                 else return <TableData key={index}>{node[field]}</TableData>
               })}
+              {add_edit_modal}
+              {add_del_modal}
               <IconTd>
                 <div align="right">
-                  {/* TODO: Add Edit Functionality */}
-                  <Edit>
+                  <Edit onClick={() => edit_modal_toggle(id)} >
                     <MdEdit color="white" />
                   </Edit>
+                  <Modal isOpen={edit_modal[id]} toggle={() => edit_modal_toggle(id)} >
+                    <ModalHeader toggle={() => edit_modal_toggle(id)}>Edit Student</ModalHeader>
+                    <ModalBody>
+                      <EditUserForm id={node.id} name={node.name} email={node.email} archived={node.archived} roleLabel={node.roleLabel} key={node.id}/>
+                    </ModalBody>
+                  </Modal>
                   {/* Apollo Mutation for delete. Updates cache for student removal on front-end. */}
                   <Mutation mutation={USER_DELETE_QUERY} update={
                     (client) => {
@@ -76,24 +105,24 @@ export default () => {
                         }
                       });
                       // Closes modal after delete
-                      delete_modal_toggle();
+                      delete_modal_toggle(id);
                     }
                   } key={node.id}>
                     {mutation => (!node.archived ?
                       <span>
                           {/* Delete Button in table to trigger Delete Modal */}
-                          <Delete onClick={delete_modal_toggle}>
+                          <Delete onClick={() => delete_modal_toggle(id)}>
                             <MdDeleteForever color="white"/>
                           </Delete>
                           {/* TODO: Refactor Modal out of file */}
                           {/* Actual Modal that deletes the student when Delete is pressed */}
-                          <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
-                            <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Student</ModalHeader>
+                          <Modal isOpen={del_modal[id]} toggle={() => delete_modal_toggle(id)}>
+                            <ModalHeader toggle={() => delete_modal_toggle(id)} style={{textAlign: "center"}}>Delete Student</ModalHeader>
                             <ModalBody>
                               <h4 style={{textAlign: "center"}}> Are you sure you want to delete {node.name}'s account?</h4>
                               <hr />
                               <Button
-                                onClick={delete_modal_toggle}
+                                onClick={() => delete_modal_toggle(id)}
                                 border
                                 rounded
                                 small
@@ -103,9 +132,13 @@ export default () => {
                               </Button>
                               {/* Button to delete Student */}
                               <Button
-                                onClick={() => mutation({
-                                  variables: {id: node.id}
-                                })}
+                                onClick={() => {
+                                  mutation({
+                                    variables: {id: node.id}
+                                  });
+                                  edit_modal.splice(id, 1);
+                                  del_modal.splice(id, 1);
+                                }}
                                 small
                                 border
                                 textColor="primary-green"

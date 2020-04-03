@@ -408,7 +408,8 @@ export const PROFESSOR_QUERY = gql`
       name
       email
       archived
-      department {
+      roleLabel
+      departments {
         name
       }
     }
@@ -423,9 +424,7 @@ export const SPONSOR_QUERY = gql`
       name
       email
       archived
-      sponsor {
-        name
-      }
+      roleLabel
     }
   }
 `;
@@ -445,6 +444,7 @@ export const STUDENT_QUERY = gql`
       archived
       confirmed
       roleLabel
+      archived
     }
   }
 `;
@@ -454,16 +454,44 @@ export const STUDENT_QUERY = gql`
  * Delete user by ID
  */
 export const USER_DELETE_QUERY = gql`
-  mutation DELETE_USER ($id: ID!)
-  {
-    deleteUser(input: {where: {id: $id}}) {
-      user {
-        name
-        id
-        email
-        archived
-        roleLabel
-      }
+mutation DELETE_USER ($id: ID!)
+{
+  deleteUser(input: {where: {id: $id}}) {
+    user {
+      name
+      id
+      email
+      roleLabel
     }
   }
+}
+`;
+
+/**
+ * GraphQL Mutation
+ * Edit user by ID
+ */
+export const USER_EDIT_QUERY = gql`
+mutation ($id: ID!, $name: String, $email: String, $roleLabel: String, $archived: Boolean)
+{
+  updateUser(input: {
+      where: {
+        id: $id
+      },
+      data: { 
+        name: $name,
+        email: $email,
+        roleLabel: $roleLabel
+        archived: $archived
+      }
+    }) {
+    user {
+      name
+      id
+      email
+      roleLabel
+      archived
+    }
+  }
+}
 `;
