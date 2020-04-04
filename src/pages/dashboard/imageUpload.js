@@ -111,9 +111,6 @@ export default () => {
       <Row style={{padding: "2rem"}}>
 
         {Array.of(images).map(image => {
-        // let preview = URL.createObjectURL(image);
-        console.log("testing");
-        console.log(image);
         let value = [];
         if (image) {
           for(let i = 0; i < image.length; i++) {
@@ -138,12 +135,14 @@ export default () => {
           {loading && <p>Loading...</p>}
           {error && <p>Error: ${error.message}</p>}
           {data && data.user.mediaLibrary && data.user.mediaLibrary.map(node => (
-            <Col md={3}>
-              <p>{node.name}</p>
-              <Link to={`${API_URL}${node.url}`}>
-                <DisplayImage src={`${API_URL}${node.url}`}/>
-              </Link>
-            </Col>
+            <div key={node.id}>
+              <Col md={3}>
+                <p>{node.name}</p>
+                <Link to={`${API_URL}${node.url}`}>
+                  <DisplayImage src={`${API_URL}${node.url}`}/>
+                </Link>
+              </Col>
+            </div>
           ))}
         </Row>
       </div>

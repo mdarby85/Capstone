@@ -26,7 +26,9 @@ const SectionStyle = {
 };
 
 export default () => {
-  const { loading, error, data } = useQuery(COURSE_QUERY);
+  const { loading, error, data } = useQuery(COURSE_QUERY, {
+    pollInterval: 5000
+  });
 
   return (
     <div style={SectionStyle}>
@@ -35,7 +37,7 @@ export default () => {
       {data && data.courses &&
         data.courses.map(node => (
         <div key={node.id}>
-          <Mutation variables={node.id} mutation={COURSE_DELETE_QUERY} update={
+          <Mutation mutation={COURSE_DELETE_QUERY} update={
             (client) => {
               const { courses } = client.readQuery({query: COURSE_QUERY});
               client.writeQuery({

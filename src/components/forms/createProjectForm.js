@@ -4,6 +4,8 @@
  * @overview Form to create a new project
  * @example <CreateProjectForm />
  * @TODO Add styles to form.
+ * @TODO: Add thumbnail on Create for now
+ * @TODO: Move queries to queries file
  */
 
 import React from "react"
@@ -25,7 +27,7 @@ const GET_DATA = gql`
       name
     }
   }
-`
+`;
 
 // GQL mutation to create a new project
 const CREATE_PROJECT = gql`
@@ -63,18 +65,20 @@ const CREATE_PROJECT = gql`
       }
     }
   }
-`
+`;
 
-export default () => {
+export default ({ onCreateSuccess }) => {
   // Various states for our query
-  const { loading, error, data } = useQuery(GET_DATA)
+  const { loading, error, data } = useQuery(GET_DATA);
   // Various states for our mutation
   const [
     createProject,
     { loading: mutationLoading, error: mutationError },
-  ] = useMutation(CREATE_PROJECT)
+  ] = useMutation(CREATE_PROJECT, {
+    onCompleted: () => { onCreateSuccess(); }
+  });
   // Various states for our form
-  const { handleSubmit, register, errors } = useForm()
+  const { handleSubmit, register, errors } = useForm();
 
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
@@ -91,7 +95,7 @@ export default () => {
   }
 
   return (
-    <>
+    <div>
       <FormTitle title={"Create A Project"} />
       <form onSubmit={handleSubmit(onSubmit)} name="Create A Project Form">
         <label htmlFor="name">Project Name</label>
@@ -116,7 +120,7 @@ export default () => {
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
         {data && (
-          <>
+          <div>
             <label htmlFor="courese">Course</label>
             <select
               name="course"
@@ -145,7 +149,7 @@ export default () => {
               {GenerateOptions(data.programs, "id", "name")}
             </select>
             {errors.program && <p>{errors.program.message}</p>}
-          </>
+          </div>
         )}
         <br />
 
@@ -188,6 +192,6 @@ export default () => {
         {mutationLoading && <p>Loading...</p>}
         {mutationError && <p>Error submitting form. Please try again.</p>}
       </form>
-    </>
+    </div>
   )
 }

@@ -60,16 +60,18 @@ const CREATE_COURSE = gql`
   }
 `
 
-export default () => {
+export default ({ onCreateSuccess }) => {
   // Various states of our query fetch
   const { loading, error, data } = useQuery(GET_PROGRAMS);
   // Various states of our mutation
   const [
     createCourse,
     { loading: mutationLoading, error: mutationError },
-  ] = useMutation(CREATE_COURSE)
+  ] = useMutation(CREATE_COURSE, {
+    onCompleted: () => {onCreateSuccess();}
+  });
   // Various states of our form
-  const { handleSubmit, register, errors } = useForm()
+  const { handleSubmit, register, errors } = useForm();
 
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {

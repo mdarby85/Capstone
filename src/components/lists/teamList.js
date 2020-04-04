@@ -11,7 +11,9 @@ import { GenerateTeamCards } from "utils/componentGeneration"
 import { TEAM_DELETE_QUERY, TEAM_QUERY } from "../../data/queries";
 
 export default () => {
-  const { loading, error, data } = useQuery(TEAM_QUERY);
+  const { loading, error, data } = useQuery(TEAM_QUERY, {
+    pollInterval: 5000
+  });
 
   return (
     <div
@@ -28,7 +30,7 @@ export default () => {
       {data && data.teams && data.teams.map(node => {
         return (
           <div key={node.id}>
-            <Mutation variables={node.id} mutation={TEAM_DELETE_QUERY} update={
+            <Mutation mutation={TEAM_DELETE_QUERY} update={
               (client) => {
                 const { teams } = client.readQuery({query: TEAM_QUERY});
                 client.writeQuery({

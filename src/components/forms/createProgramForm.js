@@ -11,7 +11,7 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useForm } from "react-hook-form"
 import FormTitle from "components/titles/formTitle"
 import { GenerateOptions } from "utils/componentGeneration"
-import { CREATE_PROGRAM_MUTATION, IMAGE_QUERY } from "../../data/queries";
+import { CREATE_PROGRAM_MUTATION, IMAGE_QUERY, PROGRAM_QUERY } from "../../data/queries";
 import { TEST_USER_ID } from "../../constants";
 
 
@@ -21,7 +21,8 @@ export default ({ onCreateSuccess }) => {
     createProgram,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(CREATE_PROGRAM_MUTATION, {
-    onCompleted: () => { alert("Program Successfully Created! You may now close the popup window.") }
+    refetchQueries:() => ["PROGRAM_QUERY"],
+    onCompleted: () => { onCreateSuccess(); }
   });
 
   const { data, loading, error } = useQuery(IMAGE_QUERY, {variables: {id: TEST_USER_ID}});
@@ -46,7 +47,7 @@ export default ({ onCreateSuccess }) => {
 
   return (
     <div>
-      <FormTitle title={"Edit Program"} />
+      <FormTitle title={"Create Program"} />
       <form onSubmit={handleSubmit(onSubmit)} name="Edit Program">
         <label htmlFor="name">Program Name
           <input

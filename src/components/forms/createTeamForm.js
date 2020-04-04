@@ -12,7 +12,7 @@ import FormTitle from "components/titles/formTitle"
 import { CREATE_TEAM, CREATE_TEAM_INFO } from "../../data/queries"
 import { GenerateOptions } from "utils/componentGeneration"
 
-export default () => {
+export default ({ onCreateSuccess }) => {
 
   // Various states of our query fetch
   const { loading, error, data } = useQuery(CREATE_TEAM_INFO);
@@ -22,7 +22,7 @@ export default () => {
       createTeam,
       { loading: mutationLoading, error: mutationError },
   ] = useMutation(CREATE_TEAM, {
-    onCompleted: () => {alert("Team Successfully created! Please close the Create Team popup window.")}
+    onCompleted: () => { onCreateSuccess(); }
   });
 
   // various states for our form

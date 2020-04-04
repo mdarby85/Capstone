@@ -17,11 +17,6 @@ import { GoTools } from "react-icons/go"
 
 import Button from "components/btn"
 import OpenModalButton from "components/openModalButton"
-import CreateCourseForm from "components/forms/createCourseForm"
-import CreateProjectForm from "components/forms/createProjectForm"
-import CreateDepartmentForm from "components/forms/createDepartmentForm"
-import CreateTeamForm from "components/forms/createTeamForm"
-import CreateProgramForm from "components/forms/createTeamForm"
 
 const Wrapper = styled.div`
   position: fixed;
@@ -81,37 +76,27 @@ export default () => {
         <tbody>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Project">
-                <CreateProjectForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Project" formNumber={1}/>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Department">
-                <CreateDepartmentForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Department" formNumber={2}/>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Course">
-                <CreateCourseForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Course" formNumber={0}/>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Program">
-                <CreateProgramForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Program" formNumber={4}/>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Team">
-                <CreateTeamForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Team" formNumber={3}/>
             </ButtonCell>
           </tr>
           <tr>
