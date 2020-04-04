@@ -1,5 +1,6 @@
 /**
  * @author: Chris Holle
+ * @author: Matthew Darby
  * @name: queries.js
  * @description: File that contains all GraphQL queries.
  *
@@ -136,6 +137,10 @@ export const PROJECT_QUERY = gql`
         semester
         year
       }
+      team {
+        id
+        name
+      }
     }
   }
 `;
@@ -165,6 +170,7 @@ export const PROJECT_DELETE_QUERY = gql`
     }
   }
 `;
+
 /**
  * GraphQL Mutation
  * Publish/Unpublish Project
@@ -186,6 +192,29 @@ mutation EditProject(
       id
       name
       published
+    }
+  }
+}`;
+
+/**
+ * GraphQL mutation
+ * Assign a Project To a Team
+ */
+export const ASSIGN_Project_QUERY = gql`
+mutation AssignProjectToTeam($id: ID! $team: ID!) {
+  updateProject(input: {
+    where: {id: $id},
+    data: {
+      team: $team
+    }
+  })  {
+    project {
+      name
+        id
+      team {
+        name
+        id
+      }
     }
   }
 }`;
@@ -231,6 +260,29 @@ export const TEAM_DELETE_QUERY = gql`
     }
   }
 `;
+
+/**
+ * GraphQL mutation
+ * Assign a Team To a Project
+ */
+export const ASSIGN_TEAM_QUERY = gql`
+mutation AssignTeamToProject($id: ID! $project: ID!) {
+  updateTeam(input: {
+    where: {id: $id},
+    data: {
+      project: $project
+    }
+  })  {
+    team {
+      name
+        id
+      project {
+        name
+        id
+      }
+    }
+  }
+}`;
 
 
 // User Queries

@@ -44,6 +44,7 @@ import {
   Row
 } from "reactstrap";
 import Button from "components/btn"
+import AddTeamToProjectForm from "components/forms/addTeamToProjectForm"
 
 const DisplayCard = styled.div`
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
@@ -112,6 +113,10 @@ export default ({
     onChildClick(id);
   }
 
+  // add team to project modal items
+  const [addTeam_modal, setAddTeamModal] = useState(false);
+  const add_team_to_project_toggle = () => setAddTeamModal(!addTeam_modal);
+
   return (
     <DisplayCard>
       <DisplayBody>
@@ -135,7 +140,7 @@ export default ({
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Team Tools</DropdownItem>
-                <DropdownItem>Assign to Project</DropdownItem>
+                <DropdownItem onClick={add_team_to_project_modal}>Assign to Project</DropdownItem>
                 <DropdownItem>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
               </DropdownMenu>
@@ -165,6 +170,32 @@ export default ({
 
       <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
         <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Team</ModalHeader>
+        <ModalBody>
+          <h4 style={{textAlign: "center"}}> Are you sure you want to delete team {teamName}?</h4>
+          <hr />
+            <Button
+              onClick={delete_modal_toggle}
+              border
+              rounded
+              small
+              textColor="primary-green"
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={() => handleClick(id)}
+              small
+              border
+              textColor="primary-green"
+              style={{float: "right"}}
+            >
+              Delete
+            </Button>
+        </ModalBody>
+      </Modal>
+
+      <Modal isOpen={addTeam_modal} toggle={add_team_to_project_toggle}>
+      <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Team</ModalHeader>
         <ModalBody>
           <h4 style={{textAlign: "center"}}> Are you sure you want to delete team {teamName}?</h4>
           <hr />
