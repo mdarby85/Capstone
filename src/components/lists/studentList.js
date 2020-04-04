@@ -41,10 +41,10 @@ export default () => {
     temp[id] = !temp[id];
     
     setEditModal(temp);
-  }
+  };
   const add_edit_modal = () => {
     edit_modal.push(false);
-  }
+  };
 
   // delete modal items
   const [del_modal, setDeleteModal] = useState([]);
@@ -53,10 +53,10 @@ export default () => {
     temp[id] = !temp[id];
 
     setDeleteModal(temp);
-  }
+  };
   const add_del_modal = () => {
     del_modal.push(false);
-  }
+  };
 
   // Column field names
   const fields = ["name", "confirmed", "email"];
@@ -90,7 +90,7 @@ export default () => {
                   <Modal isOpen={edit_modal[id]} toggle={() => edit_modal_toggle(id)} >
                     <ModalHeader toggle={() => edit_modal_toggle(id)}>Edit Student</ModalHeader>
                     <ModalBody>
-                      <EditUserForm id={node.id} name={node.name} email={node.email} archived={node.archived} roleLabel={node.roleLabel} key={node.id}/>
+                      <EditUserForm id={node.id} name={node.name} email={node.email} archived={node.archived} roleLabel={node.roleLabel} key={node.id} onEditSuccess={() => edit_modal_toggle(id)}/>
                     </ModalBody>
                   </Modal>
                   {/* Apollo Mutation for delete. Updates cache for student removal on front-end. */}

@@ -10,14 +10,16 @@ import { useForm } from 'react-hook-form';
 import { USER_EDIT_QUERY } from '../../data/queries';
 
 
-export default ({name, email, roleLabel, archived, id}) => {
+export default ({name, email, roleLabel, archived, id, onEditSuccess}) => {
     const [archivedVal, setArchivedVal] = useState(archived);
 
     const { handleSubmit, register, errors } = useForm();
 
-    const [ createUser, { loading: mutationLoading, error: mutationError, data: mutationData }] = useMutation(USER_EDIT_QUERY);
+    const [ createUser, { loading: mutationLoading, error: mutationError, data: mutationData }] = useMutation(USER_EDIT_QUERY, {
+      onCompleted: () => { onEditSuccess() }
+    });
     
-    const roles = [ "student", "professor", "sponsorContact", "systemAdmin"]
+    const roles = [ "student", "professor", "sponsorContact", "systemAdmin"];
     
     const onSubmit = values => {
         createUser({

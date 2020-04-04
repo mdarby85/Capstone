@@ -21,7 +21,7 @@ export default ({ progID, progName, progDescription, progThumbnail, onEditSucces
     editProgram,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(EDIT_PROGRAM, {
-    onCompleted: () => {onEditSuccess()}
+    onCompleted: () => { onEditSuccess() }
   });
 
   const { data, loading, error } = useQuery(IMAGE_QUERY, {variables: {id: TEST_USER_ID}});
