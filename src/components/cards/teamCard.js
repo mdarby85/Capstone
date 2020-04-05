@@ -2,6 +2,8 @@
  * @name TeamCard
  * @author Chris Holle
  * @author Mario Arturo Lopez Martinez
+ * @author Matthew Darby
+ * @author Elisa Gonzalez
  *
  * @overview Card to be used to display project information.
  *
@@ -140,7 +142,7 @@ export default ({
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Team Tools</DropdownItem>
-                <DropdownItem onClick={add_team_to_project_modal}>Assign to Project</DropdownItem>
+                <DropdownItem onClick={add_team_to_project_toggle}>Assign to Project</DropdownItem>
                 <DropdownItem>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
               </DropdownMenu>
@@ -195,28 +197,9 @@ export default ({
       </Modal>
 
       <Modal isOpen={addTeam_modal} toggle={add_team_to_project_toggle}>
-      <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Team</ModalHeader>
+      <ModalHeader toggle={add_team_to_project_toggle} style={{textAlign: "center"}}>Assign to Project</ModalHeader>
         <ModalBody>
-          <h4 style={{textAlign: "center"}}> Are you sure you want to delete team {teamName}?</h4>
-          <hr />
-            <Button
-              onClick={delete_modal_toggle}
-              border
-              rounded
-              small
-              textColor="primary-green"
-            >
-              Cancel
-            </Button>
-            <Button
-              onClick={() => handleClick(id)}
-              small
-              border
-              textColor="primary-green"
-              style={{float: "right"}}
-            >
-              Delete
-            </Button>
+          <AddTeamToProjectForm team={teamName} id={id}/>
         </ModalBody>
       </Modal>
 
