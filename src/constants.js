@@ -13,3 +13,6 @@ export const PROGRAMS_API = API_URL + "/programs"
 export const SPONSORS_API = API_URL + "/sponsors"
 export const TEAMS_API = API_URL + "/teams"
 export const USERS_API = API_URL + "/users"
+
+// For testing purposes until users/roles is completed
+export const TEST_USER_ID = "5e7d421652bb2f192b50ba50";

@@ -175,7 +175,7 @@ export default ({ projID, imgSrc, name, publish, description, semester, to, onCh
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Project Tools</DropdownItem>
-                <DropdownItem onClick={() => handlePublishClick(projID)}>{published ? "Un-publish" : "Publish"}</DropdownItem>
+                <DropdownItem onClick={() => handlePublishClick(projID)}>{!published ? "Un-publish" : "Publish"}</DropdownItem>
                 <DropdownItem>Assign Team</DropdownItem>
                 <DropdownItem>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
