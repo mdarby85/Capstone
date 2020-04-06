@@ -1,52 +1,140 @@
 /**
  * @name CreateTeamForm
- *
- * @author Mario Arturo Lopez Martinez
- *
- * @overview @TODO
+ * @author Mario Arturo Lopez Martinez, Elisa Gonzalez
+ * @overview Form to create a team
+ * @TODO Add Styles to form
  */
 
-import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
-
-import Button from "components/btn"
+import React from "react"
+import { useForm } from "react-hook-form"
+import { useQuery, useMutation } from "@apollo/react-hooks"
 import FormTitle from "components/titles/formTitle"
-import TextInput from "components/input/textInput"
-import SelectInput from "components/input/selectInput"
-import { GenerateCheckboxes, GenerateOptions } from "utils/componentGeneration"
-import { COURSES_API, PROJECTS_API, USERS_API } from "src/constants"
-import axios from "axios"
+import { CREATE_TEAM, CREATE_TEAM_INFO } from "../../data/queries"
+import { GenerateOptions } from "utils/componentGeneration"
 
-const InputStyle = { paddingTop: "10px", paddingBottom: "10px" }
+export default ({ onCreateSuccess }) => {
 
-export default () => {
-  const [coureseOptions, setCoursesOptions] = useState([])
-  const [projectOptions, setProjectOptions] = useState([])
-  const [users, setUsers] = useState([])
+  // Various states of our query fetch
+  const { loading, error, data } = useQuery(CREATE_TEAM_INFO);
 
-  useEffect(() => {
-    axios.get(COURSES_API).then(response => setCoursesOptions(response.data))
-    axios.get(PROJECTS_API).then(response => setProjectOptions(response.data))
-    axios.get(USERS_API).then(response => setUsers(response.data))
-  }, [])
+  // various states for out mutations
+  const [
+      createTeam,
+      { loading: mutationLoading, error: mutationError },
+  ] = useMutation(CREATE_TEAM, {
+    onCompleted: () => { onCreateSuccess(); }
+  });
+
+  // various states for our form
+  const { handleSubmit, register, errors } = useForm();
+
+  // on form submit, push values from form to GQL mutation
+  const onSubmit = values => {
+    createTeam({
+      variables: {
+        projectID: values.project,
+        studentsID: values.users,
+        name: values.teamName,
+        courseID: values.course,
+      }
+    })
+   };
 
   return (
     <>
       <FormTitle title={"Create A Team"} />
-      <form name="Create A Form" method="POST">
-        <input type="hidden" name="form-name" value="Create Project Form" />
-        <TextInput style={InputStyle} label="Team Name" />
-        <SelectInput style={InputStyle} label="Course">
-          {GenerateOptions(coureseOptions)}
-        </SelectInput>
-        <SelectInput style={InputStyle} label="Project">
-          {GenerateOptions(projectOptions)}
-        </SelectInput>
-        {GenerateCheckboxes(users)}
+      <form onSubmit={handleSubmit(onSubmit)} name="Create A Form">
+        <br/>
+        {loading && <tr>Loading...</tr>}
+        {error && <tr>Error: ${error.message}</tr>}
+        {data && (
+            <div>
+              <label htmlFor="course">Course</label>
+              <br/>
+              <select
+                  name="course"
+                  ref={register({
+                    required: "This field is required.",
+                  })}
+              >
+                <option disabled selected value="">
+                  Select A Course
+                </option>
+                {GenerateOptions(data.courses, "id", "name")}
+              </select>
+              {errors.name && <p>{errors.name.message}</p>}
+              <br />
+            </div>
+        )}
         <br />
-        <Button medium type="submit" tag={Link}>
-          Submit
-        </Button>
+        {loading && <tr>Loading...</tr>}
+        {error && <tr>Error: ${error.message}</tr>}
+        {data && (
+            <div>
+              <label htmlFor="project">Project</label>
+              <br/>
+              <select
+                  name="project"
+                  ref={register({
+                    required: "This field is required.",
+                  })}
+              >
+                <option disabled selected value="">
+                  Select A Project
+                </option>
+                {GenerateOptions(data.projects, "id", "name")}
+              </select>
+              {errors.name && <p>{errors.name.message}</p>}
+              <br />
+            </div>
+        )}
+
+          <br />
+          {loading && <tr>Loading...</tr>}
+          {error && <tr>Error: ${error.message}</tr>}
+          {data && (
+              <div>
+                  <label htmlFor="teamName">Team Name</label>
+                  <br/>
+                  <input
+                      type="text"
+                      name="teamName"
+                      ref={register({
+                          required: "This field is required.",
+                      })}
+                  >
+                  </input>
+                  {errors.name && <p>{errors.name.message}</p>}
+                  <br />
+              </div>
+          )}
+
+          <br />
+          {loading && <tr>Loading...</tr>}
+          {error && <tr>Error: ${error.message}</tr>}
+          {data && (
+              <div>
+                  <label htmlFor="users">Users</label>
+                  <br/>
+                  <select
+                      multiple
+                      name="users"
+                      ref={register({
+                          required: "This field is required.",
+                      })}
+                  >
+                      {GenerateOptions(data.users, "id", "name")}
+                  </select>
+                  {errors.name && <p>{errors.name.message}</p>}
+                  <br />
+              </div>
+          )}
+        <br/>
+
+        <br/>
+        <input type="submit"/>
+        {mutationLoading && <p>Loading...</p>}
+        {mutationError && <p>Error submitting form. Please try again.</p>}
       </form>
     </>
   )

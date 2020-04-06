@@ -24,16 +24,18 @@ const CREATE_DEPARTMENT = gql`
       }
     }
   }
-`
+`;
 
-export default () => {
+export default ({ onCreateSuccess }) => {
   // Various states for our mutation
   const [
     createDepartment,
     { loading: mutationLoading, error: mutationError },
-  ] = useMutation(CREATE_DEPARTMENT)
+  ] = useMutation(CREATE_DEPARTMENT, {
+    onCompleted: () => {onCreateSuccess();}
+  });
   // Various states for our form
-  const { handleSubmit, register, errors } = useForm()
+  const { handleSubmit, register, errors } = useForm();
 
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
@@ -43,7 +45,7 @@ export default () => {
         description: values.description,
       },
     })
-  }
+  };
 
   return (
     <>

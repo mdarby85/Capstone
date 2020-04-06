@@ -79,9 +79,10 @@ export const GenerateTeamCards = nodes => {
     return (
       <div key={node.id} style={CardMargin}>
         <TeamCard
-          projectName={node.project.name}
-          semester={node.project.course.semester}
-          year={node.project.course.year}
+          id={node.id}
+          projectName={node.project && node.project.name !== null ? node.project.name : "Unassigned"}
+          semester={node.project && node.project.course.semester !== null ? node.project.semester : ""}
+          year={node.project && node.project.course.year !== null ? node.project.year : ""}
           teamName={node.name}
         />
       </div>
@@ -129,7 +130,7 @@ export const GenerateTableHeaders = fields => {
       <TableHeader style={{ textAlign: "right" }}>Actions</TableHeader>
     </tr>
   )
-}
+};
 
 /**
  * @author Mario Arturo Lopez Martinez (CSI 43C9 Spring 2020)
@@ -145,7 +146,7 @@ export const GenerateTableRows = (nodes, fields) => {
         if (field.includes("."))
           return (
             <TableData key={index}>{objectByString(node, field)}</TableData>
-          )
+          );
         else return <TableData key={index}>{node[field]}</TableData>
       })}
       <IconTd>
@@ -160,4 +161,4 @@ export const GenerateTableRows = (nodes, fields) => {
       </IconTd>
     </tr>
   ))
-}
+};

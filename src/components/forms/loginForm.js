@@ -28,7 +28,7 @@ export default inject(`store`)(
             style={{ margin: "auto" }}
             medium
           >
-            Continue to Dashbaord
+            Continue to Dashboard
           </Button>
           <Button onClick={() => logout()}>Logout</Button>
         </div>

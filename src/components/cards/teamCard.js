@@ -24,29 +24,43 @@
  *    editLink="/about"
  * />
  *
+ * @TODO: Add conditional to only show Assign to Project when project is not assigned
+ * @TODO: Refactor Delete Modal out of file
+ * @TODO: Only show options when on Dashboard
  */
 
-import React from "react"
+import React, { useState } from "react";
 import styled from "styled-components"
-import { Row, Col } from "reactstrap"
+import { FaEllipsisV } from "react-icons/fa"
+import {
+  Col,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  Row
+} from "reactstrap";
 import Button from "components/btn"
 
 const DisplayCard = styled.div`
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   width: 325px;
+  margin: 10px;
   border-radius: 8px 8px 0 0;
   text-align: center;
   transition-duration: 0.3s;
 
   &:hover {
     box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
-    transform: translateY(-5px);
   }
-`
+`;
 
 const DisplayBody = styled.div`
   padding: 1.5rem;
-`
+`;
 
 const DisplayTeamName = styled.h4`
   font-family: "BioSans", sans-serif;
@@ -55,7 +69,7 @@ const DisplayTeamName = styled.h4`
   font-size: 20px;
   color: ${props => props.theme.primaryGreen};
   margin: 0.5em 0;
-`
+`;
 
 const DisplayProjectName = styled.h6`
   font-family: "BioSans", sans-serif;
@@ -64,7 +78,7 @@ const DisplayProjectName = styled.h6`
   font-size: 15px;
   color: ${props => props.theme.primaryGreen};
   margin: 0.5em 0;
-`
+`;
 
 const DisplaySemester = styled.p`
   font-family: Georgia, serif;
@@ -73,42 +87,108 @@ const DisplaySemester = styled.p`
   text-align: left;
   padding: 0;
   color: #a1a1a1;
-`
+`;
 
 export default ({
-  projectName,
+  id, projectName,
   teamName,
   semester,
   year,
   viewLink,
   editLink,
-}) => (
-  <DisplayCard>
-    <DisplayBody>
-      <DisplayTeamName>{teamName}</DisplayTeamName>
-      <DisplayProjectName>{projectName}</DisplayProjectName>
-      <DisplaySemester>
-        {semester} {year}
-      </DisplaySemester>
-      <Row>
-        <Col>
-          <Button
-            to={viewLink}
-            textColor="primary-green"
-            border={true}
-            arrow={false}
-            rounded={true}
-            small={true}
-          >
-            View Page
-          </Button>
-        </Col>
-        <Col>
-          <Button to={editLink} textColor="white" solid rounded small>
-            Edit
-          </Button>
-        </Col>
-      </Row>
-    </DisplayBody>
-  </DisplayCard>
-)
+  onChildClick
+}) => {
+  // Dropdown items
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  // delete modal items
+  const [del_modal, setDeleteModal] = useState(false);
+  const delete_modal_toggle = () => setDeleteModal(!del_modal);
+
+  // Handles delete
+  function handleClick(id) {
+    // Callback to parent component
+    onChildClick(id);
+  }
+
+  return (
+    <DisplayCard>
+      <DisplayBody>
+        <Row>
+          <Col>
+            <DisplayTeamName>{teamName}</DisplayTeamName>
+            <DisplayProjectName>{projectName}</DisplayProjectName>
+            <DisplaySemester>
+              {semester} {year}
+            </DisplaySemester>
+          </Col>
+          <Col md={2}>
+            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+              <DropdownToggle style={{background: "inherit", border: "none", outline: "none"}}
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded={dropdownOpen}>
+                <div className={"team-card-tools-icon"}>
+                  <FaEllipsisV />
+                </div>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem header>Team Tools</DropdownItem>
+                <DropdownItem>Assign to Project</DropdownItem>
+                <DropdownItem>Edit</DropdownItem>
+                <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button
+              to={viewLink}
+              textColor="primary-green"
+              border={true}
+              arrow={false}
+              rounded={true}
+              small={true}
+            >
+              View Page
+            </Button>
+          </Col>
+          <Col>
+            <Button to={editLink} textColor="white" solid rounded small>
+              Edit
+            </Button>
+          </Col>
+        </Row>
+      </DisplayBody>
+
+      <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
+        <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Team</ModalHeader>
+        <ModalBody>
+          <h4 style={{textAlign: "center"}}> Are you sure you want to delete team {teamName}?</h4>
+          <hr />
+            <Button
+              onClick={delete_modal_toggle}
+              border
+              rounded
+              small
+              textColor="primary-green"
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={() => handleClick(id)}
+              small
+              border
+              textColor="primary-green"
+              style={{float: "right"}}
+            >
+              Delete
+            </Button>
+        </ModalBody>
+      </Modal>
+
+    </DisplayCard>
+  )
+}

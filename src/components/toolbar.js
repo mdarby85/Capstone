@@ -2,10 +2,13 @@
  * @name toolbar.js
  *
  * @author Mario Arturo Lopez Martinez
+ * @author: Chris Holle
  *
  * @overview Access common actiions depending on your user role
  *
  * @TODO Finish implementing add users and teams
+ * @TODO: Update to allow modals to close on successful mutation
+ * @TODO: Make all buttons same size
  */
 
 import React from "react"
@@ -14,9 +17,6 @@ import { GoTools } from "react-icons/go"
 
 import Button from "components/btn"
 import OpenModalButton from "components/openModalButton"
-import CreateCourseForm from "components/forms/createCourseForm"
-import CreateProjectForm from "components/forms/createProjectForm"
-import CreateDepartmentForm from "components/forms/createDepartmentForm"
 
 const Wrapper = styled.div`
   position: fixed;
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   &:hover > table {
     right: 2em;
   }
-`
+`;
 
 const Tools = styled.table`
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
@@ -76,23 +76,27 @@ export default () => {
         <tbody>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create A Project">
-                <CreateProjectForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Project" formNumber={1}/>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create A Department">
-                <CreateDepartmentForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Department" formNumber={2}/>
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create A Course">
-                <CreateCourseForm />
-              </OpenModalButton>
+              <OpenModalButton label="Create Course" formNumber={0}/>
+            </ButtonCell>
+          </tr>
+          <tr>
+            <ButtonCell>
+              <OpenModalButton label="Create Program" formNumber={4}/>
+            </ButtonCell>
+          </tr>
+          <tr>
+            <ButtonCell>
+              <OpenModalButton label="Create Team" formNumber={3}/>
             </ButtonCell>
           </tr>
           <tr>
@@ -104,7 +108,7 @@ export default () => {
                 textColor="primary-green"
                 type="submit"
               >
-                Add Professor
+                Create User
               </Button>
             </ButtonCell>
           </tr>
@@ -117,33 +121,7 @@ export default () => {
                 textColor="primary-green"
                 type="submit"
               >
-                Add Student
-              </Button>
-            </ButtonCell>
-          </tr>
-          <tr>
-            <ButtonCell>
-              <Button
-                border
-                rounded
-                small
-                textColor="primary-green"
-                type="submit"
-              >
-                Add Sponsor
-              </Button>
-            </ButtonCell>
-          </tr>
-          <tr>
-            <ButtonCell>
-              <Button
-                border
-                small
-                rounded
-                textColor="primary-green"
-                type="submit"
-              >
-                Add Team
+                Create Sponsor
               </Button>
             </ButtonCell>
           </tr>
