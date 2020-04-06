@@ -21,7 +21,7 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
     editCourse,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(EDIT_COURSE, {
-    onCompleted: () => {onEditSuccess()}
+    onCompleted: () => { onEditSuccess(); }
   });
   // Various states of our form
   const { handleSubmit, register, errors } = useForm();
@@ -110,10 +110,10 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
         {errors.endDate && <p>{errors.endDate.message}</p>}
         <br />
 
-        {loading && <tr>Loading...</tr>}
-        {error && <tr>Error: ${error.message}</tr>}
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: ${error.message}</p>}
         {data && (
-          <>
+          <div>
             <label htmlFor="prefix">Course Prefix</label>
             <select
               name="prefix"
@@ -128,7 +128,7 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
               </option>
               ))}
             </select>
-          </>
+          </div>
         )}
         {errors.prefix && <p>{errors.prefix.message}</p>}
         <br />

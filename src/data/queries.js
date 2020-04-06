@@ -1,5 +1,5 @@
 /**
- * @author: Chris Holle
+ * @author: Chris Holle, Matthew Darby, Elisa Gonzalez
  * @name: queries.js
  * @description: File that contains all GraphQL queries.
  *
@@ -134,7 +134,7 @@ mutation UploadUserImages($id: ID! $imgID: [ID]) {
 
 // Program Queries
 export const PROGRAM_QUERY = gql`
-  {
+  query {
     programs {
       id
       name
@@ -142,6 +142,29 @@ export const PROGRAM_QUERY = gql`
       thumbnail {
         name
         id
+      }
+    }
+  }
+`;
+
+export const CREATE_PROGRAM_MUTATION = gql`
+  mutation Create_Program(
+    $name: String
+    $description: String
+    $thumbnail: ID
+  ) {
+    createProgram(
+      input: {
+        data: {
+          name: $name
+          description: $description
+          thumbnail: $thumbnail
+        }
+      }
+    ) {
+      program {
+        name
+        description
       }
     }
   }
@@ -161,7 +184,7 @@ export const PROGRAM_DELETE = gql`
 
 // GQL mutation that allows us to create a course
 export const EDIT_PROGRAM = gql`
-  mutation EditCourse(
+  mutation EditProgram(
     $id: ID!
     $name: String
     $description: String
@@ -203,6 +226,10 @@ export const PROJECT_QUERY = gql`
         semester
         year
       }
+      team {
+        id
+        name
+      }
     }
   }
 `;
@@ -232,6 +259,7 @@ export const PROJECT_DELETE_QUERY = gql`
     }
   }
 `;
+
 /**
  * GraphQL Mutation
  * Publish/Unpublish Project
@@ -253,6 +281,29 @@ mutation EditProject(
       id
       name
       published
+    }
+  }
+}`;
+
+/**
+ * GraphQL mutation
+ * Assign a Project To a Team
+ */
+export const ASSIGN_PROJECT_QUERY = gql`
+mutation AssignProjectToTeam($id: ID! $team: ID!) {
+  updateProject(input: {
+    where: {id: $id},
+    data: {
+      team: $team
+    }
+  })  {
+    project {
+      name
+        id
+      team {
+        name
+        id
+      }
     }
   }
 }`;
@@ -299,6 +350,104 @@ export const TEAM_DELETE_QUERY = gql`
   }
 `;
 
+/**
+ * GraphQL mutation
+ * Assign a Team To a Project
+ */
+export const ASSIGN_TEAM_QUERY = gql`
+mutation AssignTeamToProject($id: ID! $project: ID!) {
+  updateTeam(input: {
+    where: {id: $id},
+    data: {
+      project: $project
+    }
+  })  {
+    team {
+      name
+        id
+      project {
+        name
+        id
+      }
+    }
+  }
+}`;
+
+/*
+ * CREATE_TEAM
+ * Description:
+ *      creates a team from the given parameters
+ * Parameters:
+ *      projectID: id of project team will be assigned to
+ *      studentsID: list of student ID's on team
+ *      name: team name
+ *      courseID: id of course team will be in
+ *      logo: id? of picture (not required)
+ */
+export const CREATE_TEAM = gql`
+ mutation CreateTeam(
+   $projectID:ID!
+   $studentsID:[ID]
+   $name:String!
+   $courseID:ID!
+ ){
+   createTeam(
+     input:{
+       data:{
+         name:$name
+         project:$projectID
+         course:$courseID
+         users:$studentsID
+       }
+     }
+   ){
+     team{
+       name
+       project{
+         id
+         name
+       }
+       course{
+         id
+         name
+       }
+       users{
+         id
+         name
+       }
+       logo{
+         id
+         name
+       }
+     }
+   }
+ }
+`;
+
+export const CREATE_TEAM_INFO = gql`
+query GET_INFO{
+  courses{
+    id
+    name
+    projects{
+      id
+      name
+    }
+  }
+  projects{
+    id
+    name
+  }
+  users(where: { roleLabel: "student" }) {
+     id
+     name
+  }
+  teams{
+    id
+    name
+  }   
+}
+`;
 
 // User Queries
 
@@ -310,7 +459,8 @@ export const PROFESSOR_QUERY = gql`
       name
       email
       archived
-      department {
+      roleLabel
+      departments {
         name
       }
     }
@@ -325,9 +475,7 @@ export const SPONSOR_QUERY = gql`
       name
       email
       archived
-      sponsor {
-        name
-      }
+      roleLabel
     }
   }
 `;
@@ -347,6 +495,7 @@ export const STUDENT_QUERY = gql`
       archived
       confirmed
       roleLabel
+      archived
     }
   }
 `;
@@ -356,16 +505,44 @@ export const STUDENT_QUERY = gql`
  * Delete user by ID
  */
 export const USER_DELETE_QUERY = gql`
-  mutation DELETE_USER ($id: ID!)
-  {
-    deleteUser(input: {where: {id: $id}}) {
-      user {
-        name
-        id
-        email
-        archived
-        roleLabel
-      }
+mutation DELETE_USER ($id: ID!)
+{
+  deleteUser(input: {where: {id: $id}}) {
+    user {
+      name
+      id
+      email
+      roleLabel
     }
   }
+}
+`;
+
+/**
+ * GraphQL Mutation
+ * Edit user by ID
+ */
+export const USER_EDIT_QUERY = gql`
+mutation ($id: ID!, $name: String, $email: String, $roleLabel: String, $archived: Boolean)
+{
+  updateUser(input: {
+      where: {
+        id: $id
+      },
+      data: { 
+        name: $name,
+        email: $email,
+        roleLabel: $roleLabel
+        archived: $archived
+      }
+    }) {
+    user {
+      name
+      id
+      email
+      roleLabel
+      archived
+    }
+  }
+}
 `;
