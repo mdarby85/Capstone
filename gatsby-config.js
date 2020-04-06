@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-plugin-root-import",
+      resolve: `gatsby-plugin-root-import`,
       options: {
         src: path.join(__dirname, "src"),
         utils: path.join(__dirname, "src/utils"),
@@ -39,7 +39,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
         id: gtm,
         includeInDevelopment: false,
@@ -76,7 +76,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    "gatsby-plugin-robots-txt",
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-styled-components`,
