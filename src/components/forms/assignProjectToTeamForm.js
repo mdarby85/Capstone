@@ -1,9 +1,8 @@
 /**
- * @name AddTeamToProjectForm
- * @author Matthew Darby, Elisa Gonzalez (CSI 43C9 Spring 2020)
- * @overview Form to add a team to an existing project
- * @example <AddTeamToProjectForm />
- * @TODO Add styles to form.
+ * @name AssignProjectToTeamForm
+ * @author Matthew Darby (CSI 43C9 Spring 2020)
+ * @overview Form to assign a project to an existing team
+ * @example <AssignProjectToTeamForm />
  */
 
 import React from "react"
@@ -17,69 +16,69 @@ import Button from "components/btn"
 // GQL query to retreive all programs and courses
 const GET_DATA = gql`
   query {
-    teams {
-      id
-      name
-    }
     projects {
       id
       name
     }
+    teams {
+      id
+      name
+    }
   }
 `
 
-// GQL mutation to add team to a project
-const ADD_TEAM_TO_PROJECT = gql`
-  mutation addTeamToProject(
-    $projectID:ID!,
-    $teamID:ID
+// GQL mutation to assign a project to a team
+const ASSIGN_PROJECT_TO_TEAM = gql`
+  mutation AssignProjectToTeam(
+    $id: ID!
+    $team: ID!
   ) {
     updateProject(
       input: {
-        where:{
-          id: $projectID
-        }
-        data:{
-          team: $teamID
+        where: {
+          id: $id
+        },
+      data: {
+        team: $team
+      }
+    })  {
+      project {
+        name
+        id
+        team {
+          name
+          id
         }
       }
-    ){
-      project{
-        id
-        team{
-          id
-          name
-        }
-      }    
+    }
   }
-}
-`
+  `
 
-export default ({team, id}) => {
+export default ({id}) => {
   // Various states for our query
   const { loading, error, data } = useQuery(GET_DATA);
   // Various states for our mutation
   const [
-    addTeamToProject,
+    AssignProjectToTeam,
     { loading: mutationLoading, error: mutationError },
-  ] = useMutation(ADD_TEAM_TO_PROJECT);
+  ] = useMutation(ASSIGN_PROJECT_TO_TEAM);
   // Various states for our form
   const { handleSubmit, register, errors } = useForm();
 
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
-    addTeamToProject({
+    AssignProjectToTeam({
       variables: {
-        projectID: values.projectName,
-        teamID: id,
+        teamID: values.teamName,
+        projectID: id,
       }
     })
   }
 
   return (
     <>
-      <FormTitle title={"Add Team To A Project"} />
-      <form onSubmit={handleSubmit(onSubmit)} name="Add Team To A Project Form">
+      <FormTitle title={"Assign A Project To A Team"} />
+      <form onSubmit={handleSubmit(onSubmit)} name="Assign a Project To a Team Form">
         <br/>
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
@@ -89,37 +88,18 @@ export default ({team, id}) => {
             <br/>
             <select
               name="teamName"
+              ref={register({
+                required: "This field is required",
+              })}
             >
               <option disabled selected value="">
-                {team}
+                Select A Team
               </option>
+              {GenerateOptions(data.teams, "id", "name")}
             </select>
             {errors.name && <p>{errors.name.message}</p>}
             <br />
           </>
-        )}
-        <br />
-
-        {loading && <tr>Loading...</tr>}
-        {error && <tr>Error: ${error.message}</tr>}
-        {data && (
-            <>
-              <label htmlFor="project">Project </label>
-              <br/>
-              <select
-                  name="projectName"
-                  ref={register({
-                    required: "This field is required.",
-                  })}
-              >
-                <option disabled selected value="">
-                  Select A Project
-                </option>
-                {GenerateOptions(data.projects, "id", "name")}
-              </select>
-              {errors.name && <p>{errors.name.message}</p>}
-              <br />
-            </>
         )}
         <br/>
         <hr/>

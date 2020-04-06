@@ -289,7 +289,7 @@ mutation EditProject(
  * GraphQL mutation
  * Assign a Project To a Team
  */
-export const ASSIGN_Project_QUERY = gql`
+export const ASSIGN_PROJECT_QUERY = gql`
 mutation AssignProjectToTeam($id: ID! $team: ID!) {
   updateProject(input: {
     where: {id: $id},
