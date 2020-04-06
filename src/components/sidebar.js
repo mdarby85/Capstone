@@ -172,6 +172,24 @@ let Sidebar = ({ data }) => (
           Forms
         </StyledNavBlock>
       </Link>
+
+      <Link to="/dashboard/imageUpload" activeClassName={"activeSidebar"}>
+        <StyledNavBlock>
+          <div
+            style={{
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            <IconContext.Provider value={IconStyle}>
+              <FaWpforms />
+            </IconContext.Provider>
+          </div>
+          Image Library
+        </StyledNavBlock>
+      </Link>
+
       <Link to="/" onClick={logout} activeClassName={"activeSidebar"}>
         <StyledNavBlock>
           <div

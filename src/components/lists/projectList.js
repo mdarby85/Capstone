@@ -14,7 +14,9 @@ import { PROJECT_DELETE_QUERY, PROJECT_QUERY } from "../../data/queries";
 
 
 export default () => {
-  const { data, loading, error } = useQuery(PROJECT_QUERY);
+  const { data, loading, error } = useQuery(PROJECT_QUERY, {
+    pollInterval: 5000
+  });
 
   return (
     <div
@@ -32,7 +34,7 @@ export default () => {
       <div
         key={node.id}
       >
-        <Mutation variables={node.id} mutation={PROJECT_DELETE_QUERY} update={
+        <Mutation mutation={PROJECT_DELETE_QUERY} update={
           (client) => {
             const { projects } = client.readQuery({query: PROJECT_QUERY});
             client.writeQuery({
