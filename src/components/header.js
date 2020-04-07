@@ -28,47 +28,55 @@ const Header = () => {
     }
 
     return (
-        <Navbar style={navBarStyle} className={"fixed-top"} expand="md">
+        <Navbar style={navBarStyle} className="fixed-top" expand="md">
             <Container>
-                <span id={"Navbar"}>
+                <span id="Navbar">
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="mr-auto" navbar>
                             <NavItem>
-                                <Link to={"/"} className={"nav-main"} activeClassName={"activeHeader"}>
-                                    <NavLink>Overview</NavLink>
+                                <Link to="/" className="nav-main nav-link" activeClassName="activeHeader">
+                                    Overview
                                 </Link>
                             </NavItem>
                             <NavItem>
-                                <Link to={"/sponsors"} className={"nav-main"} activeClassName={"activeHeader"}>
-                                    <NavLink>Sponsors</NavLink>
+                                <Link to="/sponsors" className="nav-main nav-link" activeClassName="activeHeader">
+                                    Sponsors
                                 </Link>
                             </NavItem>
                             <NavItem>
-                                <Link to={"/programs/browse"} className={"nav-main"} activeClassName={"activeHeader"}>
-                                    <NavLink>Programs</NavLink>
+                                <Link
+                                    to="/programs/browse"
+                                    className="nav-main nav-link"
+                                    activeClassName="activeHeader"
+                                >
+                                    Programs
                                 </Link>
                             </NavItem>
                             <NavItem>
-                                <Link to={"/projects/browse"} className={"nav-main"} activeClassName={"activeHeader"}>
-                                    <NavLink>Projects</NavLink>
+                                <Link
+                                    to="/projects/browse"
+                                    className="nav-main nav-link"
+                                    activeClassName="activeHeader"
+                                >
+                                    Projects
                                 </Link>
                             </NavItem>
                             <NavItem>
-                                <Link to={"/about"} className={"nav-main"} activeClassName={"activeHeader"}>
-                                    <NavLink>About</NavLink>
+                                <Link to="/about" className="nav-main nav-link" activeClassName="activeHeader">
+                                    About
                                 </Link>
                             </NavItem>
                         </Nav>
                         <Nav style={{ marginLeft: "35em" }} navbar>
                             <NavItem style={{ float: "right" }}>
-                                <Link to={"/contact"} className={"nav-extra"} activeClassName={"activeHeader"}>
-                                    <NavLink>Contact Us</NavLink>
+                                <Link to="/contact" className="nav-extra nav-link" activeClassName="activeHeader">
+                                    Contact Us
                                 </Link>
                             </NavItem>
                             <NavItem>
-                                <Link to={"/dashboard/login"} className={"nav-extra"}>
-                                    <NavLink>Dashboard</NavLink>
+                                <Link to="/dashboard/login" className="nav-extra nav-link">
+                                    Dashboard
                                 </Link>
                             </NavItem>
                         </Nav>

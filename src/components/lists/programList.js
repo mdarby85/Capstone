@@ -8,12 +8,12 @@
  *  - refactor modals out of file
  */
 
-import React, { useState } from "react"
+import React from "react"
 import { useQuery } from "@apollo/react-hooks"
 import { GenerateTableHeaders } from "utils/componentGeneration"
 import { StyledTable, TableData } from "components/styledComponents"
-import { objectByString } from "../../utils/functions"
-import { PROGRAM_QUERY } from "../../data/queries"
+import { objectByString } from "utils/functions"
+import { PROGRAM_QUERY } from "data/queries"
 import ProgramRow from "components/programRow"
 
 const SectionStyle = { paddingBottom: "3em" }
