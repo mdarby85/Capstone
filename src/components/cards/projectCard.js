@@ -2,6 +2,7 @@
  * @name ProjectCard
  * @author Chris Holle
  * @author Mario Arturo Lopez Martinez
+ * @author Matthew Darby
  *
  * @overview Card to be used to display project information.
  *
@@ -44,7 +45,8 @@ import {
 } from "reactstrap";
 import Button from "components/btn"
 import { useMutation } from "@apollo/react-hooks";
-import { PROJECT_PUBLISH_QUERY } from "../../data/queries";
+import { PROJECT_PUBLISH_QUERY, ASSIGN_PROJECT_QUERY } from "../../data/queries";
+import AssignProjectToTeamForm from "components/forms/assignProjectToTeamForm";
 
 
 const DisplayCard = styled.div`
@@ -113,7 +115,14 @@ const DisplayLearnMore = styled.span`
   }
 `;
 
-export default ({ projID, imgSrc, name, publish, description, semester, to, onChildClick }) => {
+export default ({ projID, imgSrc, name,
+  teamName,
+  publish, 
+  description, 
+  semester, 
+  to, 
+  onChildClick 
+}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -128,6 +137,10 @@ export default ({ projID, imgSrc, name, publish, description, semester, to, onCh
   const [updatePublished, {errorPub}] = useMutation(PROJECT_PUBLISH_QUERY, {
     variables: { id, published }
   });
+
+  // assign project to team modal items
+  const [assignProject_modal, setAssignProjectModal] = useState(false);
+  const assign_project_to_team_toggle = () => setAssignProjectModal(!assignProject_modal);
 
   // Function for callback listening
   function handleClick(projID) {
@@ -176,7 +189,7 @@ export default ({ projID, imgSrc, name, publish, description, semester, to, onCh
               <DropdownMenu>
                 <DropdownItem header>Project Tools</DropdownItem>
                 <DropdownItem onClick={() => handlePublishClick(projID)}>{!published ? "Un-publish" : "Publish"}</DropdownItem>
-                <DropdownItem>Assign Team</DropdownItem>
+                <DropdownItem onClick={assign_project_to_team_toggle}>Assign Team</DropdownItem>
                 <DropdownItem>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
               </DropdownMenu>
@@ -209,6 +222,13 @@ export default ({ projID, imgSrc, name, publish, description, semester, to, onCh
           >
             Delete
           </Button>
+        </ModalBody>
+      </Modal>
+
+      <Modal isOpen={assignProject_modal} toggle={assign_project_to_team_toggle}>
+      <ModalHeader toggle={assign_project_to_team_toggle} style={{textAlign: "center"}}>Assign to Project</ModalHeader>
+        <ModalBody>
+          <AssignProjectToTeamForm id={id}/>
         </ModalBody>
       </Modal>
     </DisplayCard>

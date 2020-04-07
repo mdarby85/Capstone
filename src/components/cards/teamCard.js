@@ -2,6 +2,8 @@
  * @name TeamCard
  * @author Chris Holle
  * @author Mario Arturo Lopez Martinez
+ * @author Matthew Darby
+ * @author Elisa Gonzalez
  *
  * @overview Card to be used to display project information.
  *
@@ -45,6 +47,7 @@ import {
 } from "reactstrap";
 import Button from "components/btn"
 import EditTeamForm from "components/forms/editTeamForm"
+import AddTeamToProjectForm from "components/forms/addTeamToProjectForm"
 
 const DisplayCard = styled.div`
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
@@ -119,6 +122,10 @@ export default ({
     onChildClick(id);
   }
 
+  // add team to project modal items
+  const [addTeam_modal, setAddTeamModal] = useState(false);
+  const add_team_to_project_toggle = () => setAddTeamModal(!addTeam_modal);
+
   return (
     <DisplayCard>
       <DisplayBody>
@@ -142,7 +149,7 @@ export default ({
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Team Tools</DropdownItem>
-                <DropdownItem>Assign to Project</DropdownItem>
+                <DropdownItem onClick={add_team_to_project_toggle}>Assign to Project</DropdownItem>
                 <DropdownItem onClick={edit_modal_toggle}>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
               </DropdownMenu>
@@ -200,6 +207,13 @@ export default ({
             >
               Delete
             </Button>
+        </ModalBody>
+      </Modal>
+
+      <Modal isOpen={addTeam_modal} toggle={add_team_to_project_toggle}>
+      <ModalHeader toggle={add_team_to_project_toggle} style={{textAlign: "center"}}>Assign to Project</ModalHeader>
+        <ModalBody>
+          <AddTeamToProjectForm team={teamName} id={id}/>
         </ModalBody>
       </Modal>
 
