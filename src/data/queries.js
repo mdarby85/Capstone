@@ -287,6 +287,11 @@ export const TEAM_QUERY = gql`
       id
       name
       archived
+      logo {
+        name
+        url
+        id
+      }
       project {
         name
         course {
@@ -296,6 +301,7 @@ export const TEAM_QUERY = gql`
       }
       users {
         name
+        id
         roleLabel
       }
     }
@@ -448,7 +454,6 @@ export const STUDENT_QUERY = gql`
       archived
       confirmed
       roleLabel
-      archived
     }
   }
 `;

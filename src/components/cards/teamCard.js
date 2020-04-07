@@ -97,7 +97,9 @@ export default ({
   year,
   viewLink,
   editLink,
-  onChildClick
+  onChildClick,
+  logo,
+  users
 }) => {
   // Dropdown items
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -171,7 +173,7 @@ export default ({
       <Modal isOpen={edit_modal} toggle={edit_modal_toggle}>
         <ModalHeader toggle={edit_modal_toggle} style={{textAlign: "center"}}>Edit Team</ModalHeader>
         <ModalBody>
-          <EditTeamForm name={teamName} id={id} />
+          <EditTeamForm name={teamName} logo={logo ? logo : undefined} users={users} id={id} />
         </ModalBody>
       </Modal>
 
