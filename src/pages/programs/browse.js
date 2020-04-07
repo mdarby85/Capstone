@@ -29,6 +29,7 @@ export default () => {
                     data.programs &&
                     data.programs.map(node => (
                         <Program
+                            key={node.id}
                             imgSrc={node.thumbnail ? `${API_URL}${node.thumbnail.url}` : testImg}
                             title={node.name}
                             link={node.link}
