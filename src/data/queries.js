@@ -315,12 +315,22 @@ export const TEAM_QUERY = gql`
       id
       name
       archived
+      logo {
+        name
+        url
+        id
+      }
       project {
         name
         course {
           semester
           year
         }
+      }
+      users {
+        name
+        id
+        roleLabel
       }
     }
   }
@@ -449,6 +459,40 @@ query GET_INFO{
 }
 `;
 
+/**
+ * Edit Team Query
+ * 
+ * Description: Edits a team by its ID. Edits the name, logo, and members of the team.
+ */
+export const EDIT_TEAM_QUERY = gql`
+  mutation ($id: ID!, $name: String, $logo: ID, $users: [ID]) 
+  {
+    updateTeam(input: {
+      where: {
+        id: $id
+      },
+      data: {
+        name: $name
+        logo: $logo
+        users: $users
+      }
+    }) {
+      team {
+        name
+        users {
+          name
+          id
+        }
+        logo {
+          url
+          name
+          id
+        }
+      }
+    }
+  }
+`
+
 // User Queries
 
 // Professor Queries
@@ -495,7 +539,6 @@ export const STUDENT_QUERY = gql`
       archived
       confirmed
       roleLabel
-      archived
     }
   }
 `;

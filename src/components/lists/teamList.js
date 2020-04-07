@@ -49,6 +49,8 @@ export default () => {
                   semester={node.project && node.project.course.semester !== null ? node.project.semester : ""}
                   year={node.project && node.project.course.year !== null ? node.project.year : ""}
                   teamName={node.name}
+                  logo={node.logo}
+                  users={node.users}
                   onChildClick={(e) => {postMutation({variables: {id: e}})}}
                 /> : "")
               }

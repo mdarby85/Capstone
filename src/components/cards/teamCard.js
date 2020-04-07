@@ -46,6 +46,7 @@ import {
   Row
 } from "reactstrap";
 import Button from "components/btn"
+import EditTeamForm from "components/forms/editTeamForm"
 import AddTeamToProjectForm from "components/forms/addTeamToProjectForm"
 
 const DisplayCard = styled.div`
@@ -99,11 +100,17 @@ export default ({
   year,
   viewLink,
   editLink,
-  onChildClick
+  onChildClick,
+  logo,
+  users
 }) => {
   // Dropdown items
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
+
+  // edit modal items
+  const [edit_modal, setEditModal] = useState(false);
+  const edit_modal_toggle = () => setEditModal(!edit_modal);
 
   // delete modal items
   const [del_modal, setDeleteModal] = useState(false);
@@ -143,7 +150,7 @@ export default ({
               <DropdownMenu>
                 <DropdownItem header>Team Tools</DropdownItem>
                 <DropdownItem onClick={add_team_to_project_toggle}>Assign to Project</DropdownItem>
-                <DropdownItem>Edit</DropdownItem>
+                <DropdownItem onClick={edit_modal_toggle}>Edit</DropdownItem>
                 <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -163,12 +170,19 @@ export default ({
             </Button>
           </Col>
           <Col>
-            <Button to={editLink} textColor="white" solid rounded small>
+            <Button onClick={edit_modal_toggle} to={editLink} textColor="white" solid rounded small>
               Edit
             </Button>
           </Col>
         </Row>
       </DisplayBody>
+
+      <Modal isOpen={edit_modal} toggle={edit_modal_toggle}>
+        <ModalHeader toggle={edit_modal_toggle} style={{textAlign: "center"}}>Edit Team</ModalHeader>
+        <ModalBody>
+          <EditTeamForm name={teamName} logo={logo ? logo : undefined} users={users} id={id} />
+        </ModalBody>
+      </Modal>
 
       <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
         <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Team</ModalHeader>
