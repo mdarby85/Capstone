@@ -8,7 +8,7 @@
  * Last Modified: February 10th, 2020
  */
 
- // Construct a quick HTTP client for testing an endpoint
+// Construct a quick HTTP client for testing an endpoint
 const http = require("http")
 
 const options = {
@@ -22,7 +22,7 @@ const options = {
   timeout: 2000,
 }
 
-// Testing for the status code 204 
+// Testing for the status code 204
 // More info here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204
 const request = http.get(options, res => {
   console.log(`STATUS: ${res.statusCode}`)
@@ -33,7 +33,7 @@ const request = http.get(options, res => {
   }
 })
 
-request.on("error", function (err) {
+request.on("error", function(err) {
   console.error(`ERROR: ${err.message}`)
   process.exit(1)
 })

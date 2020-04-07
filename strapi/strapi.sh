@@ -1,10 +1,9 @@
 #!/bin/sh
 
 # Based on configuration scripts found at: https://github.com/STUkh/gatsby-strapi-docker/
-# 
 # Author(s): Mario Arturo Lopez Martinez
 # File: strapi/strapi.sh
-# Last Modified: February 10th, 2020
+# Last Modified: April 7th, 2020
 
 # Command stops the a script from executing if a command or pipeline runs into an error.
 set -ea
@@ -35,25 +34,27 @@ EXTRA_ARGS=${EXTRA_ARGS:-}
 if [ ! -f "$APP_NAME/package.json" ]
 then
     strapi new ${APP_NAME} --dbclient=$DATABASE_CLIENT --dbhost=$DATABASE_HOST --dbport=$DATABASE_PORT --dbsrv=$DATABASE_SRV --dbname=$DATABASE_NAME --dbusername=$DATABASE_USERNAME --dbpassword=$DATABASE_PASSWORD --dbssl=$DATABASE_SSL --dbauth=$DATABASE_AUTHENTICATION_DATABASE $EXTRA_ARGS
-    yarn
-# Else, run npm install in our specified directory
-elif [ ! -d "$APP_NAME/node_modules" ]
+fi
+
+# If node modules aren't installed, run yarn install
+if [ ! -d "$APP_NAME/node_modules" ]
 then
-    npm install --prefix ./$APP_NAME
+    cd ./${APP_NAME}
+    yarn
 fi
 
 # Change working directory
 cd $APP_NAME
 
 # I am aware of `yarn create strapi-app my-project --quickstart
-# This method of starting up a new project doesn't (currentyl)
+# This method of starting up a new project doesn't (currently)
 # allow for passing of all desired parameters 
 
 # Generate build folder if it doesn't exist to access our Strapi dashbaord
 # [ ! -f "$APP_NAME/build/public/index.html" ] && yarn build
 
 # Start the strapi project
-# You can install plugins but it just takes a hella long time for the to install, be patient
+# You can install plugins but it just takes a long time to install, be patient
 strapi develop
 
 # Set a variable to track Strapi's process ID

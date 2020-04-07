@@ -22,16 +22,15 @@ export const COURSE_QUERY = gql`
       archived
     }
   }
-`;
+`
 
 /**
  * GraphQL Mutation
  * Delete course by ID
  */
 export const COURSE_DELETE_QUERY = gql`
-  mutation DELETE_COURSE ($id: ID!)
-  {
-    deleteCourse(input: {where: {id: $id}}) {
+  mutation DELETE_COURSE($id: ID!) {
+    deleteCourse(input: { where: { id: $id } }) {
       course {
         id
         name
@@ -44,7 +43,7 @@ export const COURSE_DELETE_QUERY = gql`
       }
     }
   }
-`;
+`
 
 // GQL query that pulls all departments for use in Course Forms
 export const GET_COURSE_DEPARTMENT = gql`
@@ -54,7 +53,7 @@ export const GET_COURSE_DEPARTMENT = gql`
       prefix
     }
   }
-`;
+`
 
 // GQL mutation that allows us to edit a course
 export const EDIT_COURSE = gql`
@@ -70,7 +69,7 @@ export const EDIT_COURSE = gql`
   ) {
     updateCourse(
       input: {
-        where: { id: $id},
+        where: { id: $id }
         data: {
           name: $name
           year: $year
@@ -94,43 +93,37 @@ export const EDIT_COURSE = gql`
       }
     }
   }
-`;
+`
 
 // Image Queries
 export const IMAGE_QUERY = gql`
-query IMAGE_QUERY($id: ID!) {
-  user (id: $id) {
-    mediaLibrary {
-      name
-      url
-      id
-    }
-  }
-}
-`;
-
-// Image Upload
-export const USER_IMAGE_UPLOAD_MUTATION = gql`
-mutation UploadUserImages($id: ID! $imgID: [ID]) {
-  updateUser(input: { 
-    where: {id: $id},
-    data: {
-      mediaLibrary: $imgID
-    }
-  })  {
-    user {
-      name
-    	id
+  query IMAGE_QUERY($id: ID!) {
+    user(id: $id) {
       mediaLibrary {
         name
-        id
         url
+        id
       }
     }
   }
-}
-`;
+`
 
+// Image Upload
+export const USER_IMAGE_UPLOAD_MUTATION = gql`
+  mutation UploadUserImages($id: ID!, $imgID: [ID]) {
+    updateUser(input: { where: { id: $id }, data: { mediaLibrary: $imgID } }) {
+      user {
+        name
+        id
+        mediaLibrary {
+          name
+          id
+          url
+        }
+      }
+    }
+  }
+`
 
 // Program Queries
 export const PROGRAM_QUERY = gql`
@@ -145,21 +138,13 @@ export const PROGRAM_QUERY = gql`
       }
     }
   }
-`;
+`
 
 export const CREATE_PROGRAM_MUTATION = gql`
-  mutation Create_Program(
-    $name: String
-    $description: String
-    $thumbnail: ID
-  ) {
+  mutation Create_Program($name: String, $description: String, $thumbnail: ID) {
     createProgram(
       input: {
-        data: {
-          name: $name
-          description: $description
-          thumbnail: $thumbnail
-        }
+        data: { name: $name, description: $description, thumbnail: $thumbnail }
       }
     ) {
       program {
@@ -168,19 +153,18 @@ export const CREATE_PROGRAM_MUTATION = gql`
       }
     }
   }
-`;
+`
 
 export const PROGRAM_DELETE = gql`
-  mutation DELETE_PROGRAM ($id: ID!)
-  {
-    deleteProgram(input: {where: {id: $id}}) {
+  mutation DELETE_PROGRAM($id: ID!) {
+    deleteProgram(input: { where: { id: $id } }) {
       program {
         name
         id
       }
     }
   }
-`;
+`
 
 // GQL mutation that allows us to create a course
 export const EDIT_PROGRAM = gql`
@@ -192,12 +176,8 @@ export const EDIT_PROGRAM = gql`
   ) {
     updateProgram(
       input: {
-        where: { id: $id},
-        data: {
-          name: $name
-          description: $description
-          thumbnail: $thumbnail
-        }
+        where: { id: $id }
+        data: { name: $name, description: $description, thumbnail: $thumbnail }
       }
     ) {
       program {
@@ -207,7 +187,7 @@ export const EDIT_PROGRAM = gql`
       }
     }
   }
-`;
+`
 
 // Project Queries
 export const PROJECT_QUERY = gql`
@@ -232,16 +212,15 @@ export const PROJECT_QUERY = gql`
       }
     }
   }
-`;
+`
 
 /**
  * GraphQL Mutation
  * Delete project by ID
  */
 export const PROJECT_DELETE_QUERY = gql`
-  mutation DELETE_PROJECT ($id: ID!)
-  {
-    deleteProject(input: {where: {id: $id}}) {
+  mutation DELETE_PROJECT($id: ID!) {
+    deleteProject(input: { where: { id: $id } }) {
       project {
         id
         name
@@ -258,55 +237,44 @@ export const PROJECT_DELETE_QUERY = gql`
       }
     }
   }
-`;
+`
 
 /**
  * GraphQL Mutation
  * Publish/Unpublish Project
  */
 export const PROJECT_PUBLISH_QUERY = gql`
-mutation EditProject(
-  $id: ID!
-  $published: Boolean!
-  ) {
-  updateProject(
-    input: {
-      where: { id: $id},
-      data: {
-        published: $published
+  mutation EditProject($id: ID!, $published: Boolean!) {
+    updateProject(
+      input: { where: { id: $id }, data: { published: $published } }
+    ) {
+      project {
+        id
+        name
+        published
       }
     }
-  ) {
-    project {
-      id
-      name
-      published
-    }
   }
-}`;
+`
 
 /**
  * GraphQL mutation
  * Assign a Project To a Team
  */
 export const ASSIGN_PROJECT_QUERY = gql`
-mutation AssignProjectToTeam($id: ID! $team: ID!) {
-  updateProject(input: {
-    where: {id: $id},
-    data: {
-      team: $team
-    }
-  })  {
-    project {
-      name
-        id
-      team {
+  mutation AssignProjectToTeam($id: ID!, $team: ID!) {
+    updateProject(input: { where: { id: $id }, data: { team: $team } }) {
+      project {
         name
         id
+        team {
+          name
+          id
+        }
       }
     }
   }
-}`;
+`
 
 // Team Queries
 export const TEAM_QUERY = gql`
@@ -324,16 +292,15 @@ export const TEAM_QUERY = gql`
       }
     }
   }
-`;
+`
 
 /**
  * GraphQL Mutation
  * Delete course by ID
  */
 export const TEAM_DELETE_QUERY = gql`
-  mutation DELETE_TEAM ($id: ID!)
-  {
-    deleteTeam(input: {where: {id: $id}}) {
+  mutation DELETE_TEAM($id: ID!) {
+    deleteTeam(input: { where: { id: $id } }) {
       team {
         id
         name
@@ -348,30 +315,26 @@ export const TEAM_DELETE_QUERY = gql`
       }
     }
   }
-`;
+`
 
 /**
  * GraphQL mutation
  * Assign a Team To a Project
  */
 export const ASSIGN_TEAM_QUERY = gql`
-mutation AssignTeamToProject($id: ID! $project: ID!) {
-  updateTeam(input: {
-    where: {id: $id},
-    data: {
-      project: $project
-    }
-  })  {
-    team {
-      name
-        id
-      project {
+  mutation AssignTeamToProject($id: ID!, $project: ID!) {
+    updateTeam(input: { where: { id: $id }, data: { project: $project } }) {
+      team {
         name
         id
+        project {
+          name
+          id
+        }
       }
     }
   }
-}`;
+`
 
 /*
  * CREATE_TEAM
@@ -385,69 +348,69 @@ mutation AssignTeamToProject($id: ID! $project: ID!) {
  *      logo: id? of picture (not required)
  */
 export const CREATE_TEAM = gql`
- mutation CreateTeam(
-   $projectID:ID!
-   $studentsID:[ID]
-   $name:String!
-   $courseID:ID!
- ){
-   createTeam(
-     input:{
-       data:{
-         name:$name
-         project:$projectID
-         course:$courseID
-         users:$studentsID
-       }
-     }
-   ){
-     team{
-       name
-       project{
-         id
-         name
-       }
-       course{
-         id
-         name
-       }
-       users{
-         id
-         name
-       }
-       logo{
-         id
-         name
-       }
-     }
-   }
- }
-`;
+  mutation CreateTeam(
+    $projectID: ID!
+    $studentsID: [ID]
+    $name: String!
+    $courseID: ID!
+  ) {
+    createTeam(
+      input: {
+        data: {
+          name: $name
+          project: $projectID
+          course: $courseID
+          users: $studentsID
+        }
+      }
+    ) {
+      team {
+        name
+        project {
+          id
+          name
+        }
+        course {
+          id
+          name
+        }
+        users {
+          id
+          name
+        }
+        logo {
+          id
+          name
+        }
+      }
+    }
+  }
+`
 
 export const CREATE_TEAM_INFO = gql`
-query GET_INFO{
-  courses{
-    id
-    name
-    projects{
+  query GET_INFO {
+    courses {
+      id
+      name
+      projects {
+        id
+        name
+      }
+    }
+    projects {
+      id
+      name
+    }
+    users(where: { roleLabel: "student" }) {
+      id
+      name
+    }
+    teams {
       id
       name
     }
   }
-  projects{
-    id
-    name
-  }
-  users(where: { roleLabel: "student" }) {
-     id
-     name
-  }
-  teams{
-    id
-    name
-  }   
-}
-`;
+`
 
 // User Queries
 
@@ -460,12 +423,12 @@ export const PROFESSOR_QUERY = gql`
       email
       archived
       roleLabel
-      departments {
+      department {
         name
       }
     }
   }
-`;
+`
 
 // Sponsor Queries
 export const SPONSOR_QUERY = gql`
@@ -478,7 +441,7 @@ export const SPONSOR_QUERY = gql`
       roleLabel
     }
   }
-`;
+`
 
 /**
  * GraphQL query
@@ -498,51 +461,55 @@ export const STUDENT_QUERY = gql`
       archived
     }
   }
-`;
+`
 
 /**
  * GraphQL Mutation
  * Delete user by ID
  */
 export const USER_DELETE_QUERY = gql`
-mutation DELETE_USER ($id: ID!)
-{
-  deleteUser(input: {where: {id: $id}}) {
-    user {
-      name
-      id
-      email
-      roleLabel
+  mutation DELETE_USER($id: ID!) {
+    deleteUser(input: { where: { id: $id } }) {
+      user {
+        name
+        id
+        email
+        roleLabel
+      }
     }
   }
-}
-`;
+`
 
 /**
  * GraphQL Mutation
  * Edit user by ID
  */
 export const USER_EDIT_QUERY = gql`
-mutation ($id: ID!, $name: String, $email: String, $roleLabel: String, $archived: Boolean)
-{
-  updateUser(input: {
-      where: {
-        id: $id
-      },
-      data: { 
-        name: $name,
-        email: $email,
-        roleLabel: $roleLabel
-        archived: $archived
+  mutation(
+    $id: ID!
+    $name: String
+    $email: String
+    $roleLabel: String
+    $archived: Boolean
+  ) {
+    updateUser(
+      input: {
+        where: { id: $id }
+        data: {
+          name: $name
+          email: $email
+          roleLabel: $roleLabel
+          archived: $archived
+        }
       }
-    }) {
-    user {
-      name
-      id
-      email
-      roleLabel
-      archived
+    ) {
+      user {
+        name
+        id
+        email
+        roleLabel
+        archived
+      }
     }
   }
-}
-`;
+`

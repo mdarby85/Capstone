@@ -217,7 +217,7 @@ export default () => (
         file(relativePath: { eq: "Baylor_Logo_Yellow.png" }) {
           id
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 300, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

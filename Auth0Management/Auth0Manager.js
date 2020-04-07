@@ -1,7 +1,7 @@
 // Auth0Manager.js
 
-const axios = require("axios");
-const ManagementClient = require("auth0").ManagementClient;
+const axios = require("axios")
+const ManagementClient = require("auth0").ManagementClient
 /**
  *
  * How this works:
@@ -12,13 +12,13 @@ const ManagementClient = require("auth0").ManagementClient;
  */
 
 module.exports = (function() {
-  let managementClient;
+  let managementClient
 
   return {
     init,
     getClient,
-    updateClient
-  };
+    updateClient,
+  }
 
   /**
    * Create a management client
@@ -28,16 +28,16 @@ module.exports = (function() {
       .then(data => data.access_token)
       .then(token => {
         const managementClient = new ManagementClient({
-          domain: `${process.env.AUTH0_DOMAIN}`,
+          domain: `${process.env.GATSBY_AUTH0_DOMAIN}`,
           token,
-          audience: `https://${process.env.AUTH0_DOMAIN}/api/v2/`
-        });
+          audience: `https://${process.env.GATSBY_AUTH0_DOMAIN}/api/v2/`,
+        })
 
         // set it so we can use it in our other methods
-        this.managementClient = managementClient;
-        return true;
+        this.managementClient = managementClient
+        return true
       })
-      .catch(err => err);
+      .catch(err => err)
   }
 
   /**
@@ -48,9 +48,9 @@ module.exports = (function() {
    */
   function getToken() {
     // get the info we need
-    const clientId = process.env.AUTH0_MANAGE_CLIENT_ID;
-    const clientSecret = process.env.AUTH0_MANAGE_SECRET;
-    const url = `https://${process.env.AUTH0_DOMAIN}/oauth/token`;
+    const clientId = process.env.GATSBY_AUTH0_MANAGE_CLIENT_ID
+    const clientSecret = process.env.GATSBY_AUTH0_MANAGE_SECRET
+    const url = `https://${process.env.GATSBY_AUTH0_DOMAIN}/oauth/token`
 
     // make the call to the API via POST
     return axios
@@ -58,10 +58,10 @@ module.exports = (function() {
         client_id: clientId,
         client_secret: clientSecret,
         grant_type: "client_credentials",
-        audience: `https://${process.env.AUTH0_DOMAIN}/api/v2/`
+        audience: `https://${process.env.GATSBY_AUTH0_DOMAIN}/api/v2/`,
       })
       .then(res => res.data)
-      .catch(err => err);
+      .catch(err => err)
   }
 
   /**
@@ -70,14 +70,14 @@ module.exports = (function() {
    * @param string clientId
    */
   function getClient(clientId = null) {
-    if (!clientId){
-      clientId = process.env.AUTH0_MANAGE_CLIENT_ID;
+    if (!clientId) {
+      clientId = process.env.GATSBY_AUTH0_MANAGE_CLIENT_ID
     }
 
     return this.managementClient
       .getClient({ client_id: clientId })
       .then(client => client)
-      .catch(err => err);
+      .catch(err => err)
   }
 
   /**
@@ -89,11 +89,11 @@ module.exports = (function() {
    * @param {String} clientId The client that we want to update
    */
   function updateClient(data, clientId = null) {
-    if (!clientId) clientId = process.env.AUTH0_MANAGE_CLIENT_ID;
+    if (!clientId) clientId = process.env.GATSBY_AUTH0_MANAGE_CLIENT_ID
 
     return this.managementClient
       .updateClient({ client_id: clientId }, data)
       .then(client => client)
-      .catch(err => err);
+      .catch(err => err)
   }
-})();
+})()

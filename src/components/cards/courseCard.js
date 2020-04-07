@@ -41,12 +41,10 @@ import {
   Modal,
   ModalBody,
   ModalHeader,
-  Row
-} from "reactstrap";
+  Row,
+} from "reactstrap"
 import Button from "components/btn"
 import EditCourseForm from "components/forms/editCourseForm"
-
-
 
 const CourseCard = styled.div`
   padding: 1.6rem;
@@ -87,13 +85,13 @@ const CourseCard = styled.div`
   &.active p {
     color: ${props => props.theme.secondaryGold};
   }
-`;
+`
 
 const CourseName = styled.h4`
   font-family: "BioSans", sans-serif;
   color: ${props => props.theme.primaryGreen};
   text-align: left;
-`;
+`
 
 const CourseSemester = styled.p`
   font-family: Georgia, serif;
@@ -102,38 +100,48 @@ const CourseSemester = styled.p`
   line-height: 10px;
   text-align: left;
   color: #c3c3c3;
-`;
+`
 
 const IconStyle = {
   color: "gray",
   size: "1.5em",
   float: "right",
-  '&:hover': {
-    color: 'white'
-  }
-};
+  "&:hover": {
+    color: "white",
+  },
+}
 
 // TODO: Add dropdown menu with edit and delete
 // TODO: Create child callback to send information on delete
 // TODO: Create child callback to send information on edit
-export default ({ id, prefix, number, semester, active, year, name, startDate, endDate, onChildClick }) => {
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+export default ({
+  id,
+  prefix,
+  number,
+  semester,
+  active,
+  year,
+  name,
+  startDate,
+  endDate,
+  onChildClick,
+}) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const toggle = () => setDropdownOpen(prevState => !prevState)
 
   // delete modal items
-  const [del_modal, setDeleteModal] = useState(false);
-  const delete_modal_toggle = () => setDeleteModal(!del_modal);
+  const [del_modal, setDeleteModal] = useState(false)
+  const delete_modal_toggle = () => setDeleteModal(!del_modal)
 
   // edit modal items
-  const [edit_modal, setEditModal] = useState(false);
-  const edit_modal_toggle = () => setEditModal(!edit_modal);
+  const [edit_modal, setEditModal] = useState(false)
+  const edit_modal_toggle = () => setEditModal(!edit_modal)
 
   function handleClick(id) {
-    onChildClick(id); // pass any argument to the callback
+    onChildClick(id) // pass any argument to the callback
   }
 
-  return(
+  return (
     <CourseCard className={`${active ? "active" : ""}`}>
       <Row>
         <Col>
@@ -146,11 +154,13 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
         </Col>
         <Col md={2}>
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle style={{background: "inherit", border: "none", outline: "none"}}
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded={dropdownOpen}>
-              <div className={"card-tools-icon"}>
+            <DropdownToggle
+              style={{ background: "inherit", border: "none", outline: "none" }}
+              data-toggle="dropdown"
+              aria-haspopup
+              aria-expanded={dropdownOpen}
+            >
+              <div className="card-tools-icon">
                 <FaEllipsisV />
               </div>
             </DropdownToggle>
@@ -164,9 +174,17 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
       </Row>
 
       <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
-        <ModalHeader toggle={delete_modal_toggle} style={{textAlign: "center"}}>Delete Course</ModalHeader>
+        <ModalHeader
+          toggle={delete_modal_toggle}
+          style={{ textAlign: "center" }}
+        >
+          Delete Course
+        </ModalHeader>
         <ModalBody>
-          <h4 style={{textAlign: "center"}}> Are you sure you want to delete course {name}?</h4>
+          <h4 style={{ textAlign: "center" }}>
+            {" "}
+            Are you sure you want to delete course {name}?
+          </h4>
           <hr />
           <Button
             onClick={delete_modal_toggle}
@@ -182,19 +200,28 @@ export default ({ id, prefix, number, semester, active, year, name, startDate, e
             small
             border
             textColor="primary-green"
-            style={{float: "right"}}
+            style={{ float: "right" }}
           >
             Delete
           </Button>
         </ModalBody>
       </Modal>
 
-      <Modal isOpen={edit_modal} backdrop={"static"} toggle={edit_modal_toggle}>
+      <Modal isOpen={edit_modal} backdrop="static" toggle={edit_modal_toggle}>
         <ModalHeader toggle={edit_modal_toggle}>Edit Course</ModalHeader>
         <ModalBody>
-          <EditCourseForm id={id} prefix={prefix} number={number} active={active}
-                            name={name} year={year} semester={semester} startDate={startDate} endDate={endDate}
-                            onEditSuccess={edit_modal_toggle} />
+          <EditCourseForm
+            id={id}
+            prefix={prefix}
+            number={number}
+            active={active}
+            name={name}
+            year={year}
+            semester={semester}
+            startDate={startDate}
+            endDate={endDate}
+            onEditSuccess={edit_modal_toggle}
+          />
         </ModalBody>
       </Modal>
     </CourseCard>

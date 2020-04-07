@@ -1,35 +1,15 @@
 # Author(s): Mario Arturo Lopez Martinez, Matthew Darby
 # File: docker-compose.yml
-# Last Modified: February 10th, 2020
-
+# Last Modified: April 7th, 2020
+#
 # Average time to build and initialize the entire container is about 10-15 minutes depending on how fast your machine is
 # Once you have the containers build up once, the deployments should be near-instant
-
+#
 # Command for startup: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 
 version: "3"
 
 services:
-  # For now we'll just go on without gatsby running in a container.
-  # There are issues with it connecting to our databases for some reason.
-
-  # gatsby:
-  #   container_name: "front-end"
-  #   working_dir: /home/gatsby-app
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - strapi
-  #     - db
-  #   ports:
-  #     - "8000:8000"
-  #     - "9929:9929"
-  #     - "9230:9230"
-  #   environment:
-  #     GATSBY_WEBPACK_PUBLICPATH: /
-  #     STRAPI_URL: strapi:1337
-  #   command: ["./wait-for-strapi.sh"]
   strapi:
     container_name: "api"
     build:
@@ -45,7 +25,8 @@ services:
       - DATABASE_PASSWORD=
       - DATABASE_SSL=false
       - DATABASE_AUTHENTICATION_DATABASE=strapi
-      - HOST=localhost
+      # Previously this was set to 'localhost' but had to be changed after Docker update
+      - HOST=0.0.0.0
     ports:
       - 1337:1337
     volumes:

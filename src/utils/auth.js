@@ -22,16 +22,16 @@
 
 import auth0 from "auth0-js"
 import { navigate } from "gatsby"
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const path = require("path")
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") })
 
 const isBrowser = typeof window !== "undefined"
 
 const auth = isBrowser
   ? new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENTID,
-      redirectUri: process.env.AUTH0_CALLBACK,
+      domain: process.env.GATSBY_AUTH0_DOMAIN,
+      clientID: process.env.GATSBY_AUTH0_CLIENTID,
+      redirectUri: process.env.GATSBY_AUTH0_CALLBACK,
       responseType: "token id_token",
       scope: "openid profile email",
     })
