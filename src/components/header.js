@@ -71,7 +71,7 @@ const Header = () => {
                         <Nav style={{ marginLeft: "35em" }} navbar>
                             <NavItem style={{ float: "right" }}>
                                 <Link to="/contact" className="nav-extra nav-link" activeClassName="activeHeader">
-                                    Contact Us
+                                    Contact
                                 </Link>
                             </NavItem>
                             <NavItem>
