@@ -408,6 +408,40 @@ query GET_INFO{
 }
 `;
 
+/**
+ * Edit Team Query
+ * 
+ * Description: Edits a team by its ID. Edits the name, logo, and members of the team.
+ */
+export const EDIT_TEAM_QUERY = gql`
+  mutation ($id: ID!, $name: String, $logo: ID, $users: [ID]) 
+  {
+    updateTeam(input: {
+      where: {
+        id: $id
+      },
+      data: {
+        name: $name
+        logo: $logo
+        users: $users
+      }
+    }) {
+      team {
+        name
+        users {
+          name
+          id
+        }
+        logo {
+          url
+          name
+          id
+        }
+      }
+    }
+  }
+`
+
 // User Queries
 
 // Professor Queries

@@ -163,7 +163,7 @@ export default ({
             </Button>
           </Col>
           <Col>
-            <Button to={editLink} textColor="white" solid rounded small>
+            <Button onClick={edit_modal_toggle} to={editLink} textColor="white" solid rounded small>
               Edit
             </Button>
           </Col>
