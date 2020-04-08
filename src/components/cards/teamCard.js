@@ -103,15 +103,15 @@ export default ({
   editLink,
   onChildClick,
   logo,
-  users
+  users,
 }) => {
   // Dropdown items
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const toggle = () => setDropdownOpen(prevState => !prevState)
 
   // edit modal items
-  const [edit_modal, setEditModal] = useState(false);
-  const edit_modal_toggle = () => setEditModal(!edit_modal);
+  const [edit_modal, setEditModal] = useState(false)
+  const edit_modal_toggle = () => setEditModal(!edit_modal)
 
   // delete modal items
   const [del_modal, setDeleteModal] = useState(false)
@@ -156,9 +156,13 @@ export default ({
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem header>Team Tools</DropdownItem>
-                <DropdownItem onClick={add_team_to_project_toggle}>Assign to Project</DropdownItem>
+                <DropdownItem onClick={add_team_to_project_toggle}>
+                  Assign to Project
+                </DropdownItem>
                 <DropdownItem onClick={edit_modal_toggle}>Edit</DropdownItem>
-                <DropdownItem onClick={delete_modal_toggle}>Delete</DropdownItem>
+                <DropdownItem onClick={delete_modal_toggle}>
+                  Delete
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </Col>
@@ -177,7 +181,14 @@ export default ({
             </Button>
           </Col>
           <Col>
-            <Button onClick={edit_modal_toggle} to={editLink} textColor="white" solid rounded small>
+            <Button
+              onClick={edit_modal_toggle}
+              to={editLink}
+              textColor="white"
+              solid
+              rounded
+              small
+            >
               Edit
             </Button>
           </Col>
@@ -185,9 +196,16 @@ export default ({
       </DisplayBody>
 
       <Modal isOpen={edit_modal} toggle={edit_modal_toggle}>
-        <ModalHeader toggle={edit_modal_toggle} style={{textAlign: "center"}}>Edit Team</ModalHeader>
+        <ModalHeader toggle={edit_modal_toggle} style={{ textAlign: "center" }}>
+          Edit Team
+        </ModalHeader>
         <ModalBody>
-          <EditTeamForm name={teamName} logo={logo ? logo : undefined} users={users} id={id} />
+          <EditTeamForm
+            name={teamName}
+            logo={logo ? logo : undefined}
+            users={users}
+            id={id}
+          />
         </ModalBody>
       </Modal>
 

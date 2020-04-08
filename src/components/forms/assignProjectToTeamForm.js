@@ -29,19 +29,8 @@ const GET_DATA = gql`
 
 // GQL mutation to assign a project to a team
 const ASSIGN_PROJECT_TO_TEAM = gql`
-  mutation AssignProjectToTeam(
-    $id: ID!
-    $team: ID!
-  ) {
-    updateProject(
-      input: {
-        where: {
-          id: $id
-        },
-      data: {
-        team: $team
-      }
-    })  {
+  mutation AssignProjectToTeam($id: ID!, $team: ID!) {
+    updateProject(input: { where: { id: $id }, data: { team: $team } }) {
       project {
         name
         id
@@ -52,18 +41,18 @@ const ASSIGN_PROJECT_TO_TEAM = gql`
       }
     }
   }
-  `
+`
 
-export default ({id}) => {
+export default ({ id }) => {
   // Various states for our query
-  const { loading, error, data } = useQuery(GET_DATA);
+  const { loading, error, data } = useQuery(GET_DATA)
   // Various states for our mutation
   const [
     AssignProjectToTeam,
     { loading: mutationLoading, error: mutationError },
-  ] = useMutation(ASSIGN_PROJECT_TO_TEAM);
+  ] = useMutation(ASSIGN_PROJECT_TO_TEAM)
   // Various states for our form
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors } = useForm()
 
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
@@ -71,21 +60,24 @@ export default ({id}) => {
       variables: {
         teamID: values.teamName,
         projectID: id,
-      }
+      },
     })
   }
 
   return (
     <>
       <FormTitle title={"Assign A Project To A Team"} />
-      <form onSubmit={handleSubmit(onSubmit)} name="Assign a Project To a Team Form">
-        <br/>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        name="Assign a Project To a Team Form"
+      >
+        <br />
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
         {data && (
           <>
             <label htmlFor="team">Team</label>
-            <br/>
+            <br />
             <select
               name="teamName"
               ref={register({
@@ -101,14 +93,9 @@ export default ({id}) => {
             <br />
           </>
         )}
-        <br/>
-        <hr/>
-        <Button
-          small
-          border
-          textColor="primary-green"
-          type={"submit"}
-        >
+        <br />
+        <hr />
+        <Button small border textColor="primary-green" type={"submit"}>
           Add
         </Button>
         {mutationLoading && <p>Loading...</p>}

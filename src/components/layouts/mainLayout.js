@@ -24,27 +24,27 @@ import "assets/stylesheets/layout.scss"
 const MainStyle = { margin: "7em 0 0 0" }
 
 const Layout = ({ children }) => {
-    const data = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                    title
-                }
-            }
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
         }
-    `)
+      }
+    }
+  `)
 
-    return (
-        <ThemeProvider theme={theme}>
-            <TopHeader />
-            <Header siteTitle={data.site.siteMetadata.title} />
-            <main style={MainStyle}>{children}</main>
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider theme={theme}>
+      <TopHeader />
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <main style={MainStyle}>{children}</main>
+    </ThemeProvider>
+  )
 }
 
 Layout.propTypes = {
-    children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

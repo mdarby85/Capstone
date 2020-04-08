@@ -7,11 +7,10 @@
  */
 
 let theme = {
-    primaryGreen: '#154734',
-    primaryGold: '#d29f13',
-    secondaryGreen: '#006a52',
-    secondaryGold: '#ffb81c'
-
+  primaryGreen: "#154734",
+  primaryGold: "#d29f13",
+  secondaryGreen: "#006a52",
+  secondaryGold: "#ffb81c",
 }
 
 export default theme

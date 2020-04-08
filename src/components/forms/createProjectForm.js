@@ -27,7 +27,7 @@ const GET_DATA = gql`
       name
     }
   }
-`;
+`
 
 // GQL mutation to create a new project
 const CREATE_PROJECT = gql`
@@ -65,20 +65,22 @@ const CREATE_PROJECT = gql`
       }
     }
   }
-`;
+`
 
 export default ({ onCreateSuccess }) => {
   // Various states for our query
-  const { loading, error, data } = useQuery(GET_DATA);
+  const { loading, error, data } = useQuery(GET_DATA)
   // Various states for our mutation
   const [
     createProject,
     { loading: mutationLoading, error: mutationError },
   ] = useMutation(CREATE_PROJECT, {
-    onCompleted: () => { onCreateSuccess(); }
-  });
+    onCompleted: () => {
+      onCreateSuccess()
+    },
+  })
   // Various states for our form
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors } = useForm()
 
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {

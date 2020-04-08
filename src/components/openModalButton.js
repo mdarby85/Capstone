@@ -34,18 +34,18 @@ import EditCourseForm from "components/forms/editCourseForm"
 import EditProgramForm from "components/forms/editProgramForm"
 
 export default ({ label, formNumber }) => {
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+  const [modal, setModal] = useState(false)
+  const toggle = () => setModal(!modal)
   const forms = [
-    (<CreateCourseForm onCreateSuccess={toggle}/>),
-    (<CreateProjectForm onCreateSuccess={toggle}/>),
-    (<CreateDepartmentForm onCreateSuccess={toggle}/>),
-    (<CreateTeamForm onCreateSuccess={toggle} />),
-    (<CreateProgramForm onCreateSuccess={toggle} />),
-    (<EditCourseForm onEditSuccess={toggle} />),
-    (<EditProgramForm onEditSuccess={toggle} />),
-    (<EditUserForm onEditSuccess={toggle} />)
-  ];
+    <CreateCourseForm onCreateSuccess={toggle} />,
+    <CreateProjectForm onCreateSuccess={toggle} />,
+    <CreateDepartmentForm onCreateSuccess={toggle} />,
+    <CreateTeamForm onCreateSuccess={toggle} />,
+    <CreateProgramForm onCreateSuccess={toggle} />,
+    <EditCourseForm onEditSuccess={toggle} />,
+    <EditProgramForm onEditSuccess={toggle} />,
+    <EditUserForm onEditSuccess={toggle} />,
+  ]
 
   return (
     <div>

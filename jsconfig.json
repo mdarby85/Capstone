@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-        "baseUrl": "src",
-        "paths": {
-            "*": ["src/*"],
-            "utils": ["src/utils/*"],
-            "data": ["src/data/*"],
-            "pages": ["src/pages/*"],
-            "assets": ["src/assets/*"],
-            "components": ["src/components/*"]
-        }
-    },
-    "exclude": ["**/node_modules", "**/test/", "**/.vscode/"]
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "*": ["src/*"],
+      "utils": ["src/utils/*"],
+      "data": ["src/data/*"],
+      "pages": ["src/pages/*"],
+      "assets": ["src/assets/*"],
+      "components": ["src/components/*"]
+    }
+  },
+  "exclude": ["**/node_modules", "**/test/", "**/.vscode/"]
 }

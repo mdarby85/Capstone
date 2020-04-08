@@ -30,41 +30,31 @@ const GET_DATA = gql`
 
 // GQL mutation to add team to a project
 const ADD_TEAM_TO_PROJECT = gql`
-  mutation addTeamToProject(
-    $projectID:ID!,
-    $teamID:ID
-  ) {
+  mutation addTeamToProject($projectID: ID!, $teamID: ID) {
     updateProject(
-      input: {
-        where:{
-          id: $projectID
-        }
-        data:{
-          team: $teamID
-        }
-      }
-    ){
-      project{
+      input: { where: { id: $projectID }, data: { team: $teamID } }
+    ) {
+      project {
         id
-        team{
+        team {
           id
           name
         }
-      }    
+      }
+    }
   }
-}
 `
 
-export default ({team, id}) => {
+export default ({ team, id }) => {
   // Various states for our query
-  const { loading, error, data } = useQuery(GET_DATA);
+  const { loading, error, data } = useQuery(GET_DATA)
   // Various states for our mutation
   const [
     addTeamToProject,
     { loading: mutationLoading, error: mutationError },
-  ] = useMutation(ADD_TEAM_TO_PROJECT);
+  ] = useMutation(ADD_TEAM_TO_PROJECT)
   // Various states for our form
-  const { handleSubmit, register, errors } = useForm();
+  const { handleSubmit, register, errors } = useForm()
 
   // On form submit, we push values from our form to our GQL mutation
   const onSubmit = values => {
@@ -72,7 +62,7 @@ export default ({team, id}) => {
       variables: {
         projectID: values.projectName,
         teamID: id,
-      }
+      },
     })
   }
 
@@ -80,16 +70,14 @@ export default ({team, id}) => {
     <>
       <FormTitle title={"Add Team To A Project"} />
       <form onSubmit={handleSubmit(onSubmit)} name="Add Team To A Project Form">
-        <br/>
+        <br />
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
         {data && (
           <>
             <label htmlFor="team">Team</label>
-            <br/>
-            <select
-              name="teamName"
-            >
+            <br />
+            <select name="teamName">
               <option disabled selected value="">
                 {team}
               </option>
@@ -103,32 +91,27 @@ export default ({team, id}) => {
         {loading && <tr>Loading...</tr>}
         {error && <tr>Error: ${error.message}</tr>}
         {data && (
-            <>
-              <label htmlFor="project">Project </label>
-              <br/>
-              <select
-                  name="projectName"
-                  ref={register({
-                    required: "This field is required.",
-                  })}
-              >
-                <option disabled selected value="">
-                  Select A Project
-                </option>
-                {GenerateOptions(data.projects, "id", "name")}
-              </select>
-              {errors.name && <p>{errors.name.message}</p>}
-              <br />
-            </>
+          <>
+            <label htmlFor="project">Project </label>
+            <br />
+            <select
+              name="projectName"
+              ref={register({
+                required: "This field is required.",
+              })}
+            >
+              <option disabled selected value="">
+                Select A Project
+              </option>
+              {GenerateOptions(data.projects, "id", "name")}
+            </select>
+            {errors.name && <p>{errors.name.message}</p>}
+            <br />
+          </>
         )}
-        <br/>
-        <hr/>
-        <Button
-          small
-          border
-          textColor="primary-green"
-          type={"submit"}
-        >
+        <br />
+        <hr />
+        <Button small border textColor="primary-green" type={"submit"}>
           Add
         </Button>
         {mutationLoading && <p>Loading...</p>}

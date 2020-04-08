@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   &:hover > table {
     right: 2em;
   }
-`;
+`
 
 const Tools = styled.table`
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
@@ -76,27 +76,27 @@ export default () => {
         <tbody>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Project" formNumber={1}/>
+              <OpenModalButton label="Create Project" formNumber={1} />
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Department" formNumber={2}/>
+              <OpenModalButton label="Create Department" formNumber={2} />
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Course" formNumber={0}/>
+              <OpenModalButton label="Create Course" formNumber={0} />
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Program" formNumber={4}/>
+              <OpenModalButton label="Create Program" formNumber={4} />
             </ButtonCell>
           </tr>
           <tr>
             <ButtonCell>
-              <OpenModalButton label="Create Team" formNumber={3}/>
+              <OpenModalButton label="Create Team" formNumber={3} />
             </ButtonCell>
           </tr>
           <tr>

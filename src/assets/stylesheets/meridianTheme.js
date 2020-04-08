@@ -7,8 +7,8 @@
  */
 
 let meridianTheme = {
-    primary: '#55c7b1',
-    secondary: '#3a9483',
+  primary: "#55c7b1",
+  secondary: "#3a9483",
 }
 
 export default meridianTheme
