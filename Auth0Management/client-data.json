@@ -1,0 +1,38 @@
+{
+  "tenant": "bkwilcox",
+  "global": false,
+  "is_token_endpoint_ip_header_trusted": false,
+  "name": "MeridianUserManager",
+  "is_first_party": true,
+  "oidc_conformant": true,
+  "sso_disabled": false,
+  "cross_origin_auth": false,
+  "allowed_clients": [],
+  "callbacks": [],
+  "native_social_login": {
+    "apple": {
+      "enabled": false
+    },
+    "facebook": {
+      "enabled": false
+    }
+  },
+  "signing_keys": [{
+    "cert": "-----BEGIN CERTIFICATE-----\r\nMIIC/zCCAeegAwIBAgIJFavNqFKqrgHqMA0GCSqGSIb3DQEBCwUAMB0xGzAZBgNV\r\nBAMTEmJrd2lsY294LmF1dGgwLmNvbTAeFw0yMDAyMTcyMjE2MDdaFw0zMzEwMjYy\r\nMjE2MDdaMB0xGzAZBgNVBAMTEmJrd2lsY294LmF1dGgwLmNvbTCCASIwDQYJKoZI\r\nhvcNAQEBBQADggEPADCCAQoCggEBALCTH4h2xSbPzmGFCNq3TFVsulGZ8Gdrv0az\r\nzXRr/RWlS9Mz4GQJODF//fWeUY3vwiy4GDCUwNhFX0VjUoQlNf9bTNxRQHYIhj1y\r\nU0STRdngLTM/BUcoTELMa+mgfZ3tkozdeYSHcn8hxUjl+0W6IDC3uHgXhUeTGTyy\r\nMBfBTKFrGoR2R9oXbeAxfix2yVLb+GtqpfgEDR7arebx6SdPMWTBCz7HOm62UCyk\r\nt1OaLPeE8SOdDp/2wh+nWQKLAhlvY93JY+efSsNklLfchJb2gGqrt3uo1vKYIzmU\r\nuybEdql2lbAvLNemqHfg9oQQpOdHK3Co15pSqAExykOrayhdUSMCAwEAAaNCMEAw\r\nDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUuTAEGa2vfu5KBGEJjwNfNnz+Fu8w\r\nDgYDVR0PAQH/BAQDAgKEMA0GCSqGSIb3DQEBCwUAA4IBAQCPqRoPxsHxRZCqsrGh\r\npgrD+DVv/kbM9jx/QcjJt3G5IPi3C6awICcfQFIXOnAUCpYIOXucpoR9IYYEy6FD\r\nZoaUWwkgXDsujHQiTuabQrYtrpogGpYsFdPk5R44mucjlgsia43vI9chqdK35cqT\r\n4LeM9f6oXotO6L+Y2n+2kKBIWqWRN39o1vn44lJ6Rs+Sgq1y+W5VbNnKk/04wZSK\r\n/fJj2W3LbJHbMndUe0bN48JKRwskdv8O6raomPa6oByr2SO2PFo2hEUniC5wY7o7\r\nGREgVzlc+ojYQ93bPY3xPg4d22Gmiay04GLdPd09nSiBEgEslAObtn+HA1LiL6ot\r\nAFdI\r\n-----END CERTIFICATE-----\r\n",
+    "pkcs7": "-----BEGIN PKCS7-----\r\nMIIDLgYJKoZIhvcNAQcCoIIDHzCCAxsCAQExADALBgkqhkiG9w0BBwGgggMDMIIC\r\n/zCCAeegAwIBAgIJFavNqFKqrgHqMA0GCSqGSIb3DQEBCwUAMB0xGzAZBgNVBAMT\r\nEmJrd2lsY294LmF1dGgwLmNvbTAeFw0yMDAyMTcyMjE2MDdaFw0zMzEwMjYyMjE2\r\nMDdaMB0xGzAZBgNVBAMTEmJrd2lsY294LmF1dGgwLmNvbTCCASIwDQYJKoZIhvcN\r\nAQEBBQADggEPADCCAQoCggEBALCTH4h2xSbPzmGFCNq3TFVsulGZ8Gdrv0azzXRr\r\n/RWlS9Mz4GQJODF//fWeUY3vwiy4GDCUwNhFX0VjUoQlNf9bTNxRQHYIhj1yU0ST\r\nRdngLTM/BUcoTELMa+mgfZ3tkozdeYSHcn8hxUjl+0W6IDC3uHgXhUeTGTyyMBfB\r\nTKFrGoR2R9oXbeAxfix2yVLb+GtqpfgEDR7arebx6SdPMWTBCz7HOm62UCykt1Oa\r\nLPeE8SOdDp/2wh+nWQKLAhlvY93JY+efSsNklLfchJb2gGqrt3uo1vKYIzmUuybE\r\ndql2lbAvLNemqHfg9oQQpOdHK3Co15pSqAExykOrayhdUSMCAwEAAaNCMEAwDwYD\r\nVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUuTAEGa2vfu5KBGEJjwNfNnz+Fu8wDgYD\r\nVR0PAQH/BAQDAgKEMA0GCSqGSIb3DQEBCwUAA4IBAQCPqRoPxsHxRZCqsrGhpgrD\r\n+DVv/kbM9jx/QcjJt3G5IPi3C6awICcfQFIXOnAUCpYIOXucpoR9IYYEy6FDZoaU\r\nWwkgXDsujHQiTuabQrYtrpogGpYsFdPk5R44mucjlgsia43vI9chqdK35cqT4LeM\r\n9f6oXotO6L+Y2n+2kKBIWqWRN39o1vn44lJ6Rs+Sgq1y+W5VbNnKk/04wZSK/fJj\r\n2W3LbJHbMndUe0bN48JKRwskdv8O6raomPa6oByr2SO2PFo2hEUniC5wY7o7GREg\r\nVzlc+ojYQ93bPY3xPg4d22Gmiay04GLdPd09nSiBEgEslAObtn+HA1LiL6otAFdI\r\nMQA=\r\n-----END PKCS7-----\r\n",
+    "subject": "/CN=bkwilcox.auth0.com"
+  }],
+  "client_id": "VKn8AeE3DklpobQJtBHwkbhKu7eiKC6H",
+  "callback_url_template": false,
+  "client_secret": "GDKPsYwByMUkWgXLr5iTtHOqP6K-2q5BjAORFVU2D_cAT_7IJJ7rLC5naG-3HyMF",
+  "jwt_configuration": {
+    "alg": "RS256",
+    "lifetime_in_seconds": 36000,
+    "secret_encoded": false
+  },
+  "client_aliases": [],
+  "token_endpoint_auth_method": "client_secret_post",
+  "app_type": "non_interactive",
+  "grant_types": ["client_credentials"],
+  "custom_login_page_on": true
+}

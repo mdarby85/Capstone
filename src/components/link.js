@@ -1,5 +1,5 @@
 /**
- * Pre-generated
+ * @author Mario Arturo Lopez Martinez
  */
 
 import React from "react"
@@ -8,27 +8,28 @@ import { Link as GatsbyLink } from "gatsby"
 // and partiallyActive, destructure the prop here and
 // pass it only to GatsbyLink
 const Link = ({ children, to, activeClassName, partiallyActive, ...other }) => {
-  // Tailor the following test to your environment.
-  // This example assumes that any internal link (intended for Gatsby)
-  // will start with exactly one slash, and that anything else is external.
-  const internal = /^\/(?!\/)/.test(to)
-  // Use Gatsby Link for internal links, and <a> for others
-  if (internal) {
+    // Tailor the following test to your environment.
+    // This example assumes that any internal link (intended for Gatsby)
+    // will start with exactly one slash, and that anything else is external.
+    const internal = /^\/(?!\/)/.test(to)
+    // Use Gatsby Link for internal links, and <a> for others
+    if (internal) {
+        return (
+            <GatsbyLink to={to} activeClassName={activeClassName} partiallyActive={partiallyActive} {...other}>
+                {children}
+            </GatsbyLink>
+        )
+    }
     return (
-      <GatsbyLink
-        to={to}
-        activeClassName={activeClassName}
-        partiallyActive={partiallyActive}
-        {...other}
-      >
-        {children}
-      </GatsbyLink>
+        <a
+            href={to}
+            // Commented out for now
+            // target="_blank"
+            // rel="noopener noreferrer"
+            {...other}
+        >
+            {children}
+        </a>
     )
-  }
-  return (
-    <a href={to} target="_blank" rel="noopener noreferrer" {...other}>
-      {children}
-    </a>
-  )
 }
 export default Link

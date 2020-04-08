@@ -1,10 +1,16 @@
+# "Docker builds images automatically by reading the instructions from a Dockerfile -- a text
+# file that contains all commands, in order, needed to build a given image. A Dockerfile adheres
+# to a specific format and set of instructions which you can find at Dockerfile reference."
+#
+# More on Dockerfiles here: https://docs.docker.com/engine/reference/builder/
 # Based on Docker configurations found at: https://github.com/STUkh/gatsby-strapi-docker/
 # 
 # Author: Mario Arturo Lopez Martinez
 # File: strapi/Dockerfile
-# Last Modified: February 10th, 2020
+# Last Modified: April 7th, 2020
 
 # Base image
+# Creates a layer from the node:13-alpine Docker image
 FROM node:13-alpine
 
 # Metadata for our Strapi image
@@ -30,8 +36,10 @@ RUN yarn global add strapi@beta
 # Opting to use yarn for performance reasons
 # RUN npm install strapi@beta -g
 
-# Copy over Strapi script to set up configuration and make it executable
+# Copy over Strapi script to Docker client's current directory
 COPY strapi.sh ./
+
+# Makes file executable
 RUN chmod +x ./strapi.sh
 
 # Exposing the default port used by Strapi
