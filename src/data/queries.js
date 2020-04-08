@@ -264,28 +264,29 @@ export const ASSIGN_PROJECT_QUERY = gql`
 
 // Team Queries
 export const TEAM_QUERY = gql`
-  {
-    teams {
-      id
-      name
-      archived
-      logo {
-        name
-        url
-        id
-      }
-      project {
-        name
-        course {
-          semester
-          year
+    {
+        teams {
+            id
+            name
+            archived
+            logo {
+                name
+                url
+                id
+            }
+            project {
+                name
+                course {
+                    semester
+                    year
+                }
+            }
+            users {
+                name
+                id
+                roleLabel
+            }
         }
-      }
-      users {
-        name
-        id
-        roleLabel
-      }
     }
 `
 
@@ -395,36 +396,26 @@ export const CREATE_TEAM_INFO = gql`
 
 /**
  * Edit Team Query
- * 
+ *
  * Description: Edits a team by its ID. Edits the name, logo, and members of the team.
  */
 export const EDIT_TEAM_QUERY = gql`
-  mutation ($id: ID!, $name: String, $logo: ID, $users: [ID]) 
-  {
-    updateTeam(input: {
-      where: {
-        id: $id
-      },
-      data: {
-        name: $name
-        logo: $logo
-        users: $users
-      }
-    }) {
-      team {
-        name
-        users {
-          name
-          id
+    mutation($id: ID!, $name: String, $logo: ID, $users: [ID]) {
+        updateTeam(input: { where: { id: $id }, data: { name: $name, logo: $logo, users: $users } }) {
+            team {
+                name
+                users {
+                    name
+                    id
+                }
+                logo {
+                    url
+                    name
+                    id
+                }
+            }
         }
-        logo {
-          url
-          name
-          id
-        }
-      }
     }
-  }
 `
 
 // User Queries
@@ -465,14 +456,15 @@ export const SPONSOR_QUERY = gql`
  * TODO: Get rid of the hardcoding
  */
 export const STUDENT_QUERY = gql`
-  {
-    users(where: { roleLabel: "student" }) {
-      id
-      name
-      email
-      archived
-      confirmed
-      roleLabel
+    {
+        users(where: { roleLabel: "student" }) {
+            id
+            name
+            email
+            archived
+            confirmed
+            roleLabel
+        }
     }
 `
 

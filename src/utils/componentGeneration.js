@@ -7,7 +7,6 @@
 import React from "react"
 import { MdEdit, MdDeleteForever } from "react-icons/md"
 import { STATIC_API_URL } from "src/constants"
-import { graphql } from "gatsby"
 
 import TeamCard from "components/cards/teamCard"
 import CourseCard from "components/cards/courseCard"
@@ -158,9 +157,9 @@ export const GenerateTableRows = (nodes, fields) => {
 }
 
 export const GenerateTeamMemberCards = (nodes, fields) => {
-    return nodes.map(node => (
+    return nodes.map((node, index) => (
         <TeamMemberCard
-            key={node.id}
+            key={index}
             imgSrc={image}
             name="Chris Holle"
             department="Baylor Computer Science"
