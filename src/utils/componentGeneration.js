@@ -6,12 +6,15 @@
 
 import React from "react"
 import { MdEdit, MdDeleteForever } from "react-icons/md"
-import { API_URL } from "src/constants"
+import { STATIC_API_URL } from "src/constants"
+import { graphql } from "gatsby"
 
 import TeamCard from "components/cards/teamCard"
 import CourseCard from "components/cards/courseCard"
 import ProjectCard from "components/cards/projectCard"
 import CheckboxInput from "components/input/checkboxInput"
+import TeamMemberCard from "components/cards/teamMemberCard"
+import image from "assets/images/gatsby-icon.png"
 
 import { Edit, IconTd, TableData, Delete, TableHeader } from "components/styledComponents"
 
@@ -88,6 +91,7 @@ export const GenerateTeamCards = nodes => {
  * @description @TODO
  */
 export const GenerateProjectCards = nodes => {
+    console.log(nodes)
     return nodes.map(node => (
         <div
             key={node.id}
@@ -97,9 +101,10 @@ export const GenerateProjectCards = nodes => {
         >
             <ProjectCard
                 editable={false}
-                imgSrc={node.thumbnail ? `${API_URL}${node.thumbnail.url}` : ""}
+                imgSrc={node.thumbnail ? `${STATIC_API_URL}${node.thumbnail.childImageSharp.fluid.src}` : ""}
                 name={node.name}
                 teamName={node.team.name}
+                to={`${STATIC_API_URL}/projects/view/${node.id}`}
                 semester={node.course ? `${node.course.semester} ${node.course.year}` : "Null"}
                 description={node.description}
             />
@@ -149,5 +154,17 @@ export const GenerateTableRows = (nodes, fields) => {
                 </div>
             </IconTd>
         </tr>
+    ))
+}
+
+export const GenerateTeamMemberCards = (nodes, fields) => {
+    return nodes.map(node => (
+        <TeamMemberCard
+            key={node.id}
+            imgSrc={image}
+            name="Chris Holle"
+            department="Baylor Computer Science"
+            role="Full-Stack Development"
+        />
     ))
 }

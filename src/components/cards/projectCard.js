@@ -219,7 +219,6 @@ export default ({
                     )}
                 </Row>
             </DisplayBody>
-
             <Modal isOpen={del_modal} toggle={delete_modal_toggle}>
                 <ModalHeader toggle={delete_modal_toggle} style={{ textAlign: "center" }}>
                     Delete Project
@@ -244,7 +243,6 @@ export default ({
                     </Button>
                 </ModalBody>
             </Modal>
-
             <Modal isOpen={assignProject_modal} toggle={assign_project_to_team_toggle}>
                 <ModalHeader toggle={assign_project_to_team_toggle} style={{ textAlign: "center" }}>
                     Assign to Project
