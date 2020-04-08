@@ -1,0 +1,12 @@
+# Author(s): Mario Arturo Lopez Martinez
+# File: docker-compose.dev.yml
+# Last Modified: February 10th, 2020
+
+version: "3"
+services:
+  strapi:
+    stdin_open: true
+    tty: true
+  db:
+    stdin_open: true
+    tty: true

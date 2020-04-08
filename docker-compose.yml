@@ -1,34 +1,51 @@
-# docker compose file
-version: '3'
+# Author(s): Mario Arturo Lopez Martinez, Matthew Darby
+# File: docker-compose.yml
+# Last Modified: April 7th, 2020
+#
+# Average time to build and initialize the entire container is about 10-15 minutes depending on how fast your machine is
+# Once you have the containers build up once, the deployments should be near-instant
+#
+# Command for startup: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+version: "3"
 
 services:
-    cappy:
-        container_name: cappy
-        build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-            - "3000:3000"
-        volumes:
-            - ./:/usr/src/app
+  strapi:
+    container_name: "api"
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    environment:
+      - APP_NAME=meridian-api
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=db
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=
+      - DATABASE_PASSWORD=
+      - DATABASE_SSL=false
+      - DATABASE_AUTHENTICATION_DATABASE=strapi
+      # Previously this was set to 'localhost' but had to be changed after Docker update
+      - HOST=0.0.0.0
+    ports:
+      - 1337:1337
+    volumes:
+      - ./meridian-api:/usr/src/api/meridian-api
+    depends_on:
+      - db
+    restart: always
 
-    mongodb:
-        image: mongo:latest
-        container_name: strapi-mongo
-        ports:
-            - "27017:27017"
-        environment:
-            MONGO_INITDB_DATABASE: strapi
-    strapi:
-        image: strapi/strapi
-        container_name: strapi
-        depends_on:
-            - mongodb
-        ports:
-            - "1337:1337"
-        environment:
-            APP_NAME: strapi-app
-            DATABASE_CLIENT: mongo
-            DATABASE_HOST: strapi-mongo
-            DATABASE_PORT: 27017
-            DATABASE_NAME: strapi
+  db:
+    container_name: "db"
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_DATABASE=strapi
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
+    restart: always
+
+# Fix for Mongo not being able to mount on NTFS file-systems (Windows 10)
+volumes:
+  mongodata:
